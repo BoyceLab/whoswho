@@ -1,6 +1,5 @@
 # Gene Spine
 
-
 A harmonized, HGNC-keyed list of genes associated with epilepsy and
 neurodevelopmental disorders, with a curated organization layer joined to it.
 Standalone; no dependency on any institutional platform.
