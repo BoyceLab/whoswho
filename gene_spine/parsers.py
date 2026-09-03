@@ -91,9 +91,13 @@ def _read_csv_with_preamble(path: Path, header_token: str | None) -> pd.DataFram
     if not header_token:
         return pd.read_csv(path, dtype=str).fillna("")
     text = Path(path).read_text(encoding="utf-8", errors="replace").splitlines()
-    start = next(i for i, line in enumerate(text) if line.startswith(header_token))
+    tok = header_token.lower()
+    start = next((i for i, line in enumerate(text)
+                  if line.lstrip().lstrip('"').lower().startswith(tok)), None)
+    if start is None:
+        raise KeyError(f"No header line starting with '{header_token}'. First lines: {text[:6]}")
     from io import StringIO
-    body = "\n".join(line for line in text[start:] if not line.startswith("+"))
+    body = "\n".join(line for line in text[start:] if not line.lstrip().lstrip('"').startswith("+"))
     return pd.read_csv(StringIO(body), dtype=str).fillna("")
 
 
