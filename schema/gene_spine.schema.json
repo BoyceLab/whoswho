@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "gene_spine row",
+  "type": "object",
+  "required": ["hgnc_id", "symbol", "tier", "domain", "sources"],
+  "properties": {
+    "hgnc_id": {"type": "string", "pattern": "^HGNC:\\d+$"},
+    "symbol": {"type": "string"},
+    "gene_name": {"type": "string"},
+    "tier": {"type": "string", "enum": ["T1", "T2", "T3"]},
+    "domain": {"type": "string", "enum": ["epilepsy_primary", "ndd_with_epilepsy", "ndd_no_documented_epilepsy", "systemic_with_seizures", "epilepsy_only_unclassified", "unclassified"]},
+    "disputed": {"type": "boolean"},
+    "n_sources": {"type": "integer", "minimum": 1},
+    "sources": {"type": "string", "description": "semicolon-separated source ids"},
+    "orphacodes": {"type": "string"},
+    "omim_id": {"type": "string"},
+    "ensembl_gene_id": {"type": "string"}
+  },
+  "patternProperties": {
+    "^on_": {"type": "boolean"},
+    "^ev_": {"type": "string", "description": "the source's own evidence label, unmodified"},
+    "^pheno_": {"type": "string"}
+  }
+}
