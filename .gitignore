@@ -1,3 +1,14 @@
 sources/*/
 outputs/
 __pycache__/
+# Automatically fetched sources are not committed; the workflow re-downloads them.
+sources/hgnc/
+sources/genes4epilepsy/
+sources/clingen/
+sources/panelapp_au_epilepsy/
+sources/panelapp_au_id/
+sources/panelapp_ge_epilepsy/
+sources/panelapp_ge_id/
+sources/simons_searchlight/
+sources/orphadata_genes/
+__pycache__/
