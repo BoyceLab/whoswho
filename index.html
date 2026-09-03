@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>whoswho: epilepsy and neurodevelopmental disorder genes with organizations</title>
+<meta name="description" content="A harmonized, HGNC-keyed list of genes associated with epilepsy and neurodevelopmental disorders, with a curated patient organization layer.">
+<style>
+  :root{
+    --ink:#1b2430; --paper:#fbfbf9; --rule:#d9dcd6; --muted:#5a6573; --soft:#eef0ea;
+    --link:#14507a; --t1:#0f6e63; --t2:#8a6a1f; --t3:#6b6f76; --warn:#a0342d;
+    --measure:78ch;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+  body{margin:0;background:var(--paper);color:var(--ink);font:15px/1.45 Inter,"Segoe UI",system-ui,-apple-system,sans-serif}
+  a{color:var(--link)}
+  main{max-width:1400px;margin:0 auto;padding:0 28px 60px}
+  h1{font-size:28px;line-height:1.15;margin:26px 0 6px;font-weight:650;letter-spacing:-.01em}
+  h2{font-size:20px;margin:30px 0 8px;font-weight:650;padding-top:6px;border-top:2px solid var(--ink)}
+  h3{font-size:16px;margin:16px 0 6px;font-weight:650}
+  p{margin:6px 0;max-width:var(--measure)}
+  .lede{font-size:16px;color:var(--ink);max-width:var(--measure)}
+  .muted{color:var(--muted)}
+  code{font:13px/1.4 ui-monospace,Consolas,Menlo,monospace;background:var(--soft);padding:0 4px;border-radius:3px}
+
+  /* jump bar */
+  nav.jump{position:sticky;top:0;z-index:5;background:var(--paper);border-bottom:1px solid var(--rule);margin:0 -28px;padding:8px 28px;display:flex;gap:18px;flex-wrap:wrap;align-items:baseline}
+  nav.jump a{text-decoration:none;color:var(--ink);font-weight:550;font-size:14px}
+  nav.jump a:hover{text-decoration:underline}
+  nav.jump .release{margin-left:auto;font-size:13px;color:var(--muted)}
+  .totop{font-size:13px;margin-left:10px;font-weight:400}
+  h2 .totop{float:right}
+
+  /* domain bar: the one visual element */
+  .bar{display:flex;height:22px;border-radius:3px;overflow:hidden;margin:10px 0 4px;max-width:900px}
+  .bar span{display:block;height:100%}
+  .legend{display:flex;gap:18px;flex-wrap:wrap;font-size:13px;margin-bottom:4px}
+  .legend i{display:inline-block;width:11px;height:11px;border-radius:2px;margin-right:5px;vertical-align:-1px}
+  .d-epi{background:#2b6f9e}.d-nddepi{background:#0f6e63}.d-ndd{background:#5b8c5a}.d-sys{background:#8a6a1f}.d-other{background:#9aa0a6}
+
+  /* controls */
+  .controls{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:10px 0}
+  .controls input[type=search]{font:inherit;padding:6px 9px;border:1px solid var(--rule);border-radius:4px;min-width:260px;background:#fff}
+  .controls select{font:inherit;padding:6px 8px;border:1px solid var(--rule);border-radius:4px;background:#fff}
+  .controls label{font-size:14px}
+  .controls .count{font-size:13px;color:var(--muted);margin-left:auto}
+  button.dl{font:inherit;font-size:13px;padding:5px 10px;border:1px solid var(--ink);background:#fff;border-radius:4px;cursor:pointer}
+  button.dl:hover{background:var(--soft)}
+
+  /* tables */
+  .tablewrap{overflow-x:auto;border:1px solid var(--rule);border-radius:4px;background:#fff}
+  table{border-collapse:collapse;width:100%;font-size:13.5px}
+  th,td{padding:5px 8px;border-bottom:1px solid var(--rule);text-align:left;vertical-align:top}
+  th{background:var(--soft);font-weight:600;position:sticky;top:41px;z-index:1;cursor:pointer;white-space:nowrap}
+  th[data-sorted="asc"]::after{content:" ↑"}th[data-sorted="desc"]::after{content:" ↓"}
+  tr:hover td{background:#f5f6f2}
+  td.sym{font-weight:600;white-space:nowrap}
+  td.name{color:var(--muted);max-width:340px}
+  .tier{display:inline-block;font-weight:650;font-size:12px;padding:1px 6px;border-radius:3px;color:#fff}
+  .T1{background:var(--t1)}.T2{background:var(--t2)}.T3{background:var(--t3)}
+  .disp{color:var(--warn);font-size:12px;font-weight:600;margin-left:4px}
+  .ticks{display:inline-flex;gap:3px}
+  .ticks i{display:inline-block;width:9px;height:14px;border-radius:2px;background:var(--rule)}
+  .ticks i.on{background:var(--ink)}
+  .ticks i.on.epi{background:#2b6f9e}.ticks i.on.ndd{background:#5b8c5a}.ticks i.on.both{background:#0f6e63}
+  .srcnames{font-size:12.5px;color:var(--muted)}
+  details{border:1px solid var(--rule);border-radius:4px;background:#fff;margin:8px 0}
+  summary{cursor:pointer;padding:8px 12px;font-weight:550}
+  details > div{padding:0 12px 10px}
+  .empty{border:1px dashed var(--rule);padding:14px;border-radius:4px;background:#fff;max-width:var(--measure)}
+  .empty code{display:block;margin:6px 0;padding:6px 8px}
+  .rule dl{display:grid;grid-template-columns:52px 1fr;gap:4px 12px;max-width:var(--measure);margin:6px 0}
+  .rule dt{font-weight:650}
+  .srcgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:8px 24px;font-size:13.5px}
+  .srcgrid div{padding:6px 0;border-bottom:1px solid var(--rule)}
+  .srcgrid b{display:block}
+  .pager{display:flex;gap:8px;align-items:center;font-size:13px;margin:8px 0}
+  .pager button{font:inherit;font-size:13px;padding:3px 9px;border:1px solid var(--rule);background:#fff;border-radius:3px;cursor:pointer}
+  @media print{
+    nav.jump,.controls,.pager,.totop{display:none}
+    details{border:0}details>div{padding:0}
+    th{position:static}
+    main{max-width:none;padding:0}
+  }
+  @media (max-width:700px){main{padding:0 14px 40px}nav.jump{margin:0 -14px;padding:8px 14px}.controls input[type=search]{min-width:0;width:100%}}
+</style>
+</head>
+<body>
+<main>
+<h1 id="top">whoswho</h1>
+<p class="lede">One harmonized list of genes associated with epilepsy and neurodevelopmental disorders, keyed on HGNC ID, with every source's own evidence label kept beside it and a curated layer of patient organizations joined to each gene.</p>
+
+<nav class="jump" aria-label="Sections">
+  <a href="#overview">Overview</a>
+  <a href="#genes">Genes</a>
+  <a href="#organizations">Organizations</a>
+  <a href="#gaps">Gaps</a>
+  <a href="#sources">Sources</a>
+  <a href="#method">Method</a>
+  <span class="release" id="releaseTag"></span>
+</nav>
+
+<section id="overview">
+  <h2>Overview <a class="totop" href="#top">Back to top</a></h2>
+  <p>Gene lists disagree with one another. Clinical panels range widely in size, research lists use different inclusion rules, and NDD resources and epilepsy resources overlap without agreeing on labels. This page joins them on a single identifier so that overlap and disagreement are visible per gene, and attaches the organizations that serve each gene's community.</p>
+  <div id="overviewStats"></div>
+</section>
+
+<section id="genes">
+  <h2>Genes <a class="totop" href="#top">Back to top</a></h2>
+  <p>Search by symbol, name, or HGNC ID. Filter by tier, domain, or a single source. The tick strip shows which lists include the gene, in the order named under the table.</p>
+  <div class="controls">
+    <input type="search" id="q" placeholder="Search symbol, gene name, HGNC ID" aria-label="Search genes">
+    <label>Tier <select id="fTier"><option value="">all</option><option>T1</option><option>T2</option><option>T3</option></select></label>
+    <label>Domain <select id="fDomain"><option value="">all</option></select></label>
+    <label>Source <select id="fSource"><option value="">any</option></select></label>
+    <label><input type="checkbox" id="fDisputed"> disputed only</label>
+    <button class="dl" id="dlGenes">Download filtered CSV</button>
+    <span class="count" id="geneCount"></span>
+  </div>
+  <div class="tablewrap"><table id="geneTable"><thead></thead><tbody></tbody></table></div>
+  <div class="pager" id="genePager"></div>
+  <p class="srcnames" id="tickOrder"></p>
+</section>
+
+<section id="organizations">
+  <h2>Organizations <a class="totop" href="#top">Back to top</a></h2>
+  <p>Curated rows are confirmed by a reviewer and are the authoritative record. Candidate rows arrived from membership rosters or listed pages and have not been reviewed; they are shown separately so the two are never confused.</p>
+  <div class="controls">
+    <input type="search" id="oq" placeholder="Search organization or gene" aria-label="Search organizations">
+    <label>Status <select id="fStatus"><option value="">all</option><option value="curated">curated</option><option value="candidate">candidate</option></select></label>
+    <button class="dl" id="dlOrgs">Download filtered CSV</button>
+    <span class="count" id="orgCount"></span>
+  </div>
+  <div class="tablewrap"><table id="orgTable"><thead></thead><tbody></tbody></table></div>
+</section>
+
+<section id="gaps">
+  <h2>Genes without an organization <a class="totop" href="#top">Back to top</a></h2>
+  <p>Ordered by tier, so the strongest gene-disease associations with no organization on record come first. This is the review queue.</p>
+  <details id="gapsBlock"><summary id="gapsSummary">Genes with no curated or candidate organization row</summary><div class="tablewrap"><table id="gapTable"><thead></thead><tbody></tbody></table></div></details>
+</section>
+
+<section id="sources">
+  <h2>Sources <a class="totop" href="#top">Back to top</a></h2>
+  <p>Every list this release was built from, with the version or snapshot date and the checksum of the file used. A release is reproducible from these snapshots and the rule below.</p>
+  <div class="srcgrid" id="sourceGrid"></div>
+</section>
+
+<section id="method" class="rule">
+  <h2>Method <a class="totop" href="#top">Back to top</a></h2>
+  <h3>Identifier</h3>
+  <p>Every symbol on every list is resolved to an HGNC ID: current symbol first, then previous symbol, then an alias if it maps to exactly one gene. Symbols that do not resolve are written to a separate file rather than dropped. Copy number variant entries are kept apart from genes.</p>
+  <h3>Tier</h3>
+  <dl>
+    <dt>T1</dt><dd>ClinGen Definitive or Strong, any PanelApp Green, SysNDD Definitive, or Gene2Phenotype definitive or strong.</dd>
+    <dt>T2</dt><dd>Genes4Epilepsy inclusion, SFARI score 1 or 2, SysNDD Moderate, Gene2Phenotype moderate, PanelApp Amber, ClinGen Moderate, or a Simons Searchlight studied gene.</dd>
+    <dt>T3</dt><dd>Present on at least one list and none of the above.</dd>
+  </dl>
+  <p>A Refuted or Disputed label from ClinGen or SysNDD holds the gene at T3 and sets the disputed flag, whatever the other lists say.</p>
+  <h3>Domain</h3>
+  <dl>
+    <dt></dt><dd><b>epilepsy_primary</b>: epilepsy sources describe epilepsy as the core phenotype.</dd>
+    <dt></dt><dd><b>ndd_with_epilepsy</b>: the gene appears on both an epilepsy source and an NDD source, or an epilepsy source labels it DEE or developmental.</dd>
+    <dt></dt><dd><b>ndd_no_documented_epilepsy</b>: NDD sources only.</dd>
+    <dt></dt><dd><b>systemic_with_seizures</b>: malformation, metabolic, or systemic groupings with seizures as one feature.</dd>
+  </dl>
+  <p>Where the Wang et al. 2023 three-category classification is present it takes precedence.</p>
+  <h3>Organizations</h3>
+  <p>The curated table is edited by hand and never overwritten by a build. Rosters and listed pages enter as candidates; a candidate is removed once a curated row exists for the same gene and the same website. The ORPHAcode on each gene row is the join key to disorder-level resources.</p>
+  <p class="muted">Code, configuration, and the curated table are in the repository behind this page. Suggest a gene or an organization by opening an issue there.</p>
+</section>
+</main>
+
+<script>
+(async function(){
+  const $ = s => document.querySelector(s);
+  const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+  async function loadJSON(u){ const r = await fetch(u); if(!r.ok) throw new Error(u); return r.json(); }
+  async function loadCSV(u){ const r = await fetch(u); if(!r.ok) throw new Error(u); return parseCSV(await r.text()); }
+  function parseCSV(text){
+    const rows=[]; let row=[], cell='', q=false;
+    for(let i=0;i<text.length;i++){ const c=text[i];
+      if(q){ if(c==='"'){ if(text[i+1]==='"'){cell+='"';i++;} else q=false; } else cell+=c; }
+      else if(c==='"') q=true; else if(c===','){row.push(cell);cell='';}
+      else if(c==='\n'){row.push(cell);rows.push(row);row=[];cell='';}
+      else if(c!=='\r') cell+=c; }
+    if(cell!==''||row.length){row.push(cell);rows.push(row);}
+    const h=rows.shift(); return rows.filter(r=>r.length>1).map(r=>Object.fromEntries(h.map((k,i)=>[k,r[i]??''])));
+  }
+  function toCSV(rows, cols){ const f=v=>{v=String(v??''); return /[",\n]/.test(v)?'"'+v.replace(/"/g,'""')+'"':v;}; return [cols.join(','),...rows.map(r=>cols.map(c=>f(r[c])).join(','))].join('\n'); }
+  function download(name, text){ const a=document.createElement('a'); a.href=URL.createObjectURL(new Blob([text],{type:'text/csv'})); a.download=name; a.click(); }
+
+  let genes=[], orgs=[], gaps=[], release={};
+  try{
+    [genes, orgs, gaps, release] = await Promise.all([
+      loadJSON('outputs/gene_spine.json'), loadCSV('outputs/org_layer.csv'), loadCSV('outputs/org_gaps.csv'), loadJSON('outputs/release.json')
+    ]);
+  }catch(e){
+    $('#overviewStats').innerHTML = `<div class="empty"><p>No build is published yet. This page reads <code>outputs/gene_spine.json</code>, <code>outputs/org_layer.csv</code>, <code>outputs/org_gaps.csv</code>, and <code>outputs/release.json</code> from the repository. Build locally, then commit the outputs folder:</p><code>python -m gene_spine.fetch<br>python -m gene_spine.build<br>git add outputs sources/manifest.json &amp;&amp; git commit -m "release" &amp;&amp; git push</code><p class="muted">Missing: ${esc(e.message)}</p></div>`;
+    return;
+  }
+
+  // ---- source order for tick strip
+  const sourceScope = {genes4epilepsy:'epi', sagas:'epi', panelapp_au_epilepsy:'epi', panelapp_ge_epilepsy:'epi', clingen:'both', wang_omim_2023:'both', sysndd:'ndd', sfari:'ndd', g2p_dd:'ndd', panelapp_au_id:'ndd', panelapp_ge_id:'ndd', simons_searchlight:'ndd', orphadata_genes:'both'};
+  const sourceLabel = {genes4epilepsy:'Genes4Epilepsy', sagas:'SAGAS', panelapp_au_epilepsy:'PanelApp AU epilepsy', panelapp_ge_epilepsy:'PanelApp GE epilepsy', clingen:'ClinGen', wang_omim_2023:'Wang 2023 (OMIM)', sysndd:'SysNDD', sfari:'SFARI', g2p_dd:'G2P DD', panelapp_au_id:'PanelApp AU ID', panelapp_ge_id:'PanelApp GE ID', simons_searchlight:'Simons Searchlight', orphadata_genes:'Orphadata'};
+  const present = new Set(); genes.forEach(g=>Object.keys(g).forEach(k=>{ if(k.startsWith('on_') && g[k]) present.add(k.slice(3)); }));
+  const order = Object.keys(sourceScope).filter(s=>present.has(s)).concat([...present].filter(s=>!(s in sourceScope)));
+  $('#tickOrder').textContent = 'Tick order: ' + order.map(s=>sourceLabel[s]||s).join(', ') + '. Blue ticks are epilepsy lists, green are NDD lists, teal are lists that classify both.';
+  order.forEach(s=>{ const o=document.createElement('option'); o.value=s; o.textContent=sourceLabel[s]||s; $('#fSource').appendChild(o); });
+  const domains=[...new Set(genes.map(g=>g.domain))].sort();
+  domains.forEach(d=>{ const o=document.createElement('option'); o.value=d; o.textContent=d.replace(/_/g,' '); $('#fDomain').appendChild(o); });
+
+  // ---- overview
+  $('#releaseTag').textContent = release.built ? 'Release ' + release.built : '';
+  const domClass = {epilepsy_primary:'d-epi', ndd_with_epilepsy:'d-nddepi', ndd_no_documented_epilepsy:'d-ndd', systemic_with_seizures:'d-sys'};
+  const byDom = {}; genes.forEach(g=>byDom[g.domain]=(byDom[g.domain]||0)+1);
+  const total = genes.length;
+  const bar = Object.entries(byDom).sort((a,b)=>b[1]-a[1]).map(([d,n])=>`<span class="${domClass[d]||'d-other'}" style="width:${(100*n/total).toFixed(2)}%" title="${esc(d)}: ${n}"></span>`).join('');
+  const legend = Object.entries(byDom).sort((a,b)=>b[1]-a[1]).map(([d,n])=>`<span><i class="${domClass[d]||'d-other'}"></i>${esc(d.replace(/_/g,' '))} ${n}</span>`).join('');
+  const byTier = release.by_tier || {};
+  $('#overviewStats').innerHTML = `<p>${total} genes in this release; ${byTier.T1||0} at T1, ${byTier.T2||0} at T2, ${byTier.T3||0} at T3. Organization rows: ${release.org_rows?.curated||0} curated, ${release.org_rows?.candidate||0} candidate; ${release.genes_without_org||0} genes have no organization row.</p><div class="bar">${bar}</div><div class="legend">${legend}</div>`;
+
+  // ---- gene table
+  const gcols = [['symbol','Symbol'],['gene_name','Gene name'],['tier','Tier'],['domain','Domain'],['sources','Lists'],['hgnc_id','HGNC'],['orphacodes','ORPHA']];
+  let gsort={key:'tier',dir:'asc'}, gpage=0; const PAGE=200;
+  $('#geneTable thead').innerHTML = '<tr>'+gcols.map(([k,l])=>`<th data-key="${k}">${l}</th>`).join('')+'</tr>';
+  $('#geneTable thead').addEventListener('click', e=>{ const th=e.target.closest('th'); if(!th) return; const k=th.dataset.key; gsort = gsort.key===k ? {key:k,dir:gsort.dir==='asc'?'desc':'asc'} : {key:k,dir:'asc'}; gpage=0; renderGenes(); });
+  function filteredGenes(){
+    const q=$('#q').value.trim().toLowerCase(), t=$('#fTier').value, d=$('#fDomain').value, s=$('#fSource').value, disp=$('#fDisputed').checked;
+    return genes.filter(g => (!q || g.symbol.toLowerCase().includes(q) || (g.gene_name||'').toLowerCase().includes(q) || g.hgnc_id.toLowerCase()===q || g.hgnc_id.toLowerCase().endsWith(':'+q))
+      && (!t || g.tier===t) && (!d || g.domain===d) && (!s || g['on_'+s]) && (!disp || g.disputed));
+  }
+  function ticks(g){ return '<span class="ticks">'+order.map(s=>`<i class="${g['on_'+s]?'on '+(sourceScope[s]||''):''}" title="${esc(sourceLabel[s]||s)}${g['ev_'+s]?': '+esc(g['ev_'+s]):''}"></i>`).join('')+'</span>'; }
+  function renderGenes(){
+    const rows=filteredGenes(); const k=gsort.key, m=gsort.dir==='asc'?1:-1;
+    rows.sort((a,b)=> (String(a[k]??'')>String(b[k]??'')?1:String(a[k]??'')<String(b[k]??'')?-1:0)*m || a.symbol.localeCompare(b.symbol));
+    document.querySelectorAll('#geneTable th').forEach(th=>th.dataset.sorted = th.dataset.key===k?gsort.dir:'');
+    const pages=Math.max(1,Math.ceil(rows.length/PAGE)); gpage=Math.min(gpage,pages-1);
+    const slice=rows.slice(gpage*PAGE,(gpage+1)*PAGE);
+    $('#geneTable tbody').innerHTML = slice.map(g=>`<tr><td class="sym">${esc(g.symbol)}${g.disputed?'<span class="disp">disputed</span>':''}</td><td class="name">${esc(g.gene_name)}</td><td><span class="tier ${esc(g.tier)}">${esc(g.tier)}</span></td><td>${esc(g.domain.replace(/_/g,' '))}</td><td>${ticks(g)}</td><td><a href="https://www.genenames.org/data/gene-symbol-report/#!/hgnc_id/${esc(g.hgnc_id)}">${esc(g.hgnc_id)}</a></td><td>${esc(g.orphacodes||'').split(';').filter(Boolean).map(o=>`<a href="https://www.orpha.net/en/disease/detail/${o}">${o}</a>`).join(' ')}</td></tr>`).join('');
+    $('#geneCount').textContent = rows.length===genes.length ? `${rows.length} genes` : `${rows.length} of ${genes.length} genes`;
+    $('#genePager').innerHTML = pages>1 ? `<button id="pprev" ${gpage===0?'disabled':''}>Previous</button><span>Page ${gpage+1} of ${pages}</span><button id="pnext" ${gpage>=pages-1?'disabled':''}>Next</button>` : '';
+    if(pages>1){ $('#pprev').onclick=()=>{gpage--;renderGenes();}; $('#pnext').onclick=()=>{gpage++;renderGenes();}; }
+    $('#dlGenes').onclick = ()=>download('gene_spine_filtered.csv', toCSV(rows, Object.keys(genes[0])));
+  }
+  ['#q','#fTier','#fDomain','#fSource','#fDisputed'].forEach(s=>$(s).addEventListener('input', ()=>{gpage=0;renderGenes();}));
+  renderGenes();
+
+  // ---- organizations
+  const ocols=[['org_name','Organization'],['symbol','Gene'],['status','Status'],['org_type','Type'],['registry_platform','Registry'],['natural_history_study','Natural history study'],['irb_status','IRB'],['maturity_stage','Stage'],['coalitions','Coalitions'],['country','Country'],['source','Source']];
+  $('#orgTable thead').innerHTML='<tr>'+ocols.map(([k,l])=>`<th>${l}</th>`).join('')+'</tr>';
+  function renderOrgs(){
+    const q=$('#oq').value.trim().toLowerCase(), st=$('#fStatus').value;
+    const rows=orgs.filter(o=>(!q||o.org_name.toLowerCase().includes(q)||(o.symbol||'').toLowerCase().includes(q))&&(!st||o.status===st));
+    rows.sort((a,b)=>(a.status==='curated'?0:1)-(b.status==='curated'?0:1)||a.org_name.localeCompare(b.org_name));
+    $('#orgTable tbody').innerHTML=rows.map(o=>`<tr><td>${o.url?`<a href="${esc(o.url)}">${esc(o.org_name)}</a>`:esc(o.org_name)}</td><td class="sym">${esc(o.symbol)}</td><td>${esc(o.status)}</td>${ocols.slice(3).map(([k])=>`<td>${esc(o[k])}</td>`).join('')}</tr>`).join('');
+    $('#orgCount').textContent=`${rows.length} rows`;
+    $('#dlOrgs').onclick=()=>download('organizations_filtered.csv', toCSV(rows, Object.keys(orgs[0]||{})));
+  }
+  ['#oq','#fStatus'].forEach(s=>$(s).addEventListener('input',renderOrgs)); renderOrgs();
+
+  // ---- gaps
+  $('#gapTable thead').innerHTML='<tr><th>Symbol</th><th>Tier</th><th>Domain</th><th>Lists</th></tr>';
+  $('#gapTable tbody').innerHTML=gaps.map(g=>`<tr><td class="sym">${esc(g.symbol)}</td><td><span class="tier ${esc(g.tier)}">${esc(g.tier)}</span></td><td>${esc((g.domain||'').replace(/_/g,' '))}</td><td class="srcnames">${esc((g.sources||'').split(';').map(s=>sourceLabel[s]||s).join(', '))}</td></tr>`).join('');
+  $('#gapsSummary').textContent = `Genes with no organization row, T1 first (${gaps.length})`;
+
+  // ---- sources
+  const src = release.sources||{};
+  $('#sourceGrid').innerHTML = Object.entries(src).map(([id,s])=>`<div><b>${esc(sourceLabel[id]||id)}</b>${s.version?'version '+esc(s.version)+', ':''}fetched ${esc(s.fetched)}${s.url?` from <a href="${esc(s.url)}">${esc(new URL(s.url).host)}</a>`:''}<br><span class="muted" style="font-size:12px">sha256 ${esc(String(s.sha256).slice(0,16))}…</span></div>`).join('') || '<p class="muted">No manifest published.</p>';
+
+  // collapsed blocks open for print and when a link targets them
+  window.addEventListener('beforeprint', ()=>document.querySelectorAll('details').forEach(d=>d.open=true));
+  function openTarget(){ const el=location.hash&&document.querySelector(location.hash); if(el){ const d=el.closest('details'); if(d) d.open=true; } }
+  window.addEventListener('hashchange', openTarget); openTarget();
+})();
+</script>
+</body>
+</html>
