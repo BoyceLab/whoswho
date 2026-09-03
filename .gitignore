@@ -1,6 +1,3 @@
-sources/*/
-outputs/
-__pycache__/
 # Automatically fetched sources are not committed; the workflow re-downloads them.
 sources/hgnc/
 sources/genes4epilepsy/
