@@ -57,11 +57,15 @@ def fetch_url(sid: str, cfg: dict, manifest: dict):
 
 
 def fetch_panelapp(sid: str, cfg: dict, manifest: dict):
-    """Find the panel by name (ids drift between deployments), then pull all genes."""
+    """Use panel_id when given, otherwise find the panel by name; then pull all genes."""
     base = cfg["api"].rstrip("/") + "/"
-    want = cfg["panel_name_match"].lower()
-    url = base
+    want = cfg.get("panel_name_match", "").lower()
     panel = None
+    if cfg.get("panel_id"):
+        r = requests.get(f"{base}{cfg['panel_id']}/", headers=HEADERS, timeout=120)
+        r.raise_for_status()
+        panel = r.json()
+    url = base
     while url and panel is None:
         r = requests.get(url, headers=HEADERS, timeout=120)
         r.raise_for_status()
@@ -72,7 +76,7 @@ def fetch_panelapp(sid: str, cfg: dict, manifest: dict):
                 break
         url = data.get("next")
     if panel is None:
-        raise SystemExit(f"{sid}: no panel matching '{cfg['panel_name_match']}' at {base}")
+        raise RuntimeError(f"{sid}: no panel matching '{cfg['panel_name_match']}' at {base}")
     genes, url = [], f"{base}{panel['id']}/genes/?page_size=500"
     while url:
         r = requests.get(url, headers=HEADERS, timeout=120)
@@ -94,7 +98,7 @@ def main(argv: list[str]):
     SRC.mkdir(exist_ok=True)
     manifest = json.loads(MANIFEST.read_text()) if MANIFEST.exists() else {}
     wanted = set(argv) or set(cfg_all)
-    manual = []
+    manual, failed = [], []
     for sid, cfg in cfg_all.items():
         if sid not in wanted:
             continue
@@ -112,7 +116,10 @@ def main(argv: list[str]):
                 fetch_url(sid, cfg, manifest)
         except Exception as e:  # keep going; a release can still be built from what fetched
             print(f"  {sid}: FAILED {e}")
+            failed.append(sid)
     MANIFEST.write_text(json.dumps(manifest, indent=1))
+    if failed:
+        print("\nFailed to fetch (build will skip these):", ", ".join(failed))
     if manual:
         print("\nManual sources still missing. Place each file at sources/<id>/<file>:")
         for sid, cfg in manual:
