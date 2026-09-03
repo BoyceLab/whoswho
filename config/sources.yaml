@@ -92,6 +92,7 @@ clingen:
 panelapp_au_epilepsy:
   name: PanelApp Australia, Genetic Epilepsy
   api: https://panelapp-aus.org/api/v1/panels/
+  panel_id: 202
   panel_name_match: Genetic Epilepsy
   file: panelapp_au_epilepsy.json
   domain: epilepsy
@@ -99,20 +100,23 @@ panelapp_au_epilepsy:
 panelapp_au_id:
   name: PanelApp Australia, Intellectual disability
   api: https://panelapp-aus.org/api/v1/panels/
+  panel_id: 250
   panel_name_match: Intellectual disability
   file: panelapp_au_id.json
   domain: ndd
 
 panelapp_ge_epilepsy:
-  name: Genomics England PanelApp, Genetic epilepsy syndromes
+  name: Genomics England PanelApp, Early onset or syndromic epilepsy (panel 402, formerly Genetic epilepsy syndromes)
   api: https://panelapp.genomicsengland.co.uk/api/v1/panels/
-  panel_name_match: Genetic epilepsy syndromes
+  panel_id: 402
+  panel_name_match: Early onset or syndromic epilepsy
   file: panelapp_ge_epilepsy.json
   domain: epilepsy
 
 panelapp_ge_id:
   name: Genomics England PanelApp, Intellectual disability
   api: https://panelapp.genomicsengland.co.uk/api/v1/panels/
+  panel_id: 285
   panel_name_match: Intellectual disability - microarray and sequencing
   file: panelapp_ge_id.json
   domain: ndd
