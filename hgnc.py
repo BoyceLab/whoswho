@@ -29,11 +29,21 @@ class HgncResolver:
 
     @classmethod
     def from_file(cls, path) -> "HgncResolver":
-        t = pd.read_csv(path, sep="\t", dtype=str, low_memory=False, quoting=3)
+        t = _read_hgnc(path)
         keep = ["hgnc_id", "symbol", "name", "locus_group", "status",
                 "prev_symbol", "alias_symbol", "omim_id", "ensembl_gene_id"]
+        missing = [c for c in ("hgnc_id", "symbol") if c not in t.columns]
+        if missing:
+            raise SystemExit(f"HGNC file lacks {missing}. Header found: {list(t.columns)[:20]}")
         keep = [c for c in keep if c in t.columns]
         t = t[keep].fillna("")
+        t["hgnc_id"] = t["hgnc_id"].str.strip().str.strip('"')
+        t["symbol"] = t["symbol"].str.strip().str.strip('"')
+        t = t[t["hgnc_id"].str.match(r"^HGNC:\d+$", na=False)]
+        if t.empty:
+            raise SystemExit("HGNC table has no rows with an HGNC:n id; the download is not the complete set.")
+        if len(t) < 10000:
+            print(f"  warning: HGNC table has only {len(t)} rows")
         r = cls(table=t)
         for row in t.itertuples(index=False):
             r.by_symbol[row.symbol.upper()] = row.hgnc_id
@@ -84,6 +94,25 @@ class HgncResolver:
             "omim_id": row.get("omim_id", ""),
             "ensembl_gene_id": row.get("ensembl_gene_id", ""),
         }
+
+
+def _read_hgnc(path) -> pd.DataFrame:
+    """Read the HGNC complete set, tolerating a BOM, header casing, and either quoting style."""
+    import csv
+    best = None
+    for quoting in (csv.QUOTE_NONE, csv.QUOTE_MINIMAL):
+        try:
+            t = pd.read_csv(path, sep="\t", dtype=str, low_memory=False, quoting=quoting,
+                            encoding="utf-8-sig", on_bad_lines="skip")
+        except Exception as e:  # try the other quoting style
+            print(f"  HGNC read with quoting={quoting} failed: {e}")
+            continue
+        t.columns = [str(c).strip().strip('"').lower() for c in t.columns]
+        if "hgnc_id" in t.columns and (best is None or len(t) > len(best)):
+            best = t
+    if best is None:
+        raise SystemExit(f"Could not read HGNC file at {path}")
+    return best
 
 
 def _split(cell: str) -> list[str]:

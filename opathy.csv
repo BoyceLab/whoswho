@@ -1,0 +1,236 @@
+gene,gene_family,opathy,basis
+ADNP,,chromatinopathy,editor
+ARID1B,BAF/SWI-SNF complex (SMARC/ARID),BAFopathy (chromatin),EpilepsyLive family
+ARX,,,
+CACNA1A,Voltage-gated calcium channels (CACNA),channelopathy (voltage-gated Ca),EpilepsyLive family
+CDKL5,,Rett and related,editor
+CHD2,Chromodomain helicases (CHD),chromatinopathy (CHD),editor
+CLN3,,neuronal ceroid lipofuscinosis (lysosomal),editor
+CSNK2A1,,,
+DDX3X,,,
+EHMT1,,chromatinopathy,editor
+FOXG1,,Rett and related,editor
+FOXP1,,,
+GNAO1,,,
+GRIN1,Ionotropic glutamate receptors (GRIN/GRIA/GRIK),channelopathy (ligand-gated: GRIN/GRIA/GRIK),EpilepsyLive family
+GRIN2A,Ionotropic glutamate receptors (GRIN/GRIA/GRIK),channelopathy (ligand-gated: GRIN/GRIA/GRIK),EpilepsyLive family
+GRIN2B,Ionotropic glutamate receptors (GRIN/GRIA/GRIK),channelopathy (ligand-gated: GRIN/GRIA/GRIK),EpilepsyLive family
+KCNB1,"Potassium channels, Kv2 (KCNB)",channelopathy (K),EpilepsyLive family
+MECP2,,Rett and related (chromatin),editor
+MED13L,Mediator complex (MED),Mediator complex disorder,EpilepsyLive family
+MEF2C,,,
+PCDH19,,,
+POLG,,mitochondrial disorder,editor
+PPP2R5D,PP2A subunits (PPP2),PP2A-related disorder,EpilepsyLive family
+PURA,,,
+SATB2,,,
+SCN1A,Voltage-gated sodium channels (SCN),channelopathy (voltage-gated Na),EpilepsyLive family
+SCN2A,Voltage-gated sodium channels (SCN),channelopathy (voltage-gated Na),EpilepsyLive family
+SCN8A,Voltage-gated sodium channels (SCN),channelopathy (voltage-gated Na),EpilepsyLive family
+SETBP1,,chromatinopathy,editor
+SHANK3,,synaptopathy,editor
+SLC13A5,,transporter disorder,editor
+SLC6A1,,transporter disorder (GAT1),editor
+STXBP1,,synaptopathy,editor
+SYNGAP1,,synaptopathy,editor
+TANGO2,,metabolic disorder,editor
+TBCK,,,
+TSC1,,mTORopathy,editor
+TSC2,,mTORopathy,editor
+UBE3A,,,
+YWHAG,,,
+ALDH7A1,,metabolic disorder (PDE),editor
+AP4B1,AP-4 adaptor complex (AP4),AP-4 deficiency,EpilepsyLive family
+ATP1A3,Na/K-ATPase alpha (ATP1A),Na/K-ATPase (pump) disorder,EpilepsyLive family
+DNM1,,synaptopathy,editor
+DYRK1A,,,
+KCNMA1,"Potassium channels, KCa (KCNMA/KCNN)",channelopathy (K),editor
+KCNQ2,"Potassium channels, Kv7 (KCNQ)",channelopathy (K),EpilepsyLive family
+KCNT1,"Potassium channels, Slack/Slick (KCNT)",channelopathy (K),EpilepsyLive family
+KIF1A,,,
+KMT2D,Lysine methyltransferases (KMT2),chromatinopathy (KMT2),editor
+PAFAH1B1,,lissencephaly (MCD),editor
+PNKP,,,
+PPT1,,neuronal ceroid lipofuscinosis (lysosomal),editor
+PRRT2,,synaptopathy,editor
+PTEN,,mTORopathy (PI3K/AKT/mTOR),editor
+SLC2A1,,transporter disorder (GLUT1),editor
+SLC9A6,,transporter disorder,editor
+TCF4,,,
+TPP1,,neuronal ceroid lipofuscinosis (lysosomal),editor
+WDR45,,neurodegeneration with brain iron accumulation,editor
+ZEB2,,,
+ARHGEF9,,synaptopathy,editor
+ATP6V1A,v-ATPase (ATP6V/ATP6AP),v-ATPase disorder,EpilepsyLive family
+CASK,,synaptopathy,editor
+CSNK2B,,,
+DEAF1,,,
+DLG4,,synaptopathy,editor
+FRRS1L,,,
+GABRA1,GABA-A receptors (GABR),channelopathy (ligand-gated: GABA-A),EpilepsyLive family
+GABRB3,GABA-A receptors (GABR),channelopathy (ligand-gated: GABA-A),EpilepsyLive family
+GNB1,,,
+GRIN2D,Ionotropic glutamate receptors (GRIN/GRIA/GRIK),channelopathy (ligand-gated: GRIN/GRIA/GRIK),EpilepsyLive family
+HNRNPU,hnRNP proteins (HNRNP),hnRNPopathy,EpilepsyLive family
+KCNA2,"Potassium channels, Kv1 (KCNA)",channelopathy (K),EpilepsyLive family
+KCNH1,"Potassium channels, EAG/erg (KCNH)",channelopathy (K),EpilepsyLive family
+NRXN1,,synaptopathy,editor
+SMARCA2,BAF/SWI-SNF complex (SMARC/ARID),BAFopathy (chromatin),EpilepsyLive family
+SMC1A,,cohesinopathy,editor
+TBC1D24,,,
+TRIO,,,
+WAC,,,
+WWOX,,,
+ALG13,"N-glycosylation, ALG (CDG type I)",glycosylation disorder (CDG),EpilepsyLive family
+AP4M1,AP-4 adaptor complex (AP4),AP-4 deficiency,EpilepsyLive family
+ATP1A2,Na/K-ATPase alpha (ATP1A),Na/K-ATPase (pump) disorder,EpilepsyLive family
+BRAT1,,,
+CACNA1E,Voltage-gated calcium channels (CACNA),channelopathy (voltage-gated Ca),EpilepsyLive family
+CHRNA4,,channelopathy (ligand-gated: nicotinic),editor
+CHRNB2,,channelopathy (ligand-gated: nicotinic),editor
+CLN5,,neuronal ceroid lipofuscinosis (lysosomal),editor
+CLN6,,neuronal ceroid lipofuscinosis (lysosomal),editor
+CLN8,,neuronal ceroid lipofuscinosis (lysosomal),editor
+CNTNAP2,,synaptopathy,editor
+COL4A1,Collagen IV (COL4),collagenopathy (COL4),EpilepsyLive family
+COL4A2,Collagen IV (COL4),collagenopathy (COL4),EpilepsyLive family
+DEPDC5,,mTORopathy,editor
+EEF1A2,,,
+GABBR2,,GABA-B receptor disorder,editor
+GABRG2,GABA-A receptors (GABR),channelopathy (ligand-gated: GABA-A),EpilepsyLive family
+GRN,,neuronal ceroid lipofuscinosis (lysosomal),editor
+HCN1,HCN channels (HCN),channelopathy (HCN),EpilepsyLive family
+IQSEC2,,synaptopathy,editor
+KCNA1,"Potassium channels, Kv1 (KCNA)",channelopathy (K),EpilepsyLive family
+KCNQ3,"Potassium channels, Kv7 (KCNQ)",channelopathy (K),EpilepsyLive family
+KCNT2,"Potassium channels, Slack/Slick (KCNT)",channelopathy (K),EpilepsyLive family
+KCTD7,,neuronal ceroid lipofuscinosis (lysosomal),editor
+MTOR,,mTORopathy,editor
+NPRL3,,mTORopathy,editor
+PIGA,GPI-anchor biosynthesis (PIG),glycosylation disorder (GPI-anchor),EpilepsyLive family
+PIGN,GPI-anchor biosynthesis (PIG),glycosylation disorder (GPI-anchor),EpilepsyLive family
+RHOBTB2,,,
+ROGDI,,,
+SCN1B,Voltage-gated sodium channels (SCN),"channelopathy (voltage-gated Na, beta subunit)",editor
+SCN3A,Voltage-gated sodium channels (SCN),channelopathy (voltage-gated Na),EpilepsyLive family
+SETD1B,,chromatinopathy,editor
+SLC25A22,,transporter disorder,editor
+SLC35A2,,glycosylation disorder (CDG),editor
+SPTAN1,,,
+STX1B,,synaptopathy,editor
+SZT2,,mTORopathy,editor
+UBA5,,,
+UNC80,,,
+VPS13A,,,
+ACTB,,,
+ACTL6B,,,
+ADCY5,,,
+AGO1,,,
+AHDC1,,,
+ANKRD11,,chromatinopathy,editor
+ARG1,,metabolic disorder (urea cycle),editor
+ASH1L,,,
+ASXL2,,chromatinopathy (ASXL),editor
+ASXL3,,chromatinopathy (ASXL),editor
+ATN1,,polyglutamine (repeat expansion) disorder,editor
+ATP6AP2,v-ATPase (ATP6V/ATP6AP),v-ATPase disorder,EpilepsyLive family
+ATP6V0A1,v-ATPase (ATP6V/ATP6AP),v-ATPase disorder,EpilepsyLive family
+ATP6V0C,v-ATPase (ATP6V/ATP6AP),v-ATPase disorder,EpilepsyLive family
+ATP6V1B2,v-ATPase (ATP6V/ATP6AP),v-ATPase disorder,EpilepsyLive family
+AUTS2,,,
+CACNA1C,Voltage-gated calcium channels (CACNA),channelopathy (voltage-gated Ca),editor
+CAPRIN1,,,
+CCM2,,,
+CHD3,Chromodomain helicases (CHD),chromatinopathy (CHD),EpilepsyLive family
+CIC,,,
+CLCN4,Chloride channels (CLCN),channelopathy (Cl),EpilepsyLive family
+CNOT3,,,
+CREBBP,,,
+CRELD1,,,
+CUL3,,,
+CYFIP2,,,
+DHDDS,,,
+DYNC1H1,,,
+EARS2,Aminoacyl-tRNA synthetases (ARS),ARS-related (tRNA synthetase) disorder,EpilepsyLive family
+EIF3F,,,
+FAM177A1,,,
+FARS2,Aminoacyl-tRNA synthetases (ARS),ARS-related (tRNA synthetase) disorder,EpilepsyLive family
+FBXL4,,,
+FBXO11,,,
+FUCA1,,,
+GABRB2,GABA-A receptors (GABR),channelopathy (ligand-gated: GABA-A),EpilepsyLive family
+GAMT,,,
+GRIA1,Ionotropic glutamate receptors (GRIN/GRIA/GRIK),channelopathy (ligand-gated: GRIN/GRIA/GRIK),EpilepsyLive family
+GRIA2,Ionotropic glutamate receptors (GRIN/GRIA/GRIK),channelopathy (ligand-gated: GRIN/GRIA/GRIK),EpilepsyLive family
+GRIA3,Ionotropic glutamate receptors (GRIN/GRIA/GRIK),channelopathy (ligand-gated: GRIN/GRIA/GRIK),EpilepsyLive family
+GRIA4,Ionotropic glutamate receptors (GRIN/GRIA/GRIK),channelopathy (ligand-gated: GRIN/GRIA/GRIK),EpilepsyLive family
+GRIK2,Ionotropic glutamate receptors (GRIN/GRIA/GRIK),channelopathy (ligand-gated: GRIN/GRIA/GRIK),EpilepsyLive family
+HIVEP2,,,
+HNRNPH2,hnRNP proteins (HNRNP),hnRNPopathy,EpilepsyLive family
+HNRNPK,hnRNP proteins (HNRNP),hnRNPopathy,EpilepsyLive family
+HNRNPR,hnRNP proteins (HNRNP),hnRNPopathy,EpilepsyLive family
+HRAS,,,
+IRF2BPL,,,
+JARID2,,,
+KANSL1,,,
+KAT6A,,,
+KCNC1,"Potassium channels, Kv3 (KCNC)",channelopathy (K),EpilepsyLive family
+KDM5C,,,
+KMT2A,Lysine methyltransferases (KMT2),chromatinopathy (KMT2),EpilepsyLive family
+KMT2C,Lysine methyltransferases (KMT2),chromatinopathy (KMT2),EpilepsyLive family
+KMT2E,Lysine methyltransferases (KMT2),chromatinopathy (KMT2),EpilepsyLive family
+KMT5B,,,
+KPTN,,,
+LAMA2,,,
+MANBA,,,
+MAST1,,,
+MAST3,,,
+MAST4,,,
+MBD5,,,
+MED12,Mediator complex (MED),Mediator complex disorder,EpilepsyLive family
+MYT1L,,,
+NAA15,,,
+NALCN,,,
+NARS1,Aminoacyl-tRNA synthetases (ARS),ARS-related (tRNA synthetase) disorder,EpilepsyLive family
+NBEA,,,
+NCKAP1,,,
+NEXMIF,,,
+NF1,,,
+NPC1,,,
+NR4A2,,,
+NUS1,,,
+PACS1,,,
+PACS2,,,
+PAX6,,,
+PHF21A,,,
+PMM2,,,
+POGZ,,,
+POLG2,,,
+PPP2R1A,PP2A subunits (PPP2),PP2A-related disorder,EpilepsyLive family
+PPP2R5C,PP2A subunits (PPP2),PP2A-related disorder,EpilepsyLive family
+PPP3CA,,,
+RAB18,,,
+RAB3GAP1,,,
+RAB3GAP2,,,
+RARS2,Aminoacyl-tRNA synthetases (ARS),ARS-related (tRNA synthetase) disorder,EpilepsyLive family
+RERE,,,
+RORB,,,
+SETD5,,chromatinopathy,editor
+SMARCB1,BAF/SWI-SNF complex (SMARC/ARID),BAFopathy (chromatin),EpilepsyLive family
+SMARCC2,BAF/SWI-SNF complex (SMARC/ARID),BAFopathy (chromatin),EpilepsyLive family
+SMS,,,
+SNAP25,,synaptopathy,editor
+SON,,,
+STAG1,,,
+SURF1,,,
+SYT1,,synaptopathy,editor
+TANC2,,,
+TAOK1,,,
+TARS2,Aminoacyl-tRNA synthetases (ARS),ARS-related (tRNA synthetase) disorder,EpilepsyLive family
+TBCD,,,
+TLK2,,,
+TUBB3,Tubulins (TUBA/TUBB/TUBG),tubulinopathy,editor
+UGDH,,,
+UPF3B,,,
+VAMP2,,,
+WARS2,Aminoacyl-tRNA synthetases (ARS),ARS-related (tRNA synthetase) disorder,EpilepsyLive family

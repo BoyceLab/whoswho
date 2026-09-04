@@ -15,8 +15,10 @@
 # header on first run so any mismatch is a one-line fix here, not a code change.
 
 hgnc:
-  name: HGNC complete set
-  url: https://storage.googleapis.com/public-download-files/hgnc/tsv/tsv/hgnc_complete_set.txt
+  name: HGNC complete set (quarterly archive snapshot)
+  # The quarterly archive is dated, never deleted, and plain TSV. fetch.py tries the most
+  # recent quarter first and walks back until one downloads.
+  quarterly_url: https://storage.googleapis.com/public-download-files/hgnc/archive/archive/quarterly/tsv/hgnc_complete_set_{date}.txt
   file: hgnc_complete_set.txt
   license: CC0
   role: identifier_backbone
@@ -298,6 +300,55 @@ registries_2020:
   name: Organization registry survey list, 2020
   manual: true
   file: registries_2020.csv
+  role: org_candidates
+  columns:
+    org_name: [org_name]
+    gene: [gene]
+    url: [url]
+
+# --- EpilepsyLive (BoyceLab/EpilepsyLive pag.html DATA and edge files) ---
+
+epilepsylive_pag:
+  name: EpilepsyLive single-gene directory (disorder, foundation, registry, platforms, therapeutics, FDA, contacts)
+  manual: true
+  file: epilepsylive_pag.csv
+  landing: https://boycelab.github.io/EpilepsyLive/pag.html
+  role: gene_annotation
+  columns:
+    gene: [gene]
+    hgnc_id: [hgnc_id]
+  annotate:
+    el_tier: el_tier
+    disorder: disorder
+    el_foundation: foundation
+    el_foundation_url: foundation_url
+    el_registry: registry
+    el_registry_url: registry_url
+    el_platforms: platforms
+    simons_enrolled: simons_enrolled
+    cords: cords
+    therapeutics: therapeutics
+    fda_report: fda_report
+    fda_report_url: fda_report_url
+
+opathy:
+  name: Mechanism class (channelopathy, synaptopathy, mTORopathy, chromatinopathy, and so on) with gene family
+  manual: true
+  file: opathy.csv
+  role: gene_annotation
+  note: opathy comes from the EpilepsyLive gene family where one exists, an editor map for pathway groups (mTOR, synaptic, cohesin, NCL), or the symbol root. The basis column says which. Edit the CSV to reclassify.
+  columns:
+    gene: [gene]
+  annotate:
+    gene_family: gene_family
+    opathy: opathy
+    opathy_basis: basis
+
+epilepsylive_orgs:
+  name: EpilepsyLive organizations (foundation text, network PAG edges, gene_org_edges.csv)
+  manual: true
+  file: epilepsylive_orgs.csv
+  landing: https://boycelab.github.io/EpilepsyLive/pag.html
   role: org_candidates
   columns:
     org_name: [org_name]

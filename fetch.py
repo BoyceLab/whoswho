@@ -46,6 +46,35 @@ def record(manifest: dict, sid: str, path: Path, cfg: dict, how: str):
     }
 
 
+def fetch_quarterly(sid: str, cfg: dict, manifest: dict):
+    """Try the newest quarterly snapshot first (1 Jan/Apr/Jul/Oct), walking back up to two years."""
+    out = SRC / sid / cfg["file"]
+    out.parent.mkdir(parents=True, exist_ok=True)
+    today = date.today()
+    quarters = []
+    y, m = today.year, ((today.month - 1) // 3) * 3 + 1
+    for _ in range(8):
+        quarters.append(f"{y}-{m:02d}-01")
+        m -= 3
+        if m < 1:
+            m += 12
+            y -= 1
+    last_err = None
+    for q in quarters:
+        url = cfg["quarterly_url"].format(date=q)
+        try:
+            r = requests.get(url, headers=HEADERS, timeout=180)
+            if r.status_code == 200 and r.content[:7] == b"hgnc_id":
+                out.write_bytes(r.content)
+                record(manifest, sid, out, dict(cfg, url=url, version=q), "quarterly")
+                print(f"  {sid}: snapshot {q}, {out.stat().st_size:,} bytes")
+                return
+            last_err = f"HTTP {r.status_code}, starts {r.content[:20]!r}"
+        except Exception as e:
+            last_err = str(e)
+    raise RuntimeError(f"{sid}: no quarterly snapshot found; last error {last_err}")
+
+
 def fetch_url(sid: str, cfg: dict, manifest: dict):
     out = SRC / sid / cfg["file"]
     out.parent.mkdir(parents=True, exist_ok=True)
@@ -57,11 +86,15 @@ def fetch_url(sid: str, cfg: dict, manifest: dict):
 
 
 def fetch_panelapp(sid: str, cfg: dict, manifest: dict):
-    """Find the panel by name (ids drift between deployments), then pull all genes."""
+    """Use panel_id when given, otherwise find the panel by name; then pull all genes."""
     base = cfg["api"].rstrip("/") + "/"
-    want = cfg["panel_name_match"].lower()
-    url = base
+    want = cfg.get("panel_name_match", "").lower()
     panel = None
+    if cfg.get("panel_id"):
+        r = requests.get(f"{base}{cfg['panel_id']}/", headers=HEADERS, timeout=120)
+        r.raise_for_status()
+        panel = r.json()
+    url = base
     while url and panel is None:
         r = requests.get(url, headers=HEADERS, timeout=120)
         r.raise_for_status()
@@ -72,7 +105,7 @@ def fetch_panelapp(sid: str, cfg: dict, manifest: dict):
                 break
         url = data.get("next")
     if panel is None:
-        raise SystemExit(f"{sid}: no panel matching '{cfg['panel_name_match']}' at {base}")
+        raise RuntimeError(f"{sid}: no panel matching '{cfg['panel_name_match']}' at {base}")
     genes, url = [], f"{base}{panel['id']}/genes/?page_size=500"
     while url:
         r = requests.get(url, headers=HEADERS, timeout=120)
@@ -94,7 +127,7 @@ def main(argv: list[str]):
     SRC.mkdir(exist_ok=True)
     manifest = json.loads(MANIFEST.read_text()) if MANIFEST.exists() else {}
     wanted = set(argv) or set(cfg_all)
-    manual = []
+    manual, failed = [], []
     for sid, cfg in cfg_all.items():
         if sid not in wanted:
             continue
@@ -106,13 +139,18 @@ def main(argv: list[str]):
                 manual.append((sid, cfg))
             continue
         try:
-            if "api" in cfg:
+            if "quarterly_url" in cfg:
+                fetch_quarterly(sid, cfg, manifest)
+            elif "api" in cfg:
                 fetch_panelapp(sid, cfg, manifest)
             elif "url" in cfg:
                 fetch_url(sid, cfg, manifest)
         except Exception as e:  # keep going; a release can still be built from what fetched
             print(f"  {sid}: FAILED {e}")
+            failed.append(sid)
     MANIFEST.write_text(json.dumps(manifest, indent=1))
+    if failed:
+        print("\nFailed to fetch (build will skip these):", ", ".join(failed))
     if manual:
         print("\nManual sources still missing. Place each file at sources/<id>/<file>:")
         for sid, cfg in manual:

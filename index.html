@@ -66,6 +66,10 @@
   .ticks i.on{background:var(--ink)}
   .ticks i.on.epi{background:#2b6f9e}.ticks i.on.ndd{background:#5b8c5a}.ticks i.on.both{background:#0f6e63}
   .srcnames{font-size:12.5px;color:var(--muted)}
+  tr.detail td{background:#f7f8f4;border-bottom:2px solid var(--rule)}
+  tr.detail dl{display:grid;grid-template-columns:150px 1fr;gap:3px 14px;margin:4px 0;font-size:13px}
+  tr.detail dt{font-weight:600;color:var(--muted)}tr.detail dd{margin:0}
+  td.sym a{color:var(--ink);text-decoration:none;border-bottom:1px dotted var(--muted)}
   details{border:1px solid var(--rule);border-radius:4px;background:#fff;margin:8px 0}
   summary{cursor:pointer;padding:8px 12px;font-weight:550}
   details > div{padding:0 12px 10px}
@@ -110,12 +114,13 @@
 
 <section id="genes">
   <h2>Genes <a class="totop" href="#top">Back to top</a></h2>
-  <p>Search by symbol, name, or HGNC ID. Filter by tier, domain, or a single source. The tick strip shows which lists include the gene, in the order named under the table.</p>
+  <p>Search by symbol, name, or HGNC ID. Filter by tier, domain, a single source, or mechanism class (channelopathy, synaptopathy, mTORopathy, and so on). The tick strip shows which lists include the gene, in the order named under the table. Click a symbol to open the disorder, organizations, registries, platforms, and therapeutic pipeline recorded for it.</p>
   <div class="controls">
     <input type="search" id="q" placeholder="Search symbol, gene name, HGNC ID" aria-label="Search genes">
     <label>Tier <select id="fTier"><option value="">all</option><option>T1</option><option>T2</option><option>T3</option></select></label>
     <label>Domain <select id="fDomain"><option value="">all</option></select></label>
     <label>Source <select id="fSource"><option value="">any</option></select></label>
+    <label>Mechanism <select id="fOpathy"><option value="">all</option></select></label>
     <label><input type="checkbox" id="fDisputed"> disputed only</label>
     <button class="dl" id="dlGenes">Download filtered CSV</button>
     <span class="count" id="geneCount"></span>
@@ -169,6 +174,8 @@
     <dt></dt><dd><b>systemic_with_seizures</b>: malformation, metabolic, or systemic groupings with seizures as one feature.</dd>
   </dl>
   <p>Where the Wang et al. 2023 three-category classification is present it takes precedence.</p>
+  <h3>Mechanism class</h3>
+  <p>The mechanism label (channelopathy, synaptopathy, mTORopathy, chromatinopathy, cohesinopathy, and the rest) is an editorial grouping, not a source assertion. Where EpilepsyLive assigns a protein family by nomenclature, the class follows that family. Pathway groups that nomenclature cannot see (mTOR, synaptic vesicle, cohesin, neuronal ceroid lipofuscinosis) come from an editor map, and the remaining genes are classed by symbol root. Each gene records which of the three applied, and the CSV can be edited to reclassify.</p>
   <h3>Organizations</h3>
   <p>The curated table is edited by hand and never overwritten by a build. Rosters and listed pages enter as candidates; a candidate is removed once a curated row exists for the same gene and the same website. The ORPHAcode on each gene row is the join key to disorder-level resources.</p>
   <p class="muted">Code, configuration, and the curated table are in the repository behind this page. Suggest a gene or an organization by opening an issue there.</p>
@@ -207,12 +214,14 @@
 
   // ---- source order for tick strip
   const sourceScope = {genes4epilepsy:'epi', sagas:'epi', panelapp_au_epilepsy:'epi', panelapp_ge_epilepsy:'epi', clingen:'both', wang_omim_2023:'both', sysndd:'ndd', sfari:'ndd', g2p_dd:'ndd', panelapp_au_id:'ndd', panelapp_ge_id:'ndd', simons_searchlight:'ndd', orphadata_genes:'both'};
-  const sourceLabel = {simons_report_links:'Simons Searchlight pages', genes4epilepsy:'Genes4Epilepsy', sagas:'SAGAS', panelapp_au_epilepsy:'PanelApp AU epilepsy', panelapp_ge_epilepsy:'PanelApp GE epilepsy', clingen:'ClinGen', wang_omim_2023:'Wang 2023 (OMIM)', sysndd:'SysNDD', sfari:'SFARI', g2p_dd:'G2P DD', panelapp_au_id:'PanelApp AU ID', panelapp_ge_id:'PanelApp GE ID', simons_searchlight:'Simons Searchlight', orphadata_genes:'Orphadata'};
+  const sourceLabel = {simons_report_links:'Simons Searchlight pages', epilepsylive_pag:'EpilepsyLive directory', opathy:'Mechanism class', epilepsylive_orgs:'EpilepsyLive organizations', genes4epilepsy:'Genes4Epilepsy', sagas:'SAGAS', panelapp_au_epilepsy:'PanelApp AU epilepsy', panelapp_ge_epilepsy:'PanelApp GE epilepsy', clingen:'ClinGen', wang_omim_2023:'Wang 2023 (OMIM)', sysndd:'SysNDD', sfari:'SFARI', g2p_dd:'G2P DD', panelapp_au_id:'PanelApp AU ID', panelapp_ge_id:'PanelApp GE ID', simons_searchlight:'Simons Searchlight', orphadata_genes:'Orphadata'};
   const present = new Set(); genes.forEach(g=>Object.keys(g).forEach(k=>{ if(k.startsWith('on_') && g[k]) present.add(k.slice(3)); }));
   const order = Object.keys(sourceScope).filter(s=>present.has(s)).concat([...present].filter(s=>!(s in sourceScope)));
   $('#tickOrder').textContent = 'Tick order: ' + order.map(s=>sourceLabel[s]||s).join(', ') + '. Blue ticks are epilepsy lists, green are NDD lists, teal are lists that classify both.';
   order.forEach(s=>{ const o=document.createElement('option'); o.value=s; o.textContent=sourceLabel[s]||s; $('#fSource').appendChild(o); });
   const domains=[...new Set(genes.map(g=>g.domain))].sort();
+  const opathies=[...new Set(genes.map(g=>g.opathy).filter(Boolean))].sort();
+  opathies.forEach(o=>{ const e=document.createElement('option'); e.value=o; e.textContent=o; $('#fOpathy').appendChild(e); });
   domains.forEach(d=>{ const o=document.createElement('option'); o.value=d; o.textContent=d.replace(/_/g,' '); $('#fDomain').appendChild(o); });
 
   // ---- overview
@@ -226,14 +235,14 @@
   $('#overviewStats').innerHTML = `<p>${total} genes in this release; ${byTier.T1||0} at T1, ${byTier.T2||0} at T2, ${byTier.T3||0} at T3. Organization rows: ${release.org_rows?.curated||0} curated, ${release.org_rows?.candidate||0} candidate; ${release.genes_without_org||0} genes have no organization row.</p><div class="bar">${bar}</div><div class="legend">${legend}</div>`;
 
   // ---- gene table
-  const gcols = [['symbol','Symbol'],['gene_name','Gene name'],['tier','Tier'],['domain','Domain'],['sources','Lists'],['hgnc_id','HGNC'],['orphacodes','ORPHA'],['simons_page_url','Simons Searchlight']];
+  const gcols = [['symbol','Symbol'],['gene_name','Gene name'],['tier','Tier'],['domain','Domain'],['opathy','Mechanism'],['sources','Lists'],['hgnc_id','HGNC'],['orphacodes','ORPHA'],['simons_page_url','Simons Searchlight']];
   let gsort={key:'tier',dir:'asc'}, gpage=0; const PAGE=200;
   $('#geneTable thead').innerHTML = '<tr>'+gcols.map(([k,l])=>`<th data-key="${k}">${l}</th>`).join('')+'</tr>';
   $('#geneTable thead').addEventListener('click', e=>{ const th=e.target.closest('th'); if(!th) return; const k=th.dataset.key; gsort = gsort.key===k ? {key:k,dir:gsort.dir==='asc'?'desc':'asc'} : {key:k,dir:'asc'}; gpage=0; renderGenes(); });
   function filteredGenes(){
-    const q=$('#q').value.trim().toLowerCase(), t=$('#fTier').value, d=$('#fDomain').value, s=$('#fSource').value, disp=$('#fDisputed').checked;
-    return genes.filter(g => (!q || g.symbol.toLowerCase().includes(q) || (g.gene_name||'').toLowerCase().includes(q) || g.hgnc_id.toLowerCase()===q || g.hgnc_id.toLowerCase().endsWith(':'+q))
-      && (!t || g.tier===t) && (!d || g.domain===d) && (!s || g['on_'+s]) && (!disp || g.disputed));
+    const q=$('#q').value.trim().toLowerCase(), t=$('#fTier').value, d=$('#fDomain').value, s=$('#fSource').value, op=$('#fOpathy').value, disp=$('#fDisputed').checked;
+    return genes.filter(g => (!q || g.symbol.toLowerCase().includes(q) || (g.gene_name||'').toLowerCase().includes(q) || (g.disorder||'').toLowerCase().includes(q) || g.hgnc_id.toLowerCase()===q || g.hgnc_id.toLowerCase().endsWith(':'+q))
+      && (!t || g.tier===t) && (!d || g.domain===d) && (!s || g['on_'+s]) && (!op || g.opathy===op) && (!disp || g.disputed));
   }
   function ticks(g){ return '<span class="ticks">'+order.map(s=>`<i class="${g['on_'+s]?'on '+(sourceScope[s]||''):''}" title="${esc(sourceLabel[s]||s)}${g['ev_'+s]?': '+esc(g['ev_'+s]):''}"></i>`).join('')+'</span>'; }
   function renderGenes(){
@@ -242,13 +251,21 @@
     document.querySelectorAll('#geneTable th').forEach(th=>th.dataset.sorted = th.dataset.key===k?gsort.dir:'');
     const pages=Math.max(1,Math.ceil(rows.length/PAGE)); gpage=Math.min(gpage,pages-1);
     const slice=rows.slice(gpage*PAGE,(gpage+1)*PAGE);
-    $('#geneTable tbody').innerHTML = slice.map(g=>`<tr><td class="sym">${esc(g.symbol)}${g.disputed?'<span class="disp">disputed</span>':''}</td><td class="name">${esc(g.gene_name)}</td><td><span class="tier ${esc(g.tier)}">${esc(g.tier)}</span></td><td>${esc(g.domain.replace(/_/g,' '))}</td><td>${ticks(g)}</td><td><a href="https://www.genenames.org/data/gene-symbol-report/#!/hgnc_id/${esc(g.hgnc_id)}">${esc(g.hgnc_id)}</a></td><td>${esc(g.orphacodes||'').split(';').filter(Boolean).map(o=>`<a href="https://www.orpha.net/en/disease/detail/${o}">${o}</a>`).join(' ')}</td><td class="srcnames">${g.simons_page_url?`<a href="${esc(g.simons_page_url)}">page</a>`:''}${g.simons_report_url?` · <a href="${esc(g.simons_report_url)}">report</a>`:''}</td></tr>`).join('');
+    const orgByGene = {}; orgs.forEach(o=>{ if(o.hgnc_id) (orgByGene[o.hgnc_id]=orgByGene[o.hgnc_id]||[]).push(o); });
+    const dl = (label, v, isUrl) => v ? `<dt>${label}</dt><dd>${isUrl?`<a href="${esc(v)}">${esc(v)}</a>`:esc(v)}</dd>` : '';
+    const detail = g => {
+      const os = (orgByGene[g.hgnc_id]||[]).map(o=>`${o.url?`<a href="${esc(o.url)}">${esc(o.org_name)}</a>`:esc(o.org_name)}${o.status==='curated'?'':' <span class="muted">(candidate)</span>'}`).join('; ');
+      const body = dl('Disorder', g.disorder) + (os?`<dt>Organizations</dt><dd>${os}</dd>`:'') + dl('Registry', g.el_registry) + dl('Registry link', g.el_registry_url, true) + dl('Platforms', g.el_platforms) + dl('Simons Searchlight', g.simons_enrolled) + dl('CoRDS', g.cords) + dl('Therapeutics', g.therapeutics) + dl('FDA patient meeting', g.fda_report) + dl('Gene family', g.gene_family) + (g.opathy?`<dt>Mechanism</dt><dd>${esc(g.opathy)} <span class="muted">(${esc(g.opathy_basis||'')})</span></dd>`:'');
+      return body ? `<tr class="detail" data-for="${esc(g.hgnc_id)}" hidden><td colspan="${gcols.length}"><dl>${body}</dl></td></tr>` : '';
+    };
+    $('#geneTable tbody').innerHTML = slice.map(g=>`<tr><td class="sym"><a href="#" class="open" data-hgnc="${esc(g.hgnc_id)}">${esc(g.symbol)}</a>${g.disputed?'<span class="disp">disputed</span>':''}</td><td class="name">${esc(g.gene_name)}</td><td><span class="tier ${esc(g.tier)}">${esc(g.tier)}</span></td><td>${esc(g.domain.replace(/_/g,' '))}</td><td class="srcnames">${esc(g.opathy||'')}</td><td>${ticks(g)}</td><td><a href="https://www.genenames.org/data/gene-symbol-report/#!/hgnc_id/${esc(g.hgnc_id)}">${esc(g.hgnc_id)}</a></td><td>${esc(g.orphacodes||'').split(';').filter(Boolean).map(o=>`<a href="https://www.orpha.net/en/disease/detail/${o}">${o}</a>`).join(' ')}</td><td class="srcnames">${g.simons_page_url?`<a href="${esc(g.simons_page_url)}">page</a>`:''}${g.simons_report_url?` · <a href="${esc(g.simons_report_url)}">report</a>`:''}</td></tr>${detail(g)}`).join('');
+    document.querySelectorAll('#geneTable a.open').forEach(a=>a.addEventListener('click', e=>{ e.preventDefault(); const d=document.querySelector(`tr.detail[data-for="${a.dataset.hgnc}"]`); if(d) d.hidden=!d.hidden; }));
     $('#geneCount').textContent = rows.length===genes.length ? `${rows.length} genes` : `${rows.length} of ${genes.length} genes`;
     $('#genePager').innerHTML = pages>1 ? `<button id="pprev" ${gpage===0?'disabled':''}>Previous</button><span>Page ${gpage+1} of ${pages}</span><button id="pnext" ${gpage>=pages-1?'disabled':''}>Next</button>` : '';
     if(pages>1){ $('#pprev').onclick=()=>{gpage--;renderGenes();}; $('#pnext').onclick=()=>{gpage++;renderGenes();}; }
     $('#dlGenes').onclick = ()=>download('gene_spine_filtered.csv', toCSV(rows, Object.keys(genes[0])));
   }
-  ['#q','#fTier','#fDomain','#fSource','#fDisputed'].forEach(s=>$(s).addEventListener('input', ()=>{gpage=0;renderGenes();}));
+  ['#q','#fTier','#fDomain','#fSource','#fOpathy','#fDisputed'].forEach(s=>$(s).addEventListener('input', ()=>{gpage=0;renderGenes();}));
   renderGenes();
 
   // ---- organizations
