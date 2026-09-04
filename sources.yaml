@@ -92,6 +92,7 @@ clingen:
 panelapp_au_epilepsy:
   name: PanelApp Australia, Genetic Epilepsy
   api: https://panelapp-aus.org/api/v1/panels/
+  panel_id: 202
   panel_name_match: Genetic Epilepsy
   file: panelapp_au_epilepsy.json
   domain: epilepsy
@@ -99,20 +100,23 @@ panelapp_au_epilepsy:
 panelapp_au_id:
   name: PanelApp Australia, Intellectual disability
   api: https://panelapp-aus.org/api/v1/panels/
+  panel_id: 250
   panel_name_match: Intellectual disability
   file: panelapp_au_id.json
   domain: ndd
 
 panelapp_ge_epilepsy:
-  name: Genomics England PanelApp, Genetic epilepsy syndromes
+  name: Genomics England PanelApp, Early onset or syndromic epilepsy (panel 402, formerly Genetic epilepsy syndromes)
   api: https://panelapp.genomicsengland.co.uk/api/v1/panels/
-  panel_name_match: Genetic epilepsy syndromes
+  panel_id: 402
+  panel_name_match: Early onset or syndromic epilepsy
   file: panelapp_ge_epilepsy.json
   domain: epilepsy
 
 panelapp_ge_id:
   name: Genomics England PanelApp, Intellectual disability
   api: https://panelapp.genomicsengland.co.uk/api/v1/panels/
+  panel_id: 285
   panel_name_match: Intellectual disability - microarray and sequencing
   file: panelapp_ge_id.json
   domain: ndd
@@ -222,3 +226,80 @@ simons_support_links:
     org_name: [Organization, org_name, Name]
     gene: [Gene, gene, Genes]
     url: [Website, url, URL]
+
+# --- Gene-level annotations from registry platforms (joined by gene symbol, one column set per source) ---
+
+simons_report_links:
+  name: Simons Searchlight condition pages and latest quarterly reports
+  manual: true
+  file: simons_report_links.csv
+  landing: https://www.simonssearchlight.org/research/what-we-study/
+  role: gene_annotation
+  note: name/group/condition_page_url/latest_report_url; group is Gene or CNV. CNV rows go to cnv_regions.csv.
+  columns:
+    gene: [name]
+    group: [group]
+  annotate:
+    simons_page_url: condition_page_url
+    simons_report_url: latest_report_url
+
+# --- More organization-side inputs (candidates only) ---
+
+rela_2019:
+  name: Rare Epilepsy Landscape Analysis 2019, organization profiles (appendix)
+  manual: true
+  file: rela_2019.csv
+  role: org_candidates
+  note: Gene assignments were added by the editor from the organization's name or disorder; verify before promoting a row.
+  columns:
+    org_name: [org_name]
+    gene: [gene]
+    url: [url]
+
+citizen_registry:
+  name: Citizen Health registry communities
+  manual: true
+  file: citizen_registry.csv
+  landing: https://www.citizen.health
+  role: org_candidates
+  defaults:
+    registry_platform: Citizen
+  columns:
+    org_name: [org_name]
+    gene: [gene]
+    url: [citizen_page_url]
+    registry_url: [citizen_page_url]
+
+everycure_rdnp:
+  name: EveryCure ROADMAP crowdsourced US rare disease nonprofit list (neuro and NDD subset)
+  manual: true
+  file: everycure_rdnp.csv
+  role: org_candidates
+  note: Gene symbols were extracted from organization name and disease focus text; symbols that do not resolve to HGNC are kept with no hgnc_id.
+  columns:
+    org_name: [org_name]
+    gene: [gene]
+    url: [url]
+
+fda_pfdd:
+  name: FDA condition-specific patient experience meetings (PFDD and listening sessions)
+  manual: true
+  file: fda_pfdd.csv
+  landing: https://www.fda.gov/industry/prescription-drug-user-fee-amendments/condition-specific-meeting-reports-and-other-information-related-patients-experience
+  role: org_candidates
+  note: org_name is the host organization; rows without a host describe an FDA-led session and are kept with the condition as the name.
+  columns:
+    org_name: [host]
+    fallback_name: [condition]
+    gene: [gene]
+    note_fields: [condition, meeting_type, date, resource]
+
+registries_2020:
+  name: Organization registry survey list, 2020
+  manual: true
+  file: registries_2020.csv
+  role: org_candidates
+  columns:
+    org_name: [org_name]
+    gene: [gene]
+    url: [url]

@@ -131,6 +131,7 @@
   <div class="controls">
     <input type="search" id="oq" placeholder="Search organization or gene" aria-label="Search organizations">
     <label>Status <select id="fStatus"><option value="">all</option><option value="curated">curated</option><option value="candidate">candidate</option></select></label>
+    <label>Source <select id="fOrgSource"><option value="">any</option></select></label>
     <button class="dl" id="dlOrgs">Download filtered CSV</button>
     <span class="count" id="orgCount"></span>
   </div>
@@ -206,7 +207,7 @@
 
   // ---- source order for tick strip
   const sourceScope = {genes4epilepsy:'epi', sagas:'epi', panelapp_au_epilepsy:'epi', panelapp_ge_epilepsy:'epi', clingen:'both', wang_omim_2023:'both', sysndd:'ndd', sfari:'ndd', g2p_dd:'ndd', panelapp_au_id:'ndd', panelapp_ge_id:'ndd', simons_searchlight:'ndd', orphadata_genes:'both'};
-  const sourceLabel = {genes4epilepsy:'Genes4Epilepsy', sagas:'SAGAS', panelapp_au_epilepsy:'PanelApp AU epilepsy', panelapp_ge_epilepsy:'PanelApp GE epilepsy', clingen:'ClinGen', wang_omim_2023:'Wang 2023 (OMIM)', sysndd:'SysNDD', sfari:'SFARI', g2p_dd:'G2P DD', panelapp_au_id:'PanelApp AU ID', panelapp_ge_id:'PanelApp GE ID', simons_searchlight:'Simons Searchlight', orphadata_genes:'Orphadata'};
+  const sourceLabel = {simons_report_links:'Simons Searchlight pages', genes4epilepsy:'Genes4Epilepsy', sagas:'SAGAS', panelapp_au_epilepsy:'PanelApp AU epilepsy', panelapp_ge_epilepsy:'PanelApp GE epilepsy', clingen:'ClinGen', wang_omim_2023:'Wang 2023 (OMIM)', sysndd:'SysNDD', sfari:'SFARI', g2p_dd:'G2P DD', panelapp_au_id:'PanelApp AU ID', panelapp_ge_id:'PanelApp GE ID', simons_searchlight:'Simons Searchlight', orphadata_genes:'Orphadata'};
   const present = new Set(); genes.forEach(g=>Object.keys(g).forEach(k=>{ if(k.startsWith('on_') && g[k]) present.add(k.slice(3)); }));
   const order = Object.keys(sourceScope).filter(s=>present.has(s)).concat([...present].filter(s=>!(s in sourceScope)));
   $('#tickOrder').textContent = 'Tick order: ' + order.map(s=>sourceLabel[s]||s).join(', ') + '. Blue ticks are epilepsy lists, green are NDD lists, teal are lists that classify both.';
@@ -225,7 +226,7 @@
   $('#overviewStats').innerHTML = `<p>${total} genes in this release; ${byTier.T1||0} at T1, ${byTier.T2||0} at T2, ${byTier.T3||0} at T3. Organization rows: ${release.org_rows?.curated||0} curated, ${release.org_rows?.candidate||0} candidate; ${release.genes_without_org||0} genes have no organization row.</p><div class="bar">${bar}</div><div class="legend">${legend}</div>`;
 
   // ---- gene table
-  const gcols = [['symbol','Symbol'],['gene_name','Gene name'],['tier','Tier'],['domain','Domain'],['sources','Lists'],['hgnc_id','HGNC'],['orphacodes','ORPHA']];
+  const gcols = [['symbol','Symbol'],['gene_name','Gene name'],['tier','Tier'],['domain','Domain'],['sources','Lists'],['hgnc_id','HGNC'],['orphacodes','ORPHA'],['simons_page_url','Simons Searchlight']];
   let gsort={key:'tier',dir:'asc'}, gpage=0; const PAGE=200;
   $('#geneTable thead').innerHTML = '<tr>'+gcols.map(([k,l])=>`<th data-key="${k}">${l}</th>`).join('')+'</tr>';
   $('#geneTable thead').addEventListener('click', e=>{ const th=e.target.closest('th'); if(!th) return; const k=th.dataset.key; gsort = gsort.key===k ? {key:k,dir:gsort.dir==='asc'?'desc':'asc'} : {key:k,dir:'asc'}; gpage=0; renderGenes(); });
@@ -241,7 +242,7 @@
     document.querySelectorAll('#geneTable th').forEach(th=>th.dataset.sorted = th.dataset.key===k?gsort.dir:'');
     const pages=Math.max(1,Math.ceil(rows.length/PAGE)); gpage=Math.min(gpage,pages-1);
     const slice=rows.slice(gpage*PAGE,(gpage+1)*PAGE);
-    $('#geneTable tbody').innerHTML = slice.map(g=>`<tr><td class="sym">${esc(g.symbol)}${g.disputed?'<span class="disp">disputed</span>':''}</td><td class="name">${esc(g.gene_name)}</td><td><span class="tier ${esc(g.tier)}">${esc(g.tier)}</span></td><td>${esc(g.domain.replace(/_/g,' '))}</td><td>${ticks(g)}</td><td><a href="https://www.genenames.org/data/gene-symbol-report/#!/hgnc_id/${esc(g.hgnc_id)}">${esc(g.hgnc_id)}</a></td><td>${esc(g.orphacodes||'').split(';').filter(Boolean).map(o=>`<a href="https://www.orpha.net/en/disease/detail/${o}">${o}</a>`).join(' ')}</td></tr>`).join('');
+    $('#geneTable tbody').innerHTML = slice.map(g=>`<tr><td class="sym">${esc(g.symbol)}${g.disputed?'<span class="disp">disputed</span>':''}</td><td class="name">${esc(g.gene_name)}</td><td><span class="tier ${esc(g.tier)}">${esc(g.tier)}</span></td><td>${esc(g.domain.replace(/_/g,' '))}</td><td>${ticks(g)}</td><td><a href="https://www.genenames.org/data/gene-symbol-report/#!/hgnc_id/${esc(g.hgnc_id)}">${esc(g.hgnc_id)}</a></td><td>${esc(g.orphacodes||'').split(';').filter(Boolean).map(o=>`<a href="https://www.orpha.net/en/disease/detail/${o}">${o}</a>`).join(' ')}</td><td class="srcnames">${g.simons_page_url?`<a href="${esc(g.simons_page_url)}">page</a>`:''}${g.simons_report_url?` · <a href="${esc(g.simons_report_url)}">report</a>`:''}</td></tr>`).join('');
     $('#geneCount').textContent = rows.length===genes.length ? `${rows.length} genes` : `${rows.length} of ${genes.length} genes`;
     $('#genePager').innerHTML = pages>1 ? `<button id="pprev" ${gpage===0?'disabled':''}>Previous</button><span>Page ${gpage+1} of ${pages}</span><button id="pnext" ${gpage>=pages-1?'disabled':''}>Next</button>` : '';
     if(pages>1){ $('#pprev').onclick=()=>{gpage--;renderGenes();}; $('#pnext').onclick=()=>{gpage++;renderGenes();}; }
@@ -251,17 +252,18 @@
   renderGenes();
 
   // ---- organizations
-  const ocols=[['org_name','Organization'],['symbol','Gene'],['status','Status'],['org_type','Type'],['registry_platform','Registry'],['natural_history_study','Natural history study'],['irb_status','IRB'],['maturity_stage','Stage'],['coalitions','Coalitions'],['country','Country'],['source','Source']];
+  const ocols=[['org_name','Organization'],['symbol','Gene'],['status','Status'],['org_type','Type'],['registry_platform','Registry'],['natural_history_study','Natural history study'],['maturity_stage','Stage'],['coalitions','Coalitions'],['country','Country'],['source','Source'],['notes','Notes']];
   $('#orgTable thead').innerHTML='<tr>'+ocols.map(([k,l])=>`<th>${l}</th>`).join('')+'</tr>';
+  [...new Set(orgs.map(o=>o.source).filter(Boolean))].sort().forEach(s=>{ const o=document.createElement('option'); o.value=s; o.textContent=s; $('#fOrgSource').appendChild(o); });
   function renderOrgs(){
-    const q=$('#oq').value.trim().toLowerCase(), st=$('#fStatus').value;
-    const rows=orgs.filter(o=>(!q||o.org_name.toLowerCase().includes(q)||(o.symbol||'').toLowerCase().includes(q))&&(!st||o.status===st));
+    const q=$('#oq').value.trim().toLowerCase(), st=$('#fStatus').value, so=$('#fOrgSource').value;
+    const rows=orgs.filter(o=>(!q||o.org_name.toLowerCase().includes(q)||(o.symbol||'').toLowerCase().includes(q))&&(!st||o.status===st)&&(!so||o.source===so));
     rows.sort((a,b)=>(a.status==='curated'?0:1)-(b.status==='curated'?0:1)||a.org_name.localeCompare(b.org_name));
-    $('#orgTable tbody').innerHTML=rows.map(o=>`<tr><td>${o.url?`<a href="${esc(o.url)}">${esc(o.org_name)}</a>`:esc(o.org_name)}</td><td class="sym">${esc(o.symbol)}</td><td>${esc(o.status)}</td>${ocols.slice(3).map(([k])=>`<td>${esc(o[k])}</td>`).join('')}</tr>`).join('');
+    $('#orgTable tbody').innerHTML=rows.map(o=>`<tr><td>${o.url?`<a href="${esc(o.url)}">${esc(o.org_name)}</a>`:esc(o.org_name)}${o.registry_url&&o.registry_url!==o.url?` · <a href="${esc(o.registry_url)}">registry</a>`:''}</td><td class="sym">${esc(o.symbol)}</td><td>${esc(o.status)}</td>${ocols.slice(3).map(([k])=>`<td class="${k==='notes'?'name':''}">${esc(o[k])}</td>`).join('')}</tr>`).join('');
     $('#orgCount').textContent=`${rows.length} rows`;
     $('#dlOrgs').onclick=()=>download('organizations_filtered.csv', toCSV(rows, Object.keys(orgs[0]||{})));
   }
-  ['#oq','#fStatus'].forEach(s=>$(s).addEventListener('input',renderOrgs)); renderOrgs();
+  ['#oq','#fStatus','#fOrgSource'].forEach(s=>$(s).addEventListener('input',renderOrgs)); renderOrgs();
 
   // ---- gaps
   $('#gapTable thead').innerHTML='<tr><th>Symbol</th><th>Tier</th><th>Domain</th><th>Lists</th></tr>';
