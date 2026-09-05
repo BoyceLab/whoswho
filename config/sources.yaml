@@ -17,6 +17,9 @@
 hgnc:
   name: HGNC complete set
   url: https://storage.googleapis.com/public-download-files/hgnc/tsv/tsv/hgnc_complete_set.txt
+  # If the current-release URL fails, fetch.py falls back to the dated quarterly archive,
+  # trying the most recent quarter first.
+  quarterly_url: https://storage.googleapis.com/public-download-files/hgnc/archive/archive/quarterly/tsv/hgnc_complete_set_{date}.txt
   file: hgnc_complete_set.txt
   license: CC0
   role: identifier_backbone
@@ -226,3 +229,129 @@ simons_support_links:
     org_name: [Organization, org_name, Name]
     gene: [Gene, gene, Genes]
     url: [Website, url, URL]
+
+# --- Gene-level annotations from registry platforms (joined by gene symbol, one column set per source) ---
+
+simons_report_links:
+  name: Simons Searchlight condition pages and latest quarterly reports
+  manual: true
+  file: simons_report_links.csv
+  landing: https://www.simonssearchlight.org/research/what-we-study/
+  role: gene_annotation
+  note: name/group/condition_page_url/latest_report_url; group is Gene or CNV. CNV rows go to cnv_regions.csv.
+  columns:
+    gene: [name]
+    group: [group]
+  annotate:
+    simons_page_url: condition_page_url
+    simons_report_url: latest_report_url
+
+# --- More organization-side inputs (candidates only) ---
+
+rela_2019:
+  name: Rare Epilepsy Landscape Analysis 2019, organization profiles (appendix)
+  manual: true
+  file: rela_2019.csv
+  role: org_candidates
+  note: Gene assignments were added by the editor from the organization's name or disorder; verify before promoting a row.
+  columns:
+    org_name: [org_name]
+    gene: [gene]
+    url: [url]
+
+citizen_registry:
+  name: Citizen Health registry communities
+  manual: true
+  file: citizen_registry.csv
+  landing: https://www.citizen.health
+  role: org_candidates
+  defaults:
+    registry_platform: Citizen
+  columns:
+    org_name: [org_name]
+    gene: [gene]
+    url: [citizen_page_url]
+    registry_url: [citizen_page_url]
+
+everycure_rdnp:
+  name: EveryCure ROADMAP crowdsourced US rare disease nonprofit list (neuro and NDD subset)
+  manual: true
+  file: everycure_rdnp.csv
+  role: org_candidates
+  note: Gene symbols were extracted from organization name and disease focus text; symbols that do not resolve to HGNC are kept with no hgnc_id.
+  columns:
+    org_name: [org_name]
+    gene: [gene]
+    url: [url]
+
+fda_pfdd:
+  name: FDA condition-specific patient experience meetings (PFDD and listening sessions)
+  manual: true
+  file: fda_pfdd.csv
+  landing: https://www.fda.gov/industry/prescription-drug-user-fee-amendments/condition-specific-meeting-reports-and-other-information-related-patients-experience
+  role: org_candidates
+  note: org_name is the host organization; rows without a host describe an FDA-led session and are kept with the condition as the name.
+  columns:
+    org_name: [host]
+    fallback_name: [condition]
+    gene: [gene]
+    note_fields: [condition, meeting_type, date, resource]
+
+registries_2020:
+  name: Organization registry survey list, 2020
+  manual: true
+  file: registries_2020.csv
+  role: org_candidates
+  columns:
+    org_name: [org_name]
+    gene: [gene]
+    url: [url]
+
+# --- EpilepsyLive (BoyceLab/EpilepsyLive pag.html DATA and edge files) ---
+
+epilepsylive_pag:
+  name: EpilepsyLive single-gene directory (disorder, foundation, registry, platforms, therapeutics, FDA, contacts)
+  manual: true
+  file: epilepsylive_pag.csv
+  landing: https://boycelab.github.io/EpilepsyLive/pag.html
+  role: gene_annotation
+  columns:
+    gene: [gene]
+    hgnc_id: [hgnc_id]
+  annotate:
+    el_tier: el_tier
+    disorder: disorder
+    el_foundation: foundation
+    el_foundation_url: foundation_url
+    el_registry: registry
+    el_registry_url: registry_url
+    el_platforms: platforms
+    simons_enrolled: simons_enrolled
+    cords: cords
+    therapeutics: therapeutics
+    fda_report: fda_report
+    fda_report_url: fda_report_url
+
+opathy:
+  name: Mechanism class (channelopathy, synaptopathy, mTORopathy, chromatinopathy, and so on) with gene family
+  manual: true
+  file: opathy.csv
+  role: gene_annotation
+  note: opathy comes from the EpilepsyLive gene family where one exists, an editor map for pathway groups (mTOR, synaptic, cohesin, NCL), or the symbol root. The basis column says which. Edit the CSV to reclassify.
+  columns:
+    gene: [gene]
+  annotate:
+    gene_family: gene_family
+    opathy: opathy
+    opathy_basis: basis
+
+epilepsylive_orgs:
+  name: EpilepsyLive organizations (foundation text, network PAG edges, gene_org_edges.csv)
+  manual: true
+  file: epilepsylive_orgs.csv
+  landing: https://boycelab.github.io/EpilepsyLive/pag.html
+  role: org_candidates
+  columns:
+    org_name: [org_name]
+    gene: [gene]
+    url: [url]
