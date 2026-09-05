@@ -1,0 +1,358 @@
+# Source registry for the gene spine.
+#
+# Every input list is declared here. fetch.py downloads the ones with a url;
+# sources marked manual: true must be placed in sources/<id>/ by hand (login,
+# form, or robots block). Every downloaded or placed file gets a row in
+# sources/manifest.json with the date, size, and sha256, so a spine release
+# can state exactly which snapshot of each list it was built from.
+#
+# domain tells the tier logic which scope a source speaks to:
+#   epilepsy  - the list asserts a seizure/epilepsy phenotype
+#   ndd       - the list asserts a neurodevelopmental phenotype (ID, autism, DD)
+#   both      - the list annotates each gene with its own phenotype category
+#
+# columns: candidate header names, tried in order. The parser prints the real
+# header on first run so any mismatch is a one-line fix here, not a code change.
+
+hgnc:
+  name: HGNC complete set
+  url: https://storage.googleapis.com/public-download-files/hgnc/tsv/tsv/hgnc_complete_set.txt
+  # If the current-release URL fails, fetch.py falls back to the dated quarterly archive,
+  # trying the most recent quarter first.
+  quarterly_url: https://storage.googleapis.com/public-download-files/hgnc/archive/archive/quarterly/tsv/hgnc_complete_set_{date}.txt
+  file: hgnc_complete_set.txt
+  license: CC0
+  role: identifier_backbone
+
+genes4epilepsy:
+  name: Genes4Epilepsy
+  url: https://raw.githubusercontent.com/bahlolab/Genes4Epilepsy/main/EpilepsyGenes_v2026-03.tsv
+  file: EpilepsyGenes_v2026-03.tsv
+  version: v2026-03
+  cite: Oliver KL et al. Epilepsia 2023;64:1368-1375. doi:10.1111/epi.17547
+  landing: https://github.com/bahlolab/Genes4Epilepsy
+  domain: epilepsy
+  format: tsv
+  columns:
+    symbol: [Gene, Gene_symbol, gene, HGNC_symbol, Symbol]
+    hgnc_id: [HGNC_ID, HGNC ID, hgnc_id]
+    phenotype: [Epilepsy_phenotype, Epilepsy phenotype, Phenotype, Broad_epilepsy_phenotype]
+    inheritance: [Inheritance, inheritance, Inheritance_pattern]
+    omim: [OMIM, OMIM_ID, MIM]
+
+wang_omim_2023:
+  name: Epilepsy-associated genes, OMIM/HGMD update (Wang et al. 2023)
+  manual: true
+  landing: https://www.sciencedirect.com/science/article/pii/S1059131123002546
+  file: wang2023_supplement.xlsx
+  note: Supplementary table from the paper. Sheet and column names vary; set them below after opening it.
+  domain: both
+  format: xlsx
+  sheet: null
+  columns:
+    symbol: [Gene, Gene symbol, Symbol]
+    category: [Category, Classification, Group]
+  category_map:
+    # source label fragment -> spine domain value
+    "epilepsy gene": epilepsy_primary
+    "neurodevelopmental": ndd_with_epilepsy
+    "physical": systemic_with_seizures
+    "systemic": systemic_with_seizures
+
+sagas:
+  name: SAGAS (Seizure-Associated Genes Across Species)
+  manual: true
+  landing: https://www.sagas.ac
+  cite: Epilepsia 2022, PMC9796383
+  file: sagas_genes.csv
+  domain: epilepsy
+  format: csv
+  columns:
+    symbol: [Gene, gene, Symbol, gene_symbol]
+    score: [Score, Evidence_score, score, Evidence]
+    monogenic: [Monogenic, monogenic, High_confidence]
+
+clingen:
+  name: ClinGen gene-disease validity
+  url: https://search.clinicalgenome.org/kb/gene-validity/download
+  file: clingen_gene_validity.csv
+  license: CC0
+  landing: https://search.clinicalgenome.org/kb/gene-validity
+  domain: both
+  format: csv
+  skiprows_until: GENE SYMBOL   # header row begins with this token
+  columns:
+    symbol: [GENE SYMBOL]
+    hgnc_id: [GENE ID (HGNC)]
+    disease: [DISEASE LABEL]
+    mondo: [DISEASE ID (MONDO)]
+    classification: [CLASSIFICATION]
+    moi: [MOI]
+    gcep: [GCEP]
+  epilepsy_terms: [epilep, seizure, encephalopathy, infantile spasms, dravet, lennox]
+  ndd_terms: [intellectual, developmental, autism, neurodevelopmental, rett, angelman]
+
+panelapp_au_epilepsy:
+  name: PanelApp Australia, Genetic Epilepsy
+  api: https://panelapp-aus.org/api/v1/panels/
+  panel_id: 202
+  panel_name_match: Genetic Epilepsy
+  file: panelapp_au_epilepsy.json
+  domain: epilepsy
+
+panelapp_au_id:
+  name: PanelApp Australia, Intellectual disability
+  api: https://panelapp-aus.org/api/v1/panels/
+  panel_id: 250
+  panel_name_match: Intellectual disability
+  file: panelapp_au_id.json
+  domain: ndd
+
+panelapp_ge_epilepsy:
+  name: Genomics England PanelApp, Early onset or syndromic epilepsy (panel 402, formerly Genetic epilepsy syndromes)
+  api: https://panelapp.genomicsengland.co.uk/api/v1/panels/
+  panel_id: 402
+  panel_name_match: Early onset or syndromic epilepsy
+  file: panelapp_ge_epilepsy.json
+  domain: epilepsy
+
+panelapp_ge_id:
+  name: Genomics England PanelApp, Intellectual disability
+  api: https://panelapp.genomicsengland.co.uk/api/v1/panels/
+  panel_id: 285
+  panel_name_match: Intellectual disability - microarray and sequencing
+  file: panelapp_ge_id.json
+  domain: ndd
+
+sysndd:
+  name: SysNDD (curated NDD gene-disease relationships)
+  manual: true
+  landing: https://sysndd.dbmr.unibe.ch/
+  note: Use the site's table export (entities or genes view). Confidence categories are Definitive / Moderate / Limited / Refuted.
+  file: sysndd_export.csv
+  domain: ndd
+  format: csv
+  columns:
+    symbol: [symbol, hgnc_symbol, Symbol, gene]
+    hgnc_id: [hgnc_id, HGNC_ID]
+    category: [category, Category, confidence]
+    disease: [disease_ontology_name, disease, Disease]
+
+sfari:
+  name: SFARI Gene, human genes
+  manual: true
+  landing: https://gene.sfari.org/database/human-gene/
+  note: Export CSV from the gene table (requires the site's download button).
+  file: SFARI-Gene_genes.csv
+  domain: ndd
+  format: csv
+  columns:
+    symbol: [gene-symbol, gene_symbol, Gene Symbol]
+    score: [gene-score, gene_score, Score]
+    syndromic: [syndromic, Syndromic]
+
+g2p_dd:
+  name: Gene2Phenotype, DD panel
+  manual: true
+  landing: https://www.ebi.ac.uk/gene2phenotype/downloads/
+  note: Download the DD (developmental disorders) panel CSV.
+  file: G2P_DD.csv
+  domain: ndd
+  format: csv
+  columns:
+    symbol: [gene symbol, gene_symbol, Gene symbol]
+    hgnc_id: [hgnc id, hgnc_id, HGNC ID]
+    confidence: [confidence category, confidence, Confidence]
+    disease: [disease name, disease_name, Disease name]
+
+simons_searchlight:
+  name: Simons Searchlight gene list
+  url: https://cdn.simonssearchlight.org/wp-content/uploads/2024/12/11041626/Searchlight-Gene-List_8.5x11_NOV2024-1.pdf
+  file: Searchlight-Gene-List_NOV2024.pdf
+  landing: https://www.simonssearchlight.org/research/what-we-study/
+  note: PDF; parser extracts tokens that resolve to HGNC symbols. CNV regions (1q21.1 etc.) go to outputs/cnv_regions.csv. Check the landing page for a newer PDF.
+  domain: ndd
+  format: pdf
+
+orphadata_genes:
+  name: Orphadata, genes associated with rare disorders (product 6)
+  url: https://www.orphadata.com/data/xml/en_product6.xml
+  file: en_product6.xml
+  license: CC-BY 4.0
+  landing: https://www.orphadata.com/genes/
+  domain: bridge
+  format: orphadata_xml
+  note: Gives ORPHAcode per gene. The organization join uses ORPHAcode. Orphanet does not publish patient organizations as a bulk file; those come in through the curated layer.
+
+# --- Organization-side inputs (candidates only; curated/organizations.csv is authoritative) ---
+
+ren_members:
+  name: Rare Epilepsy Network member organizations
+  manual: true
+  landing: https://www.rareepilepsynetwork.org/
+  file: ren_members.csv
+  role: org_candidates
+  columns:
+    org_name: [Organization, org_name, Name]
+    gene: [Gene, gene, Genes]
+    url: [Website, url, URL]
+
+combinedbrain_members:
+  name: COMBINEDBrain member organizations
+  manual: true
+  landing: https://combinedbrain.org/
+  file: combinedbrain_members.csv
+  role: org_candidates
+  columns:
+    org_name: [Organization, org_name, Name]
+    gene: [Gene, gene, Genes]
+    url: [Website, url, URL]
+
+epilepsy_foundation_genetic:
+  name: Epilepsy Foundation, genetic causes page (gene-specific groups)
+  manual: true
+  landing: https://www.epilepsy.com/causes/genetic
+  file: epilepsy_foundation_genetic.csv
+  role: org_candidates
+  columns:
+    org_name: [Organization, org_name, Name]
+    gene: [Gene, gene, Genes]
+    url: [Website, url, URL]
+
+simons_support_links:
+  name: Simons Searchlight per-gene support organization links
+  manual: true
+  landing: https://www.simonssearchlight.org/research/what-we-study/
+  file: simons_support_links.csv
+  role: org_candidates
+  columns:
+    org_name: [Organization, org_name, Name]
+    gene: [Gene, gene, Genes]
+    url: [Website, url, URL]
+
+# --- Gene-level annotations from registry platforms (joined by gene symbol, one column set per source) ---
+
+simons_report_links:
+  name: Simons Searchlight condition pages and latest quarterly reports
+  manual: true
+  file: simons_report_links.csv
+  landing: https://www.simonssearchlight.org/research/what-we-study/
+  role: gene_annotation
+  note: name/group/condition_page_url/latest_report_url; group is Gene or CNV. CNV rows go to cnv_regions.csv.
+  columns:
+    gene: [name]
+    group: [group]
+  annotate:
+    simons_page_url: condition_page_url
+    simons_report_url: latest_report_url
+
+# --- More organization-side inputs (candidates only) ---
+
+rela_2019:
+  name: Rare Epilepsy Landscape Analysis 2019, organization profiles (appendix)
+  manual: true
+  file: rela_2019.csv
+  role: org_candidates
+  note: Gene assignments were added by the editor from the organization's name or disorder; verify before promoting a row.
+  columns:
+    org_name: [org_name]
+    gene: [gene]
+    url: [url]
+
+citizen_registry:
+  name: Citizen Health registry communities
+  manual: true
+  file: citizen_registry.csv
+  landing: https://www.citizen.health
+  role: org_candidates
+  defaults:
+    registry_platform: Citizen
+    org_type: registry
+  columns:
+    org_name: [org_name]
+    gene: [gene]
+    url: [citizen_page_url]
+    registry_url: [citizen_page_url]
+
+everycure_rdnp:
+  name: EveryCure ROADMAP crowdsourced US rare disease nonprofit list (neuro and NDD subset)
+  manual: true
+  file: everycure_rdnp.csv
+  role: org_candidates
+  note: Gene symbols were extracted from organization name and disease focus text; symbols that do not resolve to HGNC are kept with no hgnc_id.
+  columns:
+    org_name: [org_name]
+    gene: [gene]
+    url: [url]
+
+fda_pfdd:
+  name: FDA condition-specific patient experience meetings (PFDD and listening sessions)
+  manual: true
+  file: fda_pfdd.csv
+  landing: https://www.fda.gov/industry/prescription-drug-user-fee-amendments/condition-specific-meeting-reports-and-other-information-related-patients-experience
+  role: org_candidates
+  note: org_name is the host organization; rows without a host describe an FDA-led session and are kept with the condition as the name.
+  columns:
+    org_name: [host]
+    fallback_name: [condition]
+    gene: [gene]
+    note_fields: [condition, meeting_type, date, resource]
+
+registries_2020:
+  name: Organization registry survey list, 2020
+  manual: true
+  file: registries_2020.csv
+  role: org_candidates
+  columns:
+    org_name: [org_name]
+    gene: [gene]
+    url: [url]
+
+# --- EpilepsyLive (BoyceLab/EpilepsyLive pag.html DATA and edge files) ---
+
+epilepsylive_pag:
+  name: EpilepsyLive single-gene directory (disorder, foundation, registry, platforms, therapeutics, FDA, contacts)
+  manual: true
+  file: epilepsylive_pag.csv
+  landing: https://boycelab.github.io/EpilepsyLive/pag.html
+  role: gene_annotation
+  columns:
+    gene: [gene]
+    hgnc_id: [hgnc_id]
+  annotate:
+    el_tier: el_tier
+    disorder: disorder
+    el_foundation: foundation
+    el_foundation_url: foundation_url
+    el_registry: registry
+    el_registry_url: registry_url
+    el_platforms: platforms
+    simons_enrolled: simons_enrolled
+    cords: cords
+    therapeutics: therapeutics
+    fda_report: fda_report
+    fda_report_url: fda_report_url
+
+opathy:
+  name: Mechanism class (channelopathy, synaptopathy, mTORopathy, chromatinopathy, and so on) with gene family
+  manual: true
+  file: opathy.csv
+  role: gene_annotation
+  note: opathy comes from the EpilepsyLive gene family where one exists, an editor map for pathway groups (mTOR, synaptic, cohesin, NCL), or the symbol root. The basis column says which. Edit the CSV to reclassify.
+  columns:
+    gene: [gene]
+  annotate:
+    gene_family: gene_family
+    opathy: opathy
+    opathy_basis: basis
+
+epilepsylive_orgs:
+  name: EpilepsyLive organizations (foundation text, network PAG edges, gene_org_edges.csv)
+  manual: true
+  file: epilepsylive_orgs.csv
+  landing: https://boycelab.github.io/EpilepsyLive/pag.html
+  role: org_candidates
+  columns:
+    org_name: [org_name]
+    gene: [gene]
+    url: [url]
