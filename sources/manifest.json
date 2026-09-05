@@ -176,7 +176,16 @@
   "how": "manual",
   "url": "https://www.rareepilepsynetwork.org/",
   "version": null,
-  "bytes": 5332,
-  "sha256": "0d2819a835320fa35a35d0588f9628655da06d84822c7d2ea1e8f3536dfe7a24"
+  "bytes": 18205,
+  "sha256": "53c633b27c9a43f792aebe9560d59346e2cba444a42decf73204dcbe9a929003"
+ },
+ "pubmed_gene_counts": {
+  "file": "sources/pubmed_gene_counts/pubmed_gene_counts.csv",
+  "fetched": "2026-09-05",
+  "how": "manual",
+  "url": "https://pubmed.ncbi.nlm.nih.gov/",
+  "version": null,
+  "bytes": 89861,
+  "sha256": "3e695aa5cd68f77cee47fd68cc788f594a733a64749bdfdb901c8df94fcc6782"
  }
 }

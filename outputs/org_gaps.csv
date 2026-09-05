@@ -1,7 +1,6 @@
 hgnc_id,symbol,tier,domain,sources
 HGNC:18149,A4GALT,T1,unclassified,clingen
 HGNC:13666,AAAS,T1,ndd_no_documented_epilepsy,orphadata_genes;panelapp_au_id;panelapp_ge_id
-HGNC:20,AARS1,T1,ndd_with_epilepsy,clingen;genes4epilepsy;orphadata_genes;panelapp_au_epilepsy;panelapp_au_id;panelapp_ge_epilepsy;panelapp_ge_id
 HGNC:21022,AARS2,T1,epilepsy_only_unclassified,clingen;genes4epilepsy;orphadata_genes;panelapp_au_epilepsy;panelapp_ge_epilepsy
 HGNC:17366,AASS,T1,ndd_with_epilepsy,clingen;orphadata_genes;panelapp_au_id;panelapp_ge_epilepsy;panelapp_ge_id
 HGNC:23,ABAT,T1,ndd_with_epilepsy,clingen;genes4epilepsy;orphadata_genes;panelapp_au_epilepsy;panelapp_au_id;panelapp_ge_epilepsy;panelapp_ge_id
@@ -66,7 +65,6 @@ HGNC:291,ADSL,T1,ndd_with_epilepsy,clingen;genes4epilepsy;orphadata_genes;panela
 HGNC:3776,AFF2,T1,ndd_no_documented_epilepsy,clingen;orphadata_genes;panelapp_au_id;panelapp_ge_id;simons_searchlight
 HGNC:6473,AFF3,T1,ndd_with_epilepsy,genes4epilepsy;orphadata_genes;panelapp_au_epilepsy;panelapp_au_id;panelapp_ge_epilepsy;panelapp_ge_id
 HGNC:17869,AFF4,T1,ndd_no_documented_epilepsy,orphadata_genes;panelapp_au_id;panelapp_ge_id
-HGNC:18119,AFG2A,T1,ndd_with_epilepsy,clingen;genes4epilepsy;orphadata_genes;panelapp_au_epilepsy;panelapp_au_id;panelapp_ge_epilepsy;panelapp_ge_id
 HGNC:28762,AFG2B,T1,ndd_with_epilepsy,clingen;genes4epilepsy;orphadata_genes;panelapp_au_epilepsy;panelapp_au_id;panelapp_ge_epilepsy;panelapp_ge_id
 HGNC:315,AFG3L2,T1,ndd_with_epilepsy,clingen;genes4epilepsy;orphadata_genes;panelapp_au_epilepsy;panelapp_au_id;panelapp_ge_id
 HGNC:318,AGA,T1,ndd_with_epilepsy,clingen;genes4epilepsy;orphadata_genes;panelapp_au_epilepsy;panelapp_au_id;panelapp_ge_id
@@ -99,7 +97,6 @@ HGNC:399,ALB,T1,unclassified,clingen;orphadata_genes
 HGNC:9722,ALDH18A1,T1,ndd_no_documented_epilepsy,clingen;orphadata_genes;panelapp_au_id;panelapp_ge_id
 HGNC:403,ALDH3A2,T1,ndd_with_epilepsy,genes4epilepsy;orphadata_genes;panelapp_au_epilepsy;panelapp_au_id;panelapp_ge_id
 HGNC:406,ALDH4A1,T1,ndd_with_epilepsy,clingen;orphadata_genes;panelapp_au_epilepsy;panelapp_au_id;panelapp_ge_id
-HGNC:408,ALDH5A1,T1,ndd_with_epilepsy,clingen;genes4epilepsy;orphadata_genes;panelapp_au_epilepsy;panelapp_au_id;panelapp_ge_epilepsy;panelapp_ge_id
 HGNC:417,ALDOB,T1,ndd_no_documented_epilepsy,clingen;orphadata_genes;panelapp_au_id;panelapp_ge_id
 HGNC:18294,ALG1,T1,ndd_with_epilepsy,clingen;genes4epilepsy;orphadata_genes;panelapp_au_epilepsy;panelapp_au_id;panelapp_ge_epilepsy;panelapp_ge_id
 HGNC:32456,ALG11,T1,ndd_with_epilepsy,clingen;genes4epilepsy;orphadata_genes;panelapp_au_epilepsy;panelapp_au_id;panelapp_ge_epilepsy;panelapp_ge_id
@@ -128,7 +125,6 @@ HGNC:473,AMT,T1,ndd_with_epilepsy,clingen;genes4epilepsy;orphadata_genes;panelap
 HGNC:491,ANGPTL3,T1,unclassified,clingen;orphadata_genes
 HGNC:492,ANK1,T1,unclassified,clingen;orphadata_genes
 HGNC:494,ANK3,T1,ndd_with_epilepsy,clingen;genes4epilepsy;orphadata_genes;panelapp_au_id;panelapp_ge_id;simons_searchlight
-HGNC:23575,ANKRD17,T1,ndd_with_epilepsy,clingen;genes4epilepsy;orphadata_genes;panelapp_au_epilepsy;panelapp_au_id;panelapp_ge_id
 HGNC:29186,ANKRD26,T1,unclassified,clingen;orphadata_genes
 HGNC:24600,ANKS1B,T1,ndd_no_documented_epilepsy,panelapp_au_id;panelapp_ge_id
 HGNC:26724,ANKS6,T1,unclassified,clingen;orphadata_genes
@@ -184,7 +180,6 @@ HGNC:756,ASPA,T1,ndd_with_epilepsy,clingen;genes4epilepsy;orphadata_genes;panela
 HGNC:19048,ASPM,T1,ndd_with_epilepsy,clingen;genes4epilepsy;orphadata_genes;panelapp_au_epilepsy;panelapp_au_id;panelapp_ge_id
 HGNC:758,ASS1,T1,ndd_no_documented_epilepsy,clingen;orphadata_genes;panelapp_au_id;panelapp_ge_id
 HGNC:773,ASTN1,T1,ndd_with_epilepsy,genes4epilepsy;panelapp_au_epilepsy;panelapp_au_id;panelapp_ge_epilepsy;panelapp_ge_id
-HGNC:18318,ASXL1,T1,ndd_no_documented_epilepsy,clingen;orphadata_genes;panelapp_au_id;panelapp_ge_id
 HGNC:25903,ATAD1,T1,ndd_with_epilepsy,genes4epilepsy;orphadata_genes;panelapp_au_epilepsy;panelapp_au_id;panelapp_ge_id
 HGNC:25567,ATAD3A,T1,ndd_no_documented_epilepsy,orphadata_genes;panelapp_au_id;panelapp_ge_id
 HGNC:791,ATF6,T1,unclassified,clingen;orphadata_genes
@@ -322,7 +317,6 @@ HGNC:1482,CAPN5,T1,unclassified,clingen;orphadata_genes
 HGNC:1490,CAPZA2,T1,ndd_with_epilepsy,genes4epilepsy;panelapp_au_id;panelapp_ge_id
 HGNC:16393,CARD11,T1,unclassified,clingen;orphadata_genes
 HGNC:27089,CARMIL2,T1,unclassified,clingen;orphadata_genes
-HGNC:1493,CARS1,T1,ndd_no_documented_epilepsy,orphadata_genes;panelapp_au_id;panelapp_ge_id
 HGNC:25695,CARS2,T1,ndd_with_epilepsy,clingen;genes4epilepsy;orphadata_genes;panelapp_au_epilepsy;panelapp_au_id;panelapp_ge_epilepsy;panelapp_ge_id
 HGNC:1503,CASP2,T1,ndd_with_epilepsy,genes4epilepsy;panelapp_au_id;panelapp_ge_id
 HGNC:1509,CASP8,T1,unclassified,clingen;orphadata_genes
@@ -330,7 +324,6 @@ HGNC:1527,CAV1,T1,unclassified,clingen;orphadata_genes
 HGNC:1529,CAV3,T1,unclassified,clingen;orphadata_genes
 HGNC:9688,CAVIN1,T1,unclassified,clingen;orphadata_genes
 HGNC:1539,CBFB,T1,unclassified,clingen;orphadata_genes
-HGNC:1541,CBL,T1,ndd_with_epilepsy,clingen;orphadata_genes;panelapp_au_id;panelapp_ge_epilepsy;panelapp_ge_id
 HGNC:1550,CBS,T1,ndd_no_documented_epilepsy,clingen;orphadata_genes;panelapp_au_id;panelapp_ge_id
 HGNC:1551,CBX1,T1,ndd_no_documented_epilepsy,panelapp_au_id
 HGNC:1307,CBY1,T1,ndd_no_documented_epilepsy,orphadata_genes;panelapp_au_id
@@ -459,7 +452,6 @@ HGNC:1985,CIT,T1,ndd_no_documented_epilepsy,orphadata_genes;panelapp_au_id;panel
 HGNC:26877,CKAP2L,T1,ndd_no_documented_epilepsy,orphadata_genes;panelapp_au_id;panelapp_ge_id
 HGNC:2021,CLCN3,T1,ndd_with_epilepsy,genes4epilepsy;orphadata_genes;panelapp_au_epilepsy;panelapp_au_id;panelapp_ge_epilepsy;panelapp_ge_id
 HGNC:2023,CLCN5,T1,ndd_no_documented_epilepsy,clingen;orphadata_genes;panelapp_ge_id
-HGNC:2024,CLCN6,T1,ndd_with_epilepsy,clingen;genes4epilepsy;orphadata_genes;panelapp_au_id;panelapp_ge_epilepsy;panelapp_ge_id
 HGNC:2025,CLCN7,T1,ndd_no_documented_epilepsy,clingen;orphadata_genes;panelapp_au_id;panelapp_ge_id
 HGNC:2027,CLCNKB,T1,ndd_no_documented_epilepsy,orphadata_genes;panelapp_au_id;panelapp_ge_id
 HGNC:8514,CLDN11,T1,ndd_no_documented_epilepsy,clingen;panelapp_ge_id
@@ -606,7 +598,6 @@ HGNC:2652,CYP7B1,T1,ndd_no_documented_epilepsy,clingen;orphadata_genes;panelapp_
 HGNC:28358,D2HGDH,T1,ndd_with_epilepsy,clingen;genes4epilepsy;orphadata_genes;panelapp_au_epilepsy;panelapp_au_id;panelapp_ge_epilepsy;panelapp_ge_id
 HGNC:2666,DAG1,T1,ndd_with_epilepsy,clingen;genes4epilepsy;orphadata_genes;panelapp_au_epilepsy;panelapp_au_id;panelapp_ge_id
 HGNC:1165,DAGLA,T1,ndd_no_documented_epilepsy,panelapp_au_id;panelapp_ge_id
-HGNC:2678,DARS1,T1,ndd_no_documented_epilepsy,orphadata_genes;panelapp_au_id;panelapp_ge_id
 HGNC:25538,DARS2,T1,ndd_with_epilepsy,clingen;orphadata_genes;panelapp_au_epilepsy;panelapp_au_id;panelapp_ge_id
 HGNC:2698,DBT,T1,ndd_with_epilepsy,clingen;genes4epilepsy;orphadata_genes;panelapp_au_epilepsy;panelapp_au_id;panelapp_ge_epilepsy;panelapp_ge_id
 HGNC:25784,DCAF17,T1,ndd_no_documented_epilepsy,clingen;orphadata_genes;panelapp_au_id;panelapp_ge_id
@@ -621,7 +612,6 @@ HGNC:19714,DDHD1,T1,ndd_no_documented_epilepsy,clingen;orphadata_genes;panelapp_
 HGNC:29106,DDHD2,T1,ndd_no_documented_epilepsy,orphadata_genes;panelapp_au_id;panelapp_ge_id
 HGNC:2728,DDOST,T1,ndd_no_documented_epilepsy,clingen;orphadata_genes;panelapp_au_id;panelapp_ge_id
 HGNC:2731,DDR2,T1,ndd_no_documented_epilepsy,clingen;orphadata_genes;panelapp_au_id;panelapp_ge_id
-HGNC:2736,DDX11,T1,ndd_no_documented_epilepsy,clingen;orphadata_genes;panelapp_au_id;panelapp_ge_id
 HGNC:2740,DDX17,T1,ndd_no_documented_epilepsy,panelapp_au_id;panelapp_ge_id
 HGNC:17347,DDX23,T1,ndd_no_documented_epilepsy,clingen;panelapp_au_id;panelapp_ge_id
 HGNC:13917,DDX39B,T1,ndd_with_epilepsy,genes4epilepsy;panelapp_au_epilepsy;panelapp_au_id;panelapp_ge_id
@@ -644,7 +634,6 @@ HGNC:2869,DHPS,T1,ndd_with_epilepsy,genes4epilepsy;panelapp_au_epilepsy;panelapp
 HGNC:18399,DHRSX,T1,ndd_with_epilepsy,panelapp_au_epilepsy;panelapp_au_id;panelapp_ge_epilepsy;panelapp_ge_id
 HGNC:23537,DHTKD1,T1,ndd_no_documented_epilepsy,clingen;orphadata_genes;panelapp_au_id;panelapp_ge_id
 HGNC:2739,DHX16,T1,epilepsy_only_unclassified,genes4epilepsy;panelapp_au_epilepsy;panelapp_ge_epilepsy
-HGNC:16716,DHX30,T1,ndd_with_epilepsy,clingen;genes4epilepsy;orphadata_genes;panelapp_au_epilepsy;panelapp_au_id;panelapp_ge_epilepsy;panelapp_ge_id
 HGNC:17210,DHX37,T1,ndd_no_documented_epilepsy,orphadata_genes;panelapp_au_id;panelapp_ge_id
 HGNC:2750,DHX9,T1,ndd_with_epilepsy,genes4epilepsy;panelapp_au_id;panelapp_ge_id
 HGNC:2876,DIAPH1,T1,ndd_with_epilepsy,clingen;genes4epilepsy;orphadata_genes;panelapp_au_epilepsy;panelapp_au_id;panelapp_ge_epilepsy;panelapp_ge_id
@@ -688,10 +677,8 @@ HGNC:16235,DNAJC5,T1,epilepsy_only_unclassified,clingen;genes4epilepsy;orphadata
 HGNC:15469,DNAJC6,T1,ndd_with_epilepsy,genes4epilepsy;orphadata_genes;panelapp_au_epilepsy;panelapp_au_id;panelapp_ge_epilepsy
 HGNC:23247,DNAL1,T1,unclassified,clingen;orphadata_genes
 HGNC:2959,DNASE1L3,T1,unclassified,clingen;orphadata_genes
-HGNC:2973,DNM1L,T1,ndd_with_epilepsy,clingen;genes4epilepsy;orphadata_genes;panelapp_au_epilepsy;panelapp_au_id;panelapp_ge_epilepsy;panelapp_ge_id
 HGNC:2974,DNM2,T1,ndd_no_documented_epilepsy,clingen;orphadata_genes;panelapp_ge_id
 HGNC:2976,DNMT1,T1,ndd_no_documented_epilepsy,clingen;orphadata_genes;panelapp_ge_id
-HGNC:2978,DNMT3A,T1,ndd_with_epilepsy,clingen;genes4epilepsy;orphadata_genes;panelapp_au_id;panelapp_ge_id;simons_searchlight
 HGNC:2979,DNMT3B,T1,ndd_no_documented_epilepsy,clingen;orphadata_genes;panelapp_au_id;panelapp_ge_id
 HGNC:23483,DOCK11,T1,ndd_no_documented_epilepsy,clingen;orphadata_genes;panelapp_ge_id
 HGNC:2988,DOCK2,T1,unclassified,clingen;orphadata_genes
@@ -788,12 +775,10 @@ HGNC:3349,ENG,T1,unclassified,clingen;orphadata_genes
 HGNC:3356,ENPP1,T1,ndd_no_documented_epilepsy,clingen;orphadata_genes;panelapp_ge_id
 HGNC:3363,ENTPD1,T1,ndd_with_epilepsy,clingen;orphadata_genes;panelapp_au_id;panelapp_ge_epilepsy;panelapp_ge_id
 HGNC:28526,EOGT,T1,ndd_no_documented_epilepsy,clingen;orphadata_genes;panelapp_au_id;panelapp_ge_id
-HGNC:3373,EP300,T1,ndd_no_documented_epilepsy,clingen;orphadata_genes;panelapp_au_id;panelapp_ge_id;simons_searchlight
 HGNC:11958,EP400,T1,ndd_with_epilepsy,genes4epilepsy;panelapp_au_epilepsy;panelapp_au_id
 HGNC:3380,EPB41L3,T1,ndd_with_epilepsy,genes4epilepsy;panelapp_au_epilepsy;panelapp_au_id;panelapp_ge_epilepsy;panelapp_ge_id
 HGNC:29331,EPG5,T1,ndd_with_epilepsy,clingen;genes4epilepsy;orphadata_genes;panelapp_au_epilepsy;panelapp_au_id;panelapp_ge_epilepsy;panelapp_ge_id
 HGNC:3395,EPHB4,T1,unclassified,clingen;orphadata_genes
-HGNC:3413,EPM2A,T1,ndd_with_epilepsy,clingen;genes4epilepsy;orphadata_genes;panelapp_au_epilepsy;panelapp_au_id;panelapp_ge_epilepsy;panelapp_ge_id
 HGNC:3418,EPRS1,T1,ndd_no_documented_epilepsy,panelapp_au_id
 HGNC:3432,ERBB4,T1,ndd_no_documented_epilepsy,clingen;orphadata_genes;panelapp_au_id;panelapp_ge_id
 HGNC:3433,ERCC1,T1,ndd_no_documented_epilepsy,orphadata_genes;panelapp_au_id;panelapp_ge_id
@@ -872,7 +857,6 @@ HGNC:3606,FBP1,T1,ndd_no_documented_epilepsy,clingen;orphadata_genes;panelapp_ge
 HGNC:29308,FBRSL1,T1,ndd_no_documented_epilepsy,panelapp_au_id;panelapp_ge_id
 HGNC:13599,FBXL3,T1,ndd_no_documented_epilepsy,panelapp_au_id;panelapp_ge_id
 HGNC:13593,FBXO22,T1,ndd_no_documented_epilepsy,panelapp_au_id;panelapp_ge_id
-HGNC:29046,FBXO28,T1,ndd_with_epilepsy,genes4epilepsy;orphadata_genes;panelapp_au_epilepsy;panelapp_au_id;panelapp_ge_epilepsy;panelapp_ge_id
 HGNC:16510,FBXO31,T1,ndd_no_documented_epilepsy,orphadata_genes;panelapp_au_id;panelapp_ge_id
 HGNC:13607,FBXW11,T1,ndd_no_documented_epilepsy,orphadata_genes;panelapp_au_id;panelapp_ge_id
 HGNC:16712,FBXW7,T1,ndd_with_epilepsy,genes4epilepsy;orphadata_genes;panelapp_au_id;panelapp_ge_id
@@ -965,14 +949,12 @@ HGNC:4125,GALNT3,T1,unclassified,clingen;orphadata_genes
 HGNC:4135,GALT,T1,ndd_no_documented_epilepsy,orphadata_genes;panelapp_au_id;panelapp_ge_id
 HGNC:4137,GAN,T1,ndd_no_documented_epilepsy,clingen;orphadata_genes;panelapp_au_id;panelapp_ge_id
 HGNC:4138,GANAB,T1,unclassified,clingen;orphadata_genes
-HGNC:4162,GARS1,T1,unclassified,clingen;orphadata_genes
 HGNC:4170,GATA1,T1,ndd_no_documented_epilepsy,clingen;orphadata_genes;panelapp_au_id
 HGNC:4171,GATA2,T1,ndd_no_documented_epilepsy,clingen;orphadata_genes;panelapp_ge_id
 HGNC:4172,GATA3,T1,unclassified,clingen;orphadata_genes
 HGNC:4173,GATA4,T1,ndd_no_documented_epilepsy,clingen;orphadata_genes;panelapp_ge_id
 HGNC:4174,GATA6,T1,ndd_no_documented_epilepsy,clingen;orphadata_genes;panelapp_au_id;panelapp_ge_id
 HGNC:29989,GATAD2A,T1,ndd_no_documented_epilepsy,panelapp_au_id
-HGNC:4175,GATM,T1,ndd_with_epilepsy,clingen;genes4epilepsy;orphadata_genes;panelapp_au_epilepsy;panelapp_au_id;panelapp_ge_epilepsy;panelapp_ge_id
 HGNC:4177,GBA1,T1,ndd_with_epilepsy,clingen;genes4epilepsy;orphadata_genes;panelapp_au_epilepsy;panelapp_au_id;panelapp_ge_epilepsy;panelapp_ge_id
 HGNC:18986,GBA2,T1,ndd_no_documented_epilepsy,clingen;orphadata_genes;panelapp_au_id;panelapp_ge_id
 HGNC:4180,GBE1,T1,ndd_no_documented_epilepsy,clingen;orphadata_genes;panelapp_au_id;panelapp_ge_id
@@ -1018,7 +1000,6 @@ HGNC:22923,GMPPA,T1,ndd_with_epilepsy,clingen;genes4epilepsy;orphadata_genes;pan
 HGNC:22932,GMPPB,T1,ndd_with_epilepsy,clingen;genes4epilepsy;orphadata_genes;panelapp_au_epilepsy;panelapp_au_id;panelapp_ge_id
 HGNC:4384,GNAI1,T1,ndd_with_epilepsy,clingen;genes4epilepsy;panelapp_au_epilepsy;panelapp_au_id;panelapp_ge_id
 HGNC:4385,GNAI2,T1,ndd_no_documented_epilepsy,panelapp_au_id;panelapp_ge_id
-HGNC:4390,GNAQ,T1,ndd_with_epilepsy,orphadata_genes;panelapp_au_epilepsy;panelapp_au_id;panelapp_ge_epilepsy
 HGNC:4392,GNAS,T1,ndd_no_documented_epilepsy,orphadata_genes;panelapp_au_id;panelapp_ge_id
 HGNC:4393,GNAT1,T1,unclassified,clingen;orphadata_genes
 HGNC:4394,GNAT2,T1,unclassified,clingen;orphadata_genes
@@ -1102,7 +1083,6 @@ HGNC:4846,HCN2,T1,ndd_with_epilepsy,clingen;genes4epilepsy;panelapp_au_epilepsy;
 HGNC:4853,HDAC2,T1,ndd_no_documented_epilepsy,panelapp_au_id
 HGNC:4854,HDAC3,T1,ndd_with_epilepsy,genes4epilepsy;panelapp_au_epilepsy;panelapp_au_id;panelapp_ge_id
 HGNC:14063,HDAC4,T1,ndd_no_documented_epilepsy,orphadata_genes;panelapp_au_id;panelapp_ge_id
-HGNC:13315,HDAC8,T1,ndd_with_epilepsy,clingen;genes4epilepsy;orphadata_genes;panelapp_au_epilepsy;panelapp_au_id;panelapp_ge_id
 HGNC:20157,HECTD1,T1,ndd_with_epilepsy,genes4epilepsy;panelapp_au_epilepsy;panelapp_au_id
 HGNC:26611,HECTD4,T1,ndd_with_epilepsy,panelapp_au_epilepsy;panelapp_au_id;panelapp_ge_epilepsy;panelapp_ge_id
 HGNC:29853,HECW2,T1,ndd_with_epilepsy,clingen;genes4epilepsy;orphadata_genes;panelapp_au_epilepsy;panelapp_au_id;panelapp_ge_epilepsy;panelapp_ge_id;simons_searchlight
@@ -1134,8 +1114,6 @@ HGNC:11621,HNF1A,T1,unclassified,clingen;orphadata_genes
 HGNC:11630,HNF1B,T1,ndd_no_documented_epilepsy,clingen;orphadata_genes;panelapp_ge_id
 HGNC:5024,HNF4A,T1,ndd_no_documented_epilepsy,clingen;orphadata_genes;panelapp_ge_id
 HGNC:5028,HNMT,T1,ndd_no_documented_epilepsy,orphadata_genes;panelapp_au_id;panelapp_ge_id
-HGNC:5035,HNRNPC,T1,ndd_no_documented_epilepsy,orphadata_genes;panelapp_au_id;panelapp_ge_id;simons_searchlight
-HGNC:5036,HNRNPD,T1,ndd_no_documented_epilepsy,clingen;panelapp_au_id;panelapp_ge_id;simons_searchlight
 HGNC:5037,HNRNPDL,T1,unclassified,clingen;orphadata_genes
 HGNC:5041,HNRNPH1,T1,ndd_with_epilepsy,clingen;genes4epilepsy;orphadata_genes;panelapp_au_id;panelapp_ge_id
 HGNC:25155,HOGA1,T1,unclassified,clingen;orphadata_genes
@@ -1165,7 +1143,6 @@ HGNC:4851,HTT,T1,ndd_with_epilepsy,clingen;genes4epilepsy;orphadata_genes;panela
 HGNC:30892,HUWE1,T1,ndd_no_documented_epilepsy,clingen;orphadata_genes;panelapp_au_id;panelapp_ge_id
 HGNC:24587,HYCC1,T1,ndd_no_documented_epilepsy,clingen;orphadata_genes;panelapp_au_id;panelapp_ge_id
 HGNC:19368,HYDIN,T1,ndd_no_documented_epilepsy,clingen;orphadata_genes;panelapp_ge_id
-HGNC:5330,IARS1,T1,ndd_no_documented_epilepsy,orphadata_genes;panelapp_au_id;panelapp_ge_id
 HGNC:29685,IARS2,T1,ndd_with_epilepsy,clingen;genes4epilepsy;orphadata_genes;panelapp_au_epilepsy;panelapp_ge_id
 HGNC:27302,IBA57,T1,ndd_with_epilepsy,clingen;genes4epilepsy;orphadata_genes;panelapp_au_epilepsy;panelapp_au_id;panelapp_ge_id
 HGNC:5351,ICOS,T1,unclassified,clingen;orphadata_genes
@@ -1245,7 +1222,6 @@ HGNC:15532,JAM3,T1,ndd_no_documented_epilepsy,orphadata_genes;panelapp_au_id;pan
 HGNC:20184,JKAMP,T1,ndd_with_epilepsy,genes4epilepsy;panelapp_au_epilepsy;panelapp_au_id;panelapp_ge_epilepsy;panelapp_ge_id
 HGNC:12313,JMJD1C,T1,ndd_with_epilepsy,genes4epilepsy;orphadata_genes;panelapp_au_epilepsy;panelapp_au_id;panelapp_ge_id
 HGNC:14202,JPH2,T1,unclassified,clingen;orphadata_genes
-HGNC:6215,KARS1,T1,ndd_with_epilepsy,clingen;genes4epilepsy;orphadata_genes;panelapp_au_epilepsy;panelapp_au_id;panelapp_ge_epilepsy;panelapp_ge_id
 HGNC:5275,KAT5,T1,ndd_with_epilepsy,genes4epilepsy;orphadata_genes;panelapp_au_epilepsy;panelapp_au_id;panelapp_ge_epilepsy;panelapp_ge_id
 HGNC:17933,KAT8,T1,ndd_with_epilepsy,genes4epilepsy;orphadata_genes;panelapp_au_epilepsy;panelapp_au_id;panelapp_ge_epilepsy;panelapp_ge_id
 HGNC:6217,KATNB1,T1,ndd_with_epilepsy,genes4epilepsy;orphadata_genes;panelapp_au_epilepsy;panelapp_au_id;panelapp_ge_epilepsy;panelapp_ge_id
@@ -1316,7 +1292,6 @@ HGNC:6371,KLKB1,T1,unclassified,clingen;orphadata_genes
 HGNC:15840,KMT2B,T1,ndd_with_epilepsy,clingen;genes4epilepsy;orphadata_genes;panelapp_au_epilepsy;panelapp_au_id;panelapp_ge_id
 HGNC:6383,KNG1,T1,unclassified,clingen;orphadata_genes
 HGNC:24054,KNL1,T1,ndd_no_documented_epilepsy,orphadata_genes;panelapp_au_id;panelapp_ge_id
-HGNC:1573,KRIT1,T1,ndd_with_epilepsy,genes4epilepsy;orphadata_genes;panelapp_au_epilepsy;panelapp_ge_id
 HGNC:6469,KYNU,T1,ndd_no_documented_epilepsy,clingen;orphadata_genes;panelapp_au_id
 HGNC:6470,L1CAM,T1,ndd_no_documented_epilepsy,clingen;orphadata_genes;panelapp_au_id;panelapp_ge_id
 HGNC:20499,L2HGDH,T1,ndd_with_epilepsy,clingen;genes4epilepsy;orphadata_genes;panelapp_au_epilepsy;panelapp_au_id;panelapp_ge_id
@@ -1330,7 +1305,6 @@ HGNC:14582,LAMP3,T1,unclassified,clingen
 HGNC:6511,LARGE1,T1,ndd_with_epilepsy,clingen;genes4epilepsy;orphadata_genes;panelapp_au_epilepsy;panelapp_au_id;panelapp_ge_epilepsy;panelapp_ge_id
 HGNC:29531,LARP1,T1,ndd_no_documented_epilepsy,panelapp_au_id
 HGNC:24912,LARP7,T1,ndd_no_documented_epilepsy,orphadata_genes;panelapp_au_id;panelapp_ge_id
-HGNC:6512,LARS1,T1,ndd_with_epilepsy,genes4epilepsy;orphadata_genes;panelapp_au_epilepsy;panelapp_au_id;panelapp_ge_epilepsy;panelapp_ge_id
 HGNC:17095,LARS2,T1,ndd_no_documented_epilepsy,clingen;orphadata_genes;panelapp_au_id;panelapp_ge_id
 HGNC:25726,LAS1L,T1,ndd_no_documented_epilepsy,clingen;orphadata_genes;panelapp_au_id;panelapp_ge_id
 HGNC:18874,LAT,T1,unclassified,clingen;orphadata_genes
@@ -1441,7 +1415,6 @@ HGNC:6971,MDH2,T1,ndd_with_epilepsy,genes4epilepsy;orphadata_genes;panelapp_au_e
 HGNC:3498,MECOM,T1,unclassified,clingen;orphadata_genes
 HGNC:32687,MED11,T1,ndd_with_epilepsy,genes4epilepsy;panelapp_au_epilepsy;panelapp_au_id;panelapp_ge_epilepsy;panelapp_ge_id
 HGNC:16050,MED12L,T1,ndd_no_documented_epilepsy,clingen;orphadata_genes;panelapp_au_id;panelapp_ge_id
-HGNC:22474,MED13,T1,ndd_no_documented_epilepsy,clingen;orphadata_genes;panelapp_au_id;panelapp_ge_id;simons_searchlight
 HGNC:17556,MED16,T1,ndd_no_documented_epilepsy,panelapp_au_id;panelapp_ge_id
 HGNC:2375,MED17,T1,ndd_with_epilepsy,genes4epilepsy;orphadata_genes;panelapp_au_epilepsy;panelapp_au_id;panelapp_ge_epilepsy;panelapp_ge_id
 HGNC:2377,MED27,T1,ndd_with_epilepsy,clingen;genes4epilepsy;orphadata_genes;panelapp_au_epilepsy;panelapp_au_id;panelapp_ge_epilepsy;panelapp_ge_id
@@ -1568,7 +1541,6 @@ HGNC:7606,MYO7A,T1,ndd_no_documented_epilepsy,clingen;orphadata_genes;panelapp_a
 HGNC:7610,MYOC,T1,unclassified,clingen;orphadata_genes
 HGNC:1181,MYRF,T1,unclassified,clingen;orphadata_genes
 HGNC:29401,MYSM1,T1,unclassified,clingen;orphadata_genes
-HGNC:18704,NAA10,T1,ndd_with_epilepsy,clingen;genes4epilepsy;orphadata_genes;panelapp_au_epilepsy;panelapp_au_id;panelapp_ge_id
 HGNC:15908,NAA20,T1,ndd_no_documented_epilepsy,clingen;orphadata_genes;panelapp_au_id;panelapp_ge_id
 HGNC:20967,NACC1,T1,ndd_with_epilepsy,clingen;genes4epilepsy;orphadata_genes;panelapp_au_epilepsy;panelapp_au_id;panelapp_ge_epilepsy;panelapp_ge_id
 HGNC:621,NAE1,T1,ndd_no_documented_epilepsy,panelapp_au_id
@@ -1631,17 +1603,14 @@ HGNC:29866,NFASC,T1,ndd_no_documented_epilepsy,panelapp_au_id;panelapp_ge_id
 HGNC:7784,NFIA,T1,ndd_no_documented_epilepsy,clingen;orphadata_genes;panelapp_au_id;panelapp_ge_id
 HGNC:7785,NFIB,T1,ndd_no_documented_epilepsy,clingen;orphadata_genes;panelapp_au_id;panelapp_ge_id
 HGNC:7786,NFIC,T1,ndd_no_documented_epilepsy,panelapp_au_id
-HGNC:7788,NFIX,T1,ndd_no_documented_epilepsy,clingen;orphadata_genes;panelapp_au_id;panelapp_ge_id
 HGNC:7794,NFKB1,T1,unclassified,clingen;orphadata_genes
 HGNC:7795,NFKB2,T1,unclassified,clingen;orphadata_genes
 HGNC:7797,NFKBIA,T1,unclassified,clingen;orphadata_genes
 HGNC:16287,NFU1,T1,ndd_no_documented_epilepsy,clingen;orphadata_genes;panelapp_au_id;panelapp_ge_id
 HGNC:7808,NGF,T1,ndd_no_documented_epilepsy,clingen;orphadata_genes;panelapp_au_id;panelapp_ge_id
 HGNC:25737,NHEJ1,T1,ndd_no_documented_epilepsy,clingen;orphadata_genes;panelapp_au_id;panelapp_ge_id
-HGNC:21576,NHLRC1,T1,ndd_with_epilepsy,clingen;genes4epilepsy;orphadata_genes;panelapp_au_epilepsy;panelapp_au_id;panelapp_ge_epilepsy;panelapp_ge_id
 HGNC:24731,NHLRC2,T1,ndd_with_epilepsy,genes4epilepsy;orphadata_genes;panelapp_ge_id
 HGNC:7820,NHS,T1,ndd_no_documented_epilepsy,clingen;orphadata_genes;panelapp_au_id;panelapp_ge_id
-HGNC:28862,NIPBL,T1,ndd_no_documented_epilepsy,clingen;orphadata_genes;panelapp_au_id;panelapp_ge_id;simons_searchlight
 HGNC:29873,NKAP,T1,ndd_no_documented_epilepsy,orphadata_genes;panelapp_au_id;panelapp_ge_id
 HGNC:11825,NKX2-1,T1,ndd_no_documented_epilepsy,clingen;orphadata_genes;panelapp_au_id;panelapp_ge_id
 HGNC:2488,NKX2-5,T1,ndd_no_documented_epilepsy,clingen;orphadata_genes;panelapp_ge_id
@@ -1669,7 +1638,6 @@ HGNC:7976,NR2F2,T1,ndd_no_documented_epilepsy,clingen;orphadata_genes;panelapp_a
 HGNC:7979,NR3C2,T1,unclassified,clingen;orphadata_genes
 HGNC:7983,NR5A1,T1,ndd_no_documented_epilepsy,clingen;orphadata_genes;panelapp_ge_id
 HGNC:7988,NRAP,T1,unclassified,clingen;orphadata_genes
-HGNC:7989,NRAS,T1,ndd_with_epilepsy,clingen;genes4epilepsy;orphadata_genes;panelapp_au_id;panelapp_ge_epilepsy;panelapp_ge_id
 HGNC:7994,NRCAM,T1,ndd_no_documented_epilepsy,orphadata_genes;panelapp_au_id;panelapp_ge_id
 HGNC:7995,NRDC,T1,ndd_with_epilepsy,genes4epilepsy;panelapp_au_epilepsy;panelapp_au_id;panelapp_ge_epilepsy;panelapp_ge_id
 HGNC:8002,NRL,T1,unclassified,clingen;orphadata_genes
@@ -1708,7 +1676,6 @@ HGNC:8127,OGT,T1,ndd_with_epilepsy,clingen;panelapp_au_epilepsy;panelapp_au_id;p
 HGNC:28833,OLA1,T1,ndd_with_epilepsy,panelapp_au_id;panelapp_ge_epilepsy;panelapp_ge_id
 HGNC:8140,OPA1,T1,ndd_no_documented_epilepsy,clingen;orphadata_genes;panelapp_ge_id
 HGNC:8142,OPA3,T1,ndd_no_documented_epilepsy,clingen;orphadata_genes;panelapp_au_id;panelapp_ge_id
-HGNC:8148,OPHN1,T1,ndd_with_epilepsy,clingen;genes4epilepsy;orphadata_genes;panelapp_au_epilepsy;panelapp_au_id;panelapp_ge_epilepsy;panelapp_ge_id
 HGNC:9936,OPN1LW,T1,unclassified,clingen;orphadata_genes
 HGNC:4206,OPN1MW,T1,unclassified,clingen;orphadata_genes
 HGNC:17142,OPTN,T1,unclassified,clingen;orphadata_genes
@@ -1766,7 +1733,6 @@ HGNC:16068,PCNT,T1,ndd_no_documented_epilepsy,clingen;orphadata_genes;panelapp_a
 HGNC:20001,PCSK9,T1,unclassified,clingen;orphadata_genes
 HGNC:8754,PCYT1A,T1,ndd_no_documented_epilepsy,clingen;orphadata_genes;panelapp_ge_id
 HGNC:8756,PCYT2,T1,ndd_with_epilepsy,genes4epilepsy;orphadata_genes;panelapp_au_epilepsy;panelapp_au_id;panelapp_ge_epilepsy;panelapp_ge_id
-HGNC:8761,PDCD10,T1,ndd_with_epilepsy,genes4epilepsy;orphadata_genes;panelapp_au_epilepsy;panelapp_ge_id
 HGNC:8766,PDCD6IP,T1,ndd_no_documented_epilepsy,orphadata_genes;panelapp_au_id;panelapp_ge_id
 HGNC:8772,PDE10A,T1,ndd_no_documented_epilepsy,orphadata_genes;panelapp_au_id;panelapp_ge_id
 HGNC:8775,PDE1B,T1,ndd_no_documented_epilepsy,panelapp_au_id;panelapp_ge_id
@@ -1793,7 +1759,6 @@ HGNC:26257,PDZD7,T1,unclassified,clingen;orphadata_genes
 HGNC:26974,PDZD8,T1,ndd_no_documented_epilepsy,panelapp_au_id;panelapp_ge_id
 HGNC:8840,PEPD,T1,ndd_no_documented_epilepsy,clingen;orphadata_genes;panelapp_au_id;panelapp_ge_id
 HGNC:40038,PET100,T1,ndd_with_epilepsy,clingen;genes4epilepsy;panelapp_au_epilepsy;panelapp_au_id;panelapp_ge_epilepsy;panelapp_ge_id
-HGNC:8850,PEX1,T1,ndd_with_epilepsy,clingen;genes4epilepsy;orphadata_genes;panelapp_au_epilepsy;panelapp_au_id;panelapp_ge_epilepsy;panelapp_ge_id
 HGNC:8851,PEX10,T1,ndd_with_epilepsy,clingen;genes4epilepsy;orphadata_genes;panelapp_au_epilepsy;panelapp_au_id;panelapp_ge_epilepsy;panelapp_ge_id
 HGNC:8853,PEX11B,T1,ndd_no_documented_epilepsy,clingen;orphadata_genes;panelapp_au_id;panelapp_ge_id
 HGNC:8854,PEX12,T1,ndd_with_epilepsy,clingen;genes4epilepsy;orphadata_genes;panelapp_au_epilepsy;panelapp_au_id;panelapp_ge_epilepsy;panelapp_ge_id
@@ -1802,10 +1767,8 @@ HGNC:8856,PEX14,T1,ndd_no_documented_epilepsy,clingen;orphadata_genes;panelapp_a
 HGNC:8857,PEX16,T1,ndd_no_documented_epilepsy,clingen;orphadata_genes;panelapp_au_id;panelapp_ge_id
 HGNC:9713,PEX19,T1,ndd_with_epilepsy,clingen;genes4epilepsy;orphadata_genes;panelapp_au_epilepsy;panelapp_au_id;panelapp_ge_epilepsy;panelapp_ge_id
 HGNC:9717,PEX2,T1,ndd_with_epilepsy,clingen;genes4epilepsy;orphadata_genes;panelapp_au_epilepsy;panelapp_au_id;panelapp_ge_epilepsy;panelapp_ge_id
-HGNC:22965,PEX26,T1,ndd_with_epilepsy,clingen;genes4epilepsy;orphadata_genes;panelapp_au_epilepsy;panelapp_au_id;panelapp_ge_id
 HGNC:8858,PEX3,T1,ndd_with_epilepsy,clingen;genes4epilepsy;orphadata_genes;panelapp_au_epilepsy;panelapp_au_id;panelapp_ge_epilepsy;panelapp_ge_id
 HGNC:9719,PEX5,T1,ndd_with_epilepsy,clingen;genes4epilepsy;orphadata_genes;panelapp_au_epilepsy;panelapp_au_id;panelapp_ge_epilepsy;panelapp_ge_id
-HGNC:8859,PEX6,T1,ndd_with_epilepsy,clingen;genes4epilepsy;orphadata_genes;panelapp_au_epilepsy;panelapp_au_id;panelapp_ge_epilepsy;panelapp_ge_id
 HGNC:8860,PEX7,T1,ndd_with_epilepsy,clingen;genes4epilepsy;orphadata_genes;panelapp_au_epilepsy;panelapp_au_id;panelapp_ge_epilepsy;panelapp_ge_id
 HGNC:8881,PFN1,T1,unclassified,clingen;orphadata_genes
 HGNC:25712,PGAP1,T1,ndd_no_documented_epilepsy,orphadata_genes;panelapp_au_id;panelapp_ge_id
@@ -2007,7 +1970,6 @@ HGNC:30262,PYCR2,T1,ndd_no_documented_epilepsy,orphadata_genes;panelapp_au_id;pa
 HGNC:9725,PYGL,T1,ndd_no_documented_epilepsy,clingen;orphadata_genes;panelapp_au_id;panelapp_ge_id
 HGNC:9726,PYGM,T1,unclassified,clingen;orphadata_genes
 HGNC:26162,PYROXD1,T1,unclassified,clingen
-HGNC:9751,QARS1,T1,ndd_with_epilepsy,clingen;genes4epilepsy;orphadata_genes;panelapp_au_epilepsy;panelapp_au_id;panelapp_ge_epilepsy;panelapp_ge_id
 HGNC:9752,QDPR,T1,ndd_with_epilepsy,clingen;genes4epilepsy;orphadata_genes;panelapp_au_epilepsy;panelapp_au_id;panelapp_ge_epilepsy;panelapp_ge_id
 HGNC:24713,QRICH1,T1,ndd_no_documented_epilepsy,clingen;orphadata_genes;panelapp_au_id;panelapp_ge_id
 HGNC:9760,RAB11A,T1,ndd_with_epilepsy,clingen;genes4epilepsy;orphadata_genes;panelapp_au_epilepsy;panelapp_au_id;panelapp_ge_epilepsy;panelapp_ge_id
@@ -2024,12 +1986,10 @@ HGNC:17155,RABGAP1,T1,ndd_with_epilepsy,genes4epilepsy;panelapp_au_id
 HGNC:9801,RAC1,T1,ndd_no_documented_epilepsy,clingen;orphadata_genes;panelapp_au_id;panelapp_ge_id
 HGNC:9802,RAC2,T1,unclassified,clingen;orphadata_genes
 HGNC:9803,RAC3,T1,ndd_with_epilepsy,genes4epilepsy;orphadata_genes;panelapp_au_epilepsy;panelapp_au_id;panelapp_ge_epilepsy;panelapp_ge_id
-HGNC:9811,RAD21,T1,ndd_no_documented_epilepsy,clingen;orphadata_genes;panelapp_au_id;panelapp_ge_id
 HGNC:9820,RAD51C,T1,ndd_no_documented_epilepsy,clingen;orphadata_genes;panelapp_ge_id
 HGNC:9823,RAD51D,T1,unclassified,clingen;orphadata_genes
 HGNC:9831,RAG1,T1,unclassified,clingen;orphadata_genes
 HGNC:9832,RAG2,T1,unclassified,clingen;orphadata_genes
-HGNC:9834,RAI1,T1,ndd_with_epilepsy,clingen;genes4epilepsy;orphadata_genes;panelapp_au_epilepsy;panelapp_au_id;panelapp_ge_id
 HGNC:9839,RALA,T1,ndd_with_epilepsy,clingen;genes4epilepsy;orphadata_genes;panelapp_au_epilepsy;panelapp_au_id;panelapp_ge_epilepsy;panelapp_ge_id
 HGNC:17770,RALGAPA1,T1,ndd_with_epilepsy,genes4epilepsy;panelapp_au_epilepsy;panelapp_au_id;panelapp_ge_epilepsy;panelapp_ge_id
 HGNC:9848,RANBP2,T1,ndd_with_epilepsy,clingen;genes4epilepsy;orphadata_genes;panelapp_au_epilepsy;panelapp_au_id;panelapp_ge_epilepsy;panelapp_ge_id
@@ -2037,7 +1997,6 @@ HGNC:9857,RAP1B,T1,ndd_no_documented_epilepsy,clingen;panelapp_au_id;panelapp_ge
 HGNC:9859,RAP1GDS1,T1,ndd_no_documented_epilepsy,panelapp_au_id;panelapp_ge_id
 HGNC:16854,RAPGEF2,T1,ndd_with_epilepsy,genes4epilepsy;orphadata_genes;panelapp_au_epilepsy;panelapp_au_id
 HGNC:9865,RARB,T1,ndd_no_documented_epilepsy,clingen;orphadata_genes;panelapp_au_id;panelapp_ge_id
-HGNC:9870,RARS1,T1,ndd_with_epilepsy,clingen;orphadata_genes;panelapp_au_epilepsy;panelapp_au_id;panelapp_ge_epilepsy;panelapp_ge_id
 HGNC:9878,RASGRP1,T1,unclassified,clingen;orphadata_genes
 HGNC:9879,RASGRP2,T1,unclassified,clingen;orphadata_genes
 HGNC:9884,RB1,T1,unclassified,clingen;orphadata_genes
@@ -2102,7 +2061,6 @@ HGNC:25552,RNF220,T1,ndd_no_documented_epilepsy,panelapp_au_id;panelapp_ge_id
 HGNC:18505,RNF43,T1,unclassified,clingen;orphadata_genes
 HGNC:10074,RNH1,T1,ndd_with_epilepsy,panelapp_au_epilepsy;panelapp_au_id
 HGNC:18666,RNPC3,T1,ndd_no_documented_epilepsy,orphadata_genes;panelapp_au_id;panelapp_ge_id
-HGNC:10152,RNU2-2,T1,ndd_with_epilepsy,clingen;genes4epilepsy;panelapp_au_epilepsy;panelapp_au_id;panelapp_ge_epilepsy;panelapp_ge_id
 HGNC:10193,RNU4-2,T1,ndd_with_epilepsy,clingen;genes4epilepsy;orphadata_genes;panelapp_au_epilepsy;panelapp_au_id;panelapp_ge_epilepsy;panelapp_ge_id
 HGNC:34016,RNU4ATAC,T1,ndd_with_epilepsy,clingen;genes4epilepsy;orphadata_genes;panelapp_au_epilepsy;panelapp_au_id;panelapp_ge_epilepsy;panelapp_ge_id
 HGNC:10212,RNU5B-1,T1,ndd_with_epilepsy,clingen;panelapp_au_id;panelapp_ge_epilepsy;panelapp_ge_id
@@ -2154,7 +2112,6 @@ HGNC:31750,SAMD12,T1,epilepsy_only_unclassified,genes4epilepsy;orphadata_genes;p
 HGNC:1348,SAMD9,T1,ndd_no_documented_epilepsy,clingen;orphadata_genes;panelapp_au_id;panelapp_ge_id
 HGNC:1349,SAMD9L,T1,ndd_no_documented_epilepsy,clingen;orphadata_genes;panelapp_au_id;panelapp_ge_id
 HGNC:15925,SAMHD1,T1,ndd_with_epilepsy,clingen;genes4epilepsy;orphadata_genes;panelapp_au_epilepsy;panelapp_au_id;panelapp_ge_epilepsy;panelapp_ge_id
-HGNC:10537,SARS1,T1,ndd_with_epilepsy,clingen;orphadata_genes;panelapp_au_id;panelapp_ge_epilepsy;panelapp_ge_id
 HGNC:17697,SARS2,T1,ndd_no_documented_epilepsy,clingen;orphadata_genes;panelapp_au_id;panelapp_ge_id
 HGNC:16860,SART3,T1,ndd_with_epilepsy,panelapp_au_epilepsy;panelapp_au_id
 HGNC:15975,SASH3,T1,unclassified,clingen;orphadata_genes
@@ -2165,7 +2122,6 @@ HGNC:10542,SBF1,T1,ndd_no_documented_epilepsy,clingen;orphadata_genes;panelapp_a
 HGNC:2135,SBF2,T1,ndd_no_documented_epilepsy,clingen;orphadata_genes;panelapp_ge_id
 HGNC:10547,SC5D,T1,ndd_no_documented_epilepsy,orphadata_genes;panelapp_au_id;panelapp_ge_id
 HGNC:19304,SCAF4,T1,ndd_with_epilepsy,clingen;genes4epilepsy;orphadata_genes;panelapp_au_epilepsy;panelapp_au_id;panelapp_ge_epilepsy;panelapp_ge_id
-HGNC:30386,SCAMP5,T1,ndd_with_epilepsy,genes4epilepsy;panelapp_au_epilepsy;panelapp_au_id;panelapp_ge_epilepsy;panelapp_ge_id
 HGNC:13081,SCAPER,T1,ndd_no_documented_epilepsy,clingen;orphadata_genes;panelapp_au_id;panelapp_ge_id
 HGNC:1665,SCARB2,T1,ndd_with_epilepsy,clingen;genes4epilepsy;orphadata_genes;panelapp_au_epilepsy;panelapp_ge_epilepsy;panelapp_ge_id
 HGNC:10583,SCN11A,T1,ndd_no_documented_epilepsy,clingen;orphadata_genes;panelapp_au_id;panelapp_ge_id
@@ -2300,7 +2256,6 @@ HGNC:31399,SLC6A17,T1,ndd_no_documented_epilepsy,clingen;orphadata_genes;panelap
 HGNC:27960,SLC6A19,T1,ndd_with_epilepsy,clingen;orphadata_genes;panelapp_au_epilepsy;panelapp_au_id;panelapp_ge_epilepsy;panelapp_ge_id
 HGNC:11049,SLC6A3,T1,ndd_no_documented_epilepsy,clingen;orphadata_genes;panelapp_au_id;panelapp_ge_id
 HGNC:11051,SLC6A5,T1,ndd_with_epilepsy,clingen;orphadata_genes;panelapp_ge_epilepsy;panelapp_ge_id
-HGNC:11055,SLC6A8,T1,ndd_with_epilepsy,clingen;genes4epilepsy;orphadata_genes;panelapp_au_epilepsy;panelapp_au_id;panelapp_ge_epilepsy;panelapp_ge_id
 HGNC:11056,SLC6A9,T1,ndd_with_epilepsy,clingen;orphadata_genes;panelapp_au_id;panelapp_ge_id
 HGNC:11065,SLC7A7,T1,ndd_no_documented_epilepsy,clingen;orphadata_genes;panelapp_au_id;panelapp_ge_id
 HGNC:11067,SLC7A9,T1,unclassified,clingen;orphadata_genes
@@ -2318,7 +2273,6 @@ HGNC:11102,SMARCAL1,T1,ndd_no_documented_epilepsy,clingen;orphadata_genes;panela
 HGNC:11104,SMARCC1,T1,ndd_no_documented_epilepsy,clingen;panelapp_au_id;panelapp_ge_id
 HGNC:11106,SMARCD1,T1,ndd_no_documented_epilepsy,orphadata_genes;panelapp_au_id;panelapp_ge_id
 HGNC:11109,SMARCE1,T1,ndd_with_epilepsy,clingen;genes4epilepsy;orphadata_genes;panelapp_au_epilepsy;panelapp_au_id;panelapp_ge_id
-HGNC:2468,SMC3,T1,ndd_no_documented_epilepsy,clingen;orphadata_genes;panelapp_au_id;panelapp_ge_id
 HGNC:20465,SMC5,T1,ndd_no_documented_epilepsy,panelapp_au_id
 HGNC:29090,SMCHD1,T1,ndd_no_documented_epilepsy,clingen;orphadata_genes;panelapp_au_id;panelapp_ge_id
 HGNC:25551,SMG8,T1,ndd_no_documented_epilepsy,clingen;panelapp_au_id;panelapp_ge_id
@@ -2371,7 +2325,6 @@ HGNC:30621,SPNS1,T1,ndd_no_documented_epilepsy,panelapp_au_id
 HGNC:11254,SPOP,T1,ndd_no_documented_epilepsy,clingen;orphadata_genes;panelapp_au_id;panelapp_ge_id
 HGNC:26933,SPOUT1,T1,ndd_with_epilepsy,genes4epilepsy;panelapp_au_epilepsy;panelapp_au_id;panelapp_ge_epilepsy;panelapp_ge_id
 HGNC:11257,SPR,T1,ndd_with_epilepsy,clingen;genes4epilepsy;orphadata_genes;panelapp_au_epilepsy;panelapp_au_id;panelapp_ge_epilepsy;panelapp_ge_id
-HGNC:20249,SPRED1,T1,ndd_no_documented_epilepsy,clingen;orphadata_genes;panelapp_au_id;panelapp_ge_id
 HGNC:17722,SPRED2,T1,ndd_no_documented_epilepsy,orphadata_genes;panelapp_au_id;panelapp_ge_id
 HGNC:11276,SPTBN2,T1,ndd_no_documented_epilepsy,clingen;orphadata_genes;panelapp_au_id;panelapp_ge_id
 HGNC:14896,SPTBN4,T1,ndd_with_epilepsy,clingen;genes4epilepsy;panelapp_au_epilepsy;panelapp_au_id;panelapp_ge_epilepsy;panelapp_ge_id
@@ -2597,7 +2550,6 @@ HGNC:12347,TRRAP,T1,ndd_with_epilepsy,clingen;genes4epilepsy;orphadata_genes;pan
 HGNC:16791,TSEN15,T1,ndd_with_epilepsy,genes4epilepsy;orphadata_genes;panelapp_au_epilepsy;panelapp_au_id;panelapp_ge_epilepsy;panelapp_ge_id
 HGNC:28422,TSEN2,T1,ndd_with_epilepsy,genes4epilepsy;orphadata_genes;panelapp_au_epilepsy;panelapp_au_id;panelapp_ge_epilepsy;panelapp_ge_id
 HGNC:15506,TSEN34,T1,ndd_with_epilepsy,genes4epilepsy;orphadata_genes;panelapp_au_epilepsy;panelapp_au_id;panelapp_ge_epilepsy;panelapp_ge_id
-HGNC:27561,TSEN54,T1,ndd_with_epilepsy,genes4epilepsy;orphadata_genes;panelapp_au_epilepsy;panelapp_au_id;panelapp_ge_epilepsy;panelapp_ge_id
 HGNC:12367,TSFM,T1,ndd_with_epilepsy,clingen;genes4epilepsy;orphadata_genes;panelapp_au_epilepsy;panelapp_au_id;panelapp_ge_epilepsy;panelapp_ge_id
 HGNC:12372,TSHB,T1,ndd_no_documented_epilepsy,orphadata_genes;panelapp_au_id;panelapp_ge_id
 HGNC:21641,TSPAN12,T1,unclassified,clingen;orphadata_genes
@@ -2652,7 +2604,6 @@ HGNC:12559,UMOD,T1,unclassified,clingen;orphadata_genes
 HGNC:12563,UMPS,T1,ndd_with_epilepsy,genes4epilepsy;orphadata_genes;panelapp_au_epilepsy;panelapp_au_id;panelapp_ge_id
 HGNC:23150,UNC13A,T1,ndd_with_epilepsy,clingen;genes4epilepsy;orphadata_genes;panelapp_au_epilepsy;panelapp_au_id;panelapp_ge_epilepsy;panelapp_ge_id
 HGNC:23147,UNC13D,T1,ndd_no_documented_epilepsy,clingen;orphadata_genes;panelapp_au_id
-HGNC:19966,UNC79,T1,ndd_with_epilepsy,genes4epilepsy;panelapp_au_epilepsy;panelapp_au_id;panelapp_ge_epilepsy;panelapp_ge_id
 HGNC:16297,UPB1,T1,ndd_no_documented_epilepsy,orphadata_genes;panelapp_au_id;panelapp_ge_id
 HGNC:9962,UPF1,T1,ndd_no_documented_epilepsy,orphadata_genes;panelapp_au_id;panelapp_ge_id
 HGNC:26444,UROC1,T1,ndd_no_documented_epilepsy,clingen;orphadata_genes;panelapp_au_id;panelapp_ge_id
@@ -2665,7 +2616,6 @@ HGNC:13486,USP27X,T1,ndd_no_documented_epilepsy,clingen;orphadata_genes;panelapp
 HGNC:20066,USP34,T1,ndd_no_documented_epilepsy,clingen;panelapp_au_id;panelapp_ge_id
 HGNC:12632,USP9X,T1,ndd_with_epilepsy,clingen;genes4epilepsy;orphadata_genes;panelapp_au_id;panelapp_ge_id;simons_searchlight
 HGNC:12649,VAPB,T1,unclassified,clingen;orphadata_genes
-HGNC:12651,VARS1,T1,ndd_with_epilepsy,clingen;genes4epilepsy;panelapp_au_epilepsy;panelapp_au_id;panelapp_ge_epilepsy;panelapp_ge_id
 HGNC:21642,VARS2,T1,ndd_with_epilepsy,clingen;genes4epilepsy;orphadata_genes;panelapp_au_epilepsy;panelapp_au_id;panelapp_ge_id
 HGNC:2464,VCAN,T1,unclassified,clingen;orphadata_genes
 HGNC:12666,VCP,T1,ndd_no_documented_epilepsy,clingen;orphadata_genes;panelapp_au_id;panelapp_ge_id
@@ -2689,7 +2639,6 @@ HGNC:12718,VRK1,T1,ndd_no_documented_epilepsy,orphadata_genes;panelapp_au_id;pan
 HGNC:28385,VWA3B,T1,ndd_no_documented_epilepsy,panelapp_au_id
 HGNC:12726,VWF,T1,unclassified,clingen;orphadata_genes
 HGNC:23293,WAPL,T1,ndd_no_documented_epilepsy,panelapp_au_id;panelapp_ge_id
-HGNC:12729,WARS1,T1,ndd_no_documented_epilepsy,clingen;orphadata_genes;panelapp_au_id;panelapp_ge_id
 HGNC:12731,WAS,T1,unclassified,clingen;orphadata_genes
 HGNC:12732,WASF1,T1,ndd_with_epilepsy,genes4epilepsy;orphadata_genes;panelapp_au_epilepsy;panelapp_au_id;panelapp_ge_epilepsy;panelapp_ge_id
 HGNC:29174,WASHC4,T1,ndd_with_epilepsy,genes4epilepsy;orphadata_genes;panelapp_au_epilepsy;panelapp_au_id;panelapp_ge_id
@@ -2732,7 +2681,6 @@ HGNC:12825,XPO1,T1,ndd_no_documented_epilepsy,orphadata_genes;panelapp_au_id
 HGNC:12826,XPOT,T1,ndd_no_documented_epilepsy,panelapp_au_id
 HGNC:12831,XRCC4,T1,ndd_no_documented_epilepsy,clingen;orphadata_genes;panelapp_au_id;panelapp_ge_id
 HGNC:15516,XYLT1,T1,ndd_no_documented_epilepsy,orphadata_genes;panelapp_au_id;panelapp_ge_id
-HGNC:12840,YARS1,T1,ndd_no_documented_epilepsy,clingen;orphadata_genes;panelapp_au_id;panelapp_ge_id
 HGNC:24249,YARS2,T1,unclassified,clingen;orphadata_genes
 HGNC:30511,YIF1B,T1,ndd_with_epilepsy,clingen;genes4epilepsy;orphadata_genes;panelapp_au_epilepsy;panelapp_au_id;panelapp_ge_epilepsy;panelapp_ge_id
 HGNC:24877,YIPF5,T1,ndd_with_epilepsy,genes4epilepsy;orphadata_genes;panelapp_au_epilepsy;panelapp_ge_epilepsy;panelapp_ge_id
@@ -2823,7 +2771,6 @@ HGNC:17208,BICD2,T2,ndd_with_epilepsy,genes4epilepsy;orphadata_genes;panelapp_au
 HGNC:20914,BLOC1S3,T2,unclassified,clingen;orphadata_genes
 HGNC:1062,BLVRA,T2,unclassified,clingen;orphadata_genes
 HGNC:26019,BPNT2,T2,ndd_no_documented_epilepsy,clingen;orphadata_genes;panelapp_ge_id
-HGNC:1395,CACNA1H,T2,ndd_with_epilepsy,orphadata_genes;panelapp_ge_epilepsy;panelapp_ge_id
 HGNC:1397,CACNA1S,T2,ndd_no_documented_epilepsy,clingen;orphadata_genes;panelapp_ge_id
 HGNC:17601,CADM3,T2,unclassified,clingen
 HGNC:1463,CAMK2G,T2,ndd_with_epilepsy,clingen;panelapp_au_id;panelapp_ge_epilepsy;panelapp_ge_id
@@ -3218,7 +3165,6 @@ HGNC:18884,TDP1,T2,ndd_no_documented_epilepsy,orphadata_genes;panelapp_ge_id
 HGNC:25941,TET2,T2,unclassified,clingen;orphadata_genes
 HGNC:11740,TF,T2,unclassified,clingen;orphadata_genes
 HGNC:11766,TGFB1,T2,ndd_with_epilepsy,clingen;orphadata_genes;panelapp_au_id;panelapp_ge_id
-HGNC:26053,THG1L,T2,ndd_with_epilepsy,clingen;genes4epilepsy;panelapp_au_epilepsy;panelapp_au_id
 HGNC:11799,THRB,T2,ndd_no_documented_epilepsy,orphadata_genes;panelapp_au_id;panelapp_ge_id
 HGNC:24552,TKFC,T2,ndd_no_documented_epilepsy,orphadata_genes;panelapp_au_id;panelapp_ge_id
 HGNC:11834,TKT,T2,ndd_no_documented_epilepsy,orphadata_genes;panelapp_au_id;panelapp_ge_id
@@ -4081,7 +4027,6 @@ HGNC:4789,H4C2,T3,ndd_no_documented_epilepsy,panelapp_ge_id
 HGNC:4795,H6PD,T3,unclassified,orphadata_genes
 HGNC:4798,HABP2,T3,unclassified,orphadata_genes
 HGNC:4806,HAL,T3,ndd_no_documented_epilepsy,clingen;orphadata_genes;panelapp_au_id
-HGNC:4816,HARS1,T3,ndd_no_documented_epilepsy,clingen;orphadata_genes;panelapp_au_id;panelapp_ge_id
 HGNC:4817,HARS2,T3,ndd_no_documented_epilepsy,clingen;orphadata_genes;panelapp_au_id;panelapp_ge_id
 HGNC:4819,HAS2,T3,unclassified,clingen
 HGNC:32979,HAUS7,T3,ndd_no_documented_epilepsy,panelapp_ge_id
@@ -4394,10 +4339,7 @@ HGNC:25742,MAP7D3,T3,ndd_no_documented_epilepsy,panelapp_ge_id
 HGNC:6888,MAPKAPK3,T3,unclassified,orphadata_genes
 HGNC:6893,MAPT,T3,ndd_no_documented_epilepsy,orphadata_genes;panelapp_ge_id
 HGNC:13538,MARK4,T3,ndd_no_documented_epilepsy,panelapp_au_id
-HGNC:6898,MARS1,T3,unclassified,clingen;orphadata_genes
 HGNC:6902,MASP2,T3,unclassified,orphadata_genes
-HGNC:19035,MAST2,T3,unclassified,clingen
-HGNC:19042,MASTL,T3,unclassified,clingen;orphadata_genes
 HGNC:6904,MAT2A,T3,unclassified,clingen;orphadata_genes
 HGNC:6909,MATN3,T3,ndd_no_documented_epilepsy,orphadata_genes;panelapp_ge_id
 HGNC:6910,MATN4,T3,epilepsy_only_unclassified,panelapp_ge_epilepsy
@@ -4820,7 +4762,6 @@ HGNC:9580,PSTPIP1,T3,unclassified,orphadata_genes
 HGNC:9586,PTCH2,T3,unclassified,clingen;orphadata_genes
 HGNC:9604,PTGS1,T3,unclassified,clingen
 HGNC:9606,PTH,T3,unclassified,orphadata_genes
-HGNC:9644,PTPN11,T3,ndd_no_documented_epilepsy,clingen;orphadata_genes;panelapp_au_id;panelapp_ge_id
 HGNC:9647,PTPN14,T3,unclassified,orphadata_genes
 HGNC:9650,PTPN2,T3,unclassified,orphadata_genes
 HGNC:9651,PTPN21,T3,ndd_no_documented_epilepsy,panelapp_ge_id
@@ -4842,7 +4783,6 @@ HGNC:18072,RABL3,T3,unclassified,orphadata_genes
 HGNC:24703,RABL6,T3,ndd_no_documented_epilepsy,panelapp_ge_id
 HGNC:9804,RACGAP1,T3,unclassified,orphadata_genes
 HGNC:9816,RAD50,T3,ndd_no_documented_epilepsy,clingen;orphadata_genes;panelapp_ge_id
-HGNC:9829,RAF1,T3,ndd_no_documented_epilepsy,clingen;orphadata_genes;panelapp_au_id;panelapp_ge_id
 HGNC:9835,RAI2,T3,unclassified,clingen
 HGNC:9842,RALGDS,T3,ndd_no_documented_epilepsy,panelapp_ge_id
 HGNC:14428,RANBP17,T3,ndd_no_documented_epilepsy,panelapp_ge_id
@@ -4998,7 +4938,6 @@ HGNC:10825,SH3BP2,T3,unclassified,orphadata_genes
 HGNC:13867,SH3KBP1,T3,unclassified,clingen;orphadata_genes
 HGNC:23664,SH3PXD2A,T3,unclassified,orphadata_genes
 HGNC:26535,SHOC1,T3,unclassified,orphadata_genes
-HGNC:15454,SHOC2,T3,ndd_no_documented_epilepsy,clingen;orphadata_genes;panelapp_au_id;panelapp_ge_id
 HGNC:10853,SHOX,T3,ndd_no_documented_epilepsy,orphadata_genes;panelapp_ge_id
 HGNC:1492,SHPK,T3,unclassified,orphadata_genes
 HGNC:630,SHROOM2,T3,ndd_no_documented_epilepsy,panelapp_ge_id
@@ -5098,7 +5037,6 @@ HGNC:29256,SOBP,T3,ndd_no_documented_epilepsy,clingen;orphadata_genes;panelapp_a
 HGNC:27845,SOHLH1,T3,unclassified,orphadata_genes
 HGNC:16698,SORCS2,T3,epilepsy_only_unclassified,panelapp_au_epilepsy
 HGNC:11185,SORL1,T3,unclassified,orphadata_genes
-HGNC:11187,SOS1,T3,ndd_no_documented_epilepsy,clingen;orphadata_genes;panelapp_au_id;panelapp_ge_id
 HGNC:13771,SOST,T3,ndd_no_documented_epilepsy,orphadata_genes;panelapp_au_id
 HGNC:11194,SOX18,T3,unclassified,orphadata_genes
 HGNC:18196,SOX7,T3,unclassified,clingen
