@@ -66,11 +66,11 @@
 
 <section id="find">
   <h2>Find a gene</h2>
-  <form class="find" action="explore.html" method="get">
-    <input type="search" name="q" placeholder="Gene symbol, for example SCN2A, STXBP1, KCNT1" aria-label="Gene symbol" required>
+  <form class="find" action="gene.html" method="get">
+    <input type="search" name="symbol" placeholder="Gene symbol, for example SCN2A, STXBP1, KCNT1" aria-label="Gene symbol" required>
     <button type="submit">Look it up</button>
   </form>
-  <p class="examples">Try: <a href="explore.html?q=SCN2A">SCN2A</a><a href="explore.html?q=STXBP1">STXBP1</a><a href="explore.html?q=KCNT1">KCNT1</a><a href="explore.html?q=SYNGAP1">SYNGAP1</a><a href="explore.html?q=CDKL5">CDKL5</a><a href="explore.html?q=SLC6A1">SLC6A1</a></p>
+  <p class="examples">Try: <a href="gene.html?symbol=SCN2A">SCN2A</a><a href="gene.html?symbol=STXBP1">STXBP1</a><a href="gene.html?symbol=KCNT1">KCNT1</a><a href="gene.html?symbol=SYNGAP1">SYNGAP1</a><a href="gene.html?symbol=CDKL5">CDKL5</a><a href="gene.html?symbol=SLC6A1">SLC6A1</a></p>
   <div class="stat" id="stats"></div>
 </section>
 
@@ -83,7 +83,7 @@
     <li>"Candidate" next to an organization means it came from a public roster and has not yet been checked by a reviewer.</li>
     <li>Nothing here is medical advice. Take what you find to your care team and the organization itself.</li>
   </ul>
-  <a class="go" href="explore.html#genes">Look up a gene</a>
+  <a class="go" href="gene.html?symbol=SCN2A&aud=patient">See an example card</a>
 </section>
 
 <section class="door g" id="pags">
@@ -94,7 +94,7 @@
     <li>Download the filtered table as CSV to review offline.</li>
     <li>Corrections and additions go in as a GitHub issue on the repository, or by editing <code>curated/organizations.csv</code> directly.</li>
   </ul>
-  <a class="go" href="explore.html?status=candidate#organizations">Review organizations</a> &nbsp; <a class="go" href="explore.html#gaps">Open the review queue</a>
+  <a class="go" href="gene.html?symbol=STXBP1&aud=pag">See an example card</a> &nbsp; <a class="go" href="explore.html#gaps">Open the review queue</a>
 </section>
 
 <section class="door c" id="clinicians">
@@ -105,20 +105,21 @@
     <li>The tier and domain rules are stated in full on the Method section and in the code.</li>
     <li>Download the whole spine or any filtered subset as CSV; JSON is in the repository.</li>
   </ul>
-  <a class="go" href="explore.html#genes">Compare the lists</a> &nbsp; <a class="go" href="explore.html#method">Read the method</a>
+  <a class="go" href="gene.html?symbol=KCNT1&aud=clinician">See an example card</a> &nbsp; <a class="go" href="explore.html#genes">Compare the lists</a> &nbsp; <a class="go" href="explore.html#method">Read the method</a>
 </section>
 </div>
 
 <section id="how">
   <h2>How to use this</h2>
   <ol class="how">
-    <li>Type a gene symbol in the box above and press Look it up. The full table opens with that gene's row expanded.</li>
-    <li>Read the row: tier, domain (epilepsy, NDD, or both), mechanism, and the tick strip showing which lists include the gene. Hover a tick for the source's own label.</li>
-    <li>Below the row are the disorder, organizations, registries, platforms, therapeutics in development, and FDA patient meetings recorded for that gene, with links.</li>
-    <li>Use the Organizations section to search by organization name instead, and the Gaps section to see genes that still have no organization.</li>
-    <li>Sources and Method, at the bottom of the table page, tell you where every value came from and how tiers were assigned.</li>
+    <li>Type a gene symbol in the box above and press Look it up. The gene's card opens.</li>
+    <li>The card has three views; switch between Patients and caregivers, Advocacy groups, and Clinicians and researchers with the tabs under the gene name. The same gene, the same facts, arranged for what each reader needs.</li>
+    <li>Patients and caregivers see the disorder, organizations, registries and studies to join, treatments in development, and a plain-language statement of how strong the evidence is.</li>
+    <li>Advocacy groups see a checklist of what is on record for the gene and what is missing.</li>
+    <li>Clinicians and researchers see the evidence label from every source that includes the gene, the mechanism class, and links to ClinVar, gnomAD, GeneReviews, PubMed, and ClinicalTrials.gov.</li>
+    <li>Explore the full table when you want to compare many genes at once, filter by tier, domain, mechanism, or source, or download a subset.</li>
   </ol>
-  <p class="muted">Search works on symbol, gene name, disorder name, and HGNC ID. Older symbols resolve to the current one, so a report that says SCN2A1 finds SCN2A.</p>
+  <p class="muted">Search takes a gene symbol or HGNC ID. Older symbols resolve to the current one during the build, so a report that says SCN2A1 finds SCN2A. Each card has its own address, for example <code>gene.html?symbol=KCNT1</code>, so it can be linked from anywhere.</p>
 </section>
 
 <p class="fine">whoswho is an independent research awareness project by Boyce Data Science. It is not medical advice, does not speak for any organization, and listing an organization is not an endorsement. Information is compiled from public sources and ages quickly; the release date in the top bar is the date the lists were last rebuilt.</p>

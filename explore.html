@@ -116,7 +116,7 @@
 
 <section id="genes">
   <h2>Genes <a class="totop" href="#top">Back to top</a></h2>
-  <p>Search by symbol, name, or HGNC ID. Filter by tier, domain, a single source, or mechanism class (channelopathy, synaptopathy, mTORopathy, and so on). The tick strip shows which lists include the gene, in the order named under the table. Click a symbol to open the disorder, organizations, registries, platforms, and therapeutic pipeline recorded for it.</p>
+  <p>Search by symbol, name, or HGNC ID. Filter by tier, domain, a single source, or mechanism class (channelopathy, synaptopathy, mTORopathy, and so on). The tick strip shows which lists include the gene, in the order named under the table. Click a symbol to open its card.</p>
   <div class="controls">
     <input type="search" id="q" placeholder="Search symbol, gene name, HGNC ID" aria-label="Search genes">
     <label>Tier <select id="fTier"><option value="">all</option><option>T1</option><option>T2</option><option>T3</option></select></label>
@@ -134,11 +134,11 @@
 
 <section id="organizations">
   <h2>Organizations <a class="totop" href="#top">Back to top</a></h2>
-  <p>Curated rows are confirmed by a reviewer and are the authoritative record. Candidate rows arrived from membership rosters or listed pages and have not been reviewed; they are shown separately so the two are never confused.</p>
+  <p>Verified rows have been confirmed by a reviewer. Rows awaiting review arrived from public rosters and directories and are shown until they are confirmed or removed. Click a gene to open its card.</p>
   <div class="controls">
     <input type="search" id="oq" placeholder="Search organization or gene" aria-label="Search organizations">
-    <label>Status <select id="fStatus"><option value="">all</option><option value="curated">curated</option><option value="candidate">candidate</option></select></label>
-    <label>Source <select id="fOrgSource"><option value="">any</option></select></label>
+    <label>Status <select id="fStatus"><option value="">all</option><option value="curated">verified</option><option value="candidate">awaiting review</option></select></label>
+    <label class="srcnames">Where it came from <select id="fOrgSource"><option value="">any</option></select></label>
     <button class="dl" id="dlOrgs">Download filtered CSV</button>
     <span class="count" id="orgCount"></span>
   </div>
@@ -147,7 +147,7 @@
 
 <section id="gaps">
   <h2>Genes without an organization <a class="totop" href="#top">Back to top</a></h2>
-  <p>Ordered by tier, so the strongest gene-disease associations with no organization on record come first. This is the review queue.</p>
+  <p>Genes with strong evidence and no organization on record, T1 first. This is the review queue for advocacy groups and coalitions.</p>
   <details id="gapsBlock"><summary id="gapsSummary">Genes with no curated or candidate organization row</summary><div class="tablewrap"><table id="gapTable"><thead></thead><tbody></tbody></table></div></details>
 </section>
 
@@ -258,10 +258,10 @@
     const detail = g => {
       const os = (orgByGene[g.hgnc_id]||[]).map(o=>`${o.url?`<a href="${esc(o.url)}">${esc(o.org_name)}</a>`:esc(o.org_name)}${o.status==='curated'?'':' <span class="muted">(candidate)</span>'}`).join('; ');
       const body = dl('Disorder', g.disorder) + (os?`<dt>Organizations</dt><dd>${os}</dd>`:'') + dl('Registry', g.el_registry) + dl('Registry link', g.el_registry_url, true) + dl('Platforms', g.el_platforms) + dl('Simons Searchlight', g.simons_enrolled) + dl('CoRDS', g.cords) + dl('Therapeutics', g.therapeutics) + dl('FDA patient meeting', g.fda_report) + dl('Gene family', g.gene_family) + (g.opathy?`<dt>Mechanism</dt><dd>${esc(g.opathy)} <span class="muted">(${esc(g.opathy_basis||'')})</span></dd>`:'');
-      return body ? `<tr class="detail" data-for="${esc(g.hgnc_id)}" hidden><td colspan="${gcols.length}"><dl>${body}</dl></td></tr>` : '';
+      return '';
     };
-    $('#geneTable tbody').innerHTML = slice.map(g=>`<tr><td class="sym"><a href="#" class="open" data-hgnc="${esc(g.hgnc_id)}">${esc(g.symbol)}</a>${g.disputed?'<span class="disp">disputed</span>':''}</td><td class="name">${esc(g.gene_name)}</td><td><span class="tier ${esc(g.tier)}">${esc(g.tier)}</span></td><td>${esc(g.domain.replace(/_/g,' '))}</td><td class="srcnames">${esc(g.opathy||'')}</td><td>${ticks(g)}</td><td><a href="https://www.genenames.org/data/gene-symbol-report/#!/hgnc_id/${esc(g.hgnc_id)}">${esc(g.hgnc_id)}</a></td><td>${esc(g.orphacodes||'').split(';').filter(Boolean).map(o=>`<a href="https://www.orpha.net/en/disease/detail/${o}">${o}</a>`).join(' ')}</td><td class="srcnames">${g.simons_page_url?`<a href="${esc(g.simons_page_url)}">page</a>`:''}${g.simons_report_url?` · <a href="${esc(g.simons_report_url)}">report</a>`:''}</td></tr>${detail(g)}`).join('');
-    document.querySelectorAll('#geneTable a.open').forEach(a=>a.addEventListener('click', e=>{ e.preventDefault(); const d=document.querySelector(`tr.detail[data-for="${a.dataset.hgnc}"]`); if(d) d.hidden=!d.hidden; }));
+    $('#geneTable tbody').innerHTML = slice.map(g=>`<tr><td class="sym"><a href="gene.html?symbol=${encodeURIComponent(g.symbol)}">${esc(g.symbol)}</a>${g.disputed?'<span class="disp">disputed</span>':''}</td><td class="name">${esc(g.gene_name)}</td><td><span class="tier ${esc(g.tier)}">${esc(g.tier)}</span></td><td>${esc(g.domain.replace(/_/g,' '))}</td><td class="srcnames">${esc(g.opathy||'')}</td><td>${ticks(g)}</td><td><a href="https://www.genenames.org/data/gene-symbol-report/#!/hgnc_id/${esc(g.hgnc_id)}">${esc(g.hgnc_id)}</a></td><td>${esc(g.orphacodes||'').split(';').filter(Boolean).map(o=>`<a href="https://www.orpha.net/en/disease/detail/${o}">${o}</a>`).join(' ')}</td><td class="srcnames">${g.simons_page_url?`<a href="${esc(g.simons_page_url)}">page</a>`:''}${g.simons_report_url?` · <a href="${esc(g.simons_report_url)}">report</a>`:''}</td></tr>${detail(g)}`).join('');
+
     $('#geneCount').textContent = rows.length===genes.length ? `${rows.length} genes` : `${rows.length} of ${genes.length} genes`;
     $('#genePager').innerHTML = pages>1 ? `<button id="pprev" ${gpage===0?'disabled':''}>Previous</button><span>Page ${gpage+1} of ${pages}</span><button id="pnext" ${gpage>=pages-1?'disabled':''}>Next</button>` : '';
     if(pages>1){ $('#pprev').onclick=()=>{gpage--;renderGenes();}; $('#pnext').onclick=()=>{gpage++;renderGenes();}; }
@@ -277,14 +277,15 @@
   if(params.get('q')){ const first=document.querySelector('#geneTable tr.detail'); if(first) first.hidden=false; document.getElementById('genes').scrollIntoView(); }
 
   // ---- organizations
-  const ocols=[['org_name','Organization'],['symbol','Gene'],['status','Status'],['org_type','Type'],['registry_platform','Registry'],['natural_history_study','Natural history study'],['maturity_stage','Stage'],['coalitions','Coalitions'],['country','Country'],['source','Source'],['notes','Notes']];
+  const ocols=[['org_name','Organization'],['symbol','Gene'],['status','Status'],['org_type','Type'],['registry_platform','Registry platform'],['natural_history_study','Natural history study'],['maturity_stage','Stage'],['coalitions','Coalitions'],['country','Country']];
   $('#orgTable thead').innerHTML='<tr>'+ocols.map(([k,l])=>`<th>${l}</th>`).join('')+'</tr>';
-  [...new Set(orgs.map(o=>o.source).filter(Boolean))].sort().forEach(s=>{ const o=document.createElement('option'); o.value=s; o.textContent=s; $('#fOrgSource').appendChild(o); });
+  const orgSourceLabel = {epilepsylive_orgs:'EpilepsyLive directory', rela_2019:'Rare Epilepsy Landscape Analysis 2019', citizen_registry:'Citizen Health', everycure_rdnp:'EveryCure nonprofit list', fda_pfdd:'FDA patient meetings', registries_2020:'2020 registry survey', ren_members:'Rare Epilepsy Network', combinedbrain_members:'COMBINEDBrain', epilepsy_foundation_genetic:'Epilepsy Foundation', simons_support_links:'Simons Searchlight', hand:'entered by reviewer'};
+  [...new Set(orgs.flatMap(o=>o.source.split(';')).filter(Boolean))].sort().forEach(s=>{ const o=document.createElement('option'); o.value=s; o.textContent=orgSourceLabel[s]||s; $('#fOrgSource').appendChild(o); });
   function renderOrgs(){
     const q=$('#oq').value.trim().toLowerCase(), st=$('#fStatus').value, so=$('#fOrgSource').value;
-    const rows=orgs.filter(o=>(!q||o.org_name.toLowerCase().includes(q)||(o.symbol||'').toLowerCase().includes(q))&&(!st||o.status===st)&&(!so||o.source===so));
+    const rows=orgs.filter(o=>(!q||o.org_name.toLowerCase().includes(q)||(o.symbol||'').toLowerCase().includes(q))&&(!st||o.status===st)&&(!so||o.source.split(';').includes(so)));
     rows.sort((a,b)=>(a.status==='curated'?0:1)-(b.status==='curated'?0:1)||a.org_name.localeCompare(b.org_name));
-    $('#orgTable tbody').innerHTML=rows.map(o=>`<tr><td>${o.url?`<a href="${esc(o.url)}">${esc(o.org_name)}</a>`:esc(o.org_name)}${o.registry_url&&o.registry_url!==o.url?` · <a href="${esc(o.registry_url)}">registry</a>`:''}</td><td class="sym">${esc(o.symbol)}</td><td>${esc(o.status)}</td>${ocols.slice(3).map(([k])=>`<td class="${k==='notes'?'name':''}">${esc(o[k])}</td>`).join('')}</tr>`).join('');
+    $('#orgTable tbody').innerHTML=rows.map(o=>`<tr><td>${o.url?`<a href="${esc(o.url)}">${esc(o.org_name)}</a>`:esc(o.org_name)}${o.registry_url&&o.registry_url!==o.url?` · <a href="${esc(o.registry_url)}">registry</a>`:''}</td><td class="sym"><a href="gene.html?symbol=${encodeURIComponent(o.symbol)}&aud=pag">${esc(o.symbol)}</a></td><td>${o.status==='curated'?'verified':'awaiting review'}</td>${ocols.slice(3).map(([k])=>`<td>${esc((o[k]||'').replace(/;/g,', '))}</td>`).join('')}</tr>`).join('');
     $('#orgCount').textContent=`${rows.length} rows`;
     $('#dlOrgs').onclick=()=>download('organizations_filtered.csv', toCSV(rows, Object.keys(orgs[0]||{})));
   }
@@ -294,7 +295,7 @@
 
   // ---- gaps
   $('#gapTable thead').innerHTML='<tr><th>Symbol</th><th>Tier</th><th>Domain</th><th>Lists</th></tr>';
-  $('#gapTable tbody').innerHTML=gaps.map(g=>`<tr><td class="sym">${esc(g.symbol)}</td><td><span class="tier ${esc(g.tier)}">${esc(g.tier)}</span></td><td>${esc((g.domain||'').replace(/_/g,' '))}</td><td class="srcnames">${esc((g.sources||'').split(';').map(s=>sourceLabel[s]||s).join(', '))}</td></tr>`).join('');
+  $('#gapTable tbody').innerHTML=gaps.map(g=>`<tr><td class="sym"><a href="gene.html?symbol=${encodeURIComponent(g.symbol)}&aud=pag">${esc(g.symbol)}</a></td><td><span class="tier ${esc(g.tier)}">${esc(g.tier)}</span></td><td>${esc((g.domain||'').replace(/_/g,' '))}</td><td class="srcnames">${esc((g.sources||'').split(';').map(s=>sourceLabel[s]||s).join(', '))}</td></tr>`).join('');
   $('#gapsSummary').textContent = `Genes with no organization row, T1 first (${gaps.length})`;
 
   // ---- sources
