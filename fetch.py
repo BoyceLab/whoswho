@@ -139,7 +139,16 @@ def main(argv: list[str]):
                 manual.append((sid, cfg))
             continue
         try:
-            if "quarterly_url" in cfg:
+            if "url" in cfg and "quarterly_url" in cfg:
+                try:
+                    fetch_url(sid, cfg, manifest)
+                    ok = (SRC / sid / cfg["file"]).read_bytes()[:7] == b"hgnc_id"
+                except Exception as e:
+                    print(f"  {sid}: current-release URL failed ({e}); trying quarterly archive")
+                    ok = False
+                if not ok:
+                    fetch_quarterly(sid, cfg, manifest)
+            elif "quarterly_url" in cfg:
                 fetch_quarterly(sid, cfg, manifest)
             elif "api" in cfg:
                 fetch_panelapp(sid, cfg, manifest)

@@ -15,9 +15,10 @@
 # header on first run so any mismatch is a one-line fix here, not a code change.
 
 hgnc:
-  name: HGNC complete set (quarterly archive snapshot)
-  # The quarterly archive is dated, never deleted, and plain TSV. fetch.py tries the most
-  # recent quarter first and walks back until one downloads.
+  name: HGNC complete set
+  url: https://storage.googleapis.com/public-download-files/hgnc/tsv/tsv/hgnc_complete_set.txt
+  # If the current-release URL fails, fetch.py falls back to the dated quarterly archive,
+  # trying the most recent quarter first.
   quarterly_url: https://storage.googleapis.com/public-download-files/hgnc/archive/archive/quarterly/tsv/hgnc_complete_set_{date}.txt
   file: hgnc_complete_set.txt
   license: CC0

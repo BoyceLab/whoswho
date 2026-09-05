@@ -97,25 +97,15 @@ class HgncResolver:
 
 
 def _read_hgnc(path) -> pd.DataFrame:
-    """Read the HGNC complete set, tolerating a BOM, header casing, and either quoting style."""
-    import csv
-    best = None
-    for quoting in (csv.QUOTE_NONE, csv.QUOTE_MINIMAL):
-        try:
-            t = pd.read_csv(path, sep="\t", dtype=str, low_memory=False, quoting=quoting,
-                            encoding="utf-8-sig", on_bad_lines="skip")
-        except Exception as e:  # try the other quoting style
-            print(f"  HGNC read with quoting={quoting} failed: {e}")
-            continue
-        t.columns = [str(c).strip().strip('"').lower() for c in t.columns]
-        if "hgnc_id" in t.columns and (best is None or len(t) > len(best)):
-            best = t
-    if best is None:
-        raise SystemExit(f"Could not read HGNC file at {path}")
-    return best
+    """Read the HGNC complete set. HGNC quotes only multi-value cells and never embeds tabs,
+    so QUOTE_NONE (quoting=3) is the reliable setting; the surrounding quotes are stripped later."""
+    t = pd.read_csv(path, sep="\t", dtype=str, low_memory=False, quoting=3, encoding="utf-8-sig")
+    t.columns = [str(c).strip().strip('"').lower() for c in t.columns]
+    return t
 
 
 def _split(cell: str) -> list[str]:
+    """Multi-value HGNC cells are pipe-delimited and wrapped in double quotes."""
     if not cell:
         return []
-    return [x.strip() for x in str(cell).split("|") if x.strip()]
+    return [x.strip().strip('"') for x in str(cell).strip().strip('"').split("|") if x.strip().strip('"')]
