@@ -188,6 +188,38 @@ def build_org_layer(wide: pd.DataFrame, resolver: HgncResolver, cfg_all: dict, g
     cur_names = {(h, norm(n)) for h, n in zip(curated["hgnc_id"], curated["org_name"])}
     cand = cand[[(h, host(u)) not in cur_keys and (h, norm(n)) not in cur_names
                  for h, u, n in zip(cand["hgnc_id"], cand["url"], cand["org_name"])]]
+    # Merge candidates that describe the same organization for the same gene: same website host,
+    # or same normalized name. Fields fill from the first non-empty value; the origin ids are kept.
+    cand = cand.copy().reset_index(drop=True)
+    # union-find over (gene, name) and (gene, host) so a row with a URL and a row without one still merge
+    parent = list(range(len(cand)))
+    def find(i):
+        while parent[i] != i:
+            parent[i] = parent[parent[i]]
+            i = parent[i]
+        return i
+    seen = {}
+    for i, (h, u, n) in enumerate(zip(cand["hgnc_id"], cand["url"], cand["org_name"])):
+        for key in ((h, "n:" + norm(n)), (h, "h:" + host(u)) if host(u) else None):
+            if key is None:
+                continue
+            if key in seen:
+                parent[find(i)] = find(seen[key])
+            else:
+                seen[key] = i
+    cand["_key"] = [find(i) for i in range(len(cand))]
+    merged = []
+    for key, grp in cand.groupby("_key", sort=False):
+        rec = {}
+        for col in ORG_COLS:
+            vals = [v for v in grp[col] if v]
+            rec[col] = vals[0] if vals else ""
+        rec["org_name"] = max(grp["org_name"], key=len)  # fullest name variant
+        rec["source"] = ";".join(sorted(set(grp["source"])))
+        rec["coalitions"] = ";".join(sorted({c for cs in grp["coalitions"] for c in cs.split(";") if c}))
+        rec["status"] = "candidate"
+        merged.append(rec)
+    cand = pd.DataFrame(merged, columns=ORG_COLS) if merged else pd.DataFrame(columns=ORG_COLS)
     org = pd.concat([curated, cand], ignore_index=True).fillna("")
     org = org.merge(gene_orpha.rename(columns={"orphacodes": "_orpha"}), on="hgnc_id", how="left")
     org["orphacode"] = org["orphacode"].where(org["orphacode"] != "", org["_orpha"].fillna(""))
