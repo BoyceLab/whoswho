@@ -160,8 +160,8 @@
    "how": "manual",
    "url": "https://boycelab.github.io/EpilepsyLive/pag.html",
    "version": null,
-   "bytes": 81836,
-   "sha256": "fcdd42b9ef5f5774927d9b1f4514046f1f22d1b0521ea4cafbc0f6cd36804b83"
+   "bytes": 46366,
+   "sha256": "0c43e1736bb9bd6e97188d1c030e296a92811ebc9260778408eb46e90e2a017b"
   }
  },
  "tier_rule": "Derived columns: evidence tier and phenotype domain.\n\nThese rules are the editorial policy of the spine. They are deliberately\nsimple and stated in the README verbatim, so a tier can be recomputed by\nhand from the per-source columns in the output.\n\nTier (strength of gene-disease evidence, any domain):\n  T1  ClinGen Definitive or Strong\n      OR any PanelApp Green\n      OR SysNDD Definitive\n      OR G2P definitive / strong\n  T2  Genes4Epilepsy (its inclusion is itself a manual curation)\n      OR SFARI score 1 or 2\n      OR SysNDD Moderate  OR G2P moderate  OR PanelApp Amber\n      OR ClinGen Moderate\n      OR Simons Searchlight studied gene\n  T3  everything else that appears on at least one list\n      (Wang OMIM-derived, SAGAS, PanelApp Red, ClinGen Limited, SFARI 3, SysNDD Limited)\n  Refuted/Disputed labels from ClinGen or SysNDD are recorded in a flag column\n  and the gene is held at T3 with disputed=True regardless of other lists.\n\nDomain (what phenotype the evidence speaks to):\n  epilepsy_primary          epilepsy source says the epilepsy is the core phenotype\n  ndd_with_epilepsy         gene appears on both an epilepsy source and an NDD source,\n                            or Wang labels it NDD-with-epilepsy\n  ndd_no_documented_epilepsy gene appears on NDD sources only\n  systemic_with_seizures    Wang systemic category, or Genes4Epilepsy phenotype in its\n                            malformation/metabolic groupings and no NDD source\n  epilepsy_only_unclassified epilepsy sources only, no category text to go on\n",
@@ -180,7 +180,7 @@
  "unresolved_symbols": 32,
  "org_rows": {
   "curated": 0,
-  "candidate": 1066
+  "candidate": 942
  },
  "genes_without_org": 5486
 }
