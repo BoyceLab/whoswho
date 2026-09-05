@@ -70,8 +70,8 @@
 <body>
 <main>
 <nav class="jump" aria-label="Site">
-  <a href="index.html">Front door</a>
-  <a href="explore.html">Explore the full table</a>
+  <a href="index.html">whoswho</a>
+  <a href="explore.html">All genes</a>
   <a href="maturity.html">Maturity model</a>
   <a href="data-elements.html">What platforms ask</a>
   <a href="update.html">Update a listing</a>
@@ -101,7 +101,7 @@
   const params = new URLSearchParams(location.search);
   const want = (params.get('symbol')||params.get('q')||'').trim();
   const aud0 = params.get('aud') || 'patient';
-  if(!want){ $('#card').innerHTML = '<div class="empty"><p>No gene given. Type a symbol in the box above, or go back to the <a href="index.html">front door</a>.</p></div>'; return; }
+  if(!want){ $('#card').innerHTML = '<div class="empty"><p>No gene given. Type a symbol in the box above, or go back to the <a href="index.html">start</a>.</p></div>'; return; }
 
   let genes=[], orgs=[];
   try{

@@ -97,7 +97,7 @@
 <p class="lede">One harmonized list of genes associated with epilepsy and neurodevelopmental disorders, keyed on HGNC ID, with every source's own evidence label kept beside it and a curated layer of patient organizations joined to each gene.</p>
 
 <nav class="jump" aria-label="Sections">
-  <a href="index.html">Front door</a>
+  <a href="index.html">whoswho</a>
   <a href="maturity.html">Maturity model</a>
   <a href="data-elements.html">What platforms ask</a>
   <a href="update.html">Update a listing</a>
@@ -155,7 +155,7 @@
 
 <section id="sources">
   <h2>Sources <a class="totop" href="#top">Back to top</a></h2>
-  <p>Every list this release was built from, with the version or snapshot date and the checksum of the file used. A release is reproducible from these snapshots and the rule below.</p>
+  <p>The public lists this release was built from, with the version or snapshot date and the checksum of the file used. Entries also draw on the editor's own curation, which is not a published document and so is not listed here.</p>
   <div class="srcgrid" id="sourceGrid"></div>
 </section>
 
@@ -281,7 +281,7 @@
   // ---- organizations
   const ocols=[['org_name','Organization'],['symbol','Gene'],['status','Status'],['org_type','Type'],['registry_platform','Registry platform'],['natural_history_study','Natural history study'],['maturity_stage','Stage'],['coalitions','Coalitions'],['country','Country']];
   $('#orgTable thead').innerHTML='<tr>'+ocols.map(([k,l])=>`<th>${l}</th>`).join('')+'</tr>';
-  const orgSourceLabel = {epilepsylive_orgs:'EpilepsyLive directory', rela_2019:'Rare Epilepsy Landscape Analysis 2019', citizen_registry:'Citizen Health', everycure_rdnp:'EveryCure nonprofit list', fda_pfdd:'FDA patient meetings', registries_2020:'2020 registry survey', ren_members:'Rare Epilepsy Network', combinedbrain_members:'COMBINEDBrain', epilepsy_foundation_genetic:'Epilepsy Foundation', simons_support_links:'Simons Searchlight', hand:'entered by reviewer'};
+  const orgSourceLabel = {citizen_registry:'Citizen Health', everycure_rdnp:'EveryCure nonprofit list', fda_pfdd:'FDA patient meetings', ren_members:'Rare Epilepsy Network', combinedbrain_members:'COMBINEDBrain', epilepsy_foundation_genetic:'Epilepsy Foundation', simons_support_links:'Simons Searchlight', 'editor curation':'Editor curation', hand:'Entered by reviewer'};
   [...new Set(orgs.flatMap(o=>o.source.split(';')).filter(Boolean))].sort().forEach(s=>{ const o=document.createElement('option'); o.value=s; o.textContent=orgSourceLabel[s]||s; $('#fOrgSource').appendChild(o); });
   function renderOrgs(){
     const q=$('#oq').value.trim().toLowerCase(), st=$('#fStatus').value, so=$('#fOrgSource').value;
