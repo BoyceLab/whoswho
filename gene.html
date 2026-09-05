@@ -72,6 +72,7 @@
 <nav class="jump" aria-label="Site">
   <a href="index.html">Front door</a>
   <a href="explore.html">Explore the full table</a>
+  <a href="maturity.html">Maturity model</a>
   <form action="gene.html" method="get"><input type="search" name="symbol" placeholder="Another gene" aria-label="Gene symbol" required><button type="submit">Go</button></form>
 </nav>
 
@@ -145,7 +146,7 @@
   // Each platform is either on record (with what it is registered under and where to go),
   // or not on record, which means the spine has no entry, not that the platform excludes the gene.
   const PLATFORMS = [
-    {key:'simons', name:'Simons Searchlight', what:'international natural history study and biorepository', check:'https://www.simonssearchlight.org/research/what-we-study/'},
+    {key:'simons', name:'Simons Searchlight', what:'international natural history study and biorepository', check: g.simons_page_url || 'https://www.simonssearchlight.org/research/what-we-study/'},
     {key:'cords',  name:'Sanford CoRDS',      what:'free registry open to any rare condition',            check:'https://research.sanfordhealth.org/rare-disease-registry'},
     {key:'nord',   name:'NORD IAMRARE',       what:'registry platform run by NORD',                       check:'https://rarediseases.org/iamrare-registry-program/'},
     {key:'cbrain', name:'COMBINEDBrain',      what:'shared biorepository for rare neurodevelopmental conditions', check:'https://combinedbrain.org/'},
@@ -160,7 +161,7 @@
   ];
   const platText = [g.el_platforms||'', g.el_registry||'', myOrgs.map(o=>o.registry_platform).join('; ')].join('; ');
   const has = {
-    simons: /simons searchlight/i.test(platText) || /^yes/i.test(g.simons_enrolled||'') || !!g.simons_page_url,
+    simons: g.simons_on_list ? /^yes/i.test(g.simons_on_list) : (/simons searchlight/i.test(platText) || /^yes/i.test(g.simons_enrolled||'')),
     cords:  /cords/i.test(platText) || /^yes/i.test(g.cords||''),
     nord:   /iamrare|\bnord\b/i.test(platText),
     cbrain: /combined ?brain/i.test(platText),
@@ -189,10 +190,14 @@
   const onList = PLATFORMS.filter(p => has[p.key]).map(p => {
     const label = p.key==='own' && ownName ? ownName : p.name;
     const link0 = p.key==='own' ? (g.el_registry_url||'') : (registries.find(o=>new RegExp(p.name.split(' ')[0],'i').test(o.registry_platform))||{}).url || p.check;
-    return `<li><b>${link0?link(link0,label):esc(label)}</b>${p.key==='own'?'':`<span class="tag">${esc(p.what)}</span>`}${under[p.key]?`<div class="tag">recorded under: ${esc(under[p.key])}</div>`:''}</li>`;
+    const extra = p.key==='simons' && g.simons_report_url ? ` <span class="tag">${link(g.simons_report_url,'latest quarterly report')}</span>` : '';
+    return `<li><b>${link0?link(link0,label):esc(label)}</b>${p.key==='own'?'':`<span class="tag">${esc(p.what)}</span>`}${extra}${under[p.key]?`<div class="tag">recorded under: ${esc(under[p.key])}</div>`:''}</li>`;
   }).join('');
+  const offNote = k => k==='simons' && g.simons_list_version
+    ? `not on the published Simons Searchlight gene list of ${esc(g.simons_list_version)}; the list grows, so ${link('https://www.simonssearchlight.org/research/what-we-study/','check the current one')}`
+    : `not on record here; check directly at ${link(PLATFORMS.find(p=>p.key===k).check,'their site')}`;
   const offList = PLATFORMS.filter(p => !has[p.key] && p.check).map(p =>
-    `<li>${esc(p.name)}<span class="tag">not on record here; check directly at ${link(p.check,'their site')}</span></li>`).join('');
+    `<li>${esc(p.name)}<span class="tag">${offNote(p.key)}</span></li>`).join('');
   h += `<section class="block" data-aud="patient pag"><h2>Registries and studies</h2>
     ${onList?`<p>On record for ${esc(g.symbol)}:</p><ul class="plain">${onList}</ul>`:'<p>No registry or study is on record for this gene yet.</p>'}
     ${natHist?'<p class="tag">A natural history study is on record for this gene.</p>':''}
@@ -210,12 +215,14 @@
     ${yn(groups.length>0, groups.length?'Organization on record':'No organization on record', groups.length?`${groups.filter(o=>o.status==='curated').length} verified, ${groups.filter(o=>o.status!=='curated').length} awaiting review`:'')}
     ${yn(!!(g.el_registry_url||registries.length||onNames.length), 'Registry a family can join', onNames.slice(0,3).join(', '))}
     ${yn(natHist ? true : null, 'Natural history study')}
-    ${yn(has.simons ? true : null, 'Simons Searchlight', has.simons?'':'not on record; check their gene list')}
+    ${yn(has.simons ? true : (g.simons_on_list ? false : null), 'Simons Searchlight', has.simons ? (g.simons_report_url?'quarterly report published':'') : (g.simons_list_version?'not on the '+g.simons_list_version+' list':'not on record'))}
     ${yn(has.cbrain ? true : null, 'Biorepository (COMBINEDBrain)')}
     ${yn(coalitions.length ? true : null, 'Coalition membership', coalitions.join(', '))}
     ${yn(!!g.fda_report, g.fda_report?'FDA patient meeting held':'No FDA patient meeting on record', g.fda_report||'')}
     ${yn(!!g.therapeutics && !/^preclinical only$/i.test(g.therapeutics), 'Therapeutic program beyond preclinical')}
-  </div><p class="fine">A dash means whoswho has nothing on record, which is a gap to fill or a correction to send, not evidence that it does not exist. Email <a href="mailto:danielle@boycedatascience.com?subject=${encodeURIComponent('whoswho: '+g.symbol)}">danielle@boycedatascience.com</a> with anything missing.</p></section>`;
+    ${yn(myOrgs.some(o=>o.maturity_stage) ? true : null, 'Maturity stage reported', myOrgs.map(o=>o.maturity_stage).filter(Boolean).join(', '))}
+  </div>
+  <p>Stages come from an organization's own self-assessment against the <a href="maturity.html">research readiness maturity model</a>, which describes the path from an informal community to sharing standardized data.</p><p class="fine">A dash means whoswho has nothing on record, which is a gap to fill or a correction to send, not evidence that it does not exist. Email <a href="mailto:danielle@boycedatascience.com?subject=${encodeURIComponent('whoswho: '+g.symbol)}">danielle@boycedatascience.com</a> with anything missing.</p></section>`;
 
   // ---- evidence table (clinician)
   const rows = onSources.map(s => `<tr><td>${esc(sourceLabel[s])}</td><td>${esc(g['ev_'+s]||'included')}</td><td>${esc(g['pheno_'+s]||'')}</td></tr>`).join('');

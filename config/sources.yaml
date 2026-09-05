@@ -186,17 +186,6 @@ orphadata_genes:
 
 # --- Organization-side inputs (candidates only; curated/organizations.csv is authoritative) ---
 
-ren_members:
-  name: Rare Epilepsy Network member organizations
-  manual: true
-  landing: https://www.rareepilepsynetwork.org/
-  file: ren_members.csv
-  role: org_candidates
-  columns:
-    org_name: [Organization, org_name, Name]
-    gene: [Gene, gene, Genes]
-    url: [Website, url, URL]
-
 combinedbrain_members:
   name: COMBINEDBrain member organizations
   manual: true
@@ -232,17 +221,24 @@ simons_support_links:
 
 # --- Gene-level annotations from registry platforms (joined by gene symbol, one column set per source) ---
 
-simons_report_links:
-  name: Simons Searchlight condition pages and latest quarterly reports
+simons_gene_list:
+  name: Simons Searchlight gene list (published list of what Simons Searchlight studies)
   manual: true
-  file: simons_report_links.csv
+  file: simons_gene_list.csv
   landing: https://www.simonssearchlight.org/research/what-we-study/
+  version: 2024-11
   role: gene_annotation
-  note: name/group/condition_page_url/latest_report_url; group is Gene or CNV. CNV rows go to cnv_regions.csv.
+  note: |
+    The published gene list, which is the authority on whether Simons Searchlight studies a gene.
+    Quarterly report links from the 2025 report workbook are merged in where they exist; a gene can
+    be on the list without having a published report. CNV rows go to cnv_regions.csv. Refresh by
+    downloading the current list PDF from the landing page and updating this file and list_version.
   columns:
     gene: [name]
     group: [group]
   annotate:
+    simons_on_list: on_simons_list
+    simons_list_version: list_version
     simons_page_url: condition_page_url
     simons_report_url: latest_report_url
 
@@ -356,3 +352,17 @@ epilepsylive_orgs:
     org_name: [org_name]
     gene: [gene]
     url: [url]
+
+ren_members:
+  name: Rare Epilepsy Network member organizations
+  manual: true
+  file: ren_members.csv
+  landing: https://www.rareepilepsynetwork.org/
+  role: org_candidates
+  note: Membership as recorded in the 2019 Rare Epilepsy Landscape Analysis. Replace with a current roster when one is available; the as_of column dates every row.
+  defaults:
+    coalitions: REN
+  columns:
+    org_name: [org_name, Organization, Name]
+    gene: [gene, Gene, Genes]
+    url: [url, Website, URL]
