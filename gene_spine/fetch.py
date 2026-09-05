@@ -46,6 +46,35 @@ def record(manifest: dict, sid: str, path: Path, cfg: dict, how: str):
     }
 
 
+def fetch_quarterly(sid: str, cfg: dict, manifest: dict):
+    """Try the newest quarterly snapshot first (1 Jan/Apr/Jul/Oct), walking back up to two years."""
+    out = SRC / sid / cfg["file"]
+    out.parent.mkdir(parents=True, exist_ok=True)
+    today = date.today()
+    quarters = []
+    y, m = today.year, ((today.month - 1) // 3) * 3 + 1
+    for _ in range(8):
+        quarters.append(f"{y}-{m:02d}-01")
+        m -= 3
+        if m < 1:
+            m += 12
+            y -= 1
+    last_err = None
+    for q in quarters:
+        url = cfg["quarterly_url"].format(date=q)
+        try:
+            r = requests.get(url, headers=HEADERS, timeout=180)
+            if r.status_code == 200 and r.content[:7] == b"hgnc_id":
+                out.write_bytes(r.content)
+                record(manifest, sid, out, dict(cfg, url=url, version=q), "quarterly")
+                print(f"  {sid}: snapshot {q}, {out.stat().st_size:,} bytes")
+                return
+            last_err = f"HTTP {r.status_code}, starts {r.content[:20]!r}"
+        except Exception as e:
+            last_err = str(e)
+    raise RuntimeError(f"{sid}: no quarterly snapshot found; last error {last_err}")
+
+
 def fetch_url(sid: str, cfg: dict, manifest: dict):
     out = SRC / sid / cfg["file"]
     out.parent.mkdir(parents=True, exist_ok=True)
@@ -103,14 +132,25 @@ def main(argv: list[str]):
         if sid not in wanted:
             continue
         if cfg.get("manual"):
-            existing = SRC / sid / cfg["file"]
+            existing = next((c for c in (SRC / sid / cfg["file"], SRC / cfg["file"], ROOT / cfg["file"]) if c.exists()), SRC / sid / cfg["file"])
             if existing.exists():
                 record(manifest, sid, existing, cfg, "manual")
             else:
                 manual.append((sid, cfg))
             continue
         try:
-            if "api" in cfg:
+            if "url" in cfg and "quarterly_url" in cfg:
+                try:
+                    fetch_url(sid, cfg, manifest)
+                    ok = (SRC / sid / cfg["file"]).read_bytes()[:7] == b"hgnc_id"
+                except Exception as e:
+                    print(f"  {sid}: current-release URL failed ({e}); trying quarterly archive")
+                    ok = False
+                if not ok:
+                    fetch_quarterly(sid, cfg, manifest)
+            elif "quarterly_url" in cfg:
+                fetch_quarterly(sid, cfg, manifest)
+            elif "api" in cfg:
                 fetch_panelapp(sid, cfg, manifest)
             elif "url" in cfg:
                 fetch_url(sid, cfg, manifest)

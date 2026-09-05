@@ -29,13 +29,22 @@ ROOT = Path(__file__).resolve().parents[1]
 SRC, OUT, CUR = ROOT / "sources", ROOT / "outputs", ROOT / "curated"
 
 
+def source_path(sid: str, cfg: dict) -> Path:
+    """Manual files may be uploaded to sources/<id>/, to sources/, or to the repo root
+    (GitHub's uploader flattens folders). The first match wins."""
+    for cand in (SRC / sid / cfg["file"], SRC / cfg["file"], ROOT / cfg["file"]):
+        if cand.exists():
+            return cand
+    return SRC / sid / cfg["file"]
+
+
 def load_sources(cfg_all: dict, resolver: HgncResolver):
     long_frames, cnv_frames, missing = [], [], []
     known = set(resolver.by_symbol)
     for sid, cfg in cfg_all.items():
         if sid == "hgnc" or cfg.get("role") in ("org_candidates", "gene_annotation"):
             continue
-        path = SRC / sid / cfg["file"]
+        path = source_path(sid, cfg)
         if not path.exists():
             missing.append(sid)
             continue
@@ -141,7 +150,7 @@ def build_org_layer(wide: pd.DataFrame, resolver: HgncResolver, cfg_all: dict, g
     for sid, cfg in cfg_all.items():
         if cfg.get("role") != "org_candidates":
             continue
-        path = SRC / sid / cfg["file"]
+        path = source_path(sid, cfg)
         if not path.exists():
             continue
         df = pd.read_csv(path, dtype=str).fillna("")
@@ -192,32 +201,45 @@ def build_org_layer(wide: pd.DataFrame, resolver: HgncResolver, cfg_all: dict, g
 
 def apply_annotations(wide: pd.DataFrame, cnv: pd.DataFrame, resolver: HgncResolver, cfg_all: dict):
     """Join platform pages (e.g. Simons Searchlight) onto gene rows by symbol; CNV rows go to cnv_regions."""
+    unresolved_ann = []
     for sid, cfg in cfg_all.items():
         if cfg.get("role") != "gene_annotation":
             continue
-        path = SRC / sid / cfg["file"]
+        path = source_path(sid, cfg)
         if not path.exists():
             continue
         df = pd.read_csv(path, dtype=str).fillna("")
         cols = cfg["columns"]
         gene_c = parsers._pick(df, cols["gene"])
+        hid_c = parsers._pick(df, cols.get("hgnc_id", []), required=False)
         group_c = parsers._pick(df, cols.get("group", []), required=False)
         ann = cfg.get("annotate", {})
+        for v in ann.values():
+            parsers._pick(df, [v])  # fail early with the real header if a column is missing
         gene_rows, cnv_rows = {}, []
         for _, r in df.iterrows():
             is_cnv = group_c and r[group_c].strip().lower() == "cnv"
-            hid, _ = (None, "") if is_cnv else resolver.resolve(r[gene_c])
+            hid, _ = (None, "") if is_cnv else resolver.resolve(r[gene_c], r[hid_c] if hid_c else None)
             if hid:
                 gene_rows[hid] = {k: r[parsers._pick(df, [v])] for k, v in ann.items()}
-            else:
+            elif is_cnv:
                 cnv_rows.append({"source_id": sid, "region_text": r[gene_c], **{k: r[parsers._pick(df, [v])] for k, v in ann.items()}})
+            else:
+                unresolved_ann.append({"source_id": sid, "symbol_in_source": r[gene_c], "hgnc_id_in_source": r[hid_c] if hid_c else "", "resolved_by": "unresolved"})
+        missing = [h for h in gene_rows if h not in set(wide["hgnc_id"])]
+        if missing and cfg.get("adds_genes"):
+            extra = pd.DataFrame([{**resolver.info(h), "tier": "T3", "domain": "unclassified", "disputed": False,
+                                   "n_sources": 0, "sources": ""} for h in missing])
+            wide = pd.concat([wide, extra], ignore_index=True)
         for k in ann:
             wide[k] = wide["hgnc_id"].map(lambda h: gene_rows.get(h, {}).get(k, ""))
         wide["on_" + sid] = wide["hgnc_id"].isin(gene_rows)
         if cnv_rows:
             cnv = pd.concat([cnv, pd.DataFrame(cnv_rows)], ignore_index=True)
-        print(f"  {sid}: {len(gene_rows)} genes annotated, {len(cnv_rows)} CNV rows")
-    return wide, cnv
+        print(f"  {sid}: {len(gene_rows)} genes annotated, {len(cnv_rows)} CNV rows, {sum(1 for u in unresolved_ann if u['source_id']==sid)} unresolved")
+    on_cols = [c for c in wide.columns if c.startswith("on_")]
+    wide[on_cols] = wide[on_cols].fillna(False).astype(bool)
+    return wide.fillna(""), cnv, pd.DataFrame(unresolved_ann)
 
 
 # ---------------------------------------------------------------- main
@@ -225,7 +247,7 @@ def apply_annotations(wide: pd.DataFrame, cnv: pd.DataFrame, resolver: HgncResol
 def main():
     cfg_all = yaml.safe_load((ROOT / "config" / "sources.yaml").read_text())
     OUT.mkdir(exist_ok=True)
-    hgnc_path = SRC / "hgnc" / cfg_all["hgnc"]["file"]
+    hgnc_path = source_path("hgnc", cfg_all["hgnc"])
     if not hgnc_path.exists():
         raise SystemExit("HGNC complete set missing: python -m gene_spine.fetch hgnc")
     print("Loading HGNC")
@@ -235,7 +257,9 @@ def main():
     long, cnv = load_sources(cfg_all, resolver)
     long, unresolved = resolve_all(long, resolver)
     wide = widen(long, resolver, cfg_all)
-    wide, cnv = apply_annotations(wide, cnv, resolver, cfg_all)
+    wide, cnv, unresolved_ann = apply_annotations(wide, cnv, resolver, cfg_all)
+    if len(unresolved_ann):
+        unresolved = pd.concat([unresolved, unresolved_ann], ignore_index=True)
     gene_orpha = wide[["hgnc_id", "orphacodes"]]
     org, gaps = build_org_layer(wide, resolver, cfg_all, gene_orpha)
 
