@@ -267,6 +267,7 @@ citizen_registry:
   role: org_candidates
   defaults:
     registry_platform: Citizen
+    org_type: registry
   columns:
     org_name: [org_name]
     gene: [gene]
