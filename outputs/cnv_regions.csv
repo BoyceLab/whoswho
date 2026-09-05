@@ -1,24 +1,39 @@
-source_id,region_text
-simons_searchlight,15q11.2
-simons_searchlight,15q13.3
-simons_searchlight,15q15
-simons_searchlight,15q24
-simons_searchlight,16p11.2
-simons_searchlight,16p12.2
-simons_searchlight,16p13.11
-simons_searchlight,16p13.3
-simons_searchlight,17p13.3
-simons_searchlight,17q11.2
-simons_searchlight,17q12
-simons_searchlight,17q21.31
-simons_searchlight,1q21.1
-simons_searchlight,2p16.3
-simons_searchlight,2q34
-simons_searchlight,2q37
-simons_searchlight,5q35
-simons_searchlight,6q16
-simons_searchlight,7q11.23
-simons_searchlight,9q34
-simons_searchlight,9q34.3
-simons_searchlight,deletion
-simons_searchlight,duplication
+source_id,region_text,simons_page_url,simons_report_url
+simons_searchlight,15q11.2,,
+simons_searchlight,15q13.3,,
+simons_searchlight,15q15,,
+simons_searchlight,15q24,,
+simons_searchlight,16p11.2,,
+simons_searchlight,16p12.2,,
+simons_searchlight,16p13.11,,
+simons_searchlight,16p13.3,,
+simons_searchlight,17p13.3,,
+simons_searchlight,17q11.2,,
+simons_searchlight,17q12,,
+simons_searchlight,17q21.31,,
+simons_searchlight,1q21.1,,
+simons_searchlight,2p16.3,,
+simons_searchlight,2q34,,
+simons_searchlight,2q37,,
+simons_searchlight,5q35,,
+simons_searchlight,6q16,,
+simons_searchlight,7q11.23,,
+simons_searchlight,9q34,,
+simons_searchlight,9q34.3,,
+simons_searchlight,deletion,,
+simons_searchlight,duplication,,
+simons_report_links,15q11.2 BP1-BP2 Deletion,https://www.simonssearchlight.org/research/what-we-study/15q11-2-bp1-bp2-deletion/,https://cdn.simonssearchlight.org/wp-content/uploads/2025/10/14115330/15q11.2-BP1-BP2-deletion-25Q3.pdf
+simons_report_links,15q13.3 Deletion,https://www.simonssearchlight.org/research/what-we-study/15q13-3-deletion/,https://cdn.simonssearchlight.org/wp-content/uploads/2025/10/14115336/15q13.3-deletion-25Q3.pdf
+simons_report_links,16p11.2 Deletion,https://www.simonssearchlight.org/research/what-we-study/16p11-2-deletion/,https://cdn.simonssearchlight.org/wp-content/uploads/2025/10/14115334/16p11.2-deletion-25Q3.pdf
+simons_report_links,16p11.2 Deletion (Distal),https://www.simonssearchlight.org/research/what-we-study/16p11-2-distal-deletion/,https://cdn.simonssearchlight.org/wp-content/uploads/2025/10/14115423/Distal-16p11.2-deletion-25Q3.pdf
+simons_report_links,16p11.2 Duplication,https://www.simonssearchlight.org/research/what-we-study/16p11-2-duplications/,https://cdn.simonssearchlight.org/wp-content/uploads/2025/10/14115324/16p11.2-duplication-25Q3.pdf
+simons_report_links,16p11.2 Duplication (Distal),https://www.simonssearchlight.org/research/what-we-study/16p11-2-duplication-distal/,https://cdn.simonssearchlight.org/wp-content/uploads/2025/10/14115419/Distal-16p11.2-duplication-25Q3.pdf
+simons_report_links,16p12.2 Deletion,https://www.simonssearchlight.org/research/what-we-study/16p12-2-deletion/,https://cdn.simonssearchlight.org/wp-content/uploads/2025/10/14115508/16p12.2-deletion-25Q3.pdf
+simons_report_links,16p13.11 Deletion,https://www.simonssearchlight.org/research/what-we-study/16p13-11-deletion/,https://cdn.simonssearchlight.org/wp-content/uploads/2025/10/14115335/16p13.11-deletion-25Q3.pdf
+simons_report_links,17q12 Duplication,https://www.simonssearchlight.org/research/what-we-study/17q12-duplication/,https://cdn.simonssearchlight.org/wp-content/uploads/2025/10/14115446/17q12-duplication-25Q3.pdf
+simons_report_links,17q21.31 Deletion,https://www.simonssearchlight.org/research/what-we-study/17q21-3-deletion/,https://cdn.simonssearchlight.org/wp-content/uploads/2025/10/14115427/17q21.31-deletion-KANSL1-25Q3.pdf
+simons_report_links,1q21.1 Deletion,https://www.simonssearchlight.org/research/what-we-study/1q21-1-deletions/,https://cdn.simonssearchlight.org/wp-content/uploads/2025/10/14115329/1q21.1-deletion-25Q3.pdf
+simons_report_links,1q21.1 Duplication,https://www.simonssearchlight.org/research/what-we-study/1q21-1-duplications/,https://cdn.simonssearchlight.org/wp-content/uploads/2025/10/14115321/1q21.1-duplication-25Q3.pdf
+simons_report_links,2p16.3 Deletion,https://www.simonssearchlight.org/research/what-we-study/2p16-3-deletion/,https://cdn.simonssearchlight.org/wp-content/uploads/2025/10/14115332/2p16.3-deletion-NRXN1-25Q3.pdf
+simons_report_links,5p Deletion,https://www.simonssearchlight.org/research/what-we-study/5p-deletion/,https://cdn.simonssearchlight.org/wp-content/uploads/2025/10/14115413/5p-deletion-25Q3.pdf
+simons_report_links,7q11.23 Duplication,https://www.simonssearchlight.org/research/what-we-study/7q11-23-duplication/,https://cdn.simonssearchlight.org/wp-content/uploads/2025/10/14115338/7q11.23-duplication-25Q3.pdf

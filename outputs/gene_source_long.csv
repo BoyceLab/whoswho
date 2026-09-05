@@ -20522,6 +20522,7 @@ orphadata_genes,DDHD1,HGNC:19714,Assessed,Autosomal recessive spastic paraplegia
 orphadata_genes,BRAF,HGNC:1097,Assessed,Multisystem Langerhans cell histiocytosis,"{""orphacode"": ""687741"", ""association_type"": ""Disease-causing somatic mutation(s) in""}",HGNC:1097,id
 orphadata_genes,B4GALNT1,HGNC:4117,Assessed,Autosomal recessive spastic paraplegia type 26,"{""orphacode"": ""101006"", ""association_type"": ""Disease-causing germline mutation(s) in""}",HGNC:4117,id
 orphadata_genes,BRAF,HGNC:1097,Assessed,Single-system multifocal Langerhans cell histiocytosis,"{""orphacode"": ""687738"", ""association_type"": ""Disease-causing somatic mutation(s) in""}",HGNC:1097,id
+orphadata_genes,SPG23,HGNC:21340,Assessed,Autosomal recessive spastic paraplegia type 23,"{""orphacode"": ""101003"", ""association_type"": ""Disease-causing germline mutation(s) in""}",HGNC:29043,prev_symbol
 orphadata_genes,DSTYK,HGNC:29043,Assessed,Autosomal recessive spastic paraplegia type 23,"{""orphacode"": ""101003"", ""association_type"": ""Disease-causing germline mutation(s) in""}",HGNC:29043,id
 orphadata_genes,BRAF,HGNC:1097,Assessed,Pulmonary Langerhans cell histiocytosis,"{""orphacode"": ""687733"", ""association_type"": ""Disease-causing somatic mutation(s) in""}",HGNC:1097,id
 orphadata_genes,BRAF,HGNC:1097,Assessed,Unifocal Langerhans cell histiocytosis,"{""orphacode"": ""687730"", ""association_type"": ""Disease-causing somatic mutation(s) in""}",HGNC:1097,id
