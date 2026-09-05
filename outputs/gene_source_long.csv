@@ -1487,7 +1487,6 @@ clingen,CR2,HGNC:2336,Definitive,"immunodeficiency, common variable, 7","{""moi"
 clingen,CRACR2A,HGNC:28657,Limited,combined immunodeficiency,"{""moi"": ""AR"", ""mondo"": ""MONDO:0015131"", ""gcep"": ""SCID-CID Gene Curation Expert Panel""}",HGNC:28657,id
 clingen,CRADD,HGNC:2340,Definitive,syndromic intellectual disability,"{""moi"": ""AR"", ""mondo"": ""MONDO:0000508"", ""gcep"": ""Intellectual Disability and Autism Gene Curation Expert Panel""}",HGNC:2340,id
 clingen,CRB2,HGNC:18688,Definitive,focal segmental glomerulosclerosis 9,"{""moi"": ""AR"", ""mondo"": ""MONDO:0014539"", ""gcep"": ""Glomerulopathy Gene Curation Expert Panel""}",HGNC:18688,id
-clingen,CRBN,HGNC:30185,Moderate,intellectual disability,"{""moi"": ""AR"", ""mondo"": ""MONDO:0001071"", ""gcep"": ""Intellectual Disability and Autism Gene Curation Expert Panel""}",HGNC:30185,id
 clingen,CRH,HGNC:2355,Refuted,epilepsy,"{""moi"": ""AD"", ""mondo"": ""MONDO:0005027"", ""gcep"": ""Epilepsy Gene Curation Expert Panel""}",HGNC:2355,id
 clingen,CRIPTO,HGNC:11701,Limited,congenital heart disease,"{""moi"": ""AD"", ""mondo"": ""MONDO:0005453"", ""gcep"": ""Congenital Heart Disease Gene Curation Expert Panel""}",HGNC:11701,id
 clingen,CRKL,HGNC:2363,No Known Disease Relationship,congenital heart disease,"{""moi"": ""UD"", ""mondo"": ""MONDO:0005453"", ""gcep"": ""Congenital Heart Disease Gene Curation Expert Panel""}",HGNC:2363,id
@@ -4746,6 +4745,7 @@ clingen,GDF2,HGNC:4217,Moderate,"telangiectasia, hereditary hemorrhagic, type 5"
 clingen,CHN1,HGNC:1943,Definitive,Duane retraction syndrome 2,"{""moi"": ""AD"", ""mondo"": ""MONDO:0011444"", ""gcep"": ""Brain Malformations Gene Curation Expert Panel""}",HGNC:1943,id
 clingen,NME5,HGNC:7853,Moderate,"ciliary dyskinesia, primary, 48, without situs inversus","{""moi"": ""AR"", ""mondo"": ""MONDO:0031054"", ""gcep"": ""Motile Ciliopathy Gene Curation Expert Panel""}",HGNC:7853,id
 clingen,NRXN2,HGNC:8009,Limited,complex neurodevelopmental disorder,"{""moi"": ""AD"", ""mondo"": ""MONDO:0100038"", ""gcep"": ""Intellectual Disability and Autism Gene Curation Expert Panel""}",HGNC:8009,id
+clingen,CRBN,HGNC:30185,Moderate,intellectual disability,"{""moi"": ""AR"", ""mondo"": ""MONDO:0001071"", ""gcep"": ""Intellectual Disability and Autism Gene Curation Expert Panel""}",HGNC:30185,id
 clingen,SYP,HGNC:11506,Moderate,non-syndromic X-linked intellectual disability,"{""moi"": ""XL"", ""mondo"": ""MONDO:0019181"", ""gcep"": ""Intellectual Disability and Autism Gene Curation Expert Panel""}",HGNC:11506,id
 panelapp_au_epilepsy,AARS1,HGNC:20,Green,"Epileptic encephalopathy, early infantile, 29, MIM# 616339","{""moi"": ""BIALLELIC, autosomal or pseudoautosomal"", ""panel"": ""Genetic Epilepsy"", ""panel_version"": ""2.39""}",HGNC:20,id
 panelapp_au_epilepsy,AARS2,HGNC:21022,Amber,"Combined oxidative phosphorylation deficiency 8, 614096; Leukoencephalopathy progressive with ovarian failure, 615889","{""moi"": ""BIALLELIC, autosomal or pseudoautosomal"", ""panel"": ""Genetic Epilepsy"", ""panel_version"": ""2.39""}",HGNC:21022,id

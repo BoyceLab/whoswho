@@ -1,18 +1,18 @@
 {
- "built": "2026-09-03",
+ "built": "2026-09-05",
  "sources": {
   "hgnc": {
    "file": "sources/hgnc/hgnc_complete_set.txt",
-   "fetched": "2026-09-03",
+   "fetched": "2026-09-05",
    "how": "url",
    "url": "https://storage.googleapis.com/public-download-files/hgnc/tsv/tsv/hgnc_complete_set.txt",
    "version": null,
-   "bytes": 16948224,
-   "sha256": "854162118530e929f06249f3349465dd5fe0515fcccf0347f463e833609c1270"
+   "bytes": 16903161,
+   "sha256": "6f43d6ff43aa9fdfa5fb2f20a20a7cace66e6e02e2a0dcf19d9b726e2e248d20"
   },
   "genes4epilepsy": {
    "file": "sources/genes4epilepsy/EpilepsyGenes_v2026-03.tsv",
-   "fetched": "2026-09-03",
+   "fetched": "2026-09-05",
    "how": "url",
    "url": "https://raw.githubusercontent.com/bahlolab/Genes4Epilepsy/main/EpilepsyGenes_v2026-03.tsv",
    "version": "v2026-03",
@@ -21,16 +21,16 @@
   },
   "clingen": {
    "file": "sources/clingen/clingen_gene_validity.csv",
-   "fetched": "2026-09-03",
+   "fetched": "2026-09-05",
    "how": "url",
    "url": "https://search.clinicalgenome.org/kb/gene-validity/download",
    "version": null,
-   "bytes": 1119884,
-   "sha256": "9a4705daa42cb22d1b26e67f8fe4bb8790a6c736c9de088e81a3066ba49e7bec"
+   "bytes": 1119885,
+   "sha256": "964b90650a947fef7b1d4be2520bc8c1afdf2871000f1e9a7824e98ce8e2df60"
   },
   "panelapp_au_epilepsy": {
    "file": "sources/panelapp_au_epilepsy/panelapp_au_epilepsy.json",
-   "fetched": "2026-09-03",
+   "fetched": "2026-09-05",
    "how": "panelapp:202",
    "url": "https://panelapp-aus.org/api/v1/panels/",
    "version": "2.39",
@@ -39,7 +39,7 @@
   },
   "panelapp_au_id": {
    "file": "sources/panelapp_au_id/panelapp_au_id.json",
-   "fetched": "2026-09-03",
+   "fetched": "2026-09-05",
    "how": "panelapp:250",
    "url": "https://panelapp-aus.org/api/v1/panels/",
    "version": "2.134",
@@ -48,7 +48,7 @@
   },
   "panelapp_ge_epilepsy": {
    "file": "sources/panelapp_ge_epilepsy/panelapp_ge_epilepsy.json",
-   "fetched": "2026-09-03",
+   "fetched": "2026-09-05",
    "how": "panelapp:402",
    "url": "https://panelapp.genomicsengland.co.uk/api/v1/panels/",
    "version": "9.76",
@@ -57,7 +57,7 @@
   },
   "panelapp_ge_id": {
    "file": "sources/panelapp_ge_id/panelapp_ge_id.json",
-   "fetched": "2026-09-03",
+   "fetched": "2026-09-05",
    "how": "panelapp:285",
    "url": "https://panelapp.genomicsengland.co.uk/api/v1/panels/",
    "version": "11.28",
@@ -66,7 +66,7 @@
   },
   "simons_searchlight": {
    "file": "sources/simons_searchlight/Searchlight-Gene-List_NOV2024.pdf",
-   "fetched": "2026-09-03",
+   "fetched": "2026-09-05",
    "how": "url",
    "url": "https://cdn.simonssearchlight.org/wp-content/uploads/2024/12/11041626/Searchlight-Gene-List_8.5x11_NOV2024-1.pdf",
    "version": null,
@@ -75,7 +75,7 @@
   },
   "orphadata_genes": {
    "file": "sources/orphadata_genes/en_product6.xml",
-   "fetched": "2026-09-03",
+   "fetched": "2026-09-05",
    "how": "url",
    "url": "https://www.orphadata.com/data/xml/en_product6.xml",
    "version": null,
