@@ -153,7 +153,7 @@
   "sha256": "4890b288e049cf47c8689c656b623b28e040a69a9173cda3b45ee85b96156968"
  },
  "epilepsylive_orgs": {
-  "file": "epilepsylive_orgs.csv",
+  "file": "sources/epilepsylive_orgs/epilepsylive_orgs.csv",
   "fetched": "2026-09-05",
   "how": "manual",
   "url": "https://boycelab.github.io/EpilepsyLive/pag.html",
