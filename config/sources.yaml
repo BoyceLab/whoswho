@@ -359,10 +359,34 @@ ren_members:
   file: ren_members.csv
   landing: https://www.rareepilepsynetwork.org/
   role: org_candidates
-  note: Membership as recorded in the 2019 Rare Epilepsy Landscape Analysis. Replace with a current roster when one is available; the as_of column dates every row.
+  note: |
+    The Rare Epilepsy Network member roster, dated by the as_of column. REN membership is by
+    disorder constituency and includes support and Facebook groups regardless of legal status,
+    and some organizations outside the United States. Genes are assigned by the editor from the
+    organization's own name or stated disorder; organizations defined by a condition rather than a
+    gene (LGS, Aicardi, cri du chat, hypothalamic hamartoma) carry no gene and appear only in the
+    organization table.
   defaults:
     coalitions: REN
   columns:
     org_name: [org_name, Organization, Name]
     gene: [gene, Gene, Genes]
     url: [url, Website, URL]
+
+pubmed_gene_counts:
+  name: PubMed publication counts per gene
+  manual: true
+  file: pubmed_gene_counts.csv
+  landing: https://pubmed.ncbi.nlm.nih.gov/
+  role: gene_annotation
+  note: |
+    Hit count for a standard PubMed query per gene, as of the date in the as_of column. It is a
+    rough measure of how much has been published, not a quality measure, and it is a snapshot:
+    re-run the query to refresh. The query used is stored with each row.
+  columns:
+    gene: [gene]
+    hgnc_id: [hgnc_id]
+  annotate:
+    pubmed_hits: pubmed_hits
+    pubmed_query: pubmed_query
+    pubmed_as_of: as_of

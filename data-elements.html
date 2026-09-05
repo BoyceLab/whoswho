@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>whoswho: what registry platforms ask</title>
+<meta name="description" content="The questions and domains collected by registry platforms used in rare epilepsy and neurodevelopmental disorders, compared side by side.">
+<style>
+  :root{--ink:#3b3350;--paper:#fdfbfe;--rule:#ecdff0;--soft:#f7effa;--muted:#7b7290;--link:#7a4a8c;
+    --lilac:#efe4f6;--rose:#fbe6ef;--mint:#e3f2ec;--sky:#e4eef8;--butter:#fdf3e0;--measure:78ch}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);font:15.5px/1.5 Inter,"Segoe UI",system-ui,-apple-system,sans-serif}
+  a{color:var(--link)}
+  main{max-width:1200px;margin:0 auto;padding:0 28px 60px}
+  h1{font-size:30px;margin:26px 0 8px;font-weight:650;letter-spacing:-.01em}
+  h2{font-size:21px;margin:32px 0 8px;font-weight:650;padding-top:8px;border-top:2px solid var(--rule)}
+  p{margin:6px 0;max-width:var(--measure)}
+  .lede{font-size:17px;max-width:var(--measure)}
+  .muted{color:var(--muted)}
+  nav.jump{position:sticky;top:0;z-index:5;background:#fff;border-bottom:1px solid var(--rule);margin:0 -28px;padding:8px 28px;display:flex;gap:18px;flex-wrap:wrap;align-items:center}
+  nav.jump a{text-decoration:none;color:var(--ink);font-weight:550;font-size:14px}
+  table{border-collapse:collapse;width:100%;font-size:14px;margin:10px 0;max-width:1150px}
+  th,td{padding:8px 10px;border-bottom:1px solid var(--rule);text-align:left;vertical-align:top}
+  th{background:var(--lilac);font-weight:600}
+  td.n{white-space:nowrap}
+  tr:hover td{background:var(--soft)}
+  .callout{background:var(--butter);border-radius:10px;padding:12px 16px;max-width:var(--measure);margin:12px 0}
+  .fine{font-size:13px;color:var(--muted);max-width:var(--measure);margin-top:24px;border-top:1px solid var(--rule);padding-top:10px}
+  @media (max-width:700px){main{padding:0 14px 40px}nav.jump{margin:0 -14px;padding:8px 14px}table{font-size:13px}}
+</style>
+</head>
+<body>
+<main>
+<nav class="jump" aria-label="Site">
+  <a href="index.html">Front door</a>
+  <a href="explore.html">Explore the full table</a>
+  <a href="maturity.html">Maturity model</a>
+  <a href="update.html">Update a listing</a>
+</nav>
+
+<h1>What registry platforms ask</h1>
+<p class="lede">Choosing a registry platform is partly a question of what it will let you collect. This compares the instruments and domains in platforms used by rare epilepsy and neurodevelopmental organizations, drawn from published data dictionaries and survey supplements.</p>
+<div class="callout">Two platforms collecting the same number of variables are not equivalent. What matters for combining data later is whether variables are coded to a standard, which the last column shows.</div>
+
+<div id="table"><p class="muted">Loading.</p></div>
+
+<h2>Reading this</h2>
+<p><b>Disease scope</b> says whether the platform's question set is written for one condition or for any condition. Disease-agnostic sets are easier to combine across genes; disease-specific sets usually capture more of what matters to one community.</p>
+<p><b>Coded to a standard</b> counts variables mapped to Human Phenotype Ontology terms. Coded variables can be pooled with other datasets without a mapping exercise first; uncoded ones need that work before they can be combined.</p>
+<p>The maturity model calls the step where this matters <a href="maturity.html">harmonized to standards</a>, on the data infrastructure track.</p>
+
+<p class="fine">Compiled from published data dictionaries, survey supplements, and platform documentation. Counts are of variables in the source document, not of what any one organization chose to collect. To add a platform or correct an entry, email <a href="mailto:danielle@boycedatascience.com?subject=whoswho%3A%20data%20elements">danielle@boycedatascience.com</a>.</p>
+</main>
+
+<script>
+(async function(){
+  const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+  function parseCSV(text){
+    const rows=[]; let row=[], cell='', q=false;
+    for(let i=0;i<text.length;i++){ const c=text[i];
+      if(q){ if(c==='"'){ if(text[i+1]==='"'){cell+='"';i++;} else q=false; } else cell+=c; }
+      else if(c==='"') q=true; else if(c===','){row.push(cell);cell='';}
+      else if(c==='\n'){row.push(cell);rows.push(row);row=[];cell='';}
+      else if(c!=='\r') cell+=c; }
+    if(cell!==''||row.length){row.push(cell);rows.push(row);}
+    const h=rows.shift(); return rows.filter(r=>r.length>1).map(r=>Object.fromEntries(h.map((k,i)=>[k,r[i]??''])));
+  }
+  try{
+    const r = await fetch('sources/data_elements/data_elements_by_platform.csv');
+    if(!r.ok) throw new Error('not published');
+    const rows = parseCSV(await r.text());
+    rows.sort((a,b)=>Number(b.variables)-Number(a.variables));
+    document.getElementById('table').innerHTML = `<table><thead><tr><th>Platform</th><th>Disease scope</th><th>Domains covered</th><th class="n">Variables</th><th class="n">Coded to a standard</th></tr></thead><tbody>${
+      rows.map(x=>`<tr><td><b>${esc(x.platform)}</b><div class="muted">${esc(x.source_name)}</div></td><td>${esc(x.disease_scope)}</td><td>${esc((x.domains||'').replace(/;/g,', '))}</td><td class="n">${esc(x.variables)}</td><td class="n">${Number(x.hpo_coded)>0?esc(x.hpo_coded)+' HPO terms':'none in this document'}</td></tr>`).join('')
+    }</tbody></table>`;
+  }catch(e){
+    document.getElementById('table').innerHTML = '<p class="muted">The platform comparison has not been published yet.</p>';
+  }
+})();
+</script>
+</body>
+</html>

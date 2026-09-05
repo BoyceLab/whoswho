@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>whoswho: update your listing</title>
+<meta name="description" content="Advocacy groups, foundations, and Facebook communities can correct or complete their own entry.">
+<style>
+  :root{--ink:#3b3350;--paper:#fdfbfe;--rule:#ecdff0;--soft:#f7effa;--muted:#7b7290;--link:#7a4a8c;
+    --lilac:#efe4f6;--rose:#fbe6ef;--mint:#e3f2ec;--sky:#e4eef8;--butter:#fdf3e0;--measure:74ch}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);font:15.5px/1.55 Inter,"Segoe UI",system-ui,-apple-system,sans-serif}
+  a{color:var(--link)}
+  main{max-width:900px;margin:0 auto;padding:0 28px 60px}
+  h1{font-size:30px;margin:26px 0 8px;font-weight:650;letter-spacing:-.01em}
+  h2{font-size:19px;margin:28px 0 6px;font-weight:650;padding-top:8px;border-top:2px solid var(--rule)}
+  p{margin:6px 0;max-width:var(--measure)}
+  .lede{font-size:17px;max-width:var(--measure)}
+  .muted{color:var(--muted)}
+  nav.jump{position:sticky;top:0;z-index:5;background:#fff;border-bottom:1px solid var(--rule);margin:0 -28px;padding:8px 28px;display:flex;gap:18px;flex-wrap:wrap;align-items:center}
+  nav.jump a{text-decoration:none;color:var(--ink);font-weight:550;font-size:14px}
+  fieldset{border:0;padding:0;margin:0}
+  label{display:block;margin:12px 0 0;font-weight:600;font-size:14.5px}
+  label .hint{display:block;font-weight:400;color:var(--muted);font-size:13px;margin-top:1px}
+  input[type=text],input[type=url],input[type=email],textarea,select{width:100%;max-width:560px;font:inherit;font-size:15px;padding:8px 10px;border:1px solid var(--rule);border-radius:6px;background:#fff;margin-top:4px}
+  textarea{min-height:90px}
+  .row{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:0 24px;max-width:900px}
+  .choices{display:flex;gap:14px;flex-wrap:wrap;margin-top:6px}
+  .choices label{font-weight:400;margin:0;display:flex;gap:6px;align-items:center;background:var(--soft);padding:6px 12px;border-radius:14px}
+  .actions{display:flex;gap:12px;flex-wrap:wrap;margin:24px 0 8px;align-items:center}
+  button{font:inherit;font-size:16px;padding:10px 18px;border:0;border-radius:8px;cursor:pointer}
+  button.primary{background:#c9a6dd;color:var(--ink);font-weight:600}
+  button.ghost{background:var(--soft);color:var(--ink)}
+  .note{background:var(--butter);border-radius:10px;padding:12px 16px;max-width:var(--measure);margin:12px 0}
+  pre.preview{background:#fff;border:1px solid var(--rule);border-radius:8px;padding:14px;white-space:pre-wrap;font:13.5px/1.5 ui-monospace,Consolas,Menlo,monospace;max-width:900px;display:none}
+  .fine{font-size:13px;color:var(--muted);max-width:var(--measure);margin-top:24px;border-top:1px solid var(--rule);padding-top:10px}
+  @media (max-width:700px){main{padding:0 14px 40px}nav.jump{margin:0 -14px;padding:8px 14px}}
+</style>
+</head>
+<body>
+<main>
+<nav class="jump" aria-label="Site">
+  <a href="index.html">Front door</a>
+  <a href="explore.html">Explore the full table</a>
+  <a href="maturity.html">Maturity model</a>
+</nav>
+
+<h1>Update your listing</h1>
+<p class="lede">Foundations, family groups, Facebook communities, and registries can correct what appears here or fill in what is missing. You do not need an account. Fill in what you know, leave the rest blank, and the form opens an email you can send.</p>
+<div class="note">Only include information you are happy to see published. Names and websites appear on the site; the contact email is used to reach you about the entry, not published.</div>
+
+<form id="f">
+<fieldset>
+  <h2>Your organization</h2>
+  <div class="row">
+    <label>Organization name
+      <input type="text" name="org_name" required placeholder="KCNT1 Epilepsy Foundation">
+    </label>
+    <label>Website or Facebook group link
+      <input type="url" name="url" placeholder="https://">
+    </label>
+    <label>Gene or genes you serve
+      <span class="hint">Symbols separated by commas. Leave blank if your group is defined by a condition rather than a gene.</span>
+      <input type="text" name="gene" placeholder="KCNT1">
+    </label>
+    <label>Condition served
+      <span class="hint">If your group covers a condition rather than one gene, name it here.</span>
+      <input type="text" name="condition" placeholder="Lennox-Gastaut syndrome">
+    </label>
+    <label>Country or region
+      <input type="text" name="country" placeholder="US, UK, international">
+    </label>
+    <label>Type of group
+      <select name="org_type">
+        <option value="">Choose</option>
+        <option>Foundation or nonprofit</option>
+        <option>Family or parent group</option>
+        <option>Facebook or online community</option>
+        <option>Coalition or umbrella</option>
+        <option>Registry or research program</option>
+      </select>
+    </label>
+  </div>
+</fieldset>
+
+<fieldset>
+  <h2>Registry and research</h2>
+  <div class="row">
+    <label>Registry platform you use
+      <input type="text" name="registry_platform" placeholder="NORD IAMRARE, CoRDS, Citizen, REDCap, Simons Searchlight, our own">
+    </label>
+    <label>Link where families enroll
+      <input type="url" name="registry_url" placeholder="https://">
+    </label>
+    <label>Natural history study
+      <select name="natural_history_study">
+        <option value="">Choose</option>
+        <option>Running now</option>
+        <option>In development</option>
+        <option>None</option>
+      </select>
+    </label>
+    <label>IRB or ethics approval
+      <select name="irb_status">
+        <option value="">Choose</option>
+        <option>Approved</option>
+        <option>Pending</option>
+        <option>Not applicable</option>
+      </select>
+    </label>
+  </div>
+  <label>Coalitions you belong to
+    <div class="choices">
+      <label><input type="checkbox" name="coalitions" value="REN"> Rare Epilepsy Network</label>
+      <label><input type="checkbox" name="coalitions" value="COMBINEDBrain"> COMBINEDBrain</label>
+      <label><input type="checkbox" name="coalitions" value="NORD"> NORD</label>
+      <label><input type="checkbox" name="coalitions" value="Global Genes"> Global Genes</label>
+      <label><input type="checkbox" name="coalitions" value="Simons Searchlight"> Simons Searchlight</label>
+      <label><input type="checkbox" name="coalitions" value="Epilepsy Leadership Council"> Epilepsy Leadership Council</label>
+    </div>
+  </label>
+</fieldset>
+
+<fieldset>
+  <h2>Where you are on the path</h2>
+  <p class="muted">Optional. Stages come from your own assessment against the <a href="maturity.html">research readiness maturity model</a>. Nothing is assigned from outside.</p>
+  <label>Overall stage
+    <select name="maturity_stage">
+      <option value="">Prefer not to say</option>
+      <option>Emerging: an informal community exists</option>
+      <option>Organized: incorporated and governed</option>
+      <option>Connected: plugged into the research ecosystem</option>
+      <option>Data Generating: operating a registry or natural history study</option>
+      <option>Data Sharing: contributing standardized data beyond our organization</option>
+    </select>
+  </label>
+  <label>What would help you most right now
+    <textarea name="support" placeholder="For example: choosing a registry platform, writing a data dictionary, finding a researcher"></textarea>
+  </label>
+</fieldset>
+
+<fieldset>
+  <h2>Anything else</h2>
+  <label>Corrections or additions
+    <span class="hint">Tell us what is wrong or missing on the page, including anything about the gene itself.</span>
+    <textarea name="notes"></textarea>
+  </label>
+  <div class="row">
+    <label>Your name
+      <input type="text" name="your_name">
+    </label>
+    <label>Your email
+      <span class="hint">So we can confirm the change with you. Not published.</span>
+      <input type="email" name="your_email">
+    </label>
+  </div>
+</fieldset>
+
+<div class="actions">
+  <button type="submit" class="primary">Open this in an email</button>
+  <button type="button" class="ghost" id="copy">Copy the text instead</button>
+  <span class="muted" id="status"></span>
+</div>
+<pre class="preview" id="preview"></pre>
+</form>
+
+<p class="fine">Submissions go to <a href="mailto:danielle@boycedatascience.com">danielle@boycedatascience.com</a> and are reviewed before anything changes on the site. Once an entry is confirmed by a reviewer it is marked verified; until then it shows as awaiting review. If your email program does not open, use the copy button and paste the text into a normal email.</p>
+</main>
+
+<script>
+(function(){
+  const f = document.getElementById('f');
+  const params = new URLSearchParams(location.search);
+  if(params.get('gene')) f.elements['gene'].value = params.get('gene');
+  if(params.get('org')) f.elements['org_name'].value = params.get('org');
+
+  const LABELS = {org_name:'Organization', url:'Website or group link', gene:'Gene(s)', condition:'Condition',
+    country:'Country or region', org_type:'Type of group', registry_platform:'Registry platform',
+    registry_url:'Enrollment link', natural_history_study:'Natural history study', irb_status:'IRB or ethics approval',
+    coalitions:'Coalitions', maturity_stage:'Overall stage', support:'What would help most',
+    notes:'Corrections or additions', your_name:'Submitted by', your_email:'Contact email'};
+
+  function body(){
+    const d = new FormData(f);
+    const lines = [];
+    for(const key of Object.keys(LABELS)){
+      let v = key==='coalitions' ? d.getAll('coalitions').join(', ') : (d.get(key)||'').toString().trim();
+      if(v) lines.push(`${LABELS[key]}: ${v}`);
+    }
+    lines.push('', 'Sent from the whoswho update form on ' + new Date().toISOString().slice(0,10));
+    return lines.join('\n');
+  }
+  function subject(){
+    const name = (f.elements['org_name'].value||'').trim();
+    const gene = (f.elements['gene'].value||'').trim();
+    return 'whoswho listing update' + (name? ': '+name : '') + (gene? ' ('+gene+')' : '');
+  }
+
+  f.addEventListener('submit', e => {
+    e.preventDefault();
+    location.href = `mailto:danielle@boycedatascience.com?subject=${encodeURIComponent(subject())}&body=${encodeURIComponent(body())}`;
+    document.getElementById('status').textContent = 'Your email program should open. If it did not, use the copy button.';
+  });
+
+  document.getElementById('copy').addEventListener('click', async () => {
+    const text = subject() + '\n\n' + body();
+    const pre = document.getElementById('preview');
+    pre.textContent = text; pre.style.display = 'block';
+    try{ await navigator.clipboard.writeText(text); document.getElementById('status').textContent = 'Copied. Paste it into an email to danielle@boycedatascience.com.'; }
+    catch(e){ document.getElementById('status').textContent = 'Select the text below and copy it.'; }
+  });
+})();
+</script>
+</body>
+</html>

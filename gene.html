@@ -73,6 +73,8 @@
   <a href="index.html">Front door</a>
   <a href="explore.html">Explore the full table</a>
   <a href="maturity.html">Maturity model</a>
+  <a href="data-elements.html">What platforms ask</a>
+  <a href="update.html">Update a listing</a>
   <form action="gene.html" method="get"><input type="search" name="symbol" placeholder="Another gene" aria-label="Gene symbol" required><button type="submit">Go</button></form>
 </nav>
 
@@ -140,7 +142,7 @@
 
   // ---- organizations (patient, pag)
   const orgItem = o => `<li>${link(o.url, o.org_name)}${o.status==='curated'?'<span class="tag ok">verified</span>':'<span class="tag">not yet verified</span>'}${o.country?`<span class="tag">${esc(o.country)}</span>`:''}${o.coalitions?`<span class="tag">${esc(o.coalitions.replace(/;/g,', '))}</span>`:''}</li>`;
-  h += `<section class="block" data-aud="patient pag"><h2>Organizations</h2>${groups.length?`<ul class="plain">${groups.map(orgItem).join('')}</ul>`:'<p>No organization is on record for this gene yet. Umbrella groups for the wider condition may still apply; ask your care team or the coalition pages linked from the front door.</p>'}</section>`;
+  h += `<section class="block" data-aud="patient pag"><h2>Organizations</h2>${groups.length?`<ul class="plain">${groups.map(orgItem).join('')}</ul>`:'<p>No organization is on record for this gene yet. Umbrella groups for the wider condition may still apply; ask your care team or the coalition pages linked from the front door.</p>'}<p class="fine">Run one of these groups? <a href="update.html?gene=${encodeURIComponent(g.symbol)}">Update your listing</a>.</p></section>`;
 
   // ---- platform coverage, shared by the patient and advocacy views
   // Each platform is either on record (with what it is registered under and where to go),
@@ -149,7 +151,7 @@
     {key:'simons', name:'Simons Searchlight', what:'international natural history study and biorepository', check: g.simons_page_url || 'https://www.simonssearchlight.org/research/what-we-study/'},
     {key:'cords',  name:'Sanford CoRDS',      what:'free registry open to any rare condition',            check:'https://research.sanfordhealth.org/rare-disease-registry'},
     {key:'nord',   name:'NORD IAMRARE',       what:'registry platform run by NORD',                       check:'https://rarediseases.org/iamrare-registry-program/'},
-    {key:'cbrain', name:'COMBINEDBrain',      what:'shared biorepository for rare neurodevelopmental conditions', check:'https://combinedbrain.org/'},
+    {key:'cbrain', name:'COMBINEDBrain',      what:'shared biorepository for rare neurodevelopmental conditions; membership confirmation pending', check:'https://combinedbrain.org/'},
     {key:'citizen',name:'Citizen Health',     what:'medical-record based patient registry',               check:'https://www.citizen.health/'},
     {key:'rarex',  name:'RARE-X',             what:'data collection program from Global Genes',           check:'https://globalgenes.org/rare-x/'},
     {key:'matrix', name:'Matrix',             what:'registry platform from Across Healthcare',            check:''},
@@ -207,21 +209,30 @@
   // ---- treatment pipeline and FDA (patient)
   h += `<section class="block" data-aud="patient"><h2>Treatments in development</h2>${g.therapeutics?`<p>${esc(g.therapeutics)}</p>`:'<p>Nothing is recorded here yet.</p>'}${g.fda_report?`<p><b>FDA patient meeting:</b> ${g.fda_report_url?link(g.fda_report_url,g.fda_report):esc(g.fda_report)}</p>`:''}<p class="fine">This is a snapshot of public announcements, not a statement about what is available to any one person. Discuss anything here with your care team.</p></section>`;
 
+  // ---- how much is known (patient), shown only when a count exists
+  if(g.pubmed_hits){
+    const n = parseInt(g.pubmed_hits,10);
+    const band = n>=500 ? 'a large body of published research' : n>=100 ? 'a substantial body of published research' : n>=25 ? 'a growing body of published research' : 'a small number of published papers';
+    h += `<section class="block" data-aud="patient"><h2>How much has been published</h2><p>A standard PubMed search for ${esc(g.symbol)} returned ${esc(g.pubmed_hits)} papers as of ${esc(g.pubmed_as_of||'the last refresh')}, which is ${band}. Newer genes have fewer papers; that reflects when the gene was described, not how serious the condition is.</p><p>${link(`https://pubmed.ncbi.nlm.nih.gov/?term=${encodeURIComponent(g.symbol)}`,'Search PubMed for '+g.symbol)}</p></section>`;
+  }
+
   // ---- coverage checklist (pag)
   const yn = (state, label, note) => `<div class="${state===true?'yes':state===false?'no':'unk'}"><i>${state===true?'\u2713':state===false?'\u2013':'?'}</i>${label}${note?`<span class="tag">${esc(note)}</span>`:''}</div>`;
   const coalitions = [...new Set(myOrgs.flatMap(o=>o.coalitions.split(';')).filter(Boolean))];
+  const cbrainPending = !coalitions.includes('COMBINEDBrain') && /combined ?brain/i.test(platText);
   const onNames = PLATFORMS.filter(p=>has[p.key]).map(p=>p.name);
   h += `<section class="block" data-aud="pag"><h2>Where this gene stands</h2><div class="check">
     ${yn(groups.length>0, groups.length?'Organization on record':'No organization on record', groups.length?`${groups.filter(o=>o.status==='curated').length} verified, ${groups.filter(o=>o.status!=='curated').length} awaiting review`:'')}
     ${yn(!!(g.el_registry_url||registries.length||onNames.length), 'Registry a family can join', onNames.slice(0,3).join(', '))}
     ${yn(natHist ? true : null, 'Natural history study')}
     ${yn(has.simons ? true : (g.simons_on_list ? false : null), 'Simons Searchlight', has.simons ? (g.simons_report_url?'quarterly report published':'') : (g.simons_list_version?'not on the '+g.simons_list_version+' list':'not on record'))}
-    ${yn(has.cbrain ? true : null, 'Biorepository (COMBINEDBrain)')}
-    ${yn(coalitions.length ? true : null, 'Coalition membership', coalitions.join(', '))}
+    ${yn(has.cbrain ? true : null, 'Biorepository (COMBINEDBrain)', has.cbrain && cbrainPending ? 'sample sharing on record; membership confirmation pending' : '')}
+    ${yn(coalitions.length ? true : null, 'Coalition membership', coalitions.length?coalitions.join(', ')+(cbrainPending?'; COMBINEDBrain confirmation pending':''):(cbrainPending?'COMBINEDBrain confirmation pending':''))}
     ${yn(!!g.fda_report, g.fda_report?'FDA patient meeting held':'No FDA patient meeting on record', g.fda_report||'')}
     ${yn(!!g.therapeutics && !/^preclinical only$/i.test(g.therapeutics), 'Therapeutic program beyond preclinical')}
     ${yn(myOrgs.some(o=>o.maturity_stage) ? true : null, 'Maturity stage reported', myOrgs.map(o=>o.maturity_stage).filter(Boolean).join(', '))}
   </div>
+  <p><a href="update.html?gene=${encodeURIComponent(g.symbol)}">Update your listing</a> to correct anything above or add what is missing.</p>
   <p>Stages come from an organization's own self-assessment against the <a href="maturity.html">research readiness maturity model</a>, which describes the path from an informal community to sharing standardized data.</p><p class="fine">A dash means whoswho has nothing on record, which is a gap to fill or a correction to send, not evidence that it does not exist. Email <a href="mailto:danielle@boycedatascience.com?subject=${encodeURIComponent('whoswho: '+g.symbol)}">danielle@boycedatascience.com</a> with anything missing.</p></section>`;
 
   // ---- evidence table (clinician)
@@ -235,10 +246,11 @@
     <li>${link(`https://www.ncbi.nlm.nih.gov/clinvar/?term=${sym}%5Bgene%5D`,'ClinVar')}<span class="tag">variants</span></li>
     ${g.ensembl_gene_id?`<li>${link(`https://gnomad.broadinstitute.org/gene/${esc(g.ensembl_gene_id)}`,'gnomAD')}<span class="tag">population constraint</span></li>`:''}
     <li>${link(`https://www.ncbi.nlm.nih.gov/books/?term=${sym}+AND+%22NBK1116%22%5Bbookacc%5D`,'GeneReviews')}</li>
-    <li>${link(`https://pubmed.ncbi.nlm.nih.gov/?term=${sym}+epilepsy`,'PubMed')}<span class="tag">${esc(g.symbol)} and epilepsy</span></li>
+    <li>${link(`https://pubmed.ncbi.nlm.nih.gov/?term=${sym}+epilepsy`,'PubMed')}<span class="tag">${g.pubmed_hits?`${esc(g.pubmed_hits)} papers for a standard query as of ${esc(g.pubmed_as_of||'')}`:esc(g.symbol)+' and epilepsy'}</span></li>
     <li>${link(`https://clinicaltrials.gov/search?term=${sym}`,'ClinicalTrials.gov')}</li>
     ${g.simons_page_url?`<li>${link(g.simons_page_url,'Simons Searchlight gene page')}${g.simons_report_url?` <span class="tag">${link(g.simons_report_url,'quarterly report')}</span>`:''}</li>`:''}
     ${g.therapeutics?`<li><b>Therapeutic pipeline</b><span class="tag">${esc(g.therapeutics)}</span></li>`:''}
+    <li><a href="data-elements.html">What registry platforms ask</a><span class="tag">the questions and domains each platform collects, side by side</span></li>
   </ul></section>`;
 
   $('#card').innerHTML = h;
