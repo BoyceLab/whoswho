@@ -162,6 +162,24 @@
    "version": null,
    "bytes": 46366,
    "sha256": "0c43e1736bb9bd6e97188d1c030e296a92811ebc9260778408eb46e90e2a017b"
+  },
+  "simons_gene_list": {
+   "file": "sources/simons_gene_list/simons_gene_list.csv",
+   "fetched": "2026-09-05",
+   "how": "manual",
+   "url": "https://www.simonssearchlight.org/research/what-we-study/",
+   "version": "2024-11",
+   "bytes": 15033,
+   "sha256": "ad7a5c48962f478ec8b85e2bfe894d3626d65770d354f1907b440220cb21585a"
+  },
+  "ren_members": {
+   "file": "sources/ren_members/ren_members.csv",
+   "fetched": "2026-09-05",
+   "how": "manual",
+   "url": "https://www.rareepilepsynetwork.org/",
+   "version": null,
+   "bytes": 5332,
+   "sha256": "0d2819a835320fa35a35d0588f9628655da06d84822c7d2ea1e8f3536dfe7a24"
   }
  },
  "tier_rule": "Derived columns: evidence tier and phenotype domain.\n\nThese rules are the editorial policy of the spine. They are deliberately\nsimple and stated in the README verbatim, so a tier can be recomputed by\nhand from the per-source columns in the output.\n\nTier (strength of gene-disease evidence, any domain):\n  T1  ClinGen Definitive or Strong\n      OR any PanelApp Green\n      OR SysNDD Definitive\n      OR G2P definitive / strong\n  T2  Genes4Epilepsy (its inclusion is itself a manual curation)\n      OR SFARI score 1 or 2\n      OR SysNDD Moderate  OR G2P moderate  OR PanelApp Amber\n      OR ClinGen Moderate\n      OR Simons Searchlight studied gene\n  T3  everything else that appears on at least one list\n      (Wang OMIM-derived, SAGAS, PanelApp Red, ClinGen Limited, SFARI 3, SysNDD Limited)\n  Refuted/Disputed labels from ClinGen or SysNDD are recorded in a flag column\n  and the gene is held at T3 with disputed=True regardless of other lists.\n\nDomain (what phenotype the evidence speaks to):\n  epilepsy_primary          epilepsy source says the epilepsy is the core phenotype\n  ndd_with_epilepsy         gene appears on both an epilepsy source and an NDD source,\n                            or Wang labels it NDD-with-epilepsy\n  ndd_no_documented_epilepsy gene appears on NDD sources only\n  systemic_with_seizures    Wang systemic category, or Genes4Epilepsy phenotype in its\n                            malformation/metabolic groupings and no NDD source\n  epilepsy_only_unclassified epilepsy sources only, no category text to go on\n",
