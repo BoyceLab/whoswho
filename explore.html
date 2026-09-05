@@ -7,10 +7,9 @@
 <meta name="description" content="A harmonized, HGNC-keyed list of genes associated with epilepsy and neurodevelopmental disorders, with a curated patient organization layer.">
 <style>
   :root{
-    --ink:#1b2430; --paper:#fbfbf9; --rule:#d9dcd6; --muted:#5a6573; --soft:#eef0ea;
-    --link:#14507a; --t1:#0f6e63; --t2:#8a6a1f; --t3:#6b6f76; --warn:#a0342d;
-    --measure:78ch;
-  }
+    --ink:#3b3350;--paper:#fdfbfe;--rule:#ecdff0;--soft:#f7effa;--muted:#7b7290;--link:#7a4a8c;
+    --lilac:#efe4f6;--rose:#fbe6ef;--mint:#e3f2ec;--sky:#e4eef8;--butter:#fdf3e0;
+    --t1:#5c8f7b;--t2:#c19a5b;--t3:#a49bb5;--warn:#b56a7a;--measure:78ch}
   *{box-sizing:border-box}
   html{scroll-behavior:smooth}
   @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
@@ -18,7 +17,7 @@
   a{color:var(--link)}
   main{max-width:1400px;margin:0 auto;padding:0 28px 60px}
   h1{font-size:28px;line-height:1.15;margin:26px 0 6px;font-weight:650;letter-spacing:-.01em}
-  h2{font-size:20px;margin:30px 0 8px;font-weight:650;padding-top:6px;border-top:2px solid var(--ink)}
+  h2{font-size:20px;margin:30px 0 8px;font-weight:650;padding-top:8px;border-top:2px solid var(--rule)}
   h3{font-size:16px;margin:16px 0 6px;font-weight:650}
   p{margin:6px 0;max-width:var(--measure)}
   .lede{font-size:16px;color:var(--ink);max-width:var(--measure)}
@@ -26,7 +25,7 @@
   code{font:13px/1.4 ui-monospace,Consolas,Menlo,monospace;background:var(--soft);padding:0 4px;border-radius:3px}
 
   /* jump bar */
-  nav.jump{position:sticky;top:0;z-index:5;background:var(--paper);border-bottom:1px solid var(--rule);margin:0 -28px;padding:8px 28px;display:flex;gap:18px;flex-wrap:wrap;align-items:baseline}
+  nav.jump{position:sticky;top:0;z-index:5;background:#fff;border-bottom:1px solid var(--rule);margin:0 -28px;padding:8px 28px;display:flex;gap:18px;flex-wrap:wrap;align-items:baseline}
   nav.jump a{text-decoration:none;color:var(--ink);font-weight:550;font-size:14px}
   nav.jump a:hover{text-decoration:underline}
   nav.jump .release{margin-left:auto;font-size:13px;color:var(--muted)}
@@ -38,7 +37,7 @@
   .bar span{display:block;height:100%}
   .legend{display:flex;gap:18px;flex-wrap:wrap;font-size:13px;margin-bottom:4px}
   .legend i{display:inline-block;width:11px;height:11px;border-radius:2px;margin-right:5px;vertical-align:-1px}
-  .d-epi{background:#2b6f9e}.d-nddepi{background:#0f6e63}.d-ndd{background:#5b8c5a}.d-sys{background:#8a6a1f}.d-other{background:#9aa0a6}
+  .d-epi{background:#a9c9e8}.d-nddepi{background:#bfe0d1}.d-ndd{background:#d9e8c9}.d-sys{background:#f6dfc2}.d-other{background:#e7dff0}
 
   /* controls */
   .controls{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:10px 0}
@@ -46,16 +45,16 @@
   .controls select{font:inherit;padding:6px 8px;border:1px solid var(--rule);border-radius:4px;background:#fff}
   .controls label{font-size:14px}
   .controls .count{font-size:13px;color:var(--muted);margin-left:auto}
-  button.dl{font:inherit;font-size:13px;padding:5px 10px;border:1px solid var(--ink);background:#fff;border-radius:4px;cursor:pointer}
+  button.dl{font:inherit;font-size:13px;padding:5px 12px;border:0;background:var(--lilac);color:var(--ink);border-radius:14px;border-radius:4px;cursor:pointer}
   button.dl:hover{background:var(--soft)}
 
   /* tables */
   .tablewrap{overflow:auto;max-height:70vh;border:1px solid var(--rule);border-radius:4px;background:#fff}
   table{border-collapse:collapse;width:100%;font-size:13.5px}
   th,td{padding:5px 8px;border-bottom:1px solid var(--rule);text-align:left;vertical-align:top}
-  th{background:var(--soft);font-weight:600;position:sticky;top:0;z-index:1;cursor:pointer;white-space:nowrap}
+  th{background:var(--lilac);font-weight:600;position:sticky;top:0;z-index:1;cursor:pointer;white-space:nowrap}
   th[data-sorted="asc"]::after{content:" ↑"}th[data-sorted="desc"]::after{content:" ↓"}
-  tr:hover td{background:#f5f6f2}
+  tr:hover td{background:var(--soft)}
   td.sym{font-weight:600;white-space:nowrap}
   td.name{color:var(--muted);max-width:340px}
   .tier{display:inline-block;font-weight:650;font-size:12px;padding:1px 6px;border-radius:3px;color:#fff}
@@ -64,14 +63,14 @@
   .ticks{display:inline-flex;gap:3px}
   .ticks i{display:inline-block;width:9px;height:14px;border-radius:2px;background:var(--rule)}
   .ticks i.on{background:var(--ink)}
-  .ticks i.on.epi{background:#2b6f9e}.ticks i.on.ndd{background:#5b8c5a}.ticks i.on.both{background:#0f6e63}
+  .ticks i.on.epi{background:#7fa9cf}.ticks i.on.ndd{background:#9cc6ae}.ticks i.on.both{background:#b79ad0}
   .srcnames{font-size:12.5px;color:var(--muted)}
-  tr.detail td{background:#f7f8f4;border-bottom:2px solid var(--rule)}
+  tr.detail td{background:var(--soft);border-bottom:2px solid var(--rule)}
   tr.detail dl{display:grid;grid-template-columns:150px 1fr;gap:3px 14px;margin:4px 0;font-size:13px}
   tr.detail dt{font-weight:600;color:var(--muted)}tr.detail dd{margin:0}
   td.sym a{color:var(--ink);text-decoration:none;border-bottom:1px dotted var(--muted)}
   details{border:1px solid var(--rule);border-radius:4px;background:#fff;margin:8px 0}
-  summary{cursor:pointer;padding:8px 12px;font-weight:550}
+  summary{cursor:pointer;padding:8px 12px;font-weight:550;color:var(--link)}
   details > div{padding:0 12px 10px}
   .empty{border:1px dashed var(--rule);padding:14px;border-radius:4px;background:#fff;max-width:var(--measure)}
   .empty code{display:block;margin:6px 0;padding:6px 8px}
@@ -180,7 +179,7 @@
   <p>The mechanism label (channelopathy, synaptopathy, mTORopathy, chromatinopathy, cohesinopathy, and the rest) is an editorial grouping, not a source assertion. Where EpilepsyLive assigns a protein family by nomenclature, the class follows that family. Pathway groups that nomenclature cannot see (mTOR, synaptic vesicle, cohesin, neuronal ceroid lipofuscinosis) come from an editor map, and the remaining genes are classed by symbol root. Each gene records which of the three applied, and the CSV can be edited to reclassify.</p>
   <h3>Organizations</h3>
   <p>The curated table is edited by hand and never overwritten by a build. Rosters and listed pages enter as candidates; a candidate is removed once a curated row exists for the same gene and the same website. The ORPHAcode on each gene row is the join key to disorder-level resources.</p>
-  <p class="muted">Code, configuration, and the curated table are in the repository behind this page. Suggest a gene or an organization by opening an issue there.</p>
+  <p class="muted">Suggest a gene, an organization, or a correction by emailing <a href="mailto:danielle@boycedatascience.com">danielle@boycedatascience.com</a>.</p>
 </section>
 </main>
 
