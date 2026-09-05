@@ -160,5 +160,23 @@
   "version": null,
   "bytes": 46366,
   "sha256": "0c43e1736bb9bd6e97188d1c030e296a92811ebc9260778408eb46e90e2a017b"
+ },
+ "simons_gene_list": {
+  "file": "sources/simons_gene_list/simons_gene_list.csv",
+  "fetched": "2026-09-05",
+  "how": "manual",
+  "url": "https://www.simonssearchlight.org/research/what-we-study/",
+  "version": "2024-11",
+  "bytes": 15033,
+  "sha256": "ad7a5c48962f478ec8b85e2bfe894d3626d65770d354f1907b440220cb21585a"
+ },
+ "ren_members": {
+  "file": "sources/ren_members/ren_members.csv",
+  "fetched": "2026-09-05",
+  "how": "manual",
+  "url": "https://www.rareepilepsynetwork.org/",
+  "version": null,
+  "bytes": 5332,
+  "sha256": "0d2819a835320fa35a35d0588f9628655da06d84822c7d2ea1e8f3536dfe7a24"
  }
 }
