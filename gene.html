@@ -144,66 +144,37 @@
   const orgItem = o => `<li>${link(o.url, o.org_name)}${o.status==='curated'?'<span class="tag ok">verified</span>':'<span class="tag">not yet verified</span>'}${o.country?`<span class="tag">${esc(o.country)}</span>`:''}${o.coalitions?`<span class="tag">${esc(o.coalitions.replace(/;/g,', '))}</span>`:''}</li>`;
   h += `<section class="block" data-aud="patient pag"><h2>Organizations</h2>${groups.length?`<ul class="plain">${groups.map(orgItem).join('')}</ul>`:'<p>No organization is on record for this gene yet. Umbrella groups for the wider condition may still apply; ask your care team or the coalition pages linked from the front door.</p>'}<p class="fine">Run one of these groups? <a href="update.html?gene=${encodeURIComponent(g.symbol)}">Update your listing</a>.</p></section>`;
 
-  // ---- platform coverage, shared by the patient and advocacy views
-  // Each platform is either on record (with what it is registered under and where to go),
-  // or not on record, which means the spine has no entry, not that the platform excludes the gene.
-  const PLATFORMS = [
-    {key:'simons', name:'Simons Searchlight', what:'international natural history study and biorepository', check: g.simons_page_url || 'https://www.simonssearchlight.org/research/what-we-study/'},
-    {key:'cords',  name:'Sanford CoRDS',      what:'free registry open to any rare condition',            check:'https://research.sanfordhealth.org/rare-disease-registry'},
-    {key:'nord',   name:'NORD IAMRARE',       what:'registry platform run by NORD',                       check:'https://rarediseases.org/iamrare-registry-program/'},
-    {key:'cbrain', name:'COMBINEDBrain',      what:'shared biorepository for rare neurodevelopmental conditions; membership confirmation pending', check:'https://combinedbrain.org/'},
-    {key:'citizen',name:'Citizen Health',     what:'medical-record based patient registry',               check:'https://www.citizen.health/'},
-    {key:'rarex',  name:'RARE-X',             what:'data collection program from Global Genes',           check:'https://globalgenes.org/rare-x/'},
-    {key:'matrix', name:'Matrix',             what:'registry platform from Across Healthcare',            check:''},
-    {key:'pulse',  name:'Pulse Infoframe',    what:'registry platform, formerly Ciitizen and Invitae PIN', check:'https://pulseinfoframe.com/'},
-    {key:'rdcrn',  name:'NIH RDCRN',          what:'NIH Rare Diseases Clinical Research Network',          check:'https://www.rarediseasesnetwork.org/'},
-    {key:'redcap', name:'Academic REDCap study', what:'a study run by a university or hospital',           check:''},
-    {key:'ct',     name:'ClinicalTrials.gov study', what:'a registered natural history or interventional study', check:`https://clinicaltrials.gov/search?term=${encodeURIComponent(g.symbol)}`},
-    {key:'own',    name:'Foundation-hosted registry', what:'run by the gene\'s own organization',          check:''}
-  ];
-  const platText = [g.el_platforms||'', g.el_registry||'', myOrgs.map(o=>o.registry_platform).join('; ')].join('; ');
+  // ---- registries, from the per-gene registry table built during the release
+  let regRows = [];
+  try{ regRows = g.registries ? (typeof g.registries === 'string' ? JSON.parse(g.registries) : g.registries) : []; }catch(e){ regRows = []; }
+  // Registry rows from the organization layer that the gene table does not already cover.
+  const knownPlat = new Set(regRows.map(r => (r.platform||'').toLowerCase()));
+  registries.forEach(o => { if(o.registry_platform && !knownPlat.has(o.registry_platform.toLowerCase()))
+    regRows.push({platform:o.registry_platform, registry_name:o.org_name, registry_url:o.url||o.registry_url, platform_url:'', notes:''}); });
+  const platText = [g.el_platforms||'', g.el_registry||'', regRows.map(r=>r.platform).join('; ')].join('; ');
   const has = {
-    simons: g.simons_on_list ? /^yes/i.test(g.simons_on_list) : (/simons searchlight/i.test(platText) || /^yes/i.test(g.simons_enrolled||'')),
-    cords:  /cords/i.test(platText) || /^yes/i.test(g.cords||''),
-    nord:   /iamrare|\bnord\b/i.test(platText),
-    cbrain: /combined ?brain/i.test(platText),
-    citizen:/citizen/i.test(platText),
-    rarex:  /rare-?x/i.test(platText),
-    matrix: /\bmatrix\b/i.test(platText),
-    pulse:  /pulse infoframe|ciitizen/i.test(platText),
-    rdcrn:  /rdcrn|rare diseases clinical research/i.test(platText),
-    redcap: /redcap|academic/i.test(platText),
-    ct:     /clinicaltrials\.gov|NCT\d{6}/i.test(platText),
-    own:    /foundation-hosted/i.test(platText) || !!g.el_registry_url
+    simons: g.simons_on_list ? /^yes/i.test(g.simons_on_list) : /simons searchlight/i.test(platText),
+    cbrain: /combined ?brain/i.test(platText)
   };
-  // What a platform records this gene under, when the source said so, e.g. CoRDS condition names.
-  const under = {};
-  const cordsNames = (g.cords||'').match(/'([^']+)'/g);
-  if(cordsNames) under.cords = cordsNames.map(x=>x.replace(/'/g,'')).join('; ');
-  const nordName = (platText.match(/IAMRARE \(([^)]+)\)/i)||[])[1];
-  if(nordName) under.nord = nordName;
-  const redcapName = (platText.match(/REDCap \(([^)]+)\)/i)||[])[1];
-  if(redcapName) under.redcap = redcapName;
-  const ownName = g.el_registry && !/^academic|^captured|^multiple|^same\b/i.test(g.el_registry) ? g.el_registry : '';
+  const natHist = /natural history|\bNH\b/i.test(platText) || /natural history|\bNH\b/i.test(regRows.map(r=>r.registry_name+' '+r.notes).join(' '))
+    || myOrgs.some(o=>/^yes/i.test(o.natural_history_study)) || has.simons || regRows.some(r=>/RDCRN|ClinicalTrials/i.test(r.platform));
 
-  const natHist = /natural history|\bNH\b/i.test(platText) || myOrgs.some(o=>/^yes/i.test(o.natural_history_study)) || has.simons || has.rdcrn;
-
-  // ---- registries and studies (patient, pag)
-  const onList = PLATFORMS.filter(p => has[p.key]).map(p => {
-    const label = p.key==='own' && ownName ? ownName : p.name;
-    const link0 = p.key==='own' ? (g.el_registry_url||'') : (registries.find(o=>new RegExp(p.name.split(' ')[0],'i').test(o.registry_platform))||{}).url || p.check;
-    const extra = p.key==='simons' && g.simons_report_url ? ` <span class="tag">${link(g.simons_report_url,'latest quarterly report')}</span>` : '';
-    return `<li><b>${link0?link(link0,label):esc(label)}</b>${p.key==='own'?'':`<span class="tag">${esc(p.what)}</span>`}${extra}${under[p.key]?`<div class="tag">recorded under: ${esc(under[p.key])}</div>`:''}</li>`;
-  }).join('');
-  const offNote = k => k==='simons' && g.simons_list_version
-    ? `not on the published Simons Searchlight gene list of ${esc(g.simons_list_version)}; the list grows, so ${link('https://www.simonssearchlight.org/research/what-we-study/','check the current one')}`
-    : `not on record here; check directly at ${link(PLATFORMS.find(p=>p.key===k).check,'their site')}`;
-  const offList = PLATFORMS.filter(p => !has[p.key] && p.check).map(p =>
-    `<li>${esc(p.name)}<span class="tag">${offNote(p.key)}</span></li>`).join('');
+  const regItem = r => {
+    const title = r.registry_name ? `${esc(r.registry_name)}` : esc(r.platform);
+    const head = r.registry_url ? link(r.registry_url, r.registry_name || r.platform) : title;
+    const generic = /^(foundation-hosted|academic study)$/i.test(r.platform);
+    const on = r.registry_name && r.platform && !generic
+      ? `<span class="tag">on ${r.platform_url?link(r.platform_url,r.platform):esc(r.platform)}</span>`
+      : (!r.registry_name && r.platform_url ? `<span class="tag">${link(r.platform_url,'platform site')}</span>`
+      : (generic && r.registry_name ? `<span class="tag">${r.platform.toLowerCase()==='academic study'?'academic study':'run by the organization'}</span>` : ''));
+    return `<li><b>${head}</b>${on}${r.notes?`<div class="tag">${esc(r.notes)}</div>`:''}</li>`;
+  };
+  const order = ['NORD IAMRARE','Foundation-hosted','Simons Searchlight','Sanford CoRDS','Citizen Health','NIH RDCRN','REDCap','Academic study','ClinicalTrials.gov','COMBINEDBrain','RARE-X','Pulse Infoframe','Matrix'];
+  regRows.sort((a,b) => (order.indexOf(a.platform)+1||99) - (order.indexOf(b.platform)+1||99));
   h += `<section class="block" data-aud="patient pag"><h2>Registries and studies</h2>
-    ${onList?`<p>On record for ${esc(g.symbol)}:</p><ul class="plain">${onList}</ul>`:'<p>No registry or study is on record for this gene yet.</p>'}
+    ${regRows.length?`<ul class="plain">${regRows.map(regItem).join('')}</ul>`:'<p>No registry or study is on record for this gene yet.</p>'}
     ${natHist?'<p class="tag">A natural history study is on record for this gene.</p>':''}
-    ${offList?`<details><summary>Places not on record for this gene</summary><ul class="plain">${offList}</ul><p class="fine">Not on record means whoswho has no entry, not that the platform excludes the gene. Registries add conditions often, so check with them directly.</p></details>`:''}
+    <p class="fine">Registries add conditions often. If your gene is missing from one, ask the registry directly, and <a href="update.html?gene=${encodeURIComponent(g.symbol)}">tell us</a> so the page is corrected.</p>
   </section>`;
 
   // ---- treatment pipeline and FDA (patient)
@@ -220,12 +191,11 @@
   const yn = (state, label, note) => `<div class="${state===true?'yes':state===false?'no':'unk'}"><i>${state===true?'\u2713':state===false?'\u2013':'?'}</i>${label}${note?`<span class="tag">${esc(note)}</span>`:''}</div>`;
   const coalitions = [...new Set(myOrgs.flatMap(o=>o.coalitions.split(';')).filter(Boolean))];
   const cbrainPending = !coalitions.includes('COMBINEDBrain') && /combined ?brain/i.test(platText);
-  const onNames = PLATFORMS.filter(p=>has[p.key]).map(p=>p.name);
   h += `<section class="block" data-aud="pag"><h2>Where this gene stands</h2><div class="check">
     ${yn(groups.length>0, groups.length?'Organization on record':'No organization on record', groups.length?`${groups.filter(o=>o.status==='curated').length} verified, ${groups.filter(o=>o.status!=='curated').length} awaiting review`:'')}
-    ${yn(!!(g.el_registry_url||registries.length||onNames.length), 'Registry a family can join', onNames.slice(0,3).join(', '))}
+    ${yn(regRows.length>0, 'Registry a family can join', regRows.slice(0,3).map(r=>r.registry_name||r.platform).join(', '))}
     ${yn(natHist ? true : null, 'Natural history study')}
-    ${yn(has.simons ? true : (g.simons_on_list ? false : null), 'Simons Searchlight', has.simons ? (g.simons_report_url?'quarterly report published':'') : (g.simons_list_version?'not on the '+g.simons_list_version+' list':'not on record'))}
+    ${yn(has.simons ? true : null, 'Simons Searchlight', has.simons ? (g.simons_report_url?'quarterly report published':'') : (g.simons_list_version?'not on the '+g.simons_list_version+' published list':''))}
     ${yn(has.cbrain ? true : null, 'Biorepository (COMBINEDBrain)', has.cbrain && cbrainPending ? 'sample sharing on record; membership confirmation pending' : '')}
     ${yn(coalitions.length ? true : null, 'Coalition membership', coalitions.length?coalitions.join(', ')+(cbrainPending?'; COMBINEDBrain confirmation pending':''):(cbrainPending?'COMBINEDBrain confirmation pending':''))}
     ${yn(!!g.fda_report, g.fda_report?'FDA patient meeting held':'No FDA patient meeting on record', g.fda_report||'')}

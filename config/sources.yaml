@@ -245,6 +245,7 @@ simons_gene_list:
 # --- More organization-side inputs (candidates only) ---
 
 rela_2019:
+  private: true          # editor's own working file; used but not listed in Sources
   name: Rare Epilepsy Landscape Analysis 2019, organization profiles (appendix)
   manual: true
   file: rela_2019.csv
@@ -295,6 +296,7 @@ fda_pfdd:
     note_fields: [condition, meeting_type, date, resource]
 
 registries_2020:
+  private: true          # editor's own working file; used but not listed in Sources
   name: Organization registry survey list, 2020
   manual: true
   file: registries_2020.csv
@@ -307,6 +309,7 @@ registries_2020:
 # --- EpilepsyLive (BoyceLab/EpilepsyLive pag.html DATA and edge files) ---
 
 epilepsylive_pag:
+  private: true          # editor's own working file; used but not listed in Sources
   name: EpilepsyLive single-gene directory (disorder, foundation, registry, platforms, therapeutics, FDA, contacts)
   manual: true
   file: epilepsylive_pag.csv
@@ -343,6 +346,7 @@ opathy:
     opathy_basis: basis
 
 epilepsylive_orgs:
+  private: true          # editor's own working file; used but not listed in Sources
   name: EpilepsyLive organizations (foundation text, network PAG edges, gene_org_edges.csv)
   manual: true
   file: epilepsylive_orgs.csv
@@ -390,3 +394,16 @@ pubmed_gene_counts:
     pubmed_hits: pubmed_hits
     pubmed_query: pubmed_query
     pubmed_as_of: as_of
+
+registries:
+  private: true          # derived from the editor's own directory; used but not listed in Sources
+  name: Registries and research platforms per gene
+  manual: true
+  file: registries.csv
+  role: gene_registries
+  note: |
+    One row per gene and platform. The platform is resolved from the enrollment URL where there is
+    one, because the host is a stronger signal than a description: a registry at scn2a.iamrare.org
+    runs on NORD IAMRARE whatever the text calls it. Where no URL exists the platform comes from the
+    description. platform_basis records which applied, so a wrong assignment is traceable.
+    registry_name is the registry's own name where it has one.

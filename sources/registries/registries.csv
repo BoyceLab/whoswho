@@ -1,0 +1,395 @@
+gene,platform,registry_name,registry_url,platform_basis,notes,platform_url
+ADNP,Foundation-hosted,ADNP Kids registry,,platform description,,
+ADNP,Citizen Health,,,platform description,,https://www.citizen.health/
+ADNP,Simons Searchlight,SFARI Base,,platform description,,https://www.simonssearchlight.org/
+ADNP,Sanford CoRDS,,,platform description,recorded under: ADNP syndrome,https://research.sanfordhealth.org/rare-disease-registry
+ARID1B,Foundation-hosted,CSS Foundation registry,,platform description,,
+ARID1B,Simons Searchlight,SFARI Base,,platform description,,https://www.simonssearchlight.org/
+ARID1B,Sanford CoRDS,,,platform description,recorded under: Coffin-Siris syndrome,https://research.sanfordhealth.org/rare-disease-registry
+ARX,Simons Searchlight,SFARI Base,,platform description,,https://www.simonssearchlight.org/
+ARX,Sanford CoRDS,,,platform description,registered under an umbrella entry,https://research.sanfordhealth.org/rare-disease-registry
+CACNA1A,Foundation-hosted,"CACNA1A Foundation registry (in development); CACNA1A Foundation, in development",https://www.cacna1a.org/participate-research,own website,,
+CACNA1A,COMBINEDBrain,,,platform description,,https://combinedbrain.org/
+CACNA1A,Sanford CoRDS,,,platform description,recorded under: CACNA1A gene mutation,https://research.sanfordhealth.org/rare-disease-registry
+CDKL5,Foundation-hosted,International CDKL5 Disorder Database (ICDD),https://cdkl5.com/help-our-researchers,own website,,
+CDKL5,REDCap,"ICDD, International CDKL5 Disorder Database, U Western Australia",,platform description,,
+CDKL5,Sanford CoRDS,,,platform description,recorded under: CDKL5-related epileptic encephalopathy,https://research.sanfordhealth.org/rare-disease-registry
+CDKL5,ClinicalTrials.gov,,,platform description,,
+CHD2,RARE-X,Citizen Health partnership,https://www.curechd2.org/rare-x,registry URL host,,https://globalgenes.org/rare-x/
+CHD2,Citizen Health,,,platform description,,https://www.citizen.health/
+CHD2,COMBINEDBrain,,,platform description,,https://combinedbrain.org/
+CHD2,Simons Searchlight,SFARI Base,,platform description,,https://www.simonssearchlight.org/
+CHD2,Sanford CoRDS,,,platform description,registered under an umbrella entry,https://research.sanfordhealth.org/rare-disease-registry
+CLN3,Foundation-hosted,DEM-CHILD database (international Batten registry); BDSRA registry,https://bdsra.org/clinical-news/bdsra-funds-crucial-project-to-expand-a-batten-disease-patient-registry/,own website,,
+CLN3,REDCap,DEM-CHILD international Batten DB,,platform description,,
+CLN3,NIH RDCRN,"UBDRC, University Batten Disease Research Consortium",,platform description,,https://www.rarediseasesnetwork.org/
+CLN3,Sanford CoRDS,,,platform description,recorded under: Juvenile neuronal ceroid lipofuscinosis,https://research.sanfordhealth.org/rare-disease-registry
+CSNK2A1,Foundation-hosted,CSNK2A1 Foundation registry,https://www.csnk2a1foundation.org/contact-registry,own website,,
+CSNK2A1,REDCap,Brain Gene Registry,,platform description,,
+CSNK2A1,COMBINEDBrain,,,platform description,,https://combinedbrain.org/
+CSNK2A1,Simons Searchlight,SFARI Base,,platform description,,https://www.simonssearchlight.org/
+CSNK2A1,Sanford CoRDS,,,platform description,recorded under: Okur-Chung neurodevelopmental syndrome,https://research.sanfordhealth.org/rare-disease-registry
+DDX3X,Foundation-hosted,DDX3X Foundation registry,https://ddx3x.org/registry/,own website,,
+DDX3X,Citizen Health,,,platform description,,https://www.citizen.health/
+DDX3X,Simons Searchlight,SFARI Base,,platform description,,https://www.simonssearchlight.org/
+DDX3X,Sanford CoRDS,,,platform description,recorded under: DDX3X syndrome,https://research.sanfordhealth.org/rare-disease-registry
+EHMT1,Foundation-hosted,IDefine registry,,platform description,,
+EHMT1,RARE-X,,,platform description,,https://globalgenes.org/rare-x/
+EHMT1,Citizen Health,,,platform description,,https://www.citizen.health/
+EHMT1,Simons Searchlight,SFARI Base,,platform description,,https://www.simonssearchlight.org/
+EHMT1,Sanford CoRDS,,,platform description,recorded under: Kleefstra syndrome,https://research.sanfordhealth.org/rare-disease-registry
+FOXG1,Foundation-hosted,FRF NH/registry program,https://www.foxg1research.org/,own website,,
+FOXG1,Sanford CoRDS,,,platform description,recorded under: FOXG1 syndrome,https://research.sanfordhealth.org/rare-disease-registry
+FOXP1,Foundation-hosted,International FOXP1 Foundation,,platform description,,
+FOXP1,REDCap,Mt Sinai Seaver Center,,platform description,,
+FOXP1,Simons Searchlight,SFARI Base,,platform description,,https://www.simonssearchlight.org/
+FOXP1,Sanford CoRDS,,,platform description,recorded under: FOXP1 syndrome,https://research.sanfordhealth.org/rare-disease-registry
+GNAO1,Foundation-hosted,"GNAO1 International Patient Registry (Bow Foundation, hosted via Invitae PIN)",https://gnao1.org/gnao1-international-patient-registry/,own website,,
+GNAO1,Pulse Infoframe,"Invitae Patient Insight Network, hosting Bow Foundation registry",,platform description,,https://pulseinfoframe.com/
+GNAO1,ClinicalTrials.gov,"NCT04950946, UVA",,platform description,,
+GNAO1,Sanford CoRDS,,,platform description,recorded under: GNAO1-related neurodevelopmental disorder,https://research.sanfordhealth.org/rare-disease-registry
+GRIN1,Foundation-hosted,CureGRIN registry; Combined Brain partnership,https://curegrin.org/gri-registry/,own website,,
+GRIN1,COMBINEDBrain,,,platform description,,https://combinedbrain.org/
+GRIN1,REDCap,Childrens Colorado GRI Center,,platform description,,
+GRIN1,Sanford CoRDS,,,platform description,registered under an umbrella entry,https://research.sanfordhealth.org/rare-disease-registry
+GRIN2A,Foundation-hosted,CureGRIN registry; Combined Brain partnership,https://curegrin.org/gri-registry/,own website,,
+GRIN2A,COMBINEDBrain,,,platform description,,https://combinedbrain.org/
+GRIN2A,Simons Searchlight,SFARI Base,,platform description,,https://www.simonssearchlight.org/
+GRIN2A,Sanford CoRDS,,,platform description,recorded under: Early-onset epileptic encephalopathy and intellectual disability due to GRIN2A mutation,https://research.sanfordhealth.org/rare-disease-registry
+GRIN2B,Foundation-hosted,GRIN2B Foundation registry,https://grin2b.com/register/,own website,,
+GRIN2B,COMBINEDBrain,,,platform description,,https://combinedbrain.org/
+GRIN2B,Simons Searchlight,SFARI Base,,platform description,,https://www.simonssearchlight.org/
+GRIN2B,Sanford CoRDS,,,CoRDS field,registered under an umbrella entry,https://research.sanfordhealth.org/rare-disease-registry
+KCNB1,Foundation-hosted,KCNB1 Foundation registry,,platform description,,
+KCNB1,Citizen Health,,,platform description,,https://www.citizen.health/
+KCNB1,COMBINEDBrain,,,platform description,,https://combinedbrain.org/
+KCNB1,Simons Searchlight,SFARI Base,,platform description,,https://www.simonssearchlight.org/
+KCNB1,Sanford CoRDS,,,platform description,recorded under: KCNB1 encephalopathy,https://research.sanfordhealth.org/rare-disease-registry
+MECP2,Foundation-hosted,Rett Syndrome NH Study (US); multiple,https://www.interrett.com.au/,own website,,
+MECP2,NIH RDCRN,Rett Syndrome Natural History Study,,platform description,,https://www.rarediseasesnetwork.org/
+MECP2,REDCap,"InterRett, Telethon Kids/U Western Australia",,platform description,,
+MECP2,ClinicalTrials.gov,,,platform description,,
+MECP2,Sanford CoRDS,,,platform description,recorded under: MECP2 Duplication; MECP2 duplication syndrome,https://research.sanfordhealth.org/rare-disease-registry
+MED13L,Foundation-hosted,MED13L Foundation registry,https://med13l.org/research-hub/join-med13l-research-opportunities/,own website,,
+MED13L,COMBINEDBrain,,,platform description,,https://combinedbrain.org/
+MED13L,Simons Searchlight,SFARI Base,,platform description,,https://www.simonssearchlight.org/
+MED13L,Sanford CoRDS,,,platform description,registered under an umbrella entry,https://research.sanfordhealth.org/rare-disease-registry
+MEF2C,Simons Searchlight,MEF2C Foundation registry; SFARI Base,https://www.usmef2cfoundation.org/joinsimonssearchlight,registry URL host,,https://www.simonssearchlight.org/
+MEF2C,Sanford CoRDS,,,platform description,recorded under: MEF2C haploinsufficiency syndrome,https://research.sanfordhealth.org/rare-disease-registry
+PCDH19,Foundation-hosted,PCDH19 Alliance registry / NH partnership,https://pcdh19info.org/resources/lacy-smith-ms-cgc-nilika-singhal-md-pcdh19-registry-looking-back-on-ten-years/,own website,,
+PCDH19,COMBINEDBrain,,,platform description,,https://combinedbrain.org/
+PCDH19,Sanford CoRDS,,,platform description,registered under an umbrella entry,https://research.sanfordhealth.org/rare-disease-registry
+POLG,NIH RDCRN,"NAMDC (North American Mitochondrial Disease Consortium) registry; NAMDC, North American Mitochondrial Disease Consortium",https://rarediseasesnetwork.org/cms/namdc,registry URL host,,https://www.rarediseasesnetwork.org/
+POLG,REDCap,"UK MitoCohort, Newcastle",,platform description,,
+POLG,Sanford CoRDS,,,platform description,recorded under: Alpers-Huttenlocher syndrome; multiple POLG entries,https://research.sanfordhealth.org/rare-disease-registry
+PPP2R5D,Foundation-hosted,Jordans Guardian Angels,,platform description,,
+PPP2R5D,REDCap,Columbia/Wendy Chung NH,,platform description,,
+PPP2R5D,Sanford CoRDS,,,platform description,recorded under: PPP2R5D-related neurodevelopmental disorder,https://research.sanfordhealth.org/rare-disease-registry
+PURA,Foundation-hosted,PURA Syndrome Foundation registry; Helmholtz Munich partnership,https://purasyndrome.org/research/patient-registry/,own website,,
+PURA,Sanford CoRDS,,,platform description,recorded under: PURA-related severe neonatal-onset neurodevelopmental disorder,https://research.sanfordhealth.org/rare-disease-registry
+SATB2,Foundation-hosted,SATB2 Gene Foundation registry,,platform description,,
+SATB2,COMBINEDBrain,,,platform description,,https://combinedbrain.org/
+SATB2,Simons Searchlight,SFARI Base,,platform description,,https://www.simonssearchlight.org/
+SATB2,Sanford CoRDS,,,platform description,recorded under: SATB2-associated syndrome,https://research.sanfordhealth.org/rare-disease-registry
+SCN1A,Foundation-hosted,Dravet Syndrome International Patient Registry,https://dravetfoundation.org/research/for-patients-families/registry-natural-history-studies/,own website,,
+SCN1A,ClinicalTrials.gov,"Stoke BUTTERFLY, Encoded ENVISION",,platform description,,
+SCN1A,COMBINEDBrain,,,platform description,,https://combinedbrain.org/
+SCN1A,Simons Searchlight,SFARI Base,,platform description,,https://www.simonssearchlight.org/
+SCN1A,Sanford CoRDS,,,platform description,recorded under: Dravet syndrome,https://research.sanfordhealth.org/rare-disease-registry
+SCN2A,NORD IAMRARE,Dragonfly,https://scn2a.iamrare.org/,registry URL host,,https://rarediseases.org/iamrare-registry-program/
+SCN2A,COMBINEDBrain,,,platform description,,https://combinedbrain.org/
+SCN2A,Simons Searchlight,SFARI Base,,platform description,,https://www.simonssearchlight.org/
+SCN2A,Sanford CoRDS,,,platform description,registered under an umbrella entry,https://research.sanfordhealth.org/rare-disease-registry
+SCN8A,Foundation-hosted,Wishes for Elliott registry partnership,https://scn8aalliance.org/scn8a-registry/,own website,,
+SCN8A,COMBINEDBrain,,,platform description,,https://combinedbrain.org/
+SCN8A,Sanford CoRDS,,,platform description,registered under an umbrella entry,https://research.sanfordhealth.org/rare-disease-registry
+SETBP1,Foundation-hosted,SETBP1 Society registry,,platform description,,
+SETBP1,Citizen Health,,,platform description,,https://www.citizen.health/
+SETBP1,COMBINEDBrain,,,platform description,,https://combinedbrain.org/
+SETBP1,Simons Searchlight,SFARI Base,,platform description,,https://www.simonssearchlight.org/
+SETBP1,Sanford CoRDS,,,platform description,recorded under: SETBP1 disorder,https://research.sanfordhealth.org/rare-disease-registry
+SHANK3,Foundation-hosted,"PMSF International Registry (Matrix platform, early adopter)",https://pmsf.org/datahub/,own website,,
+SHANK3,Matrix,"Across Healthcare, PMSF was first adopter",,platform description,,
+SHANK3,REDCap,Mt Sinai Seaver Center,,platform description,,
+SHANK3,Simons Searchlight,SFARI Base,,platform description,,https://www.simonssearchlight.org/
+SHANK3,Sanford CoRDS,,,platform description,recorded under: Phelan-McDermid syndrome,https://research.sanfordhealth.org/rare-disease-registry
+SLC13A5,Foundation-hosted,TESS Foundation registry; TESS Research Foundation registry,https://www.tessresearch.org/join-registry/,own website,,
+SLC13A5,ClinicalTrials.gov,NCT04181307,,platform description,,
+SLC13A5,Pulse Infoframe,Ciitizen/Invitae,,platform description,,https://pulseinfoframe.com/
+SLC13A5,Sanford CoRDS,,,platform description,recorded under: SLC13A5 deficiency,https://research.sanfordhealth.org/rare-disease-registry
+SLC6A1,Foundation-hosted,SLC6A1 Connect registry,https://slc6a1connect.org/registry/,own website,,
+SLC6A1,Citizen Health,,,platform description,,https://www.citizen.health/
+SLC6A1,REDCap,"Brain Gene Registry, Childrens National",,platform description,,
+SLC6A1,COMBINEDBrain,,,platform description,,https://combinedbrain.org/
+SLC6A1,Simons Searchlight,SFARI Base,,platform description,,https://www.simonssearchlight.org/
+SLC6A1,Sanford CoRDS,,,platform description,registered under an umbrella entry,https://research.sanfordhealth.org/rare-disease-registry
+STXBP1,Foundation-hosted,STXBP1 NH Study (NCT06555965),https://www.stxbp1disorders.org/contact-list,own website,,
+STXBP1,ClinicalTrials.gov,"NCT06555965, joint with SYNGAP1",,platform description,,
+STXBP1,REDCap,"Brain Gene Registry, Childrens National",,platform description,,
+STXBP1,COMBINEDBrain,,,platform description,,https://combinedbrain.org/
+STXBP1,Simons Searchlight,SFARI Base,,platform description,,https://www.simonssearchlight.org/
+STXBP1,Sanford CoRDS,,,platform description,registered under an umbrella entry,https://research.sanfordhealth.org/rare-disease-registry
+SYNGAP1,Foundation-hosted,SYNGAP1 Patient Registry,https://curesyngap1.org/join-the-citizen-registry/,own website,,
+SYNGAP1,ClinicalTrials.gov,"NCT06555965, joint with STXBP1",,platform description,,
+SYNGAP1,REDCap,"Brain Gene Registry, Childrens National",,platform description,,
+SYNGAP1,Citizen Health,,,platform description,,https://www.citizen.health/
+SYNGAP1,COMBINEDBrain,,,platform description,,https://combinedbrain.org/
+SYNGAP1,Simons Searchlight,SFARI Base,,platform description,,https://www.simonssearchlight.org/
+SYNGAP1,Sanford CoRDS,,,platform description,registered under an umbrella entry,https://research.sanfordhealth.org/rare-disease-registry
+TANGO2,Foundation-hosted,T2RF registry,,platform description,,
+TANGO2,REDCap,Baylor,,platform description,,
+TANGO2,Sanford CoRDS,,,platform description,recorded under: TANGO2-related metabolic encephalopathy and arrhythmias,https://research.sanfordhealth.org/rare-disease-registry
+TBCK,Foundation-hosted,Cure TBCK registry,,platform description,,
+TBCK,REDCap,CHOP NH,,platform description,,
+TBCK,Sanford CoRDS,,,platform description,recorded under: TBCK-related neurodevelopmental disorder,https://research.sanfordhealth.org/rare-disease-registry
+TSC1,Foundation-hosted,TSC Natural History Database (TSC Alliance); TSC Alliance Natural History Database,https://www.tscalliance.org/get-involved/participate-in-research/tsc-biosample-repository-and-natural-history-database/,own website,,
+TSC1,REDCap,TOSCA international cohort,,platform description,,
+TSC1,NIH RDCRN,,,platform description,,https://www.rarediseasesnetwork.org/
+TSC1,Sanford CoRDS,,,platform description,registered under an umbrella entry,https://research.sanfordhealth.org/rare-disease-registry
+TSC2,Foundation-hosted,"Same, TSC Natural History Database; TSC Alliance Natural History Database",https://www.tscalliance.org/get-involved/participate-in-research/tsc-biosample-repository-and-natural-history-database/,own website,,
+TSC2,REDCap,TOSCA international cohort,,platform description,,
+TSC2,NIH RDCRN,,,platform description,,https://www.rarediseasesnetwork.org/
+TSC2,Sanford CoRDS,,,platform description,registered under an umbrella entry,https://research.sanfordhealth.org/rare-disease-registry
+UBE3A,Foundation-hosted,LADDER database (Lifespan Angelman Database; ASF Clinics network,https://angelman.org/contactregistry/,own website,,
+UBE3A,REDCap,"LADDER, Lifespan Angelman Database",,platform description,,
+UBE3A,ClinicalTrials.gov,multiple industry-sponsored,,platform description,,
+UBE3A,NIH RDCRN,,,platform description,,https://www.rarediseasesnetwork.org/
+UBE3A,Sanford CoRDS,,,platform description,recorded under: Angelman syndrome,https://research.sanfordhealth.org/rare-disease-registry
+YWHAG,Foundation-hosted,YWHAG Foundation patient registry (in development); YWHAG Foundation registry,https://www.ywhagfoundation.org/patient-registry,own website,,
+YWHAG,Citizen Health,,,platform description,,https://www.citizen.health/
+YWHAG,Sanford CoRDS,,,platform description,registered under an umbrella entry,https://research.sanfordhealth.org/rare-disease-registry
+ALDH7A1,Foundation-hosted,International PDE Registry ( PDE Online registry,https://pdeonline.org/,own website,,
+ALDH7A1,REDCap,"CHARLIE consortium, charlie.science",,platform description,,
+ALDH7A1,Sanford CoRDS,,,platform description,registered under an umbrella entry,https://research.sanfordhealth.org/rare-disease-registry
+AP4B1,ClinicalTrials.gov,"Boston Childrens Hospital AP-4-HSP Registry & NH Study (NCT04712812); NCT04712812, BCH",https://clinicaltrials.gov/study/NCT04712812,registry URL host,,
+AP4B1,Sanford CoRDS,,,platform description,registered under an umbrella entry,https://research.sanfordhealth.org/rare-disease-registry
+ATP1A3,Foundation-hosted,AHC Patient Registry (Duke / AHC Foundation); multiple country foundations,https://ahckids.org/wp-content/uploads/2015/08/Flyer-ClinicalRegistry.pdf,own website,,
+ATP1A3,REDCap,Duke AHC NH study,,platform description,,
+ATP1A3,Sanford CoRDS,,,platform description,recorded under: ATP1A3 related disorders,https://research.sanfordhealth.org/rare-disease-registry
+DNM1,Foundation-hosted,Citizen Health partnership,https://patient.citizenhealth.com/,own website,,
+DNM1,Citizen Health,,,platform description,,https://www.citizen.health/
+DNM1,Sanford CoRDS,,,platform description,recorded under: DNM1 Gene Mutation / DNM1,https://research.sanfordhealth.org/rare-disease-registry
+DYRK1A,Simons Searchlight,Working toward; SFARI Base,https://www.simonssearchlight.org/research/what-we-study/dyrk1a/,registry URL host,,https://www.simonssearchlight.org/
+DYRK1A,Sanford CoRDS,,,platform description,recorded under: DYRK1A syndrome,https://research.sanfordhealth.org/rare-disease-registry
+KCNMA1,Foundation-hosted,KCAF registry,,platform description,,
+KCNMA1,REDCap,Univ. of Maryland NH,,platform description,,
+KCNMA1,Sanford CoRDS,,,platform description,recorded under: KCNMA1 channelopathy,https://research.sanfordhealth.org/rare-disease-registry
+KCNQ2,Foundation-hosted,"RIKEE, Rational Intervention for KCNQ2/3 Encephalopathy (international DB)",https://www.kcnq2cure.org/contact-registry-form/,own website,,
+KCNQ2,REDCap,"RIKEE, Rational Intervention for KCNQ2/3 Encephalopathy",,platform description,,
+KCNQ2,COMBINEDBrain,,,platform description,,https://combinedbrain.org/
+KCNQ2,Sanford CoRDS,,,platform description,registered under an umbrella entry,https://research.sanfordhealth.org/rare-disease-registry
+KCNT1,Foundation-hosted,KCNT1 Epilepsy Foundation Patient Registry,https://www.kcnt1epilepsy.org/registry-information-original/,own website,,
+KCNT1,NORD IAMRARE,KCNT1 International Registry,https://kcnt1.iamrare.org/,platform description,,https://rarediseases.org/iamrare-registry-program/
+KCNT1,COMBINEDBrain,,,platform description,,https://combinedbrain.org/
+KCNT1,Sanford CoRDS,,,platform description,recorded under: Epilepsy of infancy with migrating focal seizures; E410K Syndrome = KCNT1 hotspot,https://research.sanfordhealth.org/rare-disease-registry
+KCNT1,REDCap,,,platform description,multi-site NH studies,
+KIF1A,Foundation-hosted,KIF1A.ORG NH study (Columbia / Wendy Chung),https://www.kif1a.org/research/,own website,,
+KIF1A,REDCap,Columbia/Wendy Chung NH,,platform description,,
+KIF1A,Citizen Health,,,platform description,,https://www.citizen.health/
+KIF1A,Sanford CoRDS,,,platform description,recorded under: KIF1A-associated neurological disorder,https://research.sanfordhealth.org/rare-disease-registry
+KMT2D,Foundation-hosted,All Things Kabuki registry,,platform description,,
+KMT2D,Citizen Health,,,platform description,,https://www.citizen.health/
+KMT2D,Simons Searchlight,SFARI Base,,platform description,,https://www.simonssearchlight.org/
+KMT2D,Sanford CoRDS,,,platform description,recorded under: Kabuki syndrome,https://research.sanfordhealth.org/rare-disease-registry
+PAFAH1B1,Foundation-hosted,Lissencephaly Network registry,,platform description,,
+PAFAH1B1,Sanford CoRDS,,,platform description,recorded under: Lissencephaly,https://research.sanfordhealth.org/rare-disease-registry
+PNKP,Foundation-hosted,PNKP Disease Foundation,,platform description,,
+PNKP,Academic study,,,platform description,,
+PNKP,Sanford CoRDS,,,platform description,registered under an umbrella entry,https://research.sanfordhealth.org/rare-disease-registry
+PPT1,Foundation-hosted,DEM-CHILD; BDSRA registry; Taylors Tale,https://bdsra.org/clinical-news/bdsra-funds-crucial-project-to-expand-a-batten-disease-patient-registry/,own website,,
+PPT1,REDCap,DEM-CHILD,,platform description,,
+PPT1,Sanford CoRDS,,,platform description,recorded under: Infantile neuronal ceroid lipofuscinosis,https://research.sanfordhealth.org/rare-disease-registry
+PRRT2,REDCap,Heidelberg international cohort,,platform description,,
+PRRT2,Sanford CoRDS,,,platform description,registered under an umbrella entry,https://research.sanfordhealth.org/rare-disease-registry
+PTEN,ClinicalTrials.gov,"PTEN Foundation IRB-approved registry & biorepository; NCT06462430, Yale",https://clinicaltrials.gov/study/NCT06462430,registry URL host,,
+PTEN,Sanford CoRDS,,,platform description,recorded under: PTEN hamartoma tumor syndrome,https://research.sanfordhealth.org/rare-disease-registry
+SLC2A1,Foundation-hosted,Glut1 Deficiency Foundation Patient Registry,https://www.g1dfoundation.org/natural-history-study/,own website,,
+SLC2A1,COMBINEDBrain,,,platform description,,https://combinedbrain.org/
+SLC2A1,Sanford CoRDS,,,platform description,recorded under: Classic glucose transporter type 1 deficiency syndrome,https://research.sanfordhealth.org/rare-disease-registry
+SLC9A6,Foundation-hosted,CSA Research Foundation registry,,platform description,,
+SLC9A6,REDCap,BCH NH,,platform description,,
+SLC9A6,Sanford CoRDS,,,platform description,recorded under: Christianson syndrome,https://research.sanfordhealth.org/rare-disease-registry
+TCF4,Foundation-hosted,PHRF registry,,platform description,,
+TCF4,REDCap,UNC NH,,platform description,,
+TCF4,Sanford CoRDS,,,platform description,recorded under: Pitt-Hopkins syndrome,https://research.sanfordhealth.org/rare-disease-registry
+TPP1,Foundation-hosted,DEM-CHILD; BDSRA registry,https://bdsra.org/clinical-news/bdsra-funds-crucial-project-to-expand-a-batten-disease-patient-registry/,own website,,
+TPP1,REDCap,DEM-CHILD,,platform description,,
+TPP1,ClinicalTrials.gov,BioMarin Brineura post-marketing,,platform description,,
+TPP1,Sanford CoRDS,,,platform description,recorded under: Classic late infantile neuronal ceroid lipofuscinosis,https://research.sanfordhealth.org/rare-disease-registry
+WDR45,RARE-X,NBIA international registry; BPAN-specific cohorts via Dont Forget Me,https://www.bpanwarriors.org/rare-x,registry URL host,,https://globalgenes.org/rare-x/
+WDR45,Citizen Health,NBIA international registry,https://www.prweb.com/releases/BPAN_Warriors_Partners_with_Ciitizen_to_launch_a_groundbreaking_Natural_History_Study_to_accelerate_potential_treatments_for_rare_disease_BPAN/prweb17735181.htm,registry URL host,,https://www.citizen.health/
+WDR45,Sanford CoRDS,,,platform description,recorded under: Beta-propeller protein-associated neurodegeneration / NBIA,https://research.sanfordhealth.org/rare-disease-registry
+ZEB2,Foundation-hosted,"Mowat-Wilson Syndrome Foundation Matrix Portal & Registry (Across Healthcare platform, early adopter, launched Feb 2021)",https://mowat-wilson.org/matrix/,own website,,
+ZEB2,Matrix,"Across Healthcare, MWSF was first adopter alongside PMSF",,platform description,,
+ZEB2,Sanford CoRDS,,,platform description,recorded under: Mowat-Wilson syndrome,https://research.sanfordhealth.org/rare-disease-registry
+ARHGEF9,Academic study,,,platform description,,
+ARHGEF9,Sanford CoRDS,,,platform description,registered under an umbrella entry,https://research.sanfordhealth.org/rare-disease-registry
+ATP6V1A,Foundation-hosted,,https://vatpasealliance.org/patient-registry-1,own website,Academic cohorts (Florence Italy),
+ATP6V1A,Academic study,Florence cohort,,platform description,,
+ATP6V1A,Sanford CoRDS,,,platform description,registered under an umbrella entry,https://research.sanfordhealth.org/rare-disease-registry
+CASK,Foundation-hosted,Project CASK registry partnership; international CASK NH cohort,https://www.caskgene.org/registry,own website,,
+CASK,Simons Searchlight,SFARI Base,,platform description,,https://www.simonssearchlight.org/
+CASK,REDCap,Penn State Hershey NH,,platform description,,
+CASK,Sanford CoRDS,,,platform description,registered under an umbrella entry,https://research.sanfordhealth.org/rare-disease-registry
+CSNK2B,Citizen Health,CSNK2B registry (Citizen Health,https://www.citizen.health/ai-advocate/csnk2b-foundation,registry URL host,,https://www.citizen.health/
+CSNK2B,Academic study,small cohorts,,platform description,,
+CSNK2B,Sanford CoRDS,,,platform description,registered under an umbrella entry,https://research.sanfordhealth.org/rare-disease-registry
+DEAF1,Simons Searchlight,SFARI Base,,platform description,,https://www.simonssearchlight.org/
+DEAF1,Sanford CoRDS,,,platform description,registered under an umbrella entry,https://research.sanfordhealth.org/rare-disease-registry
+DLG4,Simons Searchlight,SFARI Base,,platform description,,https://www.simonssearchlight.org/
+DLG4,Sanford CoRDS,,,platform description,registered under an umbrella entry,https://research.sanfordhealth.org/rare-disease-registry
+FRRS1L,Foundation-hosted,,https://www.frrs1l.org/register,own website,Academic only,
+FRRS1L,Academic study,,,platform description,,
+FRRS1L,Sanford CoRDS,,,platform description,registered under an umbrella entry,https://research.sanfordhealth.org/rare-disease-registry
+GABRA1,COMBINEDBrain,,,platform description,via Cure GABA-A Variants,https://combinedbrain.org/
+GABRA1,Sanford CoRDS,,,platform description,recorded under: GABRA 1 gene mutation,https://research.sanfordhealth.org/rare-disease-registry
+GABRB3,COMBINEDBrain,,,platform description,via Cure GABA-A Variants,https://combinedbrain.org/
+GABRB3,Sanford CoRDS,,,platform description,registered under an umbrella entry,https://research.sanfordhealth.org/rare-disease-registry
+GNB1,Foundation-hosted,GNB1 family registry,https://www.gnb1advocacy.org/research/registry,own website,,
+GNB1,REDCap,Columbia,,platform description,,
+GNB1,Simons Searchlight,SFARI Base,,platform description,,https://www.simonssearchlight.org/
+GNB1,Sanford CoRDS,,,platform description,registered under an umbrella entry,https://research.sanfordhealth.org/rare-disease-registry
+GRIN2D,Foundation-hosted,CureGRIN registry,https://curegrin.org/gri-registry/,own website,,
+GRIN2D,COMBINEDBrain,,,platform description,,https://combinedbrain.org/
+GRIN2D,Sanford CoRDS,,,platform description,registered under an umbrella entry,https://research.sanfordhealth.org/rare-disease-registry
+HNRNPU,Foundation-hosted,Simons Searchlight; HNRNPU family registry,https://hnrnp.org/natural-history-study,own website,,
+HNRNPU,Simons Searchlight,SFARI Base,,platform description,,https://www.simonssearchlight.org/
+HNRNPU,Sanford CoRDS,,,platform description,registered under an umbrella entry,https://research.sanfordhealth.org/rare-disease-registry
+KCNA2,Foundation-hosted,Tübingen academic cohort,https://www.kcna2epilepsy.org/kcna2-international-registry-natural-history-study/,own website,,
+KCNA2,Academic study,"Tübingen, Leipzig cohorts",,platform description,,
+KCNA2,Sanford CoRDS,,,platform description,registered under an umbrella entry,https://research.sanfordhealth.org/rare-disease-registry
+KCNH1,Foundation-hosted,,https://www.curekcnh1.org/research,own website,Academic cohorts,
+KCNH1,Academic study,,,platform description,,
+KCNH1,Sanford CoRDS,,,platform description,registered under an umbrella entry,https://research.sanfordhealth.org/rare-disease-registry
+NRXN1,Simons Searchlight,SFARI Base,,platform description,,https://www.simonssearchlight.org/
+NRXN1,REDCap,SPARK autism research,,platform description,,
+NRXN1,Sanford CoRDS,,,platform description,registered under an umbrella entry,https://research.sanfordhealth.org/rare-disease-registry
+SMARCA2,Foundation-hosted,NBS Worldwide registry,,platform description,,
+SMARCA2,Sanford CoRDS,,,platform description,recorded under: Nicolaides-Baraitser syndrome,https://research.sanfordhealth.org/rare-disease-registry
+SMC1A,Foundation-hosted,CdLS Foundation registry,https://smc1a-epilepsy.org/smc1a-patient-registry/,own website,,
+SMC1A,Sanford CoRDS,,,platform description,recorded under: Cornelia de Lange syndrome,https://research.sanfordhealth.org/rare-disease-registry
+TBC1D24,Foundation-hosted,"TBC1D24 Foundation, small",,platform description,,
+TBC1D24,Sanford CoRDS,,,platform description,registered under an umbrella entry,https://research.sanfordhealth.org/rare-disease-registry
+TRIO,Simons Searchlight,SFARI Base,,platform description,,https://www.simonssearchlight.org/
+TRIO,Sanford CoRDS,,,platform description,registered under an umbrella entry,https://research.sanfordhealth.org/rare-disease-registry
+WAC,Simons Searchlight,SFARI Base,,platform description,,https://www.simonssearchlight.org/
+WAC,Sanford CoRDS,,,platform description,registered under an umbrella entry,https://research.sanfordhealth.org/rare-disease-registry
+WWOX,Academic study,"Florey/Melbourne, Aqeilan",,platform description,,
+WWOX,Sanford CoRDS,,,platform description,registered under an umbrella entry,https://research.sanfordhealth.org/rare-disease-registry
+ALG13,Foundation-hosted,Frontiers in CDG (FCDGC) NIH RDCRN registry; CDG CARE,https://cdgcare.org/wp-content/uploads/2021/02/NIH-2021-RDD-CDG-CARE-Poster.pdf,own website,,
+ALG13,NIH RDCRN,"FCDGC, Frontiers in CDG",,platform description,,https://www.rarediseasesnetwork.org/
+ALG13,Sanford CoRDS,,,platform description,registered under an umbrella entry,https://research.sanfordhealth.org/rare-disease-registry
+AP4M1,ClinicalTrials.gov,"Same, BCH AP-4-HSP Registry NCT04712812; NCT04712812, BCH",https://clinicaltrials.gov/study/NCT04712812,registry URL host,,
+AP4M1,Sanford CoRDS,,,platform description,registered under an umbrella entry,https://research.sanfordhealth.org/rare-disease-registry
+ATP1A2,REDCap,Leiden,,platform description,,
+ATP1A2,Foundation-hosted,"AHC Foundation, partial",,platform description,,
+ATP1A2,Sanford CoRDS,,,platform description,registered under an umbrella entry,https://research.sanfordhealth.org/rare-disease-registry
+BRAT1,Citizen Health,,,platform description,,https://www.citizen.health/
+BRAT1,Academic study,,,platform description,,
+BRAT1,Sanford CoRDS,,,platform description,registered under an umbrella entry,https://research.sanfordhealth.org/rare-disease-registry
+CACNA1E,Academic study,,,platform description,,
+CACNA1E,Sanford CoRDS,,,platform description,registered under an umbrella entry,https://research.sanfordhealth.org/rare-disease-registry
+CHRNA4,Academic study,Florey/Melbourne cohort,,platform description,,
+CHRNA4,Sanford CoRDS,,,platform description,registered under an umbrella entry,https://research.sanfordhealth.org/rare-disease-registry
+CHRNB2,Academic study,,,platform description,,
+CHRNB2,Sanford CoRDS,,,platform description,registered under an umbrella entry,https://research.sanfordhealth.org/rare-disease-registry
+CLN5,Foundation-hosted,DEM-CHILD database; BDSRA registry,https://bdsra.org/clinical-news/bdsra-funds-crucial-project-to-expand-a-batten-disease-patient-registry/,own website,,
+CLN5,REDCap,DEM-CHILD,,platform description,,
+CLN5,Sanford CoRDS,,,platform description,recorded under: CLN5 disease,https://research.sanfordhealth.org/rare-disease-registry
+CLN6,Foundation-hosted,DEM-CHILD database; BDSRA registry,https://bdsra.org/clinical-news/bdsra-funds-crucial-project-to-expand-a-batten-disease-patient-registry/,own website,,
+CLN6,REDCap,DEM-CHILD,,platform description,,
+CLN6,Sanford CoRDS,,,platform description,recorded under: CLN6 disease,https://research.sanfordhealth.org/rare-disease-registry
+CLN8,Foundation-hosted,DEM-CHILD database; BDSRA registry,https://bdsra.org/clinical-news/bdsra-funds-crucial-project-to-expand-a-batten-disease-patient-registry/,own website,,
+CLN8,REDCap,DEM-CHILD,,platform description,,
+CLN8,Sanford CoRDS,,,platform description,recorded under: CLN8 disease,https://research.sanfordhealth.org/rare-disease-registry
+CNTNAP2,Simons Searchlight,SFARI Base,,platform description,,https://www.simonssearchlight.org/
+CNTNAP2,Academic study,autism research overlap,,platform description,,
+CNTNAP2,Sanford CoRDS,,,platform description,registered under an umbrella entry,https://research.sanfordhealth.org/rare-disease-registry
+COL4A1,Foundation-hosted,,https://www.gouldsyndromefoundation.org/medical-research/gould-syndrome-patient-registry-article,own website,Academic cohorts,
+COL4A1,Academic study,,,platform description,,
+COL4A1,Sanford CoRDS,,,platform description,registered under an umbrella entry,https://research.sanfordhealth.org/rare-disease-registry
+COL4A2,Foundation-hosted,,https://www.gouldsyndromefoundation.org/medical-research/gould-syndrome-patient-registry-article,own website,Academic cohorts,
+COL4A2,Academic study,,,platform description,,
+COL4A2,Sanford CoRDS,,,platform description,registered under an umbrella entry,https://research.sanfordhealth.org/rare-disease-registry
+DEPDC5,Academic study,,,platform description,multi-site cohorts,
+DEPDC5,Sanford CoRDS,,,platform description,registered under an umbrella entry,https://research.sanfordhealth.org/rare-disease-registry
+EEF1A2,REDCap,Edinburgh,,platform description,,
+EEF1A2,Simons Searchlight,SFARI Base,,platform description,,https://www.simonssearchlight.org/
+EEF1A2,Sanford CoRDS,,,platform description,registered under an umbrella entry,https://research.sanfordhealth.org/rare-disease-registry
+GABBR2,Academic study,,,platform description,,
+GABBR2,Sanford CoRDS,,,platform description,registered under an umbrella entry,https://research.sanfordhealth.org/rare-disease-registry
+GABRG2,COMBINEDBrain,,,platform description,via Cure GABA-A Variants,https://combinedbrain.org/
+GABRG2,Academic study,"Macdonald, Berkovic cohorts",,platform description,,
+GABRG2,Sanford CoRDS,,,platform description,registered under an umbrella entry,https://research.sanfordhealth.org/rare-disease-registry
+GRN,Foundation-hosted,"ALLFTD (NIH RDCRN); Bluefield Project NH; BDSRA, for CLN11 cases",https://bdsra.org/clinical-news/bdsra-funds-crucial-project-to-expand-a-batten-disease-patient-registry/,own website,,
+GRN,NIH RDCRN,ALLFTD,,platform description,,https://www.rarediseasesnetwork.org/
+GRN,Sanford CoRDS,,,CoRDS field,registered under an umbrella entry,https://research.sanfordhealth.org/rare-disease-registry
+HCN1,Academic study,Florey/Melbourne cohort,,platform description,,
+HCN1,Sanford CoRDS,,,platform description,registered under an umbrella entry,https://research.sanfordhealth.org/rare-disease-registry
+IQSEC2,Foundation-hosted,IQSEC2 family,,platform description,,
+IQSEC2,Simons Searchlight,SFARI Base,,platform description,,https://www.simonssearchlight.org/
+IQSEC2,REDCap,Bar-Ilan,,platform description,,
+IQSEC2,Sanford CoRDS,,,platform description,registered under an umbrella entry,https://research.sanfordhealth.org/rare-disease-registry
+KCNA1,Foundation-hosted,National Ataxia Foundation registry,,platform description,,
+KCNA1,Sanford CoRDS,,,platform description,registered under an umbrella entry,https://research.sanfordhealth.org/rare-disease-registry
+KCNQ3,Foundation-hosted,"RIKEE (covers KCNQ2/3 jointly); KCNQ2 Cure Alliance, joint",https://www.rikee.org/,own website,,
+KCNQ3,REDCap,"RIKEE, covers KCNQ2/3 jointly",,platform description,,
+KCNQ3,Sanford CoRDS,,,platform description,registered under an umbrella entry,https://research.sanfordhealth.org/rare-disease-registry
+KCNT2,Academic study,,,platform description,,
+KCNT2,Sanford CoRDS,,,platform description,registered under an umbrella entry,https://research.sanfordhealth.org/rare-disease-registry
+KCTD7,Foundation-hosted,DEM-CHILD; BDSRA registry,https://bdsra.org/clinical-news/bdsra-funds-crucial-project-to-expand-a-batten-disease-patient-registry/,own website,,
+KCTD7,REDCap,DEM-CHILD,,platform description,,
+KCTD7,Sanford CoRDS,,,CoRDS field,registered under an umbrella entry,https://research.sanfordhealth.org/rare-disease-registry
+MTOR,Foundation-hosted,Smith-Kingsmore Syndrome Foundation,,platform description,,
+MTOR,REDCap,Brain Gene Registry,,platform description,,
+MTOR,Sanford CoRDS,,,platform description,recorded under: Smith-Kingsmore syndrome,https://research.sanfordhealth.org/rare-disease-registry
+NPRL3,Academic study,,,platform description,multi-site,
+NPRL3,Sanford CoRDS,,,platform description,registered under an umbrella entry,https://research.sanfordhealth.org/rare-disease-registry
+PIGA,Foundation-hosted,FCDGC NIH RDCRN; GPI Alliance registry; GPI-AD Alliance,https://cdgcare.org/wp-content/uploads/2021/02/NIH-2021-RDD-CDG-CARE-Poster.pdf,own website,,
+PIGA,NIH RDCRN,FCDGC,,platform description,,https://www.rarediseasesnetwork.org/
+PIGA,Sanford CoRDS,,,platform description,registered under an umbrella entry,https://research.sanfordhealth.org/rare-disease-registry
+PIGN,Foundation-hosted,FCDGC NIH RDCRN; GPI Alliance registry; GPI-AD Alliance,https://cdgcare.org/wp-content/uploads/2021/02/NIH-2021-RDD-CDG-CARE-Poster.pdf,own website,,
+PIGN,NIH RDCRN,FCDGC,,platform description,,https://www.rarediseasesnetwork.org/
+PIGN,Sanford CoRDS,,,platform description,registered under an umbrella entry,https://research.sanfordhealth.org/rare-disease-registry
+RHOBTB2,Academic study,,,platform description,,
+RHOBTB2,Sanford CoRDS,,,platform description,registered under an umbrella entry,https://research.sanfordhealth.org/rare-disease-registry
+ROGDI,Academic study,,,platform description,,
+ROGDI,Sanford CoRDS,,,platform description,registered under an umbrella entry,https://research.sanfordhealth.org/rare-disease-registry
+SCN1B,Simons Searchlight,SFARI Base,,platform description,,https://www.simonssearchlight.org/
+SCN1B,Sanford CoRDS,,,platform description,registered under an umbrella entry,https://research.sanfordhealth.org/rare-disease-registry
+SCN3A,REDCap,Penn,,platform description,,
+SCN3A,Sanford CoRDS,,,platform description,registered under an umbrella entry,https://research.sanfordhealth.org/rare-disease-registry
+SETD1B,Academic study,GeneMatcher cohorts,,platform description,,
+SETD1B,Sanford CoRDS,,,platform description,registered under an umbrella entry,https://research.sanfordhealth.org/rare-disease-registry
+SLC25A22,Academic study,,,platform description,,
+SLC25A22,Sanford CoRDS,,,platform description,registered under an umbrella entry,https://research.sanfordhealth.org/rare-disease-registry
+SLC35A2,Foundation-hosted,FCDGC NIH RDCRN; CDG CARE,https://cdgcare.org/wp-content/uploads/2021/02/NIH-2021-RDD-CDG-CARE-Poster.pdf,own website,,
+SLC35A2,NIH RDCRN,FCDGC,,platform description,,https://www.rarediseasesnetwork.org/
+SLC35A2,Sanford CoRDS,,,platform description,registered under an umbrella entry,https://research.sanfordhealth.org/rare-disease-registry
+SPTAN1,Citizen Health,,,platform description,,https://www.citizen.health/
+SPTAN1,Academic study,,,platform description,,
+SPTAN1,Sanford CoRDS,,,platform description,registered under an umbrella entry,https://research.sanfordhealth.org/rare-disease-registry
+STX1B,Academic study,Tübingen,,platform description,,
+STX1B,Sanford CoRDS,,,platform description,registered under an umbrella entry,https://research.sanfordhealth.org/rare-disease-registry
+SZT2,Academic study,,,platform description,,
+SZT2,Sanford CoRDS,,,platform description,registered under an umbrella entry,https://research.sanfordhealth.org/rare-disease-registry
+UBA5,Academic study,,,platform description,,
+UBA5,Sanford CoRDS,,,platform description,registered under an umbrella entry,https://research.sanfordhealth.org/rare-disease-registry
+UNC80,Academic study,,,platform description,,
+UNC80,Sanford CoRDS,,,platform description,registered under an umbrella entry,https://research.sanfordhealth.org/rare-disease-registry
+VPS13A,Foundation-hosted,NA Advocacy registry,,platform description,,
+VPS13A,Academic study,,,platform description,,
+VPS13A,Sanford CoRDS,,,platform description,registered under an umbrella entry,https://research.sanfordhealth.org/rare-disease-registry
+ASXL2,Foundation-hosted,ASXL natural history study and biobank,https://arrefoundation.org/research/asxl-related-disorders-natural-history-study-and-biobank/,own website,,
+ASXL3,Foundation-hosted,ASXL3 natural history study and biobank,https://arrefoundation.org/study/simons-searchlight-asxl3-registry/,own website,,
+CUL3,Foundation-hosted,CUL3 research participation (Simons Searchlight),https://www.cul3.org/participate-in-research,own website,,
+CYFIP2,Foundation-hosted,CYFIP2 registry (Take Action),https://www.cyfip2network.org/take-action,own website,,
+DHDDS,Foundation-hosted,DHDDS patient registry (CoRDS / Sanford Research),https://www.curedhdds.org/patient-registry/,own website,,
+DYNC1H1,Foundation-hosted,DYNC1H1 registry,https://www.dync1h1.org/registry,own website,,
+FAM177A1,Foundation-hosted,FAM177A1 data collection (RARE-X),https://www.fam177a1.org/fam177a1-patient-data-collection,own website,,
+HNRNPH2,Foundation-hosted,HNRNP natural history study (Geneial),https://hnrnp.org/natural-history-study,own website,,
+HNRNPK,Foundation-hosted,HNRNP natural history study (Geneial),https://hnrnp.org/natural-history-study,own website,,
+HNRNPR,Foundation-hosted,HNRNP natural history study (Geneial),https://hnrnp.org/natural-history-study,own website,,
+NALCN,Foundation-hosted,NALCN registry (CRID,https://www.channelinghope.org/patient-research/,own website,,
+NR4A2,Citizen Health,NR4A2 data platform (Citizen Health),https://www.citizen.health/ai-advocate/curenurr1,registry URL host,,https://www.citizen.health/
+NUS1,Foundation-hosted,NUS1 Foundation Patient Registry,https://www.nus1foundation.org/patientregistry,own website,,

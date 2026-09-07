@@ -42,7 +42,7 @@ def load_sources(cfg_all: dict, resolver: HgncResolver):
     long_frames, cnv_frames, missing = [], [], []
     known = set(resolver.by_symbol)
     for sid, cfg in cfg_all.items():
-        if sid == "hgnc" or cfg.get("role") in ("org_candidates", "gene_annotation"):
+        if sid == "hgnc" or cfg.get("role") in ("org_candidates", "gene_annotation", "gene_registries"):
             continue
         path = source_path(sid, cfg)
         if not path.exists():
@@ -215,11 +215,17 @@ def build_org_layer(wide: pd.DataFrame, resolver: HgncResolver, cfg_all: dict, g
             vals = [v for v in grp[col] if v]
             rec[col] = vals[0] if vals else ""
         rec["org_name"] = max(grp["org_name"], key=len)  # fullest name variant
-        rec["source"] = ";".join(sorted(set(grp["source"])))
+        rec["source"] = ";".join(sorted({s for s in grp["source"] if s}))
         rec["coalitions"] = ";".join(sorted({c for cs in grp["coalitions"] for c in cs.split(";") if c}))
         rec["status"] = "candidate"
         merged.append(rec)
     cand = pd.DataFrame(merged, columns=ORG_COLS) if merged else pd.DataFrame(columns=ORG_COLS)
+    private = {sid for sid, c in cfg_all.items() if c.get("private")}
+    def public_source(v):
+        parts = [p for p in str(v).split(";") if p]
+        out = sorted({("editor curation" if p in private else p) for p in parts})
+        return ";".join(out)
+    cand["source"] = cand["source"].map(public_source)
     org = pd.concat([curated, cand], ignore_index=True).fillna("")
     org = org.merge(gene_orpha.rename(columns={"orphacodes": "_orpha"}), on="hgnc_id", how="left")
     org["orphacode"] = org["orphacode"].where(org["orphacode"] != "", org["_orpha"].fillna(""))
@@ -274,6 +280,30 @@ def apply_annotations(wide: pd.DataFrame, cnv: pd.DataFrame, resolver: HgncResol
     return wide.fillna(""), cnv, pd.DataFrame(unresolved_ann)
 
 
+# ---------------------------------------------------------------- registries
+
+def apply_registries(wide: pd.DataFrame, resolver: HgncResolver, cfg_all: dict) -> pd.DataFrame:
+    """Attach the registry rows for each gene as a JSON list, so a card can render them
+    without re-deriving anything. Genes with no registry get an empty list."""
+    by_gene: dict[str, list] = {}
+    for sid, cfg in cfg_all.items():
+        if cfg.get("role") != "gene_registries":
+            continue
+        path = source_path(sid, cfg)
+        if not path.exists():
+            continue
+        df = pd.read_csv(path, dtype=str).fillna("")
+        for _, r in df.iterrows():
+            hid, _ = resolver.resolve(r.get("gene", ""))
+            if not hid:
+                continue
+            by_gene.setdefault(hid, []).append({k: r.get(k, "") for k in
+                ("platform", "registry_name", "registry_url", "platform_url", "platform_basis", "notes")})
+        print(f"  {sid}: {len(df)} registry rows over {len(by_gene)} genes")
+    wide["registries"] = wide["hgnc_id"].map(lambda h: json.dumps(by_gene.get(h, [])))
+    return wide
+
+
 # ---------------------------------------------------------------- main
 
 def main():
@@ -292,6 +322,7 @@ def main():
     wide, cnv, unresolved_ann = apply_annotations(wide, cnv, resolver, cfg_all)
     if len(unresolved_ann):
         unresolved = pd.concat([unresolved, unresolved_ann], ignore_index=True)
+    wide = apply_registries(wide, resolver, cfg_all)
     gene_orpha = wide[["hgnc_id", "orphacodes"]]
     org, gaps = build_org_layer(wide, resolver, cfg_all, gene_orpha)
 
@@ -306,9 +337,16 @@ def main():
 
     manifest_path = SRC / "manifest.json"
     manifest = json.loads(manifest_path.read_text()) if manifest_path.exists() else {}
+    # The published source list covers only sources in the current config that are not marked
+    # private. Private entries are the editor's own working files: they are used in the build and
+    # recorded in the manifest, but they are not public documents, so listing them would point
+    # readers at something they cannot open. Sources dropped from the config are excluded too,
+    # so a stale manifest entry does not linger on the page.
+    public_sources = {sid: rec for sid, rec in manifest.items()
+                      if sid in cfg_all and not cfg_all[sid].get("private")}
     release = {
         "built": date.today().isoformat(),
-        "sources": manifest,
+        "sources": public_sources,
         "tier_rule": tiers.__doc__,
         "genes_total": int(len(wide)),
         "by_tier": wide["tier"].value_counts().to_dict(),
