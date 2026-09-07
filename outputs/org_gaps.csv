@@ -2716,6 +2716,7 @@ HGNC:15807,ZNF335,T1,ndd_with_epilepsy,genes4epilepsy;orphadata_genes;panelapp_a
 HGNC:15992,ZNF341,T1,unclassified,clingen;orphadata_genes
 HGNC:21684,ZNF462,T1,ndd_no_documented_epilepsy,clingen;orphadata_genes;panelapp_au_id;panelapp_ge_id;simons_searchlight
 HGNC:29415,ZNF526,T1,ndd_with_epilepsy,genes4epilepsy;orphadata_genes;panelapp_au_epilepsy;panelapp_au_id;panelapp_ge_id
+HGNC:29025,ZNF536,T1,ndd_with_epilepsy,panelapp_au_epilepsy;panelapp_au_id
 HGNC:24750,ZNF699,T1,ndd_no_documented_epilepsy,orphadata_genes;panelapp_au_id;panelapp_ge_id
 HGNC:13128,ZNF711,T1,ndd_no_documented_epilepsy,clingen;orphadata_genes;panelapp_au_id;panelapp_ge_id
 HGNC:29271,ZNFX1,T1,ndd_with_epilepsy,panelapp_ge_epilepsy;panelapp_ge_id

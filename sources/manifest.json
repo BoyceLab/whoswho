@@ -1,7 +1,7 @@
 {
  "hgnc": {
   "file": "sources/hgnc/hgnc_complete_set.txt",
-  "fetched": "2026-09-05",
+  "fetched": "2026-09-07",
   "how": "url",
   "url": "https://storage.googleapis.com/public-download-files/hgnc/tsv/tsv/hgnc_complete_set.txt",
   "version": null,
@@ -10,7 +10,7 @@
  },
  "genes4epilepsy": {
   "file": "sources/genes4epilepsy/EpilepsyGenes_v2026-03.tsv",
-  "fetched": "2026-09-05",
+  "fetched": "2026-09-07",
   "how": "url",
   "url": "https://raw.githubusercontent.com/bahlolab/Genes4Epilepsy/main/EpilepsyGenes_v2026-03.tsv",
   "version": "v2026-03",
@@ -19,34 +19,34 @@
  },
  "clingen": {
   "file": "sources/clingen/clingen_gene_validity.csv",
-  "fetched": "2026-09-05",
+  "fetched": "2026-09-07",
   "how": "url",
   "url": "https://search.clinicalgenome.org/kb/gene-validity/download",
   "version": null,
   "bytes": 1119885,
-  "sha256": "964b90650a947fef7b1d4be2520bc8c1afdf2871000f1e9a7824e98ce8e2df60"
+  "sha256": "fc2a203394766cda19ac9196f550361996d8547238a3ab0b3b606ff17cfc6d0c"
  },
  "panelapp_au_epilepsy": {
   "file": "sources/panelapp_au_epilepsy/panelapp_au_epilepsy.json",
-  "fetched": "2026-09-05",
+  "fetched": "2026-09-07",
   "how": "panelapp:202",
   "url": "https://panelapp-aus.org/api/v1/panels/",
-  "version": "2.39",
-  "bytes": 3665331,
-  "sha256": "1e674718b9c158eae1191af13df2d4e9f97c46b18e21c4e36db4e7209d44b5b5"
+  "version": "2.40",
+  "bytes": 3668298,
+  "sha256": "dc4f787401376f6f7320257dd4707fc24cb2dd9c8a75c78b4da1e0df14f0a1c8"
  },
  "panelapp_au_id": {
   "file": "sources/panelapp_au_id/panelapp_au_id.json",
-  "fetched": "2026-09-05",
+  "fetched": "2026-09-07",
   "how": "panelapp:250",
   "url": "https://panelapp-aus.org/api/v1/panels/",
-  "version": "2.134",
-  "bytes": 7585682,
-  "sha256": "4244bcdaa51fbad6848c234c74ffa81b9751bbcbfa648afd631ead93c1a6d2ba"
+  "version": "2.135",
+  "bytes": 7588517,
+  "sha256": "74187ab7cca1e06a0af27a9a7983d5517d124a82183a4aa51631bbf4191a5dbe"
  },
  "panelapp_ge_epilepsy": {
   "file": "sources/panelapp_ge_epilepsy/panelapp_ge_epilepsy.json",
-  "fetched": "2026-09-05",
+  "fetched": "2026-09-07",
   "how": "panelapp:402",
   "url": "https://panelapp.genomicsengland.co.uk/api/v1/panels/",
   "version": "9.76",
@@ -55,7 +55,7 @@
  },
  "panelapp_ge_id": {
   "file": "sources/panelapp_ge_id/panelapp_ge_id.json",
-  "fetched": "2026-09-05",
+  "fetched": "2026-09-07",
   "how": "panelapp:285",
   "url": "https://panelapp.genomicsengland.co.uk/api/v1/panels/",
   "version": "11.28",
@@ -64,7 +64,7 @@
  },
  "simons_searchlight": {
   "file": "sources/simons_searchlight/Searchlight-Gene-List_NOV2024.pdf",
-  "fetched": "2026-09-05",
+  "fetched": "2026-09-07",
   "how": "url",
   "url": "https://cdn.simonssearchlight.org/wp-content/uploads/2024/12/11041626/Searchlight-Gene-List_8.5x11_NOV2024-1.pdf",
   "version": null,
@@ -73,7 +73,7 @@
  },
  "orphadata_genes": {
   "file": "sources/orphadata_genes/en_product6.xml",
-  "fetched": "2026-09-05",
+  "fetched": "2026-09-07",
   "how": "url",
   "url": "https://www.orphadata.com/data/xml/en_product6.xml",
   "version": null,
@@ -91,7 +91,7 @@
  },
  "rela_2019": {
   "file": "rela_2019.csv",
-  "fetched": "2026-09-05",
+  "fetched": "2026-09-07",
   "how": "manual",
   "url": null,
   "version": null,
@@ -100,7 +100,7 @@
  },
  "citizen_registry": {
   "file": "citizen_registry.csv",
-  "fetched": "2026-09-05",
+  "fetched": "2026-09-07",
   "how": "manual",
   "url": "https://www.citizen.health",
   "version": null,
@@ -109,7 +109,7 @@
  },
  "everycure_rdnp": {
   "file": "everycure_rdnp.csv",
-  "fetched": "2026-09-05",
+  "fetched": "2026-09-07",
   "how": "manual",
   "url": null,
   "version": null,
@@ -118,7 +118,7 @@
  },
  "fda_pfdd": {
   "file": "fda_pfdd.csv",
-  "fetched": "2026-09-05",
+  "fetched": "2026-09-07",
   "how": "manual",
   "url": "https://www.fda.gov/industry/prescription-drug-user-fee-amendments/condition-specific-meeting-reports-and-other-information-related-patients-experience",
   "version": null,
@@ -127,7 +127,7 @@
  },
  "registries_2020": {
   "file": "registries_2020.csv",
-  "fetched": "2026-09-05",
+  "fetched": "2026-09-07",
   "how": "manual",
   "url": null,
   "version": null,
@@ -136,7 +136,7 @@
  },
  "epilepsylive_pag": {
   "file": "epilepsylive_pag.csv",
-  "fetched": "2026-09-05",
+  "fetched": "2026-09-07",
   "how": "manual",
   "url": "https://boycelab.github.io/EpilepsyLive/pag.html",
   "version": null,
@@ -145,7 +145,7 @@
  },
  "opathy": {
   "file": "opathy.csv",
-  "fetched": "2026-09-05",
+  "fetched": "2026-09-07",
   "how": "manual",
   "url": null,
   "version": null,
@@ -154,7 +154,7 @@
  },
  "epilepsylive_orgs": {
   "file": "sources/epilepsylive_orgs/epilepsylive_orgs.csv",
-  "fetched": "2026-09-05",
+  "fetched": "2026-09-07",
   "how": "manual",
   "url": "https://boycelab.github.io/EpilepsyLive/pag.html",
   "version": null,
@@ -163,7 +163,7 @@
  },
  "simons_gene_list": {
   "file": "sources/simons_gene_list/simons_gene_list.csv",
-  "fetched": "2026-09-05",
+  "fetched": "2026-09-07",
   "how": "manual",
   "url": "https://www.simonssearchlight.org/research/what-we-study/",
   "version": "2024-11",
@@ -172,7 +172,7 @@
  },
  "ren_members": {
   "file": "sources/ren_members/ren_members.csv",
-  "fetched": "2026-09-05",
+  "fetched": "2026-09-07",
   "how": "manual",
   "url": "https://www.rareepilepsynetwork.org/",
   "version": null,
@@ -181,11 +181,20 @@
  },
  "pubmed_gene_counts": {
   "file": "sources/pubmed_gene_counts/pubmed_gene_counts.csv",
-  "fetched": "2026-09-05",
+  "fetched": "2026-09-07",
   "how": "manual",
   "url": "https://pubmed.ncbi.nlm.nih.gov/",
   "version": null,
   "bytes": 89861,
   "sha256": "3e695aa5cd68f77cee47fd68cc788f594a733a64749bdfdb901c8df94fcc6782"
+ },
+ "registries": {
+  "file": "sources/registries/registries.csv",
+  "fetched": "2026-09-07",
+  "how": "manual",
+  "url": null,
+  "version": null,
+  "bytes": 42877,
+  "sha256": "fefa08e24ee56369809835635ca1933ab2d03ea73693d417cfccb7059db1c4a7"
  }
 }
