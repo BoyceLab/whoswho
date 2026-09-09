@@ -81,6 +81,15 @@ class HgncResolver:
         hit = self.table.loc[self.table["hgnc_id"] == hgnc_id, "symbol"]
         return hit.iloc[0] if len(hit) else ""
 
+    def synonyms(self, hgnc_id: str) -> str:
+        """Previous and alias symbols, so a user searching an old symbol finds the gene."""
+        hit = self.table.loc[self.table["hgnc_id"] == hgnc_id]
+        if not len(hit):
+            return ""
+        row = hit.iloc[0]
+        names = _split(row.get("prev_symbol", "")) + _split(row.get("alias_symbol", ""))
+        return ";".join(dict.fromkeys(n for n in names if n))
+
     def info(self, hgnc_id: str) -> dict:
         hit = self.table.loc[self.table["hgnc_id"] == hgnc_id]
         if not len(hit):
@@ -91,6 +100,7 @@ class HgncResolver:
             "symbol": row.get("symbol", ""),
             "gene_name": row.get("name", ""),
             "locus_group": row.get("locus_group", ""),
+            "synonyms": self.synonyms(hgnc_id),
             "omim_id": row.get("omim_id", ""),
             "ensembl_gene_id": row.get("ensembl_gene_id", ""),
         }
