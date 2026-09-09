@@ -8,7 +8,7 @@
   :root{
     --ink:#3b3350;--paper:#fdfbfe;--rule:#ecdff0;--soft:#f7effa;--muted:#7b7290;--link:#7a4a8c;
     --lilac:#efe4f6;--rose:#fbe6ef;--mint:#e3f2ec;--sky:#e4eef8;--butter:#fdf3e0;
-    --t1:#5c8f7b;--t2:#c19a5b;--t3:#a49bb5;--warn:#b56a7a;--measure:80ch}
+    --t1:#2f5d4c;--t2:#7a5310;--t3:#5b5470;--warn:#b56a7a;--measure:80ch}
   *{box-sizing:border-box}
   body{margin:0;background:var(--paper);color:var(--ink);font:15.5px/1.5 Inter,"Segoe UI",system-ui,-apple-system,sans-serif}
   a{color:var(--link)}
@@ -75,7 +75,7 @@
   <a href="maturity.html">Maturity model</a>
   <a href="data-elements.html">What platforms ask</a>
   <a href="update.html">Update a listing</a>
-  <form action="gene.html" method="get"><input type="search" name="symbol" placeholder="Another gene" aria-label="Gene symbol" required><button type="submit">Go</button></form>
+  <form action="search.html" method="get"><input type="search" name="q" placeholder="Gene, condition, or organization" aria-label="Search" required><button type="submit">Go</button></form>
 </nav>
 
 <div id="card"><p class="fine">Loading gene card.</p></div>
@@ -103,25 +103,38 @@
   const aud0 = params.get('aud') || 'patient';
   if(!want){ $('#card').innerHTML = '<div class="empty"><p>No gene given. Type a symbol in the box above, or go back to the <a href="index.html">start</a>.</p></div>'; return; }
 
-  let genes=[], orgs=[];
+  // Two small fetches: the search index to find the gene, then only its shard.
+  let index;
   try{
-    const [gr, orr] = await Promise.all([fetch('outputs/gene_spine.json'), fetch('outputs/org_layer.csv')]);
-    genes = await gr.json(); orgs = orr.ok ? parseCSV(await orr.text()) : [];
-  }catch(e){ $('#card').innerHTML = '<div class="empty"><p>The gene data has not been published yet.</p></div>'; return; }
-
+    const ir = await fetch('outputs/search_index.json'); if(!ir.ok) throw new Error('index');
+    index = await ir.json();
+  }catch(e){ $('#card').innerHTML = '<div class="empty"><p>The gene data could not be loaded just now. Try again in a moment.</p></div>'; return; }
   const w = want.toUpperCase();
-  let g = genes.find(x => x.symbol.toUpperCase()===w) || genes.find(x => x.hgnc_id.toUpperCase()===w || x.hgnc_id.toUpperCase()==='HGNC:'+w);
-  if(!g){
-    const near = genes.filter(x => x.symbol.toUpperCase().startsWith(w) || (x.gene_name||'').toUpperCase().includes(w) || (x.disorder||'').toUpperCase().includes(w)).slice(0,12);
-    $('#card').innerHTML = `<header class="gene"><h1>${esc(want)}</h1><p class="name">is not on the spine.</p></header><div class="empty"><p>It may be spelled differently, or it may not appear on any of the source lists. ${near.length?'Close matches: '+near.map(x=>`<a href="gene.html?symbol=${encodeURIComponent(x.symbol)}">${esc(x.symbol)}</a>`).join(', ')+'.':''} You can also <a href="explore.html?q=${encodeURIComponent(want)}">search the full table</a>.</p></div>`;
+  const syn = x => (x.y||'').toUpperCase().split(';').filter(Boolean);
+  let hit = index.genes.find(x => x.s.toUpperCase()===w)
+         || index.genes.find(x => x.h.toUpperCase()===w || x.h.toUpperCase()==='HGNC:'+w)
+         || index.genes.find(x => syn(x).includes(w));
+  if(!hit){
+    const near = index.genes.filter(x => x.s.toUpperCase().startsWith(w) || (x.n||'').toUpperCase().includes(w) || (x.c||'').toUpperCase().includes(w)).slice(0,12);
+    $('#card').innerHTML = `<header class="gene"><h1>${esc(want)}</h1><p class="name">is not on the spine.</p></header><div class="empty"><p>It may be spelled differently, or it may not appear on any of the source lists this directory draws on. ${near.length?'Close matches: '+near.map(x=>`<a href="gene.html?symbol=${encodeURIComponent(x.s)}">${esc(x.s)}</a>`).join(', ')+'.':''} You can also <a href="search.html?q=${encodeURIComponent(want)}">search conditions and organizations</a>.</p></div>`;
     return;
   }
+  const viaSynonym = hit.s.toUpperCase()!==w && !w.startsWith('HGNC');
+  let g;
+  try{
+    const sr = await fetch(`outputs/genes/${String(hit.k).padStart(2,'0')}.json`); if(!sr.ok) throw new Error('shard');
+    g = (await sr.json()).find(x => x.hgnc_id===hit.h);
+  }catch(e){ $('#card').innerHTML = '<div class="empty"><p>The gene record could not be loaded just now. Try again in a moment.</p></div>'; return; }
+  if(!g){ $('#card').innerHTML = '<div class="empty"><p>The gene record is missing from this release.</p></div>'; return; }
+  const orgs = g.organizations || [];
+  for(const k of ['gene_name','disorder','tier','domain','synonyms','sources','orphacodes','omim_id','ensembl_gene_id','el_registry','el_registry_url','el_platforms','simons_enrolled','simons_on_list','simons_list_version','simons_page_url','simons_report_url','cords','therapeutics','fda_report','fda_report_url','opathy','opathy_basis','gene_family','pubmed_hits','pubmed_as_of','disputed_note','registries']) if(g[k]===undefined) g[k]='';
+  g.disputed = !!g.disputed;
   document.title = `${g.symbol}: whoswho gene card`;
   $('#mailLink').href = `mailto:danielle@boycedatascience.com?subject=${encodeURIComponent('whoswho: '+g.symbol)}`;
-  const myOrgs = orgs.filter(o => o.hgnc_id===g.hgnc_id);
+  const myOrgs = orgs.map(o => Object.fromEntries(Object.entries(o).map(([k,v])=>[k, v==null?'':String(v)])));
   const registries = myOrgs.filter(o => o.org_type==='registry' || /registry \(/i.test(o.org_name));
   const groups = myOrgs.filter(o => !registries.includes(o));
-  const tierText = {T1:'Strong evidence: the major expert reviews agree this gene causes the condition.', T2:'Good evidence, with less agreement across sources.', T3:'Listed by at least one source; the evidence is limited or disputed.'};
+  const tierText = {T1:'An expert panel curation rates this gene definitive or strong, or two or more clinical panels agree.', T2:'One clinical panel or one curated list supports it; the sources do not yet agree.', T3:'On at least one list, with limited evidence.'};
   const domainText = {epilepsy_primary:'epilepsy is the main feature', ndd_with_epilepsy:'neurodevelopmental disorder with epilepsy', ndd_no_documented_epilepsy:'neurodevelopmental disorder, epilepsy not documented on these lists', systemic_with_seizures:'wider condition in which seizures are one feature', epilepsy_only_unclassified:'epilepsy, not further classified', unclassified:'not classified by these lists'};
 
   const sourceLabel = {genes4epilepsy:'Genes4Epilepsy', sagas:'SAGAS', panelapp_au_epilepsy:'PanelApp Australia, epilepsy panel', panelapp_ge_epilepsy:'Genomics England, epilepsy panel', clingen:'ClinGen gene-disease validity', wang_omim_2023:'Wang 2023 (OMIM)', sysndd:'SysNDD', sfari:'SFARI Gene', g2p_dd:'Gene2Phenotype DD', panelapp_au_id:'PanelApp Australia, intellectual disability panel', panelapp_ge_id:'Genomics England, intellectual disability panel', simons_searchlight:'Simons Searchlight', orphadata_genes:'Orphanet'};
@@ -132,8 +145,9 @@
 
   // ---- header
   let h = `<header class="gene"><h1>${esc(g.symbol)}</h1><div class="name">${esc(g.gene_name)}</div>`;
+  if(viaSynonym) h += `<p class="tag">${esc(want)} is an earlier or alternative symbol for ${esc(g.symbol)}.</p>`;
   if(g.disorder) h += `<p class="disorder">${esc(g.disorder)}</p>`;
-  h += `<div class="badges"><span class="tier ${esc(g.tier)}">${esc(g.tier)}</span><span>${esc(tierText[g.tier]||'')}</span>${g.disputed?'<span class="pill" style="color:var(--warn)">disputed by at least one source</span>':''}</div>`;
+  h += `<div class="badges"><span class="tier ${esc(g.tier)}">${esc(g.tier)}</span><span>${esc(tierText[g.tier]||'')}</span>${g.disputed?`<span class="pill" title="${esc(g.disputed_note||'')}">one relationship disputed</span>`:''}</div>`;
   h += `<div class="badges"><span class="pill">${esc(domainText[g.domain]||g.domain)}</span>${g.opathy?`<span class="pill">${esc(g.opathy)}</span>`:''}${g.gene_family?`<span class="pill">${esc(g.gene_family)}</span>`:''}</div>`;
   h += `<div class="ids"><a href="https://www.genenames.org/data/gene-symbol-report/#!/hgnc_id/${esc(g.hgnc_id)}">${esc(g.hgnc_id)}</a>${g.omim_id?`<a href="https://www.omim.org/entry/${esc(g.omim_id)}">OMIM ${esc(g.omim_id)}</a>`:''}${orpha.map(o=>`<a href="https://www.orpha.net/en/disease/detail/${o}">Orphanet ${o}</a>`).join('')}</div></header>`;
 
@@ -178,7 +192,7 @@
   </section>`;
 
   // ---- treatment pipeline and FDA (patient)
-  h += `<section class="block" data-aud="patient"><h2>Treatments in development</h2>${g.therapeutics?`<p>${esc(g.therapeutics)}</p>`:'<p>Nothing is recorded here yet.</p>'}${g.fda_report?`<p><b>FDA patient meeting:</b> ${g.fda_report_url?link(g.fda_report_url,g.fda_report):esc(g.fda_report)}</p>`:''}<p class="fine">This is a snapshot of public announcements, not a statement about what is available to any one person. Discuss anything here with your care team.</p></section>`;
+  h += `<section class="block" data-aud="patient"><h2>Treatments in development</h2>${g.therapeutics?`<p>${esc(g.therapeutics)}</p>`:'<p>Nothing is recorded here yet.</p>'}${g.fda_report?`<p><b>FDA patient meeting:</b> ${g.fda_report_url?link(g.fda_report_url,g.fda_report):esc(g.fda_report)}</p>`:''}<p class="fine">Recorded from public announcements and not independently verified. Programs are discontinued, renamed, and moved between conditions, so check the sponsor or ${link(`https://clinicaltrials.gov/search?term=${encodeURIComponent(g.symbol)}`,'ClinicalTrials.gov')} before relying on any of it, and discuss it with your care team.</p></section>`;
 
   // ---- how much is known (patient), shown only when a count exists
   if(g.pubmed_hits){
@@ -199,7 +213,6 @@
     ${yn(has.cbrain ? true : null, 'Biorepository (COMBINEDBrain)', has.cbrain && cbrainPending ? 'sample sharing on record; membership confirmation pending' : '')}
     ${yn(coalitions.length ? true : null, 'Coalition membership', coalitions.length?coalitions.join(', ')+(cbrainPending?'; COMBINEDBrain confirmation pending':''):(cbrainPending?'COMBINEDBrain confirmation pending':''))}
     ${yn(!!g.fda_report, g.fda_report?'FDA patient meeting held':'No FDA patient meeting on record', g.fda_report||'')}
-    ${yn(!!g.therapeutics && !/^preclinical only$/i.test(g.therapeutics), 'Therapeutic program beyond preclinical')}
     ${yn(myOrgs.some(o=>o.maturity_stage) ? true : null, 'Maturity stage reported', myOrgs.map(o=>o.maturity_stage).filter(Boolean).join(', '))}
   </div>
   <p><a href="update.html?gene=${encodeURIComponent(g.symbol)}">Update your listing</a> to correct anything above or add what is missing.</p>
@@ -208,7 +221,7 @@
   // ---- evidence table (clinician)
   const rows = onSources.map(s => `<tr><td>${esc(sourceLabel[s])}</td><td>${esc(g['ev_'+s]||'included')}</td><td>${esc(g['pheno_'+s]||'')}</td></tr>`).join('');
   h += `<section class="block" data-aud="clinician"><h2>Evidence by source</h2>${rows?`<table class="ev"><thead><tr><th>Source</th><th>Label assigned by the source</th><th>Phenotype recorded</th></tr></thead><tbody>${rows}</tbody></table>`:'<p>No list includes this gene.</p>'}
-  <dl class="facts"><dt>Tier</dt><dd>${esc(g.tier)}: ${esc(tierText[g.tier]||'')}</dd><dt>Domain</dt><dd>${esc(g.domain)}</dd>${g.opathy?`<dt>Mechanism class</dt><dd>${esc(g.opathy)} <span class="tag">${esc(g.opathy_basis||'')}</span></dd>`:''}${g.gene_family?`<dt>Gene family</dt><dd>${esc(g.gene_family)}</dd>`:''}<dt>Sources on record</dt><dd>${esc(String(g.n_sources||onSources.length))}</dd></dl></section>`;
+  <dl class="facts"><dt>Tier</dt><dd>${esc(g.tier)}: ${esc(tierText[g.tier]||'')}</dd>${g.disputed_note?`<dt>Disputed relationships</dt><dd>${esc(g.disputed_note)}<div class="tag">A classification applies to one gene-disease relationship, so this does not lower the tier for others.</div></dd>`:''}<dt>Domain</dt><dd>${esc(g.domain)}</dd>${g.opathy?`<dt>Mechanism class</dt><dd>${esc(g.opathy)} <span class="tag">${esc(g.opathy_basis||'')}</span></dd>`:''}${g.gene_family?`<dt>Gene family</dt><dd>${esc(g.gene_family)}</dd>`:''}<dt>Sources on record</dt><dd>${esc(String(g.n_sources||onSources.length))}</dd></dl></section>`;
 
   // ---- research resources (clinician)
   const sym = encodeURIComponent(g.symbol);

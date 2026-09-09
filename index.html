@@ -50,7 +50,7 @@
   details .body ul{margin:8px 0 8px 18px;padding:0;max-width:var(--measure)}
   details .body li{margin:5px 0;font-size:15px}
   .tier{display:inline-block;font-weight:650;font-size:12px;padding:1px 7px;border-radius:3px;color:#fff}
-  .T1{background:#5c8f7b}.T2{background:#c19a5b}.T3{background:#a49bb5}
+  .T1{background:#2f5d4c}.T2{background:#7a5310}.T3{background:#5b5470}
 
   .stat{display:flex;gap:30px;flex-wrap:wrap;font-size:14px;color:var(--muted);margin:26px 0 0}
   .stat b{font-size:22px;font-weight:650;display:block;line-height:1.1;color:var(--ink)}
@@ -71,10 +71,10 @@
 </nav>
 
 <div class="hero">
-  <h1>Start with a gene.</h1>
+  <h1>Start with a gene, a condition, or an organization.</h1>
   <p>Find the organizations, registries, and research behind any gene linked to epilepsy or a neurodevelopmental disorder.</p>
-  <form class="find" action="gene.html" method="get">
-    <input type="search" name="symbol" placeholder="SCN2A" aria-label="Gene symbol" required autofocus>
+  <form class="find" action="search.html" method="get">
+    <input type="search" name="q" placeholder="SCN2A, Dravet, or a group's name" aria-label="Search" required autofocus>
     <button type="submit">Look it up</button>
   </form>
   <p class="examples">Or try <a href="gene.html?symbol=STXBP1">STXBP1</a><a href="gene.html?symbol=KCNT1">KCNT1</a><a href="gene.html?symbol=SYNGAP1">SYNGAP1</a><a href="gene.html?symbol=CDKL5">CDKL5</a><a href="gene.html?symbol=SLC6A1">SLC6A1</a></p>
@@ -104,21 +104,22 @@
   <details>
     <summary>How to use this</summary>
     <div class="body">
-      <p>Type a gene symbol above. The gene's card opens, with three views you switch between using the tabs under the gene name: the same facts, arranged for what each reader needs.</p>
+      <p>Type a gene, a condition, or an organization above. A single exact gene opens its card; anything else shows results by type. The gene's card, with three views you switch between using the tabs under the gene name: the same facts, arranged for what each reader needs.</p>
       <ul>
         <li><b>Patients and caregivers</b> get the disorder name, the organizations serving families with that gene, registries and natural history studies to join, the platforms it is enrolled in, treatments in development, and any FDA patient meeting.</li>
         <li><b>Advocacy groups</b> get a checklist of what is on record and what is missing, plus a link to correct it.</li>
         <li><b>Clinicians and researchers</b> get the evidence label from every source that includes the gene, the mechanism class, and links to ClinVar, gnomAD, GeneReviews, PubMed, and ClinicalTrials.gov.</li>
       </ul>
       <p>Use <a href="explore.html">all genes</a> to compare many at once, filter by tier, domain, mechanism, or source, and download a subset.</p>
-      <p class="muted">Search takes a gene symbol or HGNC ID. Older symbols resolve to the current one, so a report that says SCN2A1 finds SCN2A. Each card has its own address, such as <code>gene.html?symbol=KCNT1</code>, so it can be linked from anywhere.</p>
+      <p class="muted">Search takes a gene symbol, an older symbol, an HGNC ID, a condition name, an organization name, or a copy number variant region. A report that says SCN2A1 finds SCN2A; a condition-defined group with no single gene is found by its name. Each card has its own address, such as <code>gene.html?symbol=KCNT1</code>, so it can be linked from anywhere.</p>
     </div>
   </details>
 
   <details>
     <summary>What the labels mean</summary>
     <div class="body">
-      <p><span class="tier T1">T1</span> the strongest expert reviews agree this gene causes the condition. <span class="tier T2">T2</span> good evidence, with less agreement across sources. <span class="tier T3">T3</span> on at least one list, with limited or disputed evidence.</p>
+      <p><span class="tier T1">T1</span> an expert panel curation rates the gene definitive or strong for a condition, or two or more clinical panels agree. <span class="tier T2">T2</span> one panel or one curated list supports it. <span class="tier T3">T3</span> on at least one list, with limited evidence.</p>
+      <p>A classification belongs to one gene-disease relationship. A gene can be definitive for one condition and disputed for another, so a disputed label is shown beside the gene rather than used to lower its tier.</p>
       <p><b>Verified</b> next to an organization means a reviewer confirmed it. <b>Awaiting review</b> means it came from a public roster and has not been checked yet.</p>
       <p><b>Not on record</b> for a registry means whoswho has no entry, not that the registry excludes the gene. Registries add conditions often, so the card links you to check directly.</p>
     </div>

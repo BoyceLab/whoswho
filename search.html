@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>whoswho: search</title>
+<style>
+  :root{--ink:#3b3350;--paper:#fdfbfe;--rule:#ecdff0;--soft:#f7effa;--muted:#7b7290;--link:#7a4a8c;
+    --lilac:#efe4f6;--rose:#fbe6ef;--mint:#e3f2ec;--sky:#e4eef8;--butter:#fdf3e0;--t1:#2f5d4c;--t2:#7a5310;--t3:#5b5470;--measure:72ch}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);font:15.5px/1.5 Inter,"Segoe UI",system-ui,-apple-system,sans-serif}
+  a{color:var(--link)}
+  main{max-width:940px;margin:0 auto;padding:0 28px 60px}
+  nav.top{display:flex;align-items:baseline;gap:18px;flex-wrap:wrap;padding:18px 0 0}
+  nav.top .brand{font-weight:650;font-size:17px;text-decoration:none;color:var(--ink)}
+  nav.top .rest{margin-left:auto;display:flex;gap:16px;flex-wrap:wrap;font-size:14px}
+  nav.top a{text-decoration:none;color:var(--muted)}
+  form.find{display:flex;gap:10px;max-width:600px;margin:26px 0 8px}
+  form.find input{flex:1;font:inherit;font-size:17px;padding:11px 14px;border:0;border-radius:10px;background:var(--lilac);color:var(--ink)}
+  form.find button{font:inherit;font-size:16px;font-weight:600;padding:11px 20px;border:0;border-radius:10px;background:#c9a6dd;color:var(--ink);cursor:pointer}
+  h2{font-size:17px;margin:26px 0 6px;font-weight:650}
+  h2 span{font-weight:400;color:var(--muted);font-size:14px;margin-left:8px}
+  ul.res{list-style:none;margin:0;padding:0}
+  ul.res li{padding:9px 12px;border-radius:8px;margin:4px 0;background:var(--soft)}
+  ul.res li .sub{display:block;font-size:13.5px;color:var(--muted)}
+  .tier{display:inline-block;font-weight:650;font-size:11.5px;padding:1px 6px;border-radius:3px;color:#fff;margin-left:6px}
+  .T1{background:var(--t1)}.T2{background:var(--t2)}.T3{background:var(--t3)}
+  .tag{font-size:12.5px;color:var(--muted);margin-left:6px}
+  .empty{background:var(--butter);border-radius:10px;padding:14px 16px;max-width:var(--measure)}
+  .more{font-size:14px;margin:6px 0 0 12px}
+  .fine{font-size:13px;color:var(--muted);max-width:var(--measure);margin-top:30px}
+  @media (max-width:700px){main{padding:0 16px 40px}form.find{flex-direction:column}}
+</style>
+</head>
+<body>
+<main>
+<nav class="top">
+  <a class="brand" href="index.html">whoswho</a>
+  <span class="rest"><a href="explore.html">All genes</a><a href="update.html">Update a listing</a><a href="maturity.html">Maturity model</a><a href="data-elements.html">What platforms ask</a></span>
+</nav>
+
+<form class="find" action="search.html" method="get">
+  <input type="search" name="q" id="q" placeholder="Gene, condition, or organization" aria-label="Search" required>
+  <button type="submit">Search</button>
+</form>
+<div id="results"></div>
+<p class="fine">Search matches gene symbols and older symbols, gene names, condition and disorder names as recorded by the sources, organization names, and copy number variant regions. Something missing? <a href="update.html">Update a listing</a> or email <a href="mailto:danielle@boycedatascience.com">danielle@boycedatascience.com</a>.</p>
+</main>
+
+<script>
+(async function(){
+  const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+  const link = (u, t) => u && /^https?:\/\//i.test(u) ? `<a href="${esc(u)}">${esc(t||u)}</a>` : (u && /^[a-z0-9.-]+\.[a-z]{2,}(\/|$)/i.test(u) ? `<a href="https://${esc(u)}">${esc(t||u)}</a>` : esc(t||''));
+  const params = new URLSearchParams(location.search);
+  const q = (params.get('q')||'').trim();
+  const box = document.getElementById('q'); box.value = q;
+  const out = document.getElementById('results');
+  if(!q){ out.innerHTML = '<p class="empty">Type a gene such as SCN2A, a condition such as Dravet, or an organization name.</p>'; return; }
+  let idx;
+  try{ const r = await fetch('outputs/search_index.json'); if(!r.ok) throw 0; idx = await r.json(); }
+  catch(e){ out.innerHTML = '<p class="empty">Search could not load just now. Try again in a moment.</p>'; return; }
+
+  const Q = q.toUpperCase();
+  const words = Q.split(/\s+/).filter(Boolean);
+  const hasAll = text => { const T = (text||'').toUpperCase(); return words.every(w => T.includes(w)); };
+
+  // exact gene or synonym first
+  const exact = idx.genes.filter(g => g.s.toUpperCase()===Q || (g.y||'').toUpperCase().split(';').includes(Q) || g.h.toUpperCase()===Q);
+  if(exact.length===1 && !params.get('all')){ location.replace(`gene.html?symbol=${encodeURIComponent(exact[0].s)}`); return; }
+
+  const geneHits = idx.genes.filter(g => g.s.toUpperCase().includes(Q) || (g.y||'').toUpperCase().split(';').some(y=>y.includes(Q)) || hasAll(g.n));
+  const condHits = idx.genes.filter(g => !geneHits.includes(g) && (hasAll(g.c) || hasAll(g.p)));
+  const orgHits  = idx.orgs.filter(o => hasAll(o.o));
+  const cnvHits  = (idx.cnvs||[]).filter(c => hasAll(c.r));
+  const seen = new Set(); const dedupOrgs = orgHits.filter(o => { const k = o.o.toLowerCase()+'|'+(o.h||''); if(seen.has(k)) return false; seen.add(k); return true; });
+
+  const geneItem = g => `<li><a href="gene.html?symbol=${encodeURIComponent(g.s)}"><b>${esc(g.s)}</b></a><span class="tier ${esc(g.t)}">${esc(g.t)}</span><span class="tag">${esc(g.n)}</span>${g.c?`<span class="sub">${esc(g.c)}</span>`:''}</li>`;
+  const condItem = g => { const text = g.c || (g.p||'').split(' | ').find(x => hasAll(x)) || ''; return `<li><a href="gene.html?symbol=${encodeURIComponent(g.s)}"><b>${esc(text)}</b></a><span class="sub">${esc(g.s)}, ${esc(g.n)}</span></li>`; };
+  const orgItem = o => `<li>${link(o.u, o.o)}${o.s?`<span class="tag">${esc(o.s)}</span>`:''}${o.st==='curated'?'<span class="tag">verified</span>':''}${o.co?`<span class="tag">${esc(o.co)}</span>`:''}${o.h?`<span class="sub"><a href="gene.html?symbol=${encodeURIComponent(o.s)}&aud=patient">open the ${esc(o.s)} card</a></span>`:'<span class="sub">condition-defined group; no single gene</span>'}</li>`;
+  const cnvItem = c => `<li><b>${esc(c.r)}</b>${c.u?` <span class="tag">${link(c.u,'Simons Searchlight page')}</span>`:''}<span class="sub">copy number variant region</span></li>`;
+
+  const cap = (arr, n, item, label) => arr.length ? `<ul class="res">${arr.slice(0,n).map(item).join('')}</ul>${arr.length>n?`<p class="more">${arr.length-n} more ${label}; narrow the search to see them.</p>`:''}` : '';
+  let h = '';
+  if(geneHits.length) h += `<h2>Genes<span>${geneHits.length}</span></h2>` + cap(geneHits, 25, geneItem, 'genes');
+  if(condHits.length) h += `<h2>Conditions<span>${condHits.length}</span></h2>` + cap(condHits, 25, condItem, 'conditions');
+  if(dedupOrgs.length) h += `<h2>Organizations<span>${dedupOrgs.length}</span></h2>` + cap(dedupOrgs, 40, orgItem, 'organizations');
+  if(cnvHits.length) h += `<h2>Copy number variants<span>${cnvHits.length}</span></h2>` + cap(cnvHits, 25, cnvItem, 'regions');
+  if(!h) h = `<p class="empty">Nothing matched "${esc(q)}". This directory only knows what its sources record, so a missing result is not evidence that nothing exists. Try a gene symbol, a shorter word, or an alternative name.</p>`;
+  out.innerHTML = h;
+})();
+</script>
+</body>
+</html>

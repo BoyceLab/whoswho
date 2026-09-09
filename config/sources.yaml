@@ -36,7 +36,9 @@ genes4epilepsy:
   columns:
     symbol: [Gene, Gene_symbol, gene, HGNC_symbol, Symbol]
     hgnc_id: [HGNC_ID, HGNC ID, hgnc_id]
-    phenotype: [Epilepsy_phenotype, Epilepsy phenotype, Phenotype, Broad_epilepsy_phenotype]
+    phenotype: [Epilepsy_phenotype, Epilepsy phenotype, Phenotype, Broad_epilepsy_phenotype,
+                Phenotypes, Epilepsy_phenotypes, Broad phenotype, Phenotype_category,
+                Epilepsy category, Category, Gene_group, Notes]
     inheritance: [Inheritance, inheritance, Inheritance_pattern]
     omim: [OMIM, OMIM_ID, MIM]
 
@@ -164,15 +166,6 @@ g2p_dd:
     hgnc_id: [hgnc id, hgnc_id, HGNC ID]
     confidence: [confidence category, confidence, Confidence]
     disease: [disease name, disease_name, Disease name]
-
-simons_searchlight:
-  name: Simons Searchlight gene list
-  url: https://cdn.simonssearchlight.org/wp-content/uploads/2024/12/11041626/Searchlight-Gene-List_8.5x11_NOV2024-1.pdf
-  file: Searchlight-Gene-List_NOV2024.pdf
-  landing: https://www.simonssearchlight.org/research/what-we-study/
-  note: PDF; parser extracts tokens that resolve to HGNC symbols. CNV regions (1q21.1 etc.) go to outputs/cnv_regions.csv. Check the landing page for a newer PDF.
-  domain: ndd
-  format: pdf
 
 orphadata_genes:
   name: Orphadata, genes associated with rare disorders (product 6)

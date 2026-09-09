@@ -9,7 +9,7 @@
   :root{
     --ink:#3b3350;--paper:#fdfbfe;--rule:#ecdff0;--soft:#f7effa;--muted:#7b7290;--link:#7a4a8c;
     --lilac:#efe4f6;--rose:#fbe6ef;--mint:#e3f2ec;--sky:#e4eef8;--butter:#fdf3e0;
-    --t1:#5c8f7b;--t2:#c19a5b;--t3:#a49bb5;--warn:#b56a7a;--measure:78ch}
+    --t1:#2f5d4c;--t2:#7a5310;--t3:#5b5470;--warn:#b56a7a;--measure:78ch}
   *{box-sizing:border-box}
   html{scroll-behavior:smooth}
   @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
@@ -98,6 +98,7 @@
 
 <nav class="jump" aria-label="Sections">
   <a href="index.html">whoswho</a>
+  <a href="search.html">Search</a>
   <a href="maturity.html">Maturity model</a>
   <a href="data-elements.html">What platforms ask</a>
   <a href="update.html">Update a listing</a>
@@ -245,7 +246,7 @@
   $('#geneTable thead').addEventListener('click', e=>{ const th=e.target.closest('th'); if(!th) return; const k=th.dataset.key; gsort = gsort.key===k ? {key:k,dir:gsort.dir==='asc'?'desc':'asc'} : {key:k,dir:'asc'}; gpage=0; renderGenes(); });
   function filteredGenes(){
     const q=$('#q').value.trim().toLowerCase(), t=$('#fTier').value, d=$('#fDomain').value, s=$('#fSource').value, op=$('#fOpathy').value, disp=$('#fDisputed').checked;
-    return genes.filter(g => (!q || g.symbol.toLowerCase().includes(q) || (g.gene_name||'').toLowerCase().includes(q) || (g.disorder||'').toLowerCase().includes(q) || g.hgnc_id.toLowerCase()===q || g.hgnc_id.toLowerCase().endsWith(':'+q))
+    return genes.filter(g => (!q || g.symbol.toLowerCase().includes(q) || (g.gene_name||'').toLowerCase().includes(q) || (g.disorder||'').toLowerCase().includes(q) || (g.synonyms||'').toLowerCase().split(';').includes(q) || g.hgnc_id.toLowerCase()===q || g.hgnc_id.toLowerCase().endsWith(':'+q))
       && (!t || g.tier===t) && (!d || g.domain===d) && (!s || g['on_'+s]) && (!op || g.opathy===op) && (!disp || g.disputed));
   }
   function ticks(g){ return '<span class="ticks">'+order.map(s=>`<i class="${g['on_'+s]?'on '+(sourceScope[s]||''):''}" title="${esc(sourceLabel[s]||s)}${g['ev_'+s]?': '+esc(g['ev_'+s]):''}"></i>`).join('')+'</span>'; }

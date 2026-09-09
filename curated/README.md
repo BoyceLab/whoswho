@@ -17,6 +17,8 @@ Column meanings:
 - irb_status: approved / pending / none / unknown
 - maturity_stage: your five-stage self-assessment value
 - coalitions: REN; COMBINEDBrain; AGENDA; ELC (semicolon-separated)
-- status: curated | candidate | rejected
+- status: curated | candidate | rejected. A row reads "verified" on the site only when status is
+  curated AND reviewed_by, review_date, and url are all filled; otherwise it is shown as awaiting
+  review. Rejected rows never appear in the public outputs.
 - source: where the row came from
 - reviewed_by / review_date: who confirmed it and when

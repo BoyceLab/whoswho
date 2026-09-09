@@ -101,6 +101,39 @@ def resolve_all(long: pd.DataFrame, resolver: HgncResolver):
     return resolved, unresolved.drop_duplicates()
 
 
+ENRICH_ONLY = {"orphadata_genes"}   # identifier and disorder bridges, never a reason to include a gene
+
+
+def in_scope(long: pd.DataFrame, cfg_all: dict) -> pd.DataFrame:
+    """Keep genes with at least one in-scope assertion.
+
+    A gene enters the spine because an epilepsy or NDD source lists it, or because
+    a broad source (ClinGen) records a relationship whose disease text matches the
+    epilepsy or NDD terms in the config. Orphadata and non-matching ClinGen rows
+    still enrich a gene that is already in scope; they never pull one in. Without
+    this, a gene like CFTR arrives through the disorder bridge and is displayed in
+    an epilepsy directory at full strength.
+    """
+    epi = cfg_all.get("clingen", {}).get("epilepsy_terms", [])
+    ndd = cfg_all.get("clingen", {}).get("ndd_terms", [])
+    terms = [t.lower() for t in epi + ndd]
+
+    def qualifies(row) -> bool:
+        sid = row.source_id
+        if sid in ENRICH_ONLY:
+            return False
+        if sid == "clingen":
+            text = f"{row.phenotype}".lower()
+            return any(t in text for t in terms)
+        return True
+
+    keep = {h for h, g in long.groupby("hgnc_id") if any(qualifies(r) for r in g.itertuples())}
+    dropped = long[~long["hgnc_id"].isin(keep)]
+    if len(dropped):
+        print(f"  out of scope: {dropped['hgnc_id'].nunique()} genes with no epilepsy or NDD assertion")
+    return long[long["hgnc_id"].isin(keep)].copy()
+
+
 def widen(long: pd.DataFrame, resolver: HgncResolver, cfg_all: dict) -> pd.DataFrame:
     epi_terms = cfg_all.get("clingen", {}).get("epilepsy_terms", [])
     ndd_terms = cfg_all.get("clingen", {}).get("ndd_terms", [])
@@ -118,10 +151,11 @@ def widen(long: pd.DataFrame, resolver: HgncResolver, cfg_all: dict) -> pd.DataF
             ph = "; ".join(sorted({p for p in gg["phenotype"] if p}))
             if ph and sid != "orphadata_genes":
                 rec[f"pheno_{sid}"] = ph[:500]
-        tier, disputed = tiers.tier_for(zip(g["source_id"], g["evidence"]))
+        tier, disputed, disputed_note = tiers.tier_for(zip(g["source_id"], g["evidence"]))
         extras = [json.loads(e) if e else {} for e in g["extra"]]
         rec["tier"] = tier
         rec["disputed"] = disputed
+        rec["disputed_note"] = disputed_note
         rec["domain"] = tiers.domain_for(zip(g["source_id"], g["evidence"], g["phenotype"], extras), epi_terms, ndd_terms)
         orpha = sorted({x.get("orphacode") for x in extras if x.get("orphacode")})
         rec["orphacodes"] = ";".join(orpha)
@@ -129,7 +163,7 @@ def widen(long: pd.DataFrame, resolver: HgncResolver, cfg_all: dict) -> pd.DataF
     wide = pd.DataFrame(rows)
     on_cols = [c for c in wide.columns if c.startswith("on_")]
     wide[on_cols] = wide[on_cols].fillna(False)
-    lead = ["hgnc_id", "symbol", "gene_name", "tier", "domain", "disputed", "n_sources", "sources", "orphacodes", "omim_id", "ensembl_gene_id", "locus_group"]
+    lead = ["hgnc_id", "symbol", "gene_name", "tier", "domain", "disputed", "disputed_note", "n_sources", "sources", "orphacodes", "synonyms", "omim_id", "ensembl_gene_id", "locus_group"]
     rest = sorted(c for c in wide.columns if c not in lead)
     return wide[lead + rest].sort_values(["tier", "symbol"]).reset_index(drop=True)
 
@@ -146,6 +180,17 @@ def build_org_layer(wide: pd.DataFrame, resolver: HgncResolver, cfg_all: dict, g
     cur_path = CUR / "organizations.csv"
     curated = pd.read_csv(cur_path, dtype=str).fillna("") if cur_path.exists() else pd.DataFrame(columns=ORG_COLS)
     curated["status"] = curated["status"].replace("", "curated")
+    # A row may only read "verified" when someone signed it: reviewer, date, and a website
+    # to check against. Anything else is a candidate however it was labelled.
+    unsigned = (curated["status"].str.lower() == "curated") & (
+        (curated["reviewed_by"].str.strip() == "") | (curated["review_date"].str.strip() == "") | (curated["url"].str.strip() == ""))
+    if unsigned.any():
+        print(f"  organizations: {int(unsigned.sum())} curated rows lack reviewer, date, or website; shown as awaiting review")
+        curated.loc[unsigned, "status"] = "candidate"
+    n_rejected = int((curated["status"].str.lower() == "rejected").sum())
+    curated = curated[curated["status"].str.lower() != "rejected"]
+    if n_rejected:
+        print(f"  organizations: {n_rejected} rejected rows withheld from the public output")
     cands = []
     for sid, cfg in cfg_all.items():
         if cfg.get("role") != "org_candidates":
@@ -177,11 +222,23 @@ def build_org_layer(wide: pd.DataFrame, resolver: HgncResolver, cfg_all: dict, g
             for gsym in (genes or [""]):
                 hid, _ = resolver.resolve(gsym) if gsym else (None, "")
                 cands.append({**base, "hgnc_id": hid or "", "symbol": resolver.current_symbol(hid) if hid else gsym})
-    cand = pd.DataFrame(cands, columns=ORG_COLS) if cands else pd.DataFrame(columns=ORG_COLS)
+    cand = pd.DataFrame(cands, columns=ORG_COLS) if cands else pd.DataFrame(columns=ORG_COLS, dtype=str)
     # A candidate is dropped when a curated row already has the same HGNC ID and same normalized URL host.
+    # Hosts that many unrelated groups share. Two Facebook groups are two
+    # organizations, so identity on these needs the path, not just the domain.
+    SHARED_HOSTS = ("facebook.com", "groups.io", "sites.google.com", "wixsite.com",
+                    "wordpress.com", "blogspot.com", "linktr.ee", "instagram.com",
+                    "x.com", "twitter.com", "iamrare.org", "citizen.health", "redcap.link")
+
     def host(u):
-        u = (u or "").lower().replace("https://", "").replace("http://", "").replace("www.", "")
-        return u.split("/")[0]
+        u = (u or "").lower().strip()
+        u = u.replace("https://", "").replace("http://", "").replace("www.", "")
+        if not u:
+            return ""
+        domain = u.split("/")[0]
+        if any(domain == h or domain.endswith("." + h) for h in SHARED_HOSTS):
+            return u.rstrip("/")          # keep the path: the group is the path
+        return domain
     def norm(n):
         return re.sub(r"[^a-z0-9]", "", (n or "").lower())
     cur_keys = {(h, host(u)) for h, u in zip(curated["hgnc_id"], curated["url"]) if u}
@@ -191,6 +248,14 @@ def build_org_layer(wide: pd.DataFrame, resolver: HgncResolver, cfg_all: dict, g
     # Merge candidates that describe the same organization for the same gene: same website host,
     # or same normalized name. Fields fill from the first non-empty value; the origin ids are kept.
     cand = cand.copy().reset_index(drop=True)
+    if cand.empty:
+        org = curated.copy().fillna("")
+        org = org.merge(gene_orpha.rename(columns={"orphacodes": "_orpha"}), on="hgnc_id", how="left")
+        org["orphacode"] = org["orphacode"].where(org["orphacode"] != "", org["_orpha"].fillna(""))
+        org = org.drop(columns="_orpha")
+        covered = set(org["hgnc_id"])
+        gaps = wide.loc[~wide["hgnc_id"].isin(covered), ["hgnc_id", "symbol", "tier", "domain", "sources"]]
+        return org[ORG_COLS], gaps
     # union-find over (gene, name) and (gene, host) so a row with a URL and a row without one still merge
     parent = list(range(len(cand)))
     def find(i):
@@ -304,6 +369,50 @@ def apply_registries(wide: pd.DataFrame, resolver: HgncResolver, cfg_all: dict) 
     return wide
 
 
+# ---------------------------------------------------------------- shards and search index
+
+SHARDS = 64
+
+
+def shard_of(hgnc_id: str) -> int:
+    return int(hgnc_id.split(":")[1]) % SHARDS
+
+
+def write_shards(wide: pd.DataFrame, org: pd.DataFrame, out: Path):
+    """The card page needs one gene, not the whole spine. Genes are split into
+    SHARDS files by HGNC number, and each gene record carries its organization rows,
+    so a card is two small fetches: the index, then its shard."""
+    gdir = out / "genes"
+    gdir.mkdir(exist_ok=True)
+    org_by = {h: g.to_dict(orient="records") for h, g in org.groupby("hgnc_id") if h}
+    buckets: dict[int, list] = {i: [] for i in range(SHARDS)}
+    for rec in wide.to_dict(orient="records"):
+        rec = {k: v for k, v in rec.items() if v not in ("", None, False)}
+        rec["organizations"] = org_by.get(rec["hgnc_id"], [])
+        buckets[shard_of(rec["hgnc_id"])].append(rec)
+    for i, recs in buckets.items():
+        (gdir / f"{i:02d}.json").write_text(json.dumps(recs, separators=(",", ":")))
+    print(f"  wrote {SHARDS} gene shards")
+
+
+def write_search_index(wide: pd.DataFrame, org: pd.DataFrame, cnv: pd.DataFrame, out: Path):
+    """A small index for search: genes with synonyms and disorder text, organizations,
+    conditions (from disorder and phenotype text), and CNV regions."""
+    genes = []
+    for r in wide.itertuples(index=False):
+        pheno = " | ".join(str(getattr(r, c, "") or "") for c in wide.columns if c.startswith("pheno_"))
+        genes.append({"s": r.symbol, "h": r.hgnc_id, "n": r.gene_name, "t": r.tier, "d": r.domain,
+                      "y": getattr(r, "synonyms", "") or "", "c": getattr(r, "disorder", "") or "",
+                      "p": pheno[:300], "k": shard_of(r.hgnc_id)})
+    orgs = [{"o": r.org_name, "u": r.url, "s": r.symbol, "h": r.hgnc_id, "st": r.status,
+             "ty": r.org_type, "co": r.country}
+            for r in org.itertuples(index=False)]
+    cnvs = [{"r": r.region_text, "src": r.source_id,
+             "u": getattr(r, "simons_page_url", "") or ""} for r in cnv.itertuples(index=False)] if len(cnv) else []
+    (out / "search_index.json").write_text(json.dumps({"genes": genes, "orgs": orgs, "cnvs": cnvs}, separators=(",", ":")))
+    print(f"  search index: {len(genes)} genes, {len(orgs)} organization rows, {len(cnvs)} CNV regions")
+
+
 # ---------------------------------------------------------------- main
 
 def main():
@@ -318,6 +427,7 @@ def main():
     print("Parsing sources")
     long, cnv = load_sources(cfg_all, resolver)
     long, unresolved = resolve_all(long, resolver)
+    long = in_scope(long, cfg_all)
     wide = widen(long, resolver, cfg_all)
     wide, cnv, unresolved_ann = apply_annotations(wide, cnv, resolver, cfg_all)
     if len(unresolved_ann):
@@ -326,6 +436,8 @@ def main():
     gene_orpha = wide[["hgnc_id", "orphacodes"]]
     org, gaps = build_org_layer(wide, resolver, cfg_all, gene_orpha)
 
+    write_shards(wide, org, OUT)
+    write_search_index(wide, org, cnv, OUT)
     wide.to_csv(OUT / "gene_spine.csv", index=False)
     wide.to_json(OUT / "gene_spine.json", orient="records", indent=1)
     long.to_csv(OUT / "gene_source_long.csv", index=False)
