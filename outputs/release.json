@@ -1,9 +1,9 @@
 {
- "built": "2026-09-07",
+ "built": "2026-09-09",
  "sources": {
   "hgnc": {
    "file": "sources/hgnc/hgnc_complete_set.txt",
-   "fetched": "2026-09-07",
+   "fetched": "2026-09-09",
    "how": "url",
    "url": "https://storage.googleapis.com/public-download-files/hgnc/tsv/tsv/hgnc_complete_set.txt",
    "version": null,
@@ -12,7 +12,7 @@
   },
   "genes4epilepsy": {
    "file": "sources/genes4epilepsy/EpilepsyGenes_v2026-03.tsv",
-   "fetched": "2026-09-07",
+   "fetched": "2026-09-09",
    "how": "url",
    "url": "https://raw.githubusercontent.com/bahlolab/Genes4Epilepsy/main/EpilepsyGenes_v2026-03.tsv",
    "version": "v2026-03",
@@ -21,16 +21,16 @@
   },
   "clingen": {
    "file": "sources/clingen/clingen_gene_validity.csv",
-   "fetched": "2026-09-07",
+   "fetched": "2026-09-09",
    "how": "url",
    "url": "https://search.clinicalgenome.org/kb/gene-validity/download",
    "version": null,
-   "bytes": 1119885,
-   "sha256": "fc2a203394766cda19ac9196f550361996d8547238a3ab0b3b606ff17cfc6d0c"
+   "bytes": 1119886,
+   "sha256": "4c53a544a8bd44b976d2552a4b7b33aa215b9b188d7d1eaa8511f4fb1fae1775"
   },
   "panelapp_au_epilepsy": {
    "file": "sources/panelapp_au_epilepsy/panelapp_au_epilepsy.json",
-   "fetched": "2026-09-07",
+   "fetched": "2026-09-09",
    "how": "panelapp:202",
    "url": "https://panelapp-aus.org/api/v1/panels/",
    "version": "2.40",
@@ -39,7 +39,7 @@
   },
   "panelapp_au_id": {
    "file": "sources/panelapp_au_id/panelapp_au_id.json",
-   "fetched": "2026-09-07",
+   "fetched": "2026-09-09",
    "how": "panelapp:250",
    "url": "https://panelapp-aus.org/api/v1/panels/",
    "version": "2.135",
@@ -48,34 +48,25 @@
   },
   "panelapp_ge_epilepsy": {
    "file": "sources/panelapp_ge_epilepsy/panelapp_ge_epilepsy.json",
-   "fetched": "2026-09-07",
+   "fetched": "2026-09-09",
    "how": "panelapp:402",
    "url": "https://panelapp.genomicsengland.co.uk/api/v1/panels/",
-   "version": "9.76",
-   "bytes": 2677272,
-   "sha256": "9190124394d96c062e5df8d4c97ae3383493c53b058880611bb43463b23c128b"
+   "version": "9.78",
+   "bytes": 2677350,
+   "sha256": "d053c9c6f59eb47b40d426734aeec2e144f682d590bd3af3d02b41fef4a1603f"
   },
   "panelapp_ge_id": {
    "file": "sources/panelapp_ge_id/panelapp_ge_id.json",
-   "fetched": "2026-09-07",
+   "fetched": "2026-09-09",
    "how": "panelapp:285",
    "url": "https://panelapp.genomicsengland.co.uk/api/v1/panels/",
    "version": "11.28",
    "bytes": 8087439,
    "sha256": "3d1dcb2ad70fb380afd098beb503bb791c8830c929334e1c674d077e93617bae"
   },
-  "simons_searchlight": {
-   "file": "sources/simons_searchlight/Searchlight-Gene-List_NOV2024.pdf",
-   "fetched": "2026-09-07",
-   "how": "url",
-   "url": "https://cdn.simonssearchlight.org/wp-content/uploads/2024/12/11041626/Searchlight-Gene-List_8.5x11_NOV2024-1.pdf",
-   "version": null,
-   "bytes": 57313,
-   "sha256": "0a4e55a48d19df3f56c7d77fc35fe59418f5a2463fea8396f2f26cba6af435be"
-  },
   "orphadata_genes": {
    "file": "sources/orphadata_genes/en_product6.xml",
-   "fetched": "2026-09-07",
+   "fetched": "2026-09-09",
    "how": "url",
    "url": "https://www.orphadata.com/data/xml/en_product6.xml",
    "version": null,
@@ -84,7 +75,7 @@
   },
   "citizen_registry": {
    "file": "citizen_registry.csv",
-   "fetched": "2026-09-07",
+   "fetched": "2026-09-09",
    "how": "manual",
    "url": "https://www.citizen.health",
    "version": null,
@@ -93,7 +84,7 @@
   },
   "everycure_rdnp": {
    "file": "everycure_rdnp.csv",
-   "fetched": "2026-09-07",
+   "fetched": "2026-09-09",
    "how": "manual",
    "url": null,
    "version": null,
@@ -102,7 +93,7 @@
   },
   "fda_pfdd": {
    "file": "fda_pfdd.csv",
-   "fetched": "2026-09-07",
+   "fetched": "2026-09-09",
    "how": "manual",
    "url": "https://www.fda.gov/industry/prescription-drug-user-fee-amendments/condition-specific-meeting-reports-and-other-information-related-patients-experience",
    "version": null,
@@ -111,7 +102,7 @@
   },
   "opathy": {
    "file": "opathy.csv",
-   "fetched": "2026-09-07",
+   "fetched": "2026-09-09",
    "how": "manual",
    "url": null,
    "version": null,
@@ -120,7 +111,7 @@
   },
   "simons_gene_list": {
    "file": "sources/simons_gene_list/simons_gene_list.csv",
-   "fetched": "2026-09-07",
+   "fetched": "2026-09-09",
    "how": "manual",
    "url": "https://www.simonssearchlight.org/research/what-we-study/",
    "version": "2024-11",
@@ -129,7 +120,7 @@
   },
   "ren_members": {
    "file": "sources/ren_members/ren_members.csv",
-   "fetched": "2026-09-07",
+   "fetched": "2026-09-09",
    "how": "manual",
    "url": "https://www.rareepilepsynetwork.org/",
    "version": null,
@@ -138,7 +129,7 @@
   },
   "pubmed_gene_counts": {
    "file": "sources/pubmed_gene_counts/pubmed_gene_counts.csv",
-   "fetched": "2026-09-07",
+   "fetched": "2026-09-09",
    "how": "manual",
    "url": "https://pubmed.ncbi.nlm.nih.gov/",
    "version": null,
@@ -146,23 +137,22 @@
    "sha256": "3e695aa5cd68f77cee47fd68cc788f594a733a64749bdfdb901c8df94fcc6782"
   }
  },
- "tier_rule": "Derived columns: evidence tier and phenotype domain.\n\nThese rules are the editorial policy of the spine. They are deliberately\nsimple and stated in the README verbatim, so a tier can be recomputed by\nhand from the per-source columns in the output.\n\nTier (strength of gene-disease evidence, any domain):\n  T1  ClinGen Definitive or Strong\n      OR any PanelApp Green\n      OR SysNDD Definitive\n      OR G2P definitive / strong\n  T2  Genes4Epilepsy (its inclusion is itself a manual curation)\n      OR SFARI score 1 or 2\n      OR SysNDD Moderate  OR G2P moderate  OR PanelApp Amber\n      OR ClinGen Moderate\n      OR Simons Searchlight studied gene\n  T3  everything else that appears on at least one list\n      (Wang OMIM-derived, SAGAS, PanelApp Red, ClinGen Limited, SFARI 3, SysNDD Limited)\n  Refuted/Disputed labels from ClinGen or SysNDD are recorded in a flag column\n  and the gene is held at T3 with disputed=True regardless of other lists.\n\nDomain (what phenotype the evidence speaks to):\n  epilepsy_primary          epilepsy source says the epilepsy is the core phenotype\n  ndd_with_epilepsy         gene appears on both an epilepsy source and an NDD source,\n                            or Wang labels it NDD-with-epilepsy\n  ndd_no_documented_epilepsy gene appears on NDD sources only\n  systemic_with_seizures    Wang systemic category, or Genes4Epilepsy phenotype in its\n                            malformation/metabolic groupings and no NDD source\n  epilepsy_only_unclassified epilepsy sources only, no category text to go on\n",
- "genes_total": 5758,
+ "tier_rule": "Derived columns: evidence tier and phenotype domain.\n\nThese rules are the editorial policy of the spine. They are deliberately\nsimple and stated in the README verbatim, so a tier can be recomputed by\nhand from the per-source columns in the output.\n\nTier (strength of the gene-disease evidence recorded by the sources):\n  T1  An expert panel curation says definitive or strong: ClinGen Definitive or\n      Strong, SysNDD Definitive, or Gene2Phenotype definitive or strong.\n      Also T1 when two or more independent clinical panels rate the gene Green,\n      since agreement across panels is the point, not any single listing.\n  T2  A single PanelApp Green, ClinGen Moderate, SysNDD Moderate, G2P moderate,\n      SFARI 1 or 2, PanelApp Amber, Genes4Epilepsy inclusion, or a Simons\n      Searchlight studied gene.\n  T3  Present on at least one list and none of the above.\n\n  A Refuted or Disputed label is recorded in the `disputed` flag and named in\n  `disputed_note`. It does NOT lower the tier, because a classification applies\n  to one gene-disease relationship: a gene can be definitive for one condition\n  and disputed for another, and collapsing that into one score misstates both.\n\nDomain (what phenotype the evidence speaks to):\n  epilepsy_primary          epilepsy source says the epilepsy is the core phenotype\n  ndd_with_epilepsy         gene appears on both an epilepsy source and an NDD source,\n                            or Wang labels it NDD-with-epilepsy\n  ndd_no_documented_epilepsy gene appears on NDD sources only\n  systemic_with_seizures    Wang systemic category, or Genes4Epilepsy phenotype in its\n                            malformation/metabolic groupings and no NDD source\n  epilepsy_only_unclassified epilepsy sources only, no category text to go on\n",
+ "genes_total": 3426,
  "by_tier": {
-  "T1": 3032,
-  "T3": 2220,
-  "T2": 506
+  "T1": 2169,
+  "T3": 635,
+  "T2": 622
  },
  "by_domain": {
-  "unclassified": 2328,
-  "ndd_no_documented_epilepsy": 2087,
+  "ndd_no_documented_epilepsy": 2083,
   "ndd_with_epilepsy": 1227,
   "epilepsy_only_unclassified": 116
  },
  "unresolved_symbols": 32,
  "org_rows": {
   "curated": 0,
-  "candidate": 1145
+  "candidate": 1175
  },
- "genes_without_org": 5425
+ "genes_without_org": 3101
 }
