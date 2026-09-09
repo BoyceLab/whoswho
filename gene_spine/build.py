@@ -164,6 +164,9 @@ def widen(long: pd.DataFrame, resolver: HgncResolver, cfg_all: dict) -> pd.DataF
     on_cols = [c for c in wide.columns if c.startswith("on_")]
     wide[on_cols] = wide[on_cols].fillna(False)
     lead = ["hgnc_id", "symbol", "gene_name", "tier", "domain", "disputed", "disputed_note", "n_sources", "sources", "orphacodes", "synonyms", "omim_id", "ensembl_gene_id", "locus_group"]
+    for c in lead:
+        if c not in wide.columns:
+            wide[c] = ""
     rest = sorted(c for c in wide.columns if c not in lead)
     return wide[lead + rest].sort_values(["tier", "symbol"]).reset_index(drop=True)
 

@@ -76,6 +76,8 @@ def parse_table(source_id: str, cfg: dict, path: Path) -> pd.DataFrame:
                 extras[key] = df[c]
     extra = [json.dumps({k: str(v.iloc[i]) for k, v in extras.items()}) for i in range(len(df))] if extras else None
 
+    if not ph_col and cols.get("phenotype"):
+        print(f"  note: {source_id} has no phenotype column; header is {list(df.columns)}")
     out = _frame(
         source_id,
         df[sym].str.strip(),
