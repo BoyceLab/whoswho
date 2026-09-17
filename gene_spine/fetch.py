@@ -35,8 +35,10 @@ def sha256(path: Path) -> str:
 
 
 def record(manifest: dict, sid: str, path: Path, cfg: dict, how: str):
-    manifest[sid] = {
-        "file": str(path.relative_to(ROOT)),
+    entry = {
+        # as_posix, not str: a manifest written on Windows would otherwise carry backslashes
+        # and flip separators on every alternate local and CI build.
+        "file": path.relative_to(ROOT).as_posix(),
         "fetched": date.today().isoformat(),
         "how": how,
         "url": cfg.get("url") or cfg.get("api") or cfg.get("landing"),
@@ -44,6 +46,13 @@ def record(manifest: dict, sid: str, path: Path, cfg: dict, how: str):
         "bytes": path.stat().st_size,
         "sha256": sha256(path),
     }
+    # Provenance a hand export carries that the file name cannot: what the site called it, when
+    # the data was released, when it was pulled. Declared in config, so it travels into
+    # release.json with the hash and a reader can tell which release a figure came from.
+    for key in ("original_filename", "release_date", "exported", "unscored_note"):
+        if cfg.get(key):
+            entry[key] = cfg[key]
+    manifest[sid] = entry
 
 
 def fetch_quarterly(sid: str, cfg: dict, manifest: dict):

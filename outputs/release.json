@@ -1,18 +1,18 @@
 {
- "built": "2026-09-09",
+ "built": "2026-09-16",
  "sources": {
   "hgnc": {
    "file": "sources/hgnc/hgnc_complete_set.txt",
-   "fetched": "2026-09-09",
+   "fetched": "2026-09-16",
    "how": "url",
    "url": "https://storage.googleapis.com/public-download-files/hgnc/tsv/tsv/hgnc_complete_set.txt",
    "version": null,
-   "bytes": 16903161,
-   "sha256": "6f43d6ff43aa9fdfa5fb2f20a20a7cace66e6e02e2a0dcf19d9b726e2e248d20"
+   "bytes": 16916967,
+   "sha256": "b3752a7668b90a24ef555495ee1acaee40999622859c2c452354307a73d7790c"
   },
   "genes4epilepsy": {
    "file": "sources/genes4epilepsy/EpilepsyGenes_v2026-03.tsv",
-   "fetched": "2026-09-09",
+   "fetched": "2026-09-16",
    "how": "url",
    "url": "https://raw.githubusercontent.com/bahlolab/Genes4Epilepsy/main/EpilepsyGenes_v2026-03.tsv",
    "version": "v2026-03",
@@ -21,52 +21,52 @@
   },
   "clingen": {
    "file": "sources/clingen/clingen_gene_validity.csv",
-   "fetched": "2026-09-09",
+   "fetched": "2026-09-16",
    "how": "url",
    "url": "https://search.clinicalgenome.org/kb/gene-validity/download",
    "version": null,
-   "bytes": 1119886,
-   "sha256": "4c53a544a8bd44b976d2552a4b7b33aa215b9b188d7d1eaa8511f4fb1fae1775"
+   "bytes": 1121907,
+   "sha256": "5e0b23f36b17aa0ad83df8a34123b6e55a2e013e5d4434ce9ce9aba49a56f0fc"
   },
   "panelapp_au_epilepsy": {
    "file": "sources/panelapp_au_epilepsy/panelapp_au_epilepsy.json",
-   "fetched": "2026-09-09",
+   "fetched": "2026-09-16",
    "how": "panelapp:202",
    "url": "https://panelapp-aus.org/api/v1/panels/",
-   "version": "2.40",
-   "bytes": 3668298,
-   "sha256": "dc4f787401376f6f7320257dd4707fc24cb2dd9c8a75c78b4da1e0df14f0a1c8"
+   "version": "2.46",
+   "bytes": 3784505,
+   "sha256": "583a9f0921e1dadc70cfb1487d22b165a7c7463e7d406e99c2ad2151e44619d7"
   },
   "panelapp_au_id": {
    "file": "sources/panelapp_au_id/panelapp_au_id.json",
-   "fetched": "2026-09-09",
+   "fetched": "2026-09-16",
    "how": "panelapp:250",
    "url": "https://panelapp-aus.org/api/v1/panels/",
-   "version": "2.135",
-   "bytes": 7588517,
-   "sha256": "74187ab7cca1e06a0af27a9a7983d5517d124a82183a4aa51631bbf4191a5dbe"
+   "version": "2.157",
+   "bytes": 7862830,
+   "sha256": "25d53543c22ce88c37110166aa6b273155980475ada6afc4108fb89f0b31d070"
   },
   "panelapp_ge_epilepsy": {
    "file": "sources/panelapp_ge_epilepsy/panelapp_ge_epilepsy.json",
-   "fetched": "2026-09-09",
+   "fetched": "2026-09-16",
    "how": "panelapp:402",
    "url": "https://panelapp.genomicsengland.co.uk/api/v1/panels/",
-   "version": "9.78",
-   "bytes": 2677350,
-   "sha256": "d053c9c6f59eb47b40d426734aeec2e144f682d590bd3af3d02b41fef4a1603f"
+   "version": "9.84",
+   "bytes": 2776993,
+   "sha256": "dbe1bee6d83f676e00522ed8c4aa0bea336d01e104923909c6c5884eb514a239"
   },
   "panelapp_ge_id": {
    "file": "sources/panelapp_ge_id/panelapp_ge_id.json",
-   "fetched": "2026-09-09",
+   "fetched": "2026-09-16",
    "how": "panelapp:285",
    "url": "https://panelapp.genomicsengland.co.uk/api/v1/panels/",
-   "version": "11.28",
-   "bytes": 8087439,
-   "sha256": "3d1dcb2ad70fb380afd098beb503bb791c8830c929334e1c674d077e93617bae"
+   "version": "11.31",
+   "bytes": 8377180,
+   "sha256": "190ad72c62c9df7356158694b7ae9c7e2546d353eede9c8ac4e3677b2511b0e9"
   },
   "orphadata_genes": {
    "file": "sources/orphadata_genes/en_product6.xml",
-   "fetched": "2026-09-09",
+   "fetched": "2026-09-16",
    "how": "url",
    "url": "https://www.orphadata.com/data/xml/en_product6.xml",
    "version": null,
@@ -75,84 +75,131 @@
   },
   "citizen_registry": {
    "file": "citizen_registry.csv",
-   "fetched": "2026-09-09",
+   "fetched": "2026-09-16",
    "how": "manual",
    "url": "https://www.citizen.health",
    "version": null,
-   "bytes": 8753,
-   "sha256": "d8ac3296821505d9715ba56e13c87e0401da21ffc1ac1dd3405ddf4c286764b2"
+   "bytes": 8841,
+   "sha256": "3b7a4bb38875331da9fce14544ddb6bacc9a42b637cc93f5914c0441dec2915c"
   },
   "everycure_rdnp": {
    "file": "everycure_rdnp.csv",
-   "fetched": "2026-09-09",
+   "fetched": "2026-09-16",
    "how": "manual",
    "url": null,
    "version": null,
-   "bytes": 20835,
-   "sha256": "1f0e9701ef878ad7304b0dee6c02b1a2e271d4f146ebfe87e2abd77e30ee7ee0"
+   "bytes": 20945,
+   "sha256": "6045e0c062c738781888fa6587eeabd9a2b38408fc1b1eab639c5f234af17b57"
   },
   "fda_pfdd": {
    "file": "fda_pfdd.csv",
-   "fetched": "2026-09-09",
+   "fetched": "2026-09-16",
    "how": "manual",
    "url": "https://www.fda.gov/industry/prescription-drug-user-fee-amendments/condition-specific-meeting-reports-and-other-information-related-patients-experience",
    "version": null,
-   "bytes": 5296,
-   "sha256": "bcc4db084437ec8d73d266684b7aaa686f5120a07411cc50839ad5fe0bbb4fe1"
+   "bytes": 5333,
+   "sha256": "120f41e93462f5827566a5fa65541ae3e0db57e4f82c189f2ff76570494abc74"
   },
   "opathy": {
    "file": "opathy.csv",
-   "fetched": "2026-09-09",
+   "fetched": "2026-09-16",
    "how": "manual",
    "url": null,
    "version": null,
-   "bytes": 9295,
-   "sha256": "4890b288e049cf47c8689c656b623b28e040a69a9173cda3b45ee85b96156968"
+   "bytes": 9531,
+   "sha256": "8a22ed036c979337f92f512e3b9025dccc53808ccbe497c5017033b1e0f5ad72"
   },
   "simons_gene_list": {
    "file": "sources/simons_gene_list/simons_gene_list.csv",
-   "fetched": "2026-09-09",
+   "fetched": "2026-09-16",
    "how": "manual",
    "url": "https://www.simonssearchlight.org/research/what-we-study/",
    "version": "2024-11",
-   "bytes": 15033,
-   "sha256": "ad7a5c48962f478ec8b85e2bfe894d3626d65770d354f1907b440220cb21585a"
+   "bytes": 15218,
+   "sha256": "8450eae5fcb9c914f21a250359804ca9037e3cb2cac8773388df2e4b1f043acb"
   },
   "ren_members": {
    "file": "sources/ren_members/ren_members.csv",
-   "fetched": "2026-09-09",
+   "fetched": "2026-09-16",
    "how": "manual",
    "url": "https://www.rareepilepsynetwork.org/",
    "version": null,
-   "bytes": 18205,
-   "sha256": "53c633b27c9a43f792aebe9560d59346e2cba444a42decf73204dcbe9a929003"
+   "bytes": 18380,
+   "sha256": "bcdb0675d564119076e0a250ecb2e3307274449d029fb7251725204cbad5d1cb"
   },
   "pubmed_gene_counts": {
    "file": "sources/pubmed_gene_counts/pubmed_gene_counts.csv",
-   "fetched": "2026-09-09",
+   "fetched": "2026-09-16",
    "how": "manual",
    "url": "https://pubmed.ncbi.nlm.nih.gov/",
    "version": null,
-   "bytes": 89861,
-   "sha256": "3e695aa5cd68f77cee47fd68cc788f594a733a64749bdfdb901c8df94fcc6782"
+   "bytes": 90940,
+   "sha256": "12d8331d3f8ea1150ff62f323f4e27eda122f22a600bf58aa20429c138c17c13"
+  },
+  "sysndd": {
+   "file": "sources/sysndd/sysndd_export.json",
+   "fetched": "2026-09-16",
+   "how": "url",
+   "url": "https://sysndd.dbmr.unibe.ch/api/panels/browse?sort=symbol&page_size=10000&filter=any(category,'Definitive','Moderate','Limited','Refuted')",
+   "version": null,
+   "bytes": 872217,
+   "sha256": "2d25297d8840a647a1817338918d2cae7787fa48f96c4a237d00a95e23b62a83"
+  },
+  "sfari": {
+   "file": "sources/sfari/SFARI-Gene_genes.csv",
+   "fetched": "2026-09-16",
+   "how": "manual",
+   "url": "https://gene.sfari.org/database/human-gene/",
+   "version": "2026-07-12 release",
+   "bytes": 145146,
+   "sha256": "ec3b830ab3f4e185d4d912b6e46a9bca79db39fafd107b37d8b48421be4772d2",
+   "original_filename": "SFARI-Gene_genes_07-12-2026release_09-16-2026export.csv",
+   "release_date": "2026-07-12",
+   "exported": "2026-09-16",
+   "unscored_note": "present without a tier contribution"
+  },
+  "g2p_dd": {
+   "file": "sources/g2p_dd/G2P_DD.csv",
+   "fetched": "2026-09-16",
+   "how": "url",
+   "url": "https://www.ebi.ac.uk/gene2phenotype/api/panel/DD/download/",
+   "version": null,
+   "bytes": 1920346,
+   "sha256": "047173af20d0bddb519fc9582994fb0c40ab9cb64021de6027088e44ceac6b62"
+  }
+ },
+ "missing_sources": {
+  "wang_omim_2023": {
+   "file": "wang2023_supplement.xlsx",
+   "url": null,
+   "how": "manual",
+   "effect": "evidence columns for this source are absent from the outputs, not False"
+  },
+  "sagas": {
+   "file": "sagas_genes.csv",
+   "url": null,
+   "how": "manual",
+   "effect": "evidence columns for this source are absent from the outputs, not False"
   }
  },
  "tier_rule": "Derived columns: evidence tier and phenotype domain.\n\nThese rules are the editorial policy of the spine. They are deliberately\nsimple and stated in the README verbatim, so a tier can be recomputed by\nhand from the per-source columns in the output.\n\nTier (strength of the gene-disease evidence recorded by the sources):\n  T1  An expert panel curation says definitive or strong: ClinGen Definitive or\n      Strong, SysNDD Definitive, or Gene2Phenotype definitive or strong.\n      Also T1 when two or more independent clinical panels rate the gene Green,\n      since agreement across panels is the point, not any single listing.\n  T2  A single PanelApp Green, ClinGen Moderate, SysNDD Moderate, G2P moderate,\n      SFARI 1 or 2, PanelApp Amber, Genes4Epilepsy inclusion, or a Simons\n      Searchlight studied gene.\n  T3  Present on at least one list and none of the above.\n\n  A Refuted or Disputed label is recorded in the `disputed` flag and named in\n  `disputed_note`. It does NOT lower the tier, because a classification applies\n  to one gene-disease relationship: a gene can be definitive for one condition\n  and disputed for another, and collapsing that into one score misstates both.\n\nDomain (what phenotype the evidence speaks to):\n  epilepsy_primary          epilepsy source says the epilepsy is the core phenotype\n  ndd_with_epilepsy         gene appears on both an epilepsy source and an NDD source,\n                            or Wang labels it NDD-with-epilepsy\n  ndd_no_documented_epilepsy gene appears on NDD sources only\n  systemic_with_seizures    Wang systemic category, or Genes4Epilepsy phenotype in its\n                            malformation/metabolic groupings and no NDD source\n  epilepsy_only_unclassified epilepsy sources only, no category text to go on\n",
- "genes_total": 3426,
+ "genes_total": 4842,
  "by_tier": {
-  "T1": 2169,
-  "T3": 635,
-  "T2": 622
+  "T1": 2896,
+  "T3": 1069,
+  "T2": 877
  },
  "by_domain": {
-  "ndd_no_documented_epilepsy": 2083,
-  "ndd_with_epilepsy": 1227,
-  "epilepsy_only_unclassified": 116
+  "ndd_no_documented_epilepsy": 3497,
+  "ndd_with_epilepsy": 1302,
+  "epilepsy_only_unclassified": 30,
+  "epilepsy_primary": 9,
+  "systemic_with_seizures": 4
  },
- "unresolved_symbols": 32,
+ "unresolved_symbols": 35,
  "org_rows": {
   "curated": 0,
   "candidate": 1175
  },
- "genes_without_org": 3101
+ "genes_without_org": 4516
 }

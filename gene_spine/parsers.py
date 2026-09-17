@@ -51,6 +51,17 @@ def parse_table(source_id: str, cfg: dict, path: Path) -> pd.DataFrame:
         df = pd.read_csv(path, sep="\t", dtype=str).fillna("")
     elif fmt == "xlsx":
         df = pd.read_excel(path, sheet_name=cfg.get("sheet") or 0, dtype=str).fillna("")
+    elif fmt == "json":
+        # An API that answers with records rather than a file. `records_path` names the key
+        # holding the list, so the envelope a service wraps its rows in stays in config.
+        payload = json.loads(path.read_text(encoding="utf-8"))
+        for key in str(cfg.get("records_path") or "data").split("."):
+            if key and isinstance(payload, dict):
+                payload = payload[key]
+        if not isinstance(payload, list):
+            raise ValueError(
+                f"{source_id}: records_path {cfg.get('records_path')!r} did not reach a list")
+        df = pd.DataFrame(payload).fillna("").astype(str)
     else:
         df = _read_csv_with_preamble(path, cfg.get("skiprows_until"))
     cols = cfg.get("columns", {})

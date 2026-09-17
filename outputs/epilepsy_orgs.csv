@@ -1,0 +1,530 @@
+# One row per (organisation, gene) from the organisation sources, deduplicated on normalised website host.
+# status=candidate throughout: nothing here has been reviewed, and curated/organizations.csv is untouched.
+org_name,symbol,hgnc_id,url,country,org_type,registry_platform,coalitions,source_files,status
+22q13 Deletion Syndrome Foundation,SHANK3,HGNC:14294,,,foundation,,,epilepsylive_orgs.csv,candidate
+2BCURED,GRIN2B,HGNC:4586,,,foundation,,,epilepsylive_orgs.csv,candidate
+ACD,GAMT,HGNC:4136,,,foundation,,,epilepsylive_orgs.csv,candidate
+ACDY5.org,ACDY5,,https://www.adcy5.org/,United States of America,foundation,,,everycure_rdnp.csv,candidate
+ADCY5.org,ADCY5,HGNC:236,https://www.adcy5.org/,,foundation,,,epilepsylive_orgs.csv;everycure_rdnp.csv,candidate
+ADNP Kids Foundation,ADNP,HGNC:15766,,,foundation,,,epilepsylive_orgs.csv,candidate
+ADNP Kids Research Foundation,ADNP,HGNC:15766,https://adnpkids.com/,,foundation,Citizen,,epilepsylive_orgs.csv,candidate
+ADNP-Kids Research Foundation,ADNP,HGNC:15766,https://www.adnpfoundation.org/,United States of America,foundation,,,everycure_rdnp.csv,candidate
+AFSHA,ATP1A3,HGNC:801,,,foundation,,,epilepsylive_orgs.csv,candidate
+AFSHA (FR),ATP1A3,HGNC:801,,,foundation,,,epilepsylive_orgs.csv,candidate
+AGO Alliance,AGO1,HGNC:3262,,,foundation,,,epilepsylive_orgs.csv,candidate
+AHC Australia,ATP1A3,HGNC:801,,,foundation,,,epilepsylive_orgs.csv,candidate
+AHC Federation of Europe,ATP1A3,HGNC:801,,,foundation,,,epilepsylive_orgs.csv,candidate
+AHC Foundation,ATP1A3,HGNC:801,,,foundation,,,epilepsylive_orgs.csv,candidate
+AHC Foundation (US),ATP1A3,HGNC:801,,,foundation,,,epilepsylive_orgs.csv,candidate
+AHCUK,ATP1A3,HGNC:801,,,foundation,,,epilepsylive_orgs.csv,candidate
+ANA,PAX6,HGNC:8620,,,foundation,,,epilepsylive_orgs.csv,candidate
+ANKRD11 Foundation,ANKRD11,HGNC:21316,,,foundation,,,epilepsylive_orgs.csv,candidate
+AOA4-PNKP family network,PNKP,HGNC:9154,,,family group,,,epilepsylive_orgs.csv,candidate
+ARRE Foundation,ASXL2,HGNC:23805,,,foundation,,,epilepsylive_orgs.csv,candidate
+ARRE Foundation,ASXL3,HGNC:29357,,,foundation,,,epilepsylive_orgs.csv,candidate
+ASXL Rare Research Endowment Foundation,ASXL2,HGNC:23805,https://www.arrefoundation.org,,foundation,,,epilepsylive_orgs.csv,candidate
+ASXL Rare Research Endowment Foundation,ASXL3,HGNC:29357,https://www.arrefoundation.org,,foundation,,,epilepsylive_orgs.csv,candidate
+AUTS2 Syndrome- Promoting Research Facebook Group,AUTS2,HGNC:14262,,,family group,,,epilepsylive_orgs.csv,candidate
+Advocacy for Neuroacanthocytosis Patients,VPS13A,HGNC:1908,,,foundation,,,epilepsylive_orgs.csv,candidate
+Advocacy for Neuroacanthocytosis Patients (UK),VPS13A,HGNC:1908,https://naadvocacy.org/,,foundation,Foundation-hosted,,epilepsylive_orgs.csv,candidate
+All Things Kabuki,KMT2D,HGNC:7133,https://allthingskabuki.org/,,foundation,Citizen,,epilepsylive_orgs.csv,candidate
+Angelman Syndrome Alliance,UBE3A,HGNC:12496,,,foundation,,,epilepsylive_orgs.csv,candidate
+Angelman Syndrome Foundation,UBE3A,HGNC:12496,https://www.angelman.org/,,foundation,REDCap,,epilepsylive_orgs.csv,candidate
+Angelman Syndrome UK,UBE3A,HGNC:12496,,,foundation,,,epilepsylive_orgs.csv,candidate
+Angioma Alliance,CCM2,HGNC:21708,,,foundation,,,epilepsylive_orgs.csv,candidate
+Asociacion MEF2C,MEF2C,HGNC:6996,,,foundation,,,epilepsylive_orgs.csv,candidate
+Asociación Española IRF2BPL,IRF2BPL,HGNC:14282,,,foundation,,,epilepsylive_orgs.csv,candidate
+Association for Frontotemporal Degeneration,GRN,HGNC:4601,,,foundation,,,epilepsylive_orgs.csv,candidate
+BAGOS Foundation,SYT1,HGNC:11509,,,foundation,,,epilepsylive_orgs.csv,candidate
+BDFA,CLN5,HGNC:2076,,,foundation,,,epilepsylive_orgs.csv,candidate
+BDFA,CLN6,HGNC:2077,,,foundation,,,epilepsylive_orgs.csv,candidate
+BDFA,CLN8,HGNC:2079,,,foundation,,,epilepsylive_orgs.csv,candidate
+BDSRA,CLN5,HGNC:2076,,,foundation,REDCap,,epilepsylive_orgs.csv,candidate
+BDSRA,CLN6,HGNC:2077,,,foundation,,,epilepsylive_orgs.csv,candidate
+BDSRA,CLN8,HGNC:2079,,,foundation,REDCap,,epilepsylive_orgs.csv,candidate
+BDSRA,KCTD7,HGNC:21957,https://bdsra.org,,foundation,REDCap,,epilepsylive_orgs.csv,candidate
+BDSRA,PPT1,HGNC:9325,https://bdsra.org,,foundation,REDCap,REN,epilepsylive_orgs.csv;rela_2019.csv,candidate
+BDSRA,TPP1,HGNC:2073,https://bdsra.org,,foundation,REDCap,REN,epilepsylive_orgs.csv;rela_2019.csv,candidate
+BPAN Warriors,WDR45,HGNC:28912,https://www.bpanwarriors.org/,US,foundation,,REN,rela_2019.csv,candidate
+BPAN Warriors,WDR45,HGNC:28912,https://www.nbiadisorders.org/,,foundation,,,epilepsylive_orgs.csv,candidate
+Bainbridge-Ropers Syndrome and ASXL3 Families,ASXL3,HGNC:29357,,,foundation,,,epilepsylive_orgs.csv,candidate
+Batten Disease Support and Research Association,CLN3,HGNC:2074,https://bdsra.org,,foundation,REDCap,REN,epilepsylive_orgs.csv;rela_2019.csv,candidate
+Batten Disease Support and Research Association,CLN5,HGNC:2076,https://www.bdsra.org,US,foundation,,REN,rela_2019.csv,candidate
+Batten Disease Support and Research Association,CLN8,HGNC:2079,https://www.bdsra.org,US,foundation,,REN,rela_2019.csv,candidate
+Batten Disease Support and Research Association,MFSD8,HGNC:28486,https://www.bdsra.org,US,foundation,,REN,rela_2019.csv,candidate
+Batten umbrella for CLN11,GRN,HGNC:4601,,,foundation,,,epilepsylive_orgs.csv,candidate
+Beyond Batten,CLN5,HGNC:2076,,,foundation,,,epilepsylive_orgs.csv,candidate
+Beyond Batten,CLN6,HGNC:2077,,,foundation,,,epilepsylive_orgs.csv,candidate
+Beyond Batten,CLN8,HGNC:2079,,,foundation,,,epilepsylive_orgs.csv,candidate
+Beyond Batten,PPT1,HGNC:9325,,,foundation,,,epilepsylive_orgs.csv,candidate
+Beyond Batten,TPP1,HGNC:2073,,,foundation,,,epilepsylive_orgs.csv,candidate
+Beyond Batten Disease Foundation,CLN3,HGNC:2074,,,foundation,,,epilepsylive_orgs.csv,candidate
+Bluefield Project to Cure FTD,GRN,HGNC:4601,https://bdsra.org,,foundation,NIH RDCRN,,epilepsylive_orgs.csv,candidate
+Bow Foundation,GNAO1,HGNC:4389,https://gnao1.org/,,foundation,Pulse Infoframe,,epilepsylive_orgs.csv;everycure_rdnp.csv;rela_2019.csv,candidate
+Bridge the Gap - SYNGAP Education and Research Foundation,SYNGAP1,HGNC:11497,,,foundation,,,epilepsylive_orgs.csv,candidate
+Bridge the Gap – SYNGAP Education and Research Foundation,SYNGAP1,HGNC:11497,https://www.bridgesyngap.org,United States of America,foundation,,,everycure_rdnp.csv;rela_2019.csv,candidate
+CACNA1A Foundation,CACNA1A,HGNC:1388,https://www.cacna1a.org,,foundation,Foundation-hosted,,epilepsylive_orgs.csv;everycure_rdnp.csv,candidate
+CACNA1A Foundation cross-coverage,KCNA1,HGNC:6218,,,foundation,,,epilepsylive_orgs.csv,candidate
+CAPRIN1 Foundation,CAPRIN1,HGNC:6743,,,foundation,,,epilepsylive_orgs.csv,candidate
+CASK Foundation,CASK,HGNC:1497,,,foundation,,,epilepsylive_orgs.csv,candidate
+CDG CARE,ALG13,HGNC:30881,https://cdgcare.com/,,foundation,NIH RDCRN,,epilepsylive_orgs.csv,candidate
+CDG CARE,PIGA,HGNC:8957,https://cdgcare.com/,,foundation,,,epilepsylive_orgs.csv,candidate
+CDG CARE,PIGN,HGNC:8967,https://cdgcare.com/,,foundation,,,epilepsylive_orgs.csv,candidate
+CDG CARE,SLC35A2,HGNC:11022,https://cdgcare.com/,,foundation,NIH RDCRN,,epilepsylive_orgs.csv,candidate
+CFC International,BRAF,HGNC:1097,https://www.cfcsyndrome.org,US,foundation,,REN,rela_2019.csv,candidate
+CFC International,KRAS,HGNC:6407,https://www.cfcsyndrome.org,US,foundation,,REN,rela_2019.csv,candidate
+CFC International,MAP2K1,HGNC:6840,https://www.cfcsyndrome.org,US,foundation,,REN,rela_2019.csv,candidate
+CFC International,MAP2K2,HGNC:6842,https://www.cfcsyndrome.org,US,foundation,,REN,rela_2019.csv,candidate
+CHAMP1 Research Foundation,CHAMP1,HGNC:20311,https://champ1foundation.org/,United States of America,foundation,,,everycure_rdnp.csv,candidate
+CHD3 Families (Snijders Blok Campeau Syndrome),CHD3,HGNC:1918,,,foundation,,,epilepsylive_orgs.csv,candidate
+CHF,NALCN,HGNC:19082,,,foundation,,,epilepsylive_orgs.csv,candidate
+CMD Turkey,LAMA2,HGNC:6482,,,foundation,,,epilepsylive_orgs.csv,candidate
+COMBINEDBrain,ADNP,HGNC:15766,https://combinedbrain.org/,United States of America,foundation,,,everycure_rdnp.csv,candidate
+COMBINEDBrain,CACNA1A,HGNC:1388,https://combinedbrain.org/,United States of America,foundation,,,everycure_rdnp.csv,candidate
+COMBINEDBrain,CHAMP1,HGNC:20311,https://combinedbrain.org/,United States of America,foundation,,,everycure_rdnp.csv,candidate
+COMBINEDBrain,FOXG1,HGNC:3811,https://combinedbrain.org/,United States of America,foundation,,,everycure_rdnp.csv,candidate
+COMBINEDBrain,GRIN2B,HGNC:4586,https://combinedbrain.org/,United States of America,foundation,,,everycure_rdnp.csv,candidate
+COMBINEDBrain,HNRNPH2,HGNC:5042,https://combinedbrain.org/,United States of America,foundation,,,everycure_rdnp.csv,candidate
+COMBINEDBrain,KIF1A,HGNC:888,https://combinedbrain.org/,United States of America,foundation,,,everycure_rdnp.csv,candidate
+COMBINEDBrain,NR2F1,HGNC:7975,https://combinedbrain.org/,United States of America,foundation,,,everycure_rdnp.csv,candidate
+COMBINEDBrain,SATB2,HGNC:21637,https://combinedbrain.org/,United States of America,foundation,,,everycure_rdnp.csv,candidate
+COMBINEDBrain,SCN2A,HGNC:10588,https://combinedbrain.org/,United States of America,foundation,,,everycure_rdnp.csv,candidate
+COMBINEDBrain,SCN8A,HGNC:10596,https://combinedbrain.org/,United States of America,foundation,,,everycure_rdnp.csv,candidate
+COMBINEDBrain,SETBP1,HGNC:15573,https://combinedbrain.org/,United States of America,foundation,,,everycure_rdnp.csv,candidate
+COMBINEDBrain,SLC6A1,HGNC:11042,https://combinedbrain.org/,United States of America,foundation,,,everycure_rdnp.csv,candidate
+COMBINEDBrain,STXBP1,HGNC:11444,https://combinedbrain.org/,United States of America,foundation,,,everycure_rdnp.csv,candidate
+COMBINEDBrain,SYNGAP1,HGNC:11497,https://combinedbrain.org/,United States of America,foundation,,,everycure_rdnp.csv,candidate
+CRELD1 Warriors,CRELD1,HGNC:14630,,,foundation,,,epilepsylive_orgs.csv,candidate
+CSNK2A1 Foundation,CSNK2A1,HGNC:2457,https://www.csnk2a1foundation.org/,,foundation,REDCap,,epilepsylive_orgs.csv;everycure_rdnp.csv,candidate
+CSNK2B Foundation,CSNK2B,HGNC:2460,https://csnk2bfoundation.org,,foundation,,,epilepsylive_orgs.csv,candidate
+CSNK2B Neurodevelopmental Syndrome Foundation,CSNK2B,HGNC:2460,,,foundation,,,epilepsylive_orgs.csv,candidate
+CSS Network,ARID1B,HGNC:18040,,,foundation,,,epilepsylive_orgs.csv,candidate
+CTNNB1 Syndrome Awareness Worldwide,CTNNB1,HGNC:2514,https://www.ctnnb1.org/,United States of America,foundation,,,everycure_rdnp.csv,candidate
+CUL3 Support & Awareness Foundation,CUL3,HGNC:2553,,,foundation,,,epilepsylive_orgs.csv,candidate
+CUL3 Support and Awareness,CUL3,HGNC:2553,https://www.cul3.org,,foundation,,,epilepsylive_orgs.csv,candidate
+CURE Epilepsy,CHRNA4,HGNC:1958,,,foundation,,,epilepsylive_orgs.csv,candidate
+CURE SYNGAP1,SYNGAP1,HGNC:11497,,,foundation,,,epilepsylive_orgs.csv,candidate
+CYFIP2 Network,CYFIP2,HGNC:13760,https://www.cyfip2network.org/,,foundation,,,epilepsylive_orgs.csv,candidate
+Care4ASH1L,ASH1L,HGNC:19088,,,foundation,,,epilepsylive_orgs.csv,candidate
+CdLS Foundation,SMC1A,HGNC:11111,https://smc1a-epilepsy.org/,,foundation,Foundation-hosted,,epilepsylive_orgs.csv;everycure_rdnp.csv,candidate
+Channeling Hope,NALCN,HGNC:19082,https://www.channelinghope.org,,foundation,,,epilepsylive_orgs.csv,candidate
+Cheyanna’s Champions 4 Children (CC4C),CC4C,,https://www.cc4c.org/,United States of America,foundation,,,everycure_rdnp.csv,candidate
+Children’s Tumor Foundation,NF1,HGNC:7765,,,foundation,,,epilepsylive_orgs.csv,candidate
+Christianson Syndrome Association,SLC9A6,HGNC:11079,https://www.csa-cares.org,US,foundation,,REN,rela_2019.csv,candidate
+Christianson Syndrome Association,SLC9A6,HGNC:11079,https://www.csaresearchfoundation.org/,,foundation,REDCap,,epilepsylive_orgs.csv,candidate
+Coalition to Cure CHD2,CHD2,HGNC:1917,https://www.curechd2.org,,foundation,Citizen,,epilepsylive_orgs.csv,candidate
+Coffin Siris Syndrome Facebook support group,SMARCA2,HGNC:11098,,,family group,,,epilepsylive_orgs.csv,candidate
+Coffin Siris Syndrome Facebook support group,SMARCB1,HGNC:11103,,,family group,,,epilepsylive_orgs.csv,candidate
+Coffin Siris Syndrome Facebook support group,SMARCC2,HGNC:11105,,,family group,,,epilepsylive_orgs.csv,candidate
+Coffin-Siris Syndrome Foundation,ARID1B,HGNC:18040,https://www.coffinsiris.org/,,foundation,Foundation-hosted,,epilepsylive_orgs.csv,candidate
+Coffin-Siris Syndrome Foundation,SMARCC2,HGNC:11105,,,foundation,,,epilepsylive_orgs.csv,candidate
+Comunidad Simons Searchlight,FBXO11,HGNC:13590,,,foundation,,,epilepsylive_orgs.csv,candidate
+Connecting Families Urea Cycle Disorders Foundation,CPS1,HGNC:2323,https://ucdfamily.org/,United States of America,foundation,,,everycure_rdnp.csv,candidate
+Costello Kids,HRAS,HGNC:5173,,,foundation,,,epilepsylive_orgs.csv,candidate
+Costello Syndrome Family Network (CSFN),HRAS,HGNC:5173,,,family group,,,epilepsylive_orgs.csv,candidate
+Cure AHC,ATP1A3,HGNC:801,,,foundation,,,epilepsylive_orgs.csv,candidate
+Cure AHC (US),ATP1A3,HGNC:801,https://ahckids.org,,foundation,REDCap,,epilepsylive_orgs.csv,candidate
+Cure CLCN4,CLCN4,HGNC:2022,,,foundation,,,epilepsylive_orgs.csv,candidate
+Cure CMD,LAMA2,HGNC:6482,,,foundation,,,epilepsylive_orgs.csv,candidate
+Cure CMT4J/ Talia Duff Foundation,CMT4J,,http://www.curecmt4j.org/,United States of America,foundation,,,everycure_rdnp.csv,candidate
+Cure DHDDS,DHDDS,HGNC:20603,https://www.curedhdds.org,,foundation,,,epilepsylive_orgs.csv,candidate
+Cure DHDDS USA,DHDDS,HGNC:20603,,,foundation,,,epilepsylive_orgs.csv,candidate
+Cure GABA A Variants,GABRB2,HGNC:4082,,,foundation,,,epilepsylive_orgs.csv,candidate
+Cure GABA-A Variants,GABRA1,HGNC:4075,https://curegabaa.org/,,foundation,,,epilepsylive_orgs.csv,candidate
+Cure GABA-A Variants,GABRB3,HGNC:4083,https://curegabaa.org/,,foundation,,,epilepsylive_orgs.csv,candidate
+Cure GABA-A Variants,GABRG2,HGNC:4087,https://curegabaa.org/,,foundation,,,epilepsylive_orgs.csv,candidate
+Cure GABRB2,GABRB2,HGNC:4082,https://www.curegabrb2.org/,,foundation,,,epilepsylive_orgs.csv,candidate
+Cure GM1 Foundation,GM1,,https://curegm1.org/,United States of America,foundation,,,everycure_rdnp.csv,candidate
+Cure KCNH1,KCNH1,HGNC:6250,,,foundation,,,epilepsylive_orgs.csv,candidate
+Cure Mito,SURF1,HGNC:11474,,,foundation,,,epilepsylive_orgs.csv,candidate
+Cure RHOBTB2,RHOBTB2,HGNC:18756,,,foundation,,,epilepsylive_orgs.csv,candidate
+Cure SPG50 Foundation,AP4B1,HGNC:572,https://www.curespg50.org/,,foundation,,,epilepsylive_orgs.csv,candidate
+Cure SPG50 Foundation,AP4M1,HGNC:574,https://www.curespg50.org/,,foundation,Foundation-hosted,,epilepsylive_orgs.csv,candidate
+CureAP4,AP4M1,HGNC:574,,,foundation,,,epilepsylive_orgs.csv,candidate
+CureAP4 Foundation,AP4B1,HGNC:572,https://www.cureap4.org/,,foundation,Foundation-hosted,,epilepsylive_orgs.csv,candidate
+CureARS,EARS2,HGNC:29419,,,foundation,,,epilepsylive_orgs.csv,candidate
+CureARS,FARS2,HGNC:21062,,,foundation,,,epilepsylive_orgs.csv,candidate
+CureARS,RARS2,HGNC:21406,,,foundation,,,epilepsylive_orgs.csv,candidate
+CureCLN6,CLN6,HGNC:2077,https://bdsra.org,,foundation,REDCap,REN,epilepsylive_orgs.csv;rela_2019.csv,candidate
+CureDRPLA,ATN1,HGNC:3033,,,foundation,,,epilepsylive_orgs.csv,candidate
+CureGRIN,GRIA1,HGNC:4571,,,foundation,,,epilepsylive_orgs.csv,candidate
+CureGRIN,GRIA2,HGNC:4572,,,foundation,,,epilepsylive_orgs.csv,candidate
+CureGRIN,GRIA3,HGNC:4573,,,foundation,,,epilepsylive_orgs.csv,candidate
+CureGRIN,GRIA4,HGNC:4574,,,foundation,,,epilepsylive_orgs.csv,candidate
+CureGRIN,GRIK2,HGNC:4580,,,foundation,,,epilepsylive_orgs.csv,candidate
+CureGRIN,GRIN1,HGNC:4584,,,foundation,,,epilepsylive_orgs.csv,candidate
+CureGRIN,GRIN2A,HGNC:4585,,,foundation,,,epilepsylive_orgs.csv,candidate
+CureGRIN,GRIN2B,HGNC:4586,,,foundation,,,epilepsylive_orgs.csv,candidate
+CureGRIN,GRIN2D,HGNC:4588,,,foundation,,,epilepsylive_orgs.csv,candidate
+CureGRIN Foundation,GRIN1,HGNC:4584,https://curegrin.org/,,foundation,REDCap,REN,epilepsylive_orgs.csv;rela_2019.csv,candidate
+CureGRIN Foundation,GRIN2A,HGNC:4585,https://curegrin.org/,,foundation,Foundation-hosted,REN,epilepsylive_orgs.csv;rela_2019.csv,candidate
+CureGRIN Foundation,GRIN2D,HGNC:4588,https://curegrin.org/,,foundation,Foundation-hosted,REN,epilepsylive_orgs.csv;rela_2019.csv,candidate
+CureNFwithJack,NF1,HGNC:7765,,,foundation,,,epilepsylive_orgs.csv,candidate
+CureNURR1,NR4A2,HGNC:7981,https://www.curenurr1.org/,,foundation,,,epilepsylive_orgs.csv,candidate
+CureSHANK,SHANK1,HGNC:15474,https://www.cureshank.org/,United States of America,foundation,,,everycure_rdnp.csv,candidate
+CureSHANK,SHANK2,HGNC:14295,https://www.cureshank.org/,United States of America,foundation,,,everycure_rdnp.csv,candidate
+CureSHANK,SHANK3,HGNC:14294,,,foundation,,,epilepsylive_orgs.csv,candidate
+CureSHANK,SHANK3,HGNC:14294,https://www.cureshank.org/,United States of America,foundation,,,everycure_rdnp.csv,candidate
+CureTBCK,TBCK,HGNC:28261,,,foundation,,,epilepsylive_orgs.csv,candidate
+Cute Syndrome Foundation,SCN8A,HGNC:10596,,,foundation,,,epilepsylive_orgs.csv,candidate
+DADA2 Foundation,DADA2,,https://dada2.org/,United States of America,foundation,,,everycure_rdnp.csv,candidate
+DAND Alliance,DEAF1,HGNC:14677,,,foundation,,,epilepsylive_orgs.csv,candidate
+DDX3X Foundation,DDX3X,HGNC:2745,https://ddx3x.org/,,foundation,Citizen,,epilepsylive_orgs.csv;everycure_rdnp.csv;rela_2019.csv,candidate
+DEAF1 family network,DEAF1,HGNC:14677,https://www.rorybelle.org,,family group,,,epilepsylive_orgs.csv,candidate
+DESSH Foundation,WAC,HGNC:17327,,,foundation,,,epilepsylive_orgs.csv,candidate
+DLG4 Foundation,DLG4,HGNC:2903,,,foundation,,,epilepsylive_orgs.csv,candidate
+DLG4 SHINE Foundation,DLG4,HGNC:2903,,,foundation,,,epilepsylive_orgs.csv,candidate
+DNM1 Epilepsy Project,DNM1,HGNC:2972,https://dnm1epilepsy.org,,foundation,Citizen,,epilepsylive_orgs.csv,candidate
+DNM1 dynamos - Connecting DNM1 Families,DNM1,HGNC:2972,https://www.facebook.com/groups/1065172710162616/,US,family group,,REN,rela_2019.csv,candidate
+DYNC1H1 Association,DYNC1H1,HGNC:2961,https://www.dync1h1.org/,,foundation,,,epilepsylive_orgs.csv,candidate
+DYNC1H1 Gene Mutation Family Support Group,DYNC1H1,HGNC:2961,,,foundation,,,epilepsylive_orgs.csv,candidate
+DYRK1A Syndrome International Association,DYRK1A,HGNC:3091,https://dyrk1a.org/,,foundation,,,epilepsylive_orgs.csv;everycure_rdnp.csv,candidate
+DeSanto-Shinawi Society,WAC,HGNC:17327,,,foundation,,,epilepsylive_orgs.csv,candidate
+Don't Forget Me Foundation,WDR45,HGNC:28912,,,foundation,,,epilepsylive_orgs.csv,candidate
+Don't Forget Me Foundation (US),WDR45,HGNC:28912,https://dontforgetmefoundation.org/,,foundation,Foundation-hosted,,epilepsylive_orgs.csv,candidate
+Dravet Foundation,SCN1A,HGNC:10585,,,foundation,,,epilepsylive_orgs.csv,candidate
+Dravet Syndrome European Federation,SCN1A,HGNC:10585,,,foundation,,,epilepsylive_orgs.csv,candidate
+Dravet Syndrome Foundation,SCN1A,HGNC:10585,https://www.dravetfoundation.org,,foundation,Foundation-hosted,REN,epilepsylive_orgs.csv;rela_2019.csv,candidate
+Dravet Syndrome Foundation covers some overlap,SCN1B,HGNC:10586,,,foundation,,,epilepsylive_orgs.csv,candidate
+Dravet Syndrome UK,SCN1A,HGNC:10585,,,foundation,,,epilepsylive_orgs.csv,candidate
+Dravet.org.au,SCN1A,HGNC:10585,,,foundation,,,epilepsylive_orgs.csv,candidate
+EBF3 HADDS Foundation,EBF3,HGNC:19087,https://www.hadds.org/,United States of America,foundation,,,everycure_rdnp.csv,candidate
+EEF1A2 family network,EEF1A2,HGNC:3192,,,family group,REDCap,,epilepsylive_orgs.csv,candidate
+EIF3F Research Foundation,EIF3F,HGNC:3275,,,foundation,,,epilepsylive_orgs.csv,candidate
+EllysTeam,IRF2BPL,HGNC:14282,,,foundation,,,epilepsylive_orgs.csv,candidate
+Epilepsy Foundation,CHRNA4,HGNC:1958,https://www.facebook.com/groups/265440120739437,,foundation,,,epilepsylive_orgs.csv,candidate
+European STXBP1 Association,STXBP1,HGNC:11444,,,foundation,,,epilepsylive_orgs.csv,candidate
+Extra-Vaillants MYT1L,MYT1L,HGNC:7623,,,foundation,,,epilepsylive_orgs.csv,candidate
+FAM177A1 Collaborative Research Network,FAM177A1,HGNC:19829,,,foundation,,,epilepsylive_orgs.csv,candidate
+FAM177A1 Research Fund,FAM177A1,HGNC:19829,https://www.fam177a1.org/,,foundation,,,epilepsylive_orgs.csv,candidate
+FBXL4 parent community group,FBXL4,HGNC:13601,,,family group,,,epilepsylive_orgs.csv,candidate
+FOXG1 Research Foundation,FOXG1,HGNC:3811,,,foundation,,,epilepsylive_orgs.csv,candidate
+FOXG1 Research Foundation (FRF),FOXG1,HGNC:3811,https://www.foxg1research.org/,,foundation,Foundation-hosted,,epilepsylive_orgs.csv,candidate
+FOXP1 Foundation Facebook Group,FOXP1,HGNC:3823,,,family group,,,epilepsylive_orgs.csv,candidate
+Famiglie GNAO1,GNAO1,HGNC:4389,,,foundation,,,epilepsylive_orgs.csv,candidate
+FamilieSCN2A Foundation,SCN2A,HGNC:10588,https://www.scn2a.org/,,foundation,Foundation-hosted,,epilepsylive_orgs.csv;everycure_rdnp.csv;rela_2019.csv,candidate
+Families of DAND (DEAF1 and Related Neurodevelopmental Disorders),DEAF1,HGNC:14677,,,foundation,,,epilepsylive_orgs.csv,candidate
+Finding Hope for FRRS1L,FRRS1L,HGNC:1362,https://www.frrs1l.org,,foundation,,,epilepsylive_orgs.csv,candidate
+ForeBatten Foundation,CLN3,HGNC:2074,,,foundation,,,epilepsylive_orgs.csv,candidate
+Foundation for ARID1B Research,ARID1B,HGNC:18040,,,foundation,,,epilepsylive_orgs.csv,candidate
+Foundation for Angelman Syndrome Therapeutics,UBE3A,HGNC:12496,,,foundation,,,epilepsylive_orgs.csv,candidate
+Foundation to Fight H-abc,TUBB4A,HGNC:20774,https://www.h-abc.org/,United States of America,foundation,,,everycure_rdnp.csv,candidate
+Fundacion Niemann-Pick,NPC1,HGNC:7897,,,foundation,,,epilepsylive_orgs.csv,candidate
+Fundación Internacional FOXP1,FOXP1,HGNC:3823,,,foundation,,,epilepsylive_orgs.csv,candidate
+Fundación TBCK,TBCK,HGNC:28261,,,foundation,,,epilepsylive_orgs.csv,candidate
+GABRA1 Village,GABRA1,HGNC:4075,,,foundation,,,epilepsylive_orgs.csv,candidate
+GABRB3 Life Changes,GABRB3,HGNC:4083,,,foundation,,,epilepsylive_orgs.csv,candidate
+GNB1 Advocacy Group,GNB1,HGNC:4396,,,foundation,,,epilepsylive_orgs.csv,candidate
+GNB1 Advocacy Group / GNB1 family network,GNB1,HGNC:4396,https://www.gnb1advocacy.org/,,family group,REDCap,,epilepsylive_orgs.csv,candidate
+GNB1 Foundation,GNB1,HGNC:4396,,,foundation,,,epilepsylive_orgs.csv,candidate
+GNB1 Gene Disorder,GNB1,HGNC:4396,,,foundation,,,epilepsylive_orgs.csv,candidate
+GPI-Anchor Disorder Alliance,PIGA,HGNC:8957,https://gpiad.org/,,foundation,NIH RDCRN,,epilepsylive_orgs.csv,candidate
+GPI-Anchor Disorder Alliance,PIGN,HGNC:8967,https://gpiad.org/,,foundation,NIH RDCRN,,epilepsylive_orgs.csv,candidate
+GRI Center of Excellence,GRIN2A,HGNC:4585,,,foundation,,,epilepsylive_orgs.csv,candidate
+GRI France,GRIA1,HGNC:4571,,,foundation,,,epilepsylive_orgs.csv,candidate
+GRI France,GRIA2,HGNC:4572,,,foundation,,,epilepsylive_orgs.csv,candidate
+GRI France,GRIA3,HGNC:4573,,,foundation,,,epilepsylive_orgs.csv,candidate
+GRI France,GRIK2,HGNC:4580,,,foundation,,,epilepsylive_orgs.csv,candidate
+GRI France,GRIN2B,HGNC:4586,,,foundation,,,epilepsylive_orgs.csv,candidate
+GRIA1 Facebook Group,GRIA1,HGNC:4571,,,family group,,,epilepsylive_orgs.csv,candidate
+GRIA3 Facebook Group,GRIA3,HGNC:4573,,,family group,,,epilepsylive_orgs.csv,candidate
+GRIN Europe,GRIN2B,HGNC:4586,,,foundation,,,epilepsylive_orgs.csv,candidate
+GRIN1 Parent Support Group,GRIN1,HGNC:4584,,,foundation,,,epilepsylive_orgs.csv,candidate
+GRIN2B Foundation,GRIN2B,HGNC:4586,https://curegrin.org/,United States of America,foundation,,,everycure_rdnp.csv;rela_2019.csv,candidate
+GRIN2B Foundation,GRIN2B,HGNC:4586,http://grin2b.com/,,foundation,Foundation-hosted,REN,epilepsylive_orgs.csv;rela_2019.csv,candidate
+Gene Giraffe Project,GM1,,http://www.genegiraffe.org/,United States of America,foundation,,,everycure_rdnp.csv,candidate
+Glut1 Deficiency Foundation,SLC2A1,HGNC:11005,https://G1DFoundation.org,,foundation,Foundation-hosted,REN,epilepsylive_orgs.csv;rela_2019.csv,candidate
+Gould Syndrome Foundation,COL4A1,HGNC:2202,https://gouldsyndromefoundation.org,,foundation,,,epilepsylive_orgs.csv;everycure_rdnp.csv,candidate
+Gould Syndrome Foundation,COL4A2,HGNC:2203,https://gouldsyndromefoundation.org,,foundation,,,epilepsylive_orgs.csv;everycure_rdnp.csv,candidate
+GrandPOPS,PURA,HGNC:9701,,,foundation,,,epilepsylive_orgs.csv,candidate
+HNRNP Family Foundation,HNRNPH2,HGNC:5042,https://www.hnrnp.org/,,foundation,,,epilepsylive_orgs.csv,candidate
+HNRNP Family Foundation,HNRNPK,HGNC:5044,https://www.hnrnp.org/,,foundation,,,epilepsylive_orgs.csv,candidate
+HNRNP Family Foundation,HNRNPR,HGNC:5047,https://www.hnrnp.org/,,foundation,,,epilepsylive_orgs.csv,candidate
+HNRNP-Related Parent Connect,HNRNPK,HGNC:5044,,,family group,,,epilepsylive_orgs.csv,candidate
+HNRNP-Related Parent Connect,HNRNPR,HGNC:5047,,,family group,,,epilepsylive_orgs.csv,candidate
+HNRNP-Related Parent Connect,HNRNPU,HGNC:5048,,,family group,,,epilepsylive_orgs.csv,candidate
+HNRNPU Foundation,HNRNPU,HGNC:5048,https://www.hnrnp.org/,,foundation,Foundation-hosted,,epilepsylive_orgs.csv,candidate
+HNRNPU Parent Connect,HNRNPU,HGNC:5048,,,family group,,,epilepsylive_orgs.csv,candidate
+HSAN1E Society,HSAN1E,,https://hsan1esociety.org/,United States of America,foundation,,,everycure_rdnp.csv,candidate
+"Helping Hands for GAND, Inc.",GATAD2B,HGNC:30778,https://www.gatad2b.org/,United States of America,foundation,,,everycure_rdnp.csv,candidate
+Hereditary Disease Foundation overlap,VPS13A,HGNC:1908,,,foundation,,,epilepsylive_orgs.csv,candidate
+Hope for HIVEP2,HIVEP2,HGNC:4921,,,foundation,,,epilepsylive_orgs.csv,candidate
+Hope4Harper,CDKL5,HGNC:11411,https://www.hope4harper.com,US,foundation,,REN,rela_2019.csv,candidate
+Hope4tylerandluke - Med 23 gene defect,MED23,HGNC:2372,http://www.hope4tylerandluke.com/,United States of America,foundation,,,everycure_rdnp.csv,candidate
+ICE Epilepsy Alliance,SCN1A,HGNC:10585,,,foundation,,,epilepsylive_orgs.csv,candidate
+IDefine,EHMT1,HGNC:24650,https://www.idefine.org/,,foundation,Citizen,,epilepsylive_orgs.csv,candidate
+INADcure Foundation,PLA2G6,HGNC:9039,https://www.inadcure.org/,United States of America,foundation,,,everycure_rdnp.csv,candidate
+IQSEC2 family network,IQSEC2,HGNC:29059,https://iqsec2.org/ (verify),,family group,REDCap,,epilepsylive_orgs.csv,candidate
+IRF2BPL Foundation,IRF2BPL,HGNC:14282,,,foundation,,,epilepsylive_orgs.csv,candidate
+IRF2BPL Foundation - IRF2BPL Disorder,IRF2BPL,HGNC:14282,https://irf2bpl.zohosites.com/,United States of America,foundation,,,everycure_rdnp.csv,candidate
+IWSA,PAX6,HGNC:8620,,,foundation,,,epilepsylive_orgs.csv,candidate
+ImpulsaT,LAMA2,HGNC:6482,,,foundation,,,epilepsylive_orgs.csv,candidate
+International FOXG1 Foundation,FOXG1,HGNC:3811,https://foxg1.org/,United States of America,foundation,,,everycure_rdnp.csv,candidate
+International FOXG1 Foundation,FOXG1,HGNC:3811,,,foundation,,,epilepsylive_orgs.csv,candidate
+International FOXP1 Foundation,FOXP1,HGNC:3823,https://www.foxp1.org/,,foundation,REDCap,,epilepsylive_orgs.csv,candidate
+International Foundation for CDKL5 Research,CDKL5,HGNC:11411,https://www.cdkl5.com,,foundation,REDCap,,epilepsylive_orgs.csv;everycure_rdnp.csv;rela_2019.csv,candidate
+International Mito Patients,POLG,HGNC:9179,,,foundation,,,epilepsylive_orgs.csv,candidate
+International PDE Consortium,ALDH7A1,HGNC:877,https://pdeonline.org/,,foundation,REDCap,,epilepsylive_orgs.csv,candidate
+International Rett Syndrome Foundation,MECP2,HGNC:6990,https://www.rettsyndrome.org/,,foundation,REDCap,,epilepsylive_orgs.csv,candidate
+International Society for Mannosidosis & Related Diseases,FUCA1,HGNC:4006,,,foundation,,,epilepsylive_orgs.csv,candidate
+International Society for Mannosidosis & Related Diseases,MANBA,HGNC:6831,,,foundation,,,epilepsylive_orgs.csv,candidate
+Jain Foundation - Limb Girdle Muscular Dystrophy type 2B/R2/Mioyshi Myopathy/Dysferlinopathy,LGMD2B,,https://www.jain-foundation.org/,United States of America,foundation,,,everycure_rdnp.csv,candidate
+Jain Foundation - Limb Girdle Muscular Dystrophy type 2B/R2/Mioyshi Myopathy/Dysferlinopathy,LGMDR2,,https://www.jain-foundation.org/,United States of America,foundation,,,everycure_rdnp.csv,candidate
+Jain Foundation - Limb Girdle Muscular Dystrophy type 2B/R2/Mioyshi Myopathy/Dysferlinopathy,MM1,,https://www.jain-foundation.org/,United States of America,foundation,,,everycure_rdnp.csv,candidate
+Jordan's Guardian Angels,PPP2R5D,HGNC:9312,https://jordansguardianangels.org/,,foundation,REDCap,,epilepsylive_orgs.csv;everycure_rdnp.csv,candidate
+"Jordan's Guardian Angels - Jordan's Syndrome; Genetic misspelling of the genes PPP2R5D, PPP2R1A, PPP2R5C",PPP2R1A,HGNC:9302,https://jordansguardianangels.org/,United States of America,foundation,,,everycure_rdnp.csv,candidate
+"Jordan's Guardian Angels - Jordan's Syndrome; Genetic misspelling of the genes PPP2R5D, PPP2R1A, PPP2R5C",PPP2R5C,HGNC:9311,https://jordansguardianangels.org/,United States of America,foundation,,,everycure_rdnp.csv,candidate
+KARES Foundation,KDM5C,HGNC:11114,,,foundation,,,epilepsylive_orgs.csv,candidate
+KAT6 Foundation,KAT6A,HGNC:13013,,,foundation,,,epilepsylive_orgs.csv,candidate
+KAT6A Foundation,KAT6A,HGNC:13013,https://kat6a.org/,United States of America,foundation,,,everycure_rdnp.csv,candidate
+KCNA2 Epilepsy Global Alliance,KCNA2,HGNC:6220,https://www.kcna2epilepsy.org,,foundation,,,epilepsylive_orgs.csv,candidate
+KCNA2 Parent Connection,KCNA2,HGNC:6220,,,family group,,,epilepsylive_orgs.csv,candidate
+KCNB1 Foundation,KCNB1,HGNC:6231,https://kcnb1.org/,,foundation,Citizen,,epilepsylive_orgs.csv,candidate
+KCNC1 Foundation,KCNC1,HGNC:6233,,,foundation,,,epilepsylive_orgs.csv,candidate
+KCNMA1 Channelopathy International Advocacy Foundation,KCNMA1,HGNC:6284,https://kcnma1.org/,,foundation,REDCap,,epilepsylive_orgs.csv,candidate
+KCNQ2 Cure Alliance,KCNQ2,HGNC:6296,https://www.kcnq2cure.org/,,foundation,REDCap,,epilepsylive_orgs.csv;everycure_rdnp.csv,candidate
+KCNQ2 Cure Alliance,KCNQ3,HGNC:6297,https://www.kcnq2cure.org/,,foundation,REDCap,,epilepsylive_orgs.csv,candidate
+KCNT1 Epilepsy Foundation,KCNT1,HGNC:18865,https://kcnt1epilepsy.org/,,foundation,NORD IAMRARE,,epilepsylive_orgs.csv,candidate
+KDVS Foundation,KANSL1,HGNC:24565,,,foundation,,,epilepsylive_orgs.csv,candidate
+KIF1A.ORG,KIF1A,HGNC:888,https://www.kif1a.org/,,foundation,Citizen,,epilepsylive_orgs.csv;everycure_rdnp.csv,candidate
+KIF4A Foundation - KIF4A Associated Neurodevelopmental Syndrome (KANS),KIF4A,HGNC:13339,https://kif4a.org/,United States of America,foundation,,,everycure_rdnp.csv,candidate
+KMT2C Foundation,KMT2C,HGNC:13726,,,foundation,,,epilepsylive_orgs.csv,candidate
+KMT2E Foundation O’Donnell-Luria-Rodan Syndrome,KMT2E,HGNC:18541,,,foundation,,,epilepsylive_orgs.csv,candidate
+KPTN Alliance,KPTN,HGNC:6404,https://kptnalliance.org/,,foundation,,,epilepsylive_orgs.csv,candidate
+Kabuki Syndrome Foundation,KMT2D,HGNC:7133,https://kabukisyndrome.com/,,foundation,,,epilepsylive_orgs.csv,candidate
+Kabuki UK,KMT2D,HGNC:7133,,,foundation,,,epilepsylive_orgs.csv,candidate
+Kleefstra Syndrome International,EHMT1,HGNC:24650,https://kleefstrasyndrome.org/,,foundation,,,epilepsylive_orgs.csv,candidate
+Kleefstra Syndrome UK,EHMT1,HGNC:24650,,,foundation,,,epilepsylive_orgs.csv,candidate
+Kohlschütter-Tönz Syndrome Foundation,ROGDI,HGNC:29478,,,foundation,,,epilepsylive_orgs.csv,candidate
+LAMA2 France,LAMA2,HGNC:6482,,,foundation,,,epilepsylive_orgs.csv,candidate
+Lightning and Love Foundation - Advocacy and research into THAP12 mutation related disease,THAP12,HGNC:9440,http://www.lightningandlove.org,United States of America,foundation,,,everycure_rdnp.csv,candidate
+Lihi’s Smile,IRF2BPL,HGNC:14282,,,foundation,,,epilepsylive_orgs.csv,candidate
+Lily Foundation (UK),POLG,HGNC:9179,https://www.thelilyfoundation.org.uk/,,foundation,,,epilepsylive_orgs.csv,candidate
+Lissencephaly Foundation Inc,DCX,HGNC:2714,http://lissfoundation.org/,US,foundation,,REN,rela_2019.csv,candidate
+Lissencephaly Foundation Inc,PAFAH1B1,HGNC:8574,http://lissfoundation.org/,US,foundation,,REN,rela_2019.csv,candidate
+Lissencephaly Foundation Inc,TUBA1A,HGNC:20766,http://lissfoundation.org/,US,foundation,,REN,rela_2019.csv,candidate
+Lissencephaly Network,PAFAH1B1,HGNC:8574,https://www.lissencephaly.org/,,foundation,Foundation-hosted,,epilepsylive_orgs.csv,candidate
+Lost Enzyme Project,MANBA,HGNC:6831,,,foundation,,,epilepsylive_orgs.csv,candidate
+Loulou Foundation,CDKL5,HGNC:11411,,,foundation,,,epilepsylive_orgs.csv,candidate
+MAND Caregiver Support Network,MBD5,HGNC:20444,,,foundation,,,epilepsylive_orgs.csv,candidate
+MAST Foundation,MAST1,HGNC:19034,,,foundation,,,epilepsylive_orgs.csv,candidate
+MAST Foundation,MAST3,HGNC:19036,,,foundation,,,epilepsylive_orgs.csv,candidate
+MAST Foundation,MAST4,HGNC:19037,,,foundation,,,epilepsylive_orgs.csv,candidate
+MAST1 Facebook Group,MAST1,HGNC:19034,,,family group,,,epilepsylive_orgs.csv,candidate
+MECP2 Duplication Foundation,MECP2,HGNC:6990,https://mecp2d.org/,United States of America,foundation,,,everycure_rdnp.csv,candidate
+MECP2 Duplication Foundation,MECP2,HGNC:6990,https://mecp2duplication.com/,,foundation,,,epilepsylive_orgs.csv,candidate
+MED12 Foundation,MED12,HGNC:11957,,,foundation,,,epilepsylive_orgs.csv,candidate
+MED13L (Germany),MED13L,HGNC:22962,,,foundation,,,epilepsylive_orgs.csv,candidate
+MED13L España,MED13L,HGNC:22962,,,foundation,,,epilepsylive_orgs.csv,candidate
+MED13L Foundation,MED13L,HGNC:22962,https://med13l.org/,,foundation,Foundation-hosted,,epilepsylive_orgs.csv,candidate
+MEF2C Family Foundation,MEF2C,HGNC:6996,,,foundation,,,epilepsylive_orgs.csv,candidate
+MEF2C Foundation,MEF2C,HGNC:6996,https://www.usmef2cfoundation.org/,,foundation,Foundation-hosted,,epilepsylive_orgs.csv,candidate
+MYT1L Project,MYT1L,HGNC:7623,,,foundation,,,epilepsylive_orgs.csv,candidate
+Maggie's Cure,PMM2,HGNC:9115,,,foundation,,,epilepsylive_orgs.csv,candidate
+Migraine Research Foundation overlap,ATP1A2,HGNC:800,,,foundation,,,epilepsylive_orgs.csv,candidate
+Miller-Dieker Foundation,PAFAH1B1,HGNC:8574,,,foundation,,,epilepsylive_orgs.csv,candidate
+Mito Foundation (AU),POLG,HGNC:9179,https://www.mito.org.au/,,foundation,,,epilepsylive_orgs.csv,candidate
+MitoAction,POLG,HGNC:9179,https://www.mitoaction.org/,,foundation,,,epilepsylive_orgs.csv,candidate
+Mowat-Wilson Syndrome Australia,ZEB2,HGNC:14881,,,foundation,,,epilepsylive_orgs.csv,candidate
+Mowat-Wilson Syndrome Foundation,ZEB2,HGNC:14881,,,foundation,,,epilepsylive_orgs.csv,candidate
+Mowat-Wilson Syndrome Foundation (US),ZEB2,HGNC:14881,https://mowat-wilson.org/,,foundation,Matrix (Across Healthcare),,epilepsylive_orgs.csv,candidate
+"Mucolipidosis Type IV Foundation, Inc. (ML4Fdn)",ML4,,http://ml4.org/,United States of America,foundation,,,everycure_rdnp.csv,candidate
+NAA15 Families Together,NAA15,HGNC:30782,,,foundation,,,epilepsylive_orgs.csv,candidate
+NBEA Facebook group,NBEA,HGNC:7648,,,family group,,,epilepsylive_orgs.csv,candidate
+NBIA Disorders Association,WDR45,HGNC:28912,,,foundation,,,epilepsylive_orgs.csv,candidate
+NCBRS Worldwide Foundation,SMARCA2,HGNC:11098,,,foundation,,,epilepsylive_orgs.csv,candidate
+NEXMIF ITALIA odv,NEXMIF,HGNC:29433,,,foundation,,,epilepsylive_orgs.csv,candidate
+NF Network,NF1,HGNC:7765,,,foundation,,,epilepsylive_orgs.csv,candidate
+NGLY1.org,NGLY1,HGNC:17646,https://www.ngly1.org/,United States of America,foundation,,,everycure_rdnp.csv,candidate
+NR2F1 Foundation - Bosch Boonstra Schaaf optic atrophy syndrome,NR2F1,HGNC:7975,https://nr2f1.org/,United States of America,foundation,,,everycure_rdnp.csv,candidate
+NR4A2 PAG,NR4A2,HGNC:7981,,,foundation,,,epilepsylive_orgs.csv,candidate
+NRXN1 Network,NRXN1,HGNC:8008,,,foundation,REDCap,,epilepsylive_orgs.csv,candidate
+NUS1 Foundation,NUS1,HGNC:21042,https://www.nus1foundation.org/,,foundation,,,epilepsylive_orgs.csv,candidate
+National Ataxia Foundation,KCNA1,HGNC:6218,https://www.ataxia.org/,,foundation,Foundation-hosted,,epilepsylive_orgs.csv,candidate
+"National Tay-Sachs and Allied Diseases Association, Inc.",GM1,,https://www.ntsad.org/,United States of America,foundation,,,everycure_rdnp.csv,candidate
+National Urea Cycle Disorders Foundation (NUCDF),ARG1,HGNC:663,,,foundation,,,epilepsylive_orgs.csv,candidate
+New Hope Research Foundation,GM1,,http://newhoperesearch.org/,United States of America,foundation,,,everycure_rdnp.csv,candidate
+Nicolaides-Baraitser Syndrome Worldwide Foundation,SMARCA2,HGNC:11098,https://nbsworldwide.org/,,foundation,Foundation-hosted,,epilepsylive_orgs.csv,candidate
+Niemann-Pick Disease Group,NPC1,HGNC:7897,,,foundation,,,epilepsylive_orgs.csv,candidate
+Noah's Hope/Hope4Bridget,CLN3,HGNC:2074,,,foundation,,,epilepsylive_orgs.csv,candidate
+Olivia Bloomfield Foundation,LAMA2,HGNC:6482,,,foundation,,,epilepsylive_orgs.csv,candidate
+PACS1 Foundation,PACS1,HGNC:30032,,,foundation,,,epilepsylive_orgs.csv,candidate
+PACS2 Research Foundation,PACS2,HGNC:23794,,,foundation,,,epilepsylive_orgs.csv,candidate
+PCDH19 Alliance,PCDH19,HGNC:14270,https://www.pcdh19info.org/,,foundation,Foundation-hosted,,epilepsylive_orgs.csv;everycure_rdnp.csv,candidate
+PDE Foundation,ALDH7A1,HGNC:877,,,foundation,,,epilepsylive_orgs.csv,candidate
+PHF21A Facebook group,PHF21A,HGNC:24156,,,family group,,,epilepsylive_orgs.csv,candidate
+PME family network,KCTD7,HGNC:21957,,,family group,,,epilepsylive_orgs.csv,candidate
+PNKP Disease Foundation,PNKP,HGNC:9154,https://www.pnkpfoundation.org/ (verify),,foundation,Foundation-hosted,,epilepsylive_orgs.csv,candidate
+PPP2R5D Foundation,PPP2R1A,HGNC:9302,,,foundation,,,epilepsylive_orgs.csv,candidate
+PPP2R5D Foundation,PPP2R5C,HGNC:9311,,,foundation,,,epilepsylive_orgs.csv,candidate
+PPP2R5D Foundation,PPP2R5D,HGNC:9312,,,foundation,,,epilepsylive_orgs.csv,candidate
+PPP3CA Hope Foundation,PPP3CA,HGNC:9314,,,foundation,,,epilepsylive_orgs.csv,candidate
+PTEN Hamartoma Tumor Syndrome Foundation,PTEN,HGNC:9588,,,foundation,,,epilepsylive_orgs.csv,candidate
+PTEN Hamartoma Tumor Syndrome Foundation (US),PTEN,HGNC:9588,https://ptenfoundation.org/,,foundation,Foundation-hosted,,epilepsylive_orgs.csv,candidate
+PTEN Research,PTEN,HGNC:9588,,,foundation,,,epilepsylive_orgs.csv,candidate
+PTEN Research (UK),PTEN,HGNC:9588,https://www.ptenresearch.org/,,foundation,,,epilepsylive_orgs.csv,candidate
+PURA Foundation Australia,PURA,HGNC:9701,,,foundation,,,epilepsylive_orgs.csv,candidate
+PURA Syndrome Foundation,PURA,HGNC:9701,https://purasyndrome.org/,,foundation,Foundation-hosted,,epilepsylive_orgs.csv;everycure_rdnp.csv,candidate
+PVNH Support & Awareness,FLNA,HGNC:3754,https://www.PVNHSupport.com,US,family group,,REN,rela_2019.csv,candidate
+Parents and Researchers Interested in Smith-Magenis Syndrome,SMS,HGNC:11123,,,foundation,,,epilepsylive_orgs.csv,candidate
+Phelan-McDermid Foundation Europe,SHANK3,HGNC:14294,,,foundation,,,epilepsylive_orgs.csv,candidate
+Phelan-McDermid Syndrome Foundation,SHANK3,HGNC:14294,https://pmsf.org/,,foundation,Matrix (Across Healthcare),REN,epilepsylive_orgs.csv;rela_2019.csv,candidate
+Pitt Hopkins Research Foundation,TCF4,HGNC:11634,https://pitthopkins.org/,,foundation,REDCap,,epilepsylive_orgs.csv,candidate
+Pitt Hopkins UK,TCF4,HGNC:11634,,,foundation,,,epilepsylive_orgs.csv,candidate
+PolG Foundation,POLG,HGNC:9179,,,foundation,,,epilepsylive_orgs.csv,candidate
+PolG Foundation,POLG2,HGNC:9180,,,foundation,,,epilepsylive_orgs.csv,candidate
+Progetto Flavia,UGDH,HGNC:12525,,,foundation,,,epilepsylive_orgs.csv,candidate
+Project CASK,CASK,HGNC:1497,https://www.projectcask.org/,,foundation,REDCap,,epilepsylive_orgs.csv,candidate
+RMFSL Family Network,BRAT1,HGNC:21701,,,family group,,,epilepsylive_orgs.csv,candidate
+RORB Facebook group,RORB,HGNC:10259,,,family group,,,epilepsylive_orgs.csv,candidate
+RUNX1 Research Program - RUNX1-Familial Platelet Disorder,RUNX1,,https://www.runx1-fpd.org/,United States of America,foundation,,,everycure_rdnp.csv,candidate
+Raging Raymond Foundation,VAMP2,HGNC:12643,,,foundation,,,epilepsylive_orgs.csv,candidate
+Rett Syndrome Research Trust,MECP2,HGNC:6990,https://reverserett.org/,,foundation,,,epilepsylive_orgs.csv,candidate
+Rett Syndrome.org,MECP2,HGNC:6990,,,foundation,,,epilepsylive_orgs.csv,candidate
+Reverse Rett (UK),MECP2,HGNC:6990,https://www.reverserett.org.uk/,,foundation,,,epilepsylive_orgs.csv,candidate
+Rory Belle Foundation,NARS1,HGNC:7643,,,foundation,,,epilepsylive_orgs.csv,candidate
+SATB2 Gene Foundation,SATB2,HGNC:21637,https://www.satb2gene.org/,,foundation,Foundation-hosted,,epilepsylive_orgs.csv;everycure_rdnp.csv,candidate
+SATB2 Syndrome (2q33.1) Facebook Group,SATB2,HGNC:21637,,,family group,,,epilepsylive_orgs.csv,candidate
+SATB2- genfundament,SATB2,HGNC:21637,,,foundation,,,epilepsylive_orgs.csv,candidate
+SCN2A Australia,SCN2A,HGNC:10588,,,foundation,,,epilepsylive_orgs.csv,candidate
+SCN2A Europe,SCN2A,HGNC:10588,,,foundation,,,epilepsylive_orgs.csv,candidate
+SCN2A Foundation,SCN2A,HGNC:10588,,,foundation,,,epilepsylive_orgs.csv,candidate
+SCN3A Family network,SCN3A,HGNC:10590,https://scn3afoundation.org/ (verify),,family group,REDCap,,epilepsylive_orgs.csv,candidate
+SCN8A Alliance,SCN8A,HGNC:10596,,,foundation,,,epilepsylive_orgs.csv,candidate
+SETBP1 Society,SETBP1,HGNC:15573,https://www.setbp1.org/,,foundation,Citizen,,epilepsylive_orgs.csv;everycure_rdnp.csv,candidate
+SKS Awareness,MTOR,HGNC:3942,,,foundation,,,epilepsylive_orgs.csv,candidate
+SLC6A1 Connect,SLC6A1,HGNC:11042,https://slc6a1connect.org/,,foundation,Citizen,,epilepsylive_orgs.csv;everycure_rdnp.csv;rela_2019.csv,candidate
+SMC1A Foundation,SMC1A,HGNC:11111,,,foundation,,,epilepsylive_orgs.csv,candidate
+SPG15 Research Foundation - SPG15,SPG15,,https://www.spg15researchfoundation.org/,United States of America,foundation,,,everycure_rdnp.csv,candidate
+SPTAN1 Foundation,SPTAN1,HGNC:11273,,,foundation,Citizen,,epilepsylive_orgs.csv,candidate
+STAG1 Gene Foundation,STAG1,HGNC:11354,,,foundation,,,epilepsylive_orgs.csv,candidate
+STXBP1 Foundation,STXBP1,HGNC:11444,https://stxbp1disorders.org,,foundation,REDCap,,epilepsylive_orgs.csv;everycure_rdnp.csv,candidate
+SYNGAP1 Foundation,SYNGAP1,HGNC:11497,,,foundation,,,epilepsylive_orgs.csv,candidate
+SZT2 family network,SZT2,HGNC:29040,,,family group,,,epilepsylive_orgs.csv,candidate
+Setd1b Family Network,SETD1B,HGNC:29187,,,family group,,,epilepsylive_orgs.csv,candidate
+Simons Foundation,JARID2,HGNC:6196,,,foundation,,,epilepsylive_orgs.csv,candidate
+Simons Searchlight,ACTB,HGNC:132,,,foundation,,,epilepsylive_orgs.csv,candidate
+Simons Searchlight,ARHGEF9,HGNC:14561,,,foundation,,,epilepsylive_orgs.csv,candidate
+Simons Searchlight,JARID2,HGNC:6196,,,foundation,,,epilepsylive_orgs.csv,candidate
+Simons Searchlight,KMT5B,HGNC:24283,,,foundation,,,epilepsylive_orgs.csv,candidate
+Simons Searchlight ACTL6B Facebook community,ACTL6B,HGNC:160,,,family group,,,epilepsylive_orgs.csv,candidate
+Simons Searchlight ARX Facebook community,ARX,HGNC:18060,,,family group,,,epilepsylive_orgs.csv,candidate
+Simons Searchlight CIC Facebook community,CIC,HGNC:14214,,,family group,,,epilepsylive_orgs.csv,candidate
+Simons Searchlight Community,ASH1L,HGNC:19088,,,family group,,,epilepsylive_orgs.csv,candidate
+Simons Searchlight Community (2),CNOT3,HGNC:7879,,,family group,,,epilepsylive_orgs.csv,candidate
+Simons Searchlight Community (3),CREBBP,HGNC:2348,,,family group,,,epilepsylive_orgs.csv,candidate
+Simons Searchlight Community (4),MYT1L,HGNC:7623,,,family group,,,epilepsylive_orgs.csv,candidate
+Simons Searchlight Community (5),SETD5,HGNC:25566,,,family group,,,epilepsylive_orgs.csv,candidate
+Simons Searchlight Community (6),SMARCC2,HGNC:11105,,,family group,,,epilepsylive_orgs.csv,candidate
+Simons Searchlight Community - NAA15 Facebook group,NAA15,HGNC:30782,,,family group,,,epilepsylive_orgs.csv,candidate
+Simons Searchlight Community - RERE Facebook Group,RERE,HGNC:9965,,,family group,,,epilepsylive_orgs.csv,candidate
+Simons Searchlight Facebook group,FOXP1,HGNC:3823,,,family group,,,epilepsylive_orgs.csv,candidate
+Simons Searchlight KCNB1 Facebook community,KCNB1,HGNC:6231,,,family group,,,epilepsylive_orgs.csv,candidate
+Simons Searchlight NCKAP1 Facebook community,NCKAP1,HGNC:7666,,,family group,,,epilepsylive_orgs.csv,candidate
+Simons Searchlight TLK2 Facebook community,TLK2,HGNC:11842,,,family group,,,epilepsylive_orgs.csv,candidate
+Simons Searchlight TRIO Facebook community,TRIO,HGNC:12303,,,family group,,,epilepsylive_orgs.csv,candidate
+Simons Searchlight UPF3B Facebook community,UPF3B,HGNC:20439,,,family group,,,epilepsylive_orgs.csv,candidate
+Smith-Kingsmore Syndrome Foundation,MTOR,HGNC:3942,https://smithkingsmoresyndrome.com/,,foundation,REDCap,,epilepsylive_orgs.csv,candidate
+Snap25 Foundation,SNAP25,HGNC:11132,,,foundation,,,epilepsylive_orgs.csv,candidate
+Sodium Channel Coalition,SCN3A,HGNC:10590,,,foundation,,,epilepsylive_orgs.csv,candidate
+Sodium Channel Coalition partner,SCN1B,HGNC:10586,,,foundation,,,epilepsylive_orgs.csv,candidate
+Sodium Channel Coalition partner,SCN3A,HGNC:10590,,,foundation,,,epilepsylive_orgs.csv,candidate
+Some shared infrastructure with ATP1A3 communities,ATP1A2,HGNC:800,,,foundation,REDCap,,epilepsylive_orgs.csv,candidate
+Some shared infrastructure with KCNT1 community,KCNT2,HGNC:18866,,,family group,,,epilepsylive_orgs.csv,candidate
+Stand by Eli Foundation,IRF2BPL,HGNC:14282,,,foundation,,,epilepsylive_orgs.csv,candidate
+Struggle Against Muscular Dystrophy LAMA2/UK,LAMA2,HGNC:6482,,,foundation,,,epilepsylive_orgs.csv,candidate
+Support ARG1-D,ARG1,HGNC:663,,,foundation,,,epilepsylive_orgs.csv,candidate
+SynGAP Research Fund,SYNGAP1,HGNC:11497,https://syngapresearchfund.com,,foundation,Citizen,REN,epilepsylive_orgs.csv;rela_2019.csv,candidate
+SynGap Research Fund - SynGap,SYNGAP1,HGNC:11497,https://www.syngapresearchfund.org/,United States of America,foundation,,,everycure_rdnp.csv,candidate
+TANC2 - Private Facebook group,TANC2,HGNC:30212,,,family group,,,epilepsylive_orgs.csv,candidate
+TANC2 Facebook group,TANC2,HGNC:30212,,,family group,,,epilepsylive_orgs.csv,candidate
+TANGO2 Research Foundation,TANGO2,HGNC:25439,https://tango2research.org/,,foundation,REDCap,,epilepsylive_orgs.csv;everycure_rdnp.csv,candidate
+TAOK1 Facebook group,TAOK1,HGNC:29259,,,family group,,,epilepsylive_orgs.csv,candidate
+TBC1D24 Foundation,TBC1D24,HGNC:29203,https://www.tbc1d24foundation.com/,,foundation,Foundation-hosted,,epilepsylive_orgs.csv,candidate
+TBCD Foundation,TBCD,HGNC:11581,,,foundation,,,epilepsylive_orgs.csv,candidate
+TESS Research Foundation,SLC13A5,HGNC:23089,https://tessresearch.org,,foundation,Pulse Infoframe,,epilepsylive_orgs.csv;everycure_rdnp.csv,candidate
+TRIO Family Foundation,TRIO,HGNC:12303,,,foundation,,,epilepsylive_orgs.csv,candidate
+TS Alliance,TSC1,HGNC:12362,,,foundation,,,epilepsylive_orgs.csv,candidate
+TS Alliance,TSC2,HGNC:12363,,,foundation,REDCap,,epilepsylive_orgs.csv,candidate
+TSC Alliance (US),TSC1,HGNC:12362,https://www.tscalliance.org,,foundation,REDCap,,epilepsylive_orgs.csv,candidate
+TUBB3 Foundation,TUBB3,HGNC:20772,,,foundation,,,epilepsylive_orgs.csv,candidate
+TUBB3 Foundation,TUBB3,HGNC:20772,https://tubb3foundation.org/,United States of America,foundation,,,everycure_rdnp.csv,candidate
+Taylor's Tale,PPT1,HGNC:9325,,,foundation,,,epilepsylive_orgs.csv,candidate
+Temple-Baraitser Syndrome family network,KCNH1,HGNC:6250,,,family group,,,epilepsylive_orgs.csv,candidate
+Tess Foundation,TBCK,HGNC:28261,https://www.curetbck.org/,,foundation,REDCap,,epilepsylive_orgs.csv,candidate
+The Brave Foundation,CASK,HGNC:1497,,,foundation,,,epilepsylive_orgs.csv,candidate
+The Cute Syndrome,SCN8A,HGNC:10596,https://www.thecutesyndrome.com,US,foundation,,REN,rela_2019.csv,candidate
+The Cute Syndrome Foundation,SCN8A,HGNC:10596,,,foundation,,,epilepsylive_orgs.csv,candidate
+The Rory Belle Foundation,NARS1,HGNC:7643,https://www.rorybelle.org,,foundation,,,epilepsylive_orgs.csv,candidate
+The TBCK Foundation,TBCK,HGNC:28261,https://tbckfoundation.com/,United States of America,foundation,,,everycure_rdnp.csv;rela_2019.csv,candidate
+The Yaya Foundation for 4H Leukodystrophy,POLR3,,https://yayafoundation4hl.org/,United States of America,foundation,,,everycure_rdnp.csv,candidate
+Timothy Syndrome Alliance,CACNA1C,HGNC:1390,,,foundation,,,epilepsylive_orgs.csv,candidate
+Together for the research on PCDH19,PCDH19,HGNC:14270,,,foundation,,,epilepsylive_orgs.csv,candidate
+Tom Wahlig Stiftung,AP4B1,HGNC:572,,,foundation,,,epilepsylive_orgs.csv,candidate
+Tom Wahlig Stiftung,AP4M1,HGNC:574,,,foundation,,,epilepsylive_orgs.csv,candidate
+Tough Genes,IRF2BPL,HGNC:14282,,,foundation,,,epilepsylive_orgs.csv,candidate
+Tuberous Sclerosis Alliance,TSC1,HGNC:12362,https://www.tsalliance.org,US,foundation,,REN,rela_2019.csv,candidate
+Tuberous Sclerosis Alliance,TSC2,HGNC:12363,https://www.tsalliance.org,US,foundation,,REN,rela_2019.csv,candidate
+Tuberous Sclerosis Association (UK),TSC1,HGNC:12362,,,foundation,,,epilepsylive_orgs.csv,candidate
+Tuberous Sclerosis Association (UK),TSC2,HGNC:12363,,,foundation,,,epilepsylive_orgs.csv,candidate
+Tuberous Sclerosis Australia,TSC1,HGNC:12362,,,foundation,,,epilepsylive_orgs.csv,candidate
+Tyler’s Hope for a Dystonia Cure,DYT1,,http://www.tylershope.org/,United States of America,foundation,,,everycure_rdnp.csv,candidate
+UBA5 Foundation,UBA5,HGNC:23230,,,foundation,,,epilepsylive_orgs.csv,candidate
+UGDH Foundation,UGDH,HGNC:12525,,,foundation,,,epilepsylive_orgs.csv,candidate
+UGDH Italia,UGDH,HGNC:12525,,,foundation,,,epilepsylive_orgs.csv,candidate
+UK MPS Society,FUCA1,HGNC:4006,,,foundation,,,epilepsylive_orgs.csv,candidate
+UNC80 Foundation,UNC80,HGNC:26582,https://fundacionlibellas.org/,,foundation,,,epilepsylive_orgs.csv,candidate
+US MEF2C Foundation,MEF2C,HGNC:6996,,,foundation,,,epilepsylive_orgs.csv,candidate
+USP7 Families,USP7,HGNC:12630,https://www.usp7.org/,United States of America,foundation,,,everycure_rdnp.csv,candidate
+Unione Italiana Nexmif,NEXMIF,HGNC:29433,,,foundation,,,epilepsylive_orgs.csv,candidate
+United Mitochondrial Disease Foundation,FBXL4,HGNC:13601,,,foundation,,,epilepsylive_orgs.csv,candidate
+United Mitochondrial Disease Foundation,POLG,HGNC:9179,https://www.umdf.org/,,foundation,REDCap,,epilepsylive_orgs.csv,candidate
+United Mitochondrial Disease Foundation,RARS2,HGNC:21406,,,foundation,,,epilepsylive_orgs.csv,candidate
+United Mitochondrial Disease Foundation,TARS2,HGNC:30740,,,foundation,,,epilepsylive_orgs.csv,candidate
+United Mitochondrial Disease Foundation,WARS2,HGNC:12730,,,foundation,,,epilepsylive_orgs.csv,candidate
+Voor Sara,LAMA2,HGNC:6482,,,foundation,,,epilepsylive_orgs.csv,candidate
+WAC Family Foundation,WAC,HGNC:17327,,,foundation,,,epilepsylive_orgs.csv,candidate
+WWOX Foundation,WWOX,HGNC:12799,https://wwoxfoundation.org/ (verify),,foundation,,,epilepsylive_orgs.csv,candidate
+WWOX Foundation AUS,WWOX,HGNC:12799,,,foundation,,,epilepsylive_orgs.csv,candidate
+WWOX Foundation EU,WWOX,HGNC:12799,,,foundation,,,epilepsylive_orgs.csv,candidate
+WWOX Foundation USA,WWOX,HGNC:12799,,,foundation,,,epilepsylive_orgs.csv,candidate
+Warburg Micro Foundation,RAB18,HGNC:14244,,,foundation,,,epilepsylive_orgs.csv,candidate
+Warburg Micro Foundation,RAB3GAP1,HGNC:17063,,,foundation,,,epilepsylive_orgs.csv,candidate
+Warburg Micro Foundation,RAB3GAP2,HGNC:17168,,,foundation,,,epilepsylive_orgs.csv,candidate
+White Sutton Syndrome Foundation,POGZ,HGNC:18801,,,foundation,,,epilepsylive_orgs.csv,candidate
+Wiedemann-Steiner Foundation,KMT2A,HGNC:7132,,,foundation,,,epilepsylive_orgs.csv,candidate
+Wishes for Elliott,SCN8A,HGNC:10596,https://scn8aalliance.org/,,foundation,Foundation-hosted,,epilepsylive_orgs.csv,candidate
+Wishes for Elliott: Advancing SCN8A Research,SCN8A,HGNC:10596,https://www.wishesforelliott.org,US,foundation,,REN,rela_2019.csv,candidate
+XLID98 Foundation,NEXMIF,HGNC:29433,,,foundation,,,epilepsylive_orgs.csv,candidate
+Xia-Gibbs Society,AHDC1,HGNC:25230,,,foundation,,,epilepsylive_orgs.csv,candidate
+YWHAG Foundation,YWHAG,HGNC:12852,https://www.ywhagfoundation.org/,,foundation,Citizen,,epilepsylive_orgs.csv,candidate
+Yellow Brick Road Project,HNRNPH2,HGNC:5042,,,foundation,,,epilepsylive_orgs.csv,candidate
+Yellow Brick Road Project,HNRNPH2,HGNC:5042,https://yellowbrickroadproject.org/,United States of America,foundation,,,everycure_rdnp.csv,candidate
+Yellow for Yiannis,IRF2BPL,HGNC:14282,,,foundation,,,epilepsylive_orgs.csv,candidate
+ZTTK SON-Shine Foundation,SON,HGNC:11183,,,foundation,,,epilepsylive_orgs.csv,candidate
+Zimmermann-Laband Syndrome Foundation,KCNH1,HGNC:6250,https://www.curekcnh1.org/,,foundation,,,epilepsylive_orgs.csv,candidate
+autism research overlap,TRIO,HGNC:12303,,,foundation,,,epilepsylive_orgs.csv,candidate
+country-specific groups,DYRK1A,HGNC:3091,,,foundation,,,epilepsylive_orgs.csv,candidate
+emerging community,ATP6V1A,HGNC:851,https://vatpasealliance.org/,,family group,,,epilepsylive_orgs.csv,candidate
+family network,SPTAN1,HGNC:11273,,,family group,,,epilepsylive_orgs.csv,candidate
+family network,WWOX,HGNC:12799,,,family group,,,epilepsylive_orgs.csv,candidate
+family network through CACNA1A Foundation,CACNA1E,HGNC:1392,,,family group,,,epilepsylive_orgs.csv,candidate
+growing community,BRAT1,HGNC:21701,,,family group,Citizen,,epilepsylive_orgs.csv,candidate
+iDREAM For a Cure Foundation,IRF2BPL,HGNC:14282,,,foundation,,,epilepsylive_orgs.csv,candidate
+international families,PAFAH1B1,HGNC:8574,,,foundation,,,epilepsylive_orgs.csv,candidate
+international family network,SATB2,HGNC:21637,,,family group,,,epilepsylive_orgs.csv,candidate
+international family network,TBCK,HGNC:28261,,,family group,,,epilepsylive_orgs.csv,candidate
+mTORopathy umbrella with TSC Alliance,MTOR,HGNC:3942,,,foundation,,,epilepsylive_orgs.csv,candidate
+movement disorder umbrellas,PRRT2,HGNC:30500,,,foundation,REDCap,,epilepsylive_orgs.csv,candidate
+multi-country,SCN1A,HGNC:10585,,,foundation,,,epilepsylive_orgs.csv,candidate
+multi-country,TSC1,HGNC:12362,,,foundation,,,epilepsylive_orgs.csv,candidate
+multiple country foundations,TPP1,HGNC:2073,,,foundation,,,epilepsylive_orgs.csv,candidate
+multiple country networks,ZEB2,HGNC:14881,,,foundation,,,epilepsylive_orgs.csv,candidate
+multiple country orgs,CLN3,HGNC:2074,,,foundation,,,epilepsylive_orgs.csv,candidate
+relevant to autism research community,CNTNAP2,HGNC:13830,,,family group,,,epilepsylive_orgs.csv,candidate
+some Rett research overlap,GABBR2,HGNC:4507,,,foundation,,,epilepsylive_orgs.csv,candidate
+v-ATPase Alliance,ATP6AP2,HGNC:18305,,,foundation,,,epilepsylive_orgs.csv,candidate
+v-ATPase Alliance,ATP6V0A1,HGNC:865,,,foundation,,,epilepsylive_orgs.csv,candidate
+v-ATPase Alliance,ATP6V0C,HGNC:855,,,foundation,,,epilepsylive_orgs.csv,candidate
+v-ATPase Alliance,ATP6V1A,HGNC:851,,,foundation,,,epilepsylive_orgs.csv,candidate
+v-ATPase Alliance,ATP6V1B2,HGNC:854,,,foundation,,,epilepsylive_orgs.csv,candidate

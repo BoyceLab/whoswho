@@ -1,4 +1,7 @@
 source_id,symbol_in_source,hgnc_id_in_source,resolved_by
+sfari,MSNP1AS,,unresolved
+sfari,RP11-1407O15.2,,unresolved
+sfari,RPS10P2-AS1,,unresolved
 orphadata_genes,AZF1,HGNC:908,unresolved
 orphadata_genes,SPG34,HGNC:32944,unresolved
 orphadata_genes,SPG37,HGNC:33472,unresolved

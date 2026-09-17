@@ -66,7 +66,7 @@ def load_sources(cfg_all: dict, resolver: HgncResolver):
         print("  skipped (no file):", ", ".join(missing))
     long = pd.concat(long_frames, ignore_index=True) if long_frames else pd.DataFrame(columns=parsers.COLS)
     cnv = pd.concat(cnv_frames, ignore_index=True) if cnv_frames else pd.DataFrame(columns=["source_id", "region_text"])
-    return long, cnv
+    return long, cnv, missing
 
 
 def _apply_wang_map(df: pd.DataFrame, cmap: dict) -> pd.DataFrame:
@@ -162,7 +162,10 @@ def widen(long: pd.DataFrame, resolver: HgncResolver, cfg_all: dict) -> pd.DataF
         rows.append(rec)
     wide = pd.DataFrame(rows)
     on_cols = [c for c in wide.columns if c.startswith("on_")]
-    wide[on_cols] = wide[on_cols].fillna(False)
+    # The on_ columns arrive as object dtype holding True or nothing. Going through the nullable
+    # boolean dtype fills the gaps without the silent object downcast that pandas warns about
+    # and will change in a later version. True and False both survive; only NA becomes False.
+    wide[on_cols] = wide[on_cols].astype("boolean").fillna(False).astype(bool)
     lead = ["hgnc_id", "symbol", "gene_name", "tier", "domain", "disputed", "disputed_note", "n_sources", "sources", "orphacodes", "synonyms", "omim_id", "ensembl_gene_id", "locus_group"]
     for c in lead:
         if c not in wide.columns:
@@ -428,7 +431,7 @@ def main():
     resolver = HgncResolver.from_file(hgnc_path)
     print(f"  HGNC: {len(resolver.table)} genes, e.g. {list(resolver.table['symbol'].head(3))}")
     print("Parsing sources")
-    long, cnv = load_sources(cfg_all, resolver)
+    long, cnv, missing_sources = load_sources(cfg_all, resolver)
     long, unresolved = resolve_all(long, resolver)
     long = in_scope(long, cfg_all)
     wide = widen(long, resolver, cfg_all)
@@ -459,9 +462,23 @@ def main():
     # so a stale manifest entry does not linger on the page.
     public_sources = {sid: rec for sid, rec in manifest.items()
                       if sid in cfg_all and not cfg_all[sid].get("private")}
+    # A source that is declared but has no file is recorded, not silently dropped. Its evidence
+    # columns are absent from the output rather than False, and a reader cannot tell the two
+    # apart from the table alone, so the release states which sources were unavailable.
+    absent = {
+        sid: {
+            "file": cfg_all[sid].get("file"),
+            "url": cfg_all[sid].get("url"),
+            "how": cfg_all[sid].get("how") or ("manual" if cfg_all[sid].get("manual")
+                                               else "manual download"),
+            "effect": "evidence columns for this source are absent from the outputs, not False",
+        }
+        for sid in missing_sources if sid in cfg_all
+    }
     release = {
         "built": date.today().isoformat(),
         "sources": public_sources,
+        "missing_sources": absent,
         "tier_rule": tiers.__doc__,
         "genes_total": int(len(wide)),
         "by_tier": wide["tier"].value_counts().to_dict(),
@@ -474,6 +491,8 @@ def main():
     print("\nGenes:", release["genes_total"], "| by tier:", release["by_tier"])
     print("By domain:", release["by_domain"])
     print("Unresolved symbols:", release["unresolved_symbols"], "| genes without an org row:", release["genes_without_org"])
+    if absent:
+        print("Missing sources recorded in release.json:", ", ".join(sorted(absent)))
 
 
 if __name__ == "__main__":

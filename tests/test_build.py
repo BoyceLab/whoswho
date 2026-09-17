@@ -108,8 +108,12 @@ def test_end_to_end(sandbox):
     out = sandbox / "outputs"
     spine = pd.read_csv(out / "gene_spine.csv").set_index("symbol")
 
-    # STXBP1: ClinGen absent, PanelApp Green, G4E, Orphadata -> T1, epilepsy with DEE text -> ndd_with_epilepsy
-    assert spine.loc["STXBP1", "tier"] == "T1"
+    # STXBP1: ClinGen absent, one PanelApp Green, G4E, Orphadata -> T2, epilepsy with DEE text
+    # -> ndd_with_epilepsy. T2 and not T1 because the tier rule was revised: a single Green is
+    # T2, and T1 needs an expert-panel definitive or strong call, or two or more independent
+    # panels Green. This fixture supplies only panelapp_au_epilepsy, so one Green is all there
+    # is. The assertion said T1 until the rule changed under it.
+    assert spine.loc["STXBP1", "tier"] == "T2"
     assert spine.loc["STXBP1", "domain"] == "ndd_with_epilepsy"
     assert str(spine.loc["STXBP1", "orphacodes"]).startswith("1934")
 
@@ -124,9 +128,14 @@ def test_end_to_end(sandbox):
     # RAI1: ClinGen Moderate + SFARI 3 -> T2, NDD only
     assert spine.loc["RAI1", "tier"] == "T2"
 
-    # KCNT1: ClinGen Disputed overrides G4E -> T3, disputed flag
-    assert spine.loc["KCNT1", "tier"] == "T3"
+    # KCNT1: ClinGen Disputed plus G4E -> T2 with the disputed flag set. The rule was revised:
+    # a Disputed label is reported and never downgrades, because the classification applies to
+    # one gene-disease relationship and a gene can be definitive for one condition and disputed
+    # for another. This assertion read T3 under the earlier rule.
+    assert spine.loc["KCNT1", "tier"] == "T2"
     assert bool(spine.loc["KCNT1", "disputed"]) is True
+    assert str(spine.loc["KCNT1", "disputed_note"]).strip() != "", (
+        "a disputed gene has to name the label that made it disputed")
 
     # COL4A1: PanelApp Amber + G4E malformation -> T2, systemic_with_seizures
     assert spine.loc["COL4A1", "tier"] == "T2"

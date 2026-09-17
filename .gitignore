@@ -8,4 +8,10 @@ sources/panelapp_ge_epilepsy/
 sources/panelapp_ge_id/
 sources/simons_searchlight/
 sources/orphadata_genes/
+# SysNDD and Gene2Phenotype became automatic once their public endpoints were wired up, so they
+# belong here too. SFARI stays committed: its site requires a download button, so the snapshot
+# is not reproducible from a URL.
+sources/sysndd/
+sources/g2p_dd/
 __pycache__/
+.pytest_cache/

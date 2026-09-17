@@ -36,9 +36,12 @@ genes4epilepsy:
   columns:
     symbol: [Gene, Gene_symbol, gene, HGNC_symbol, Symbol]
     hgnc_id: [HGNC_ID, HGNC ID, hgnc_id]
-    phenotype: [Epilepsy_phenotype, Epilepsy phenotype, Phenotype, Broad_epilepsy_phenotype,
-                Phenotypes, Epilepsy_phenotypes, Broad phenotype, Phenotype_category,
-                Epilepsy category, Category, Gene_group, Notes]
+    # "Phenotype(s)" is the header v2026-03 actually uses. Without it the phenotype came
+    # through empty for all 1,078 rows, which silently emptied the epilepsy_primary domain:
+    # domain_for returns that only when an epilepsy source carries a phenotype string.
+    phenotype: ["Phenotype(s)", Epilepsy_phenotype, Epilepsy phenotype, Phenotype,
+                Broad_epilepsy_phenotype, Phenotypes, Epilepsy_phenotypes, Broad phenotype,
+                Phenotype_category, Epilepsy category, Category, Gene_group, Notes]
     inheritance: [Inheritance, inheritance, Inheritance_pattern]
     omim: [OMIM, OMIM_ID, MIM]
 
@@ -128,17 +131,22 @@ panelapp_ge_id:
 
 sysndd:
   name: SysNDD (curated NDD gene-disease relationships)
-  manual: true
+  # The panels browse endpoint defaults to a hidden filter, equals(max_category,'Definitive')
+  # plus an inheritance filter, which returns 1,838 genes. Naming all four categories lifts
+  # that to 3,271, and a page size of 10,000 fits the whole table in one response
+  # (totalPages: 1), so there is no pagination to get wrong.
+  url: "https://sysndd.dbmr.unibe.ch/api/panels/browse?sort=symbol&page_size=10000&filter=any(category,'Definitive','Moderate','Limited','Refuted')"
   landing: https://sysndd.dbmr.unibe.ch/
-  note: Use the site's table export (entities or genes view). Confidence categories are Definitive / Moderate / Limited / Refuted.
-  file: sysndd_export.csv
+  file: sysndd_export.json
   domain: ndd
-  format: csv
+  format: json
+  records_path: data
   columns:
     symbol: [symbol, hgnc_symbol, Symbol, gene]
     hgnc_id: [hgnc_id, HGNC_ID]
     category: [category, Category, confidence]
     disease: [disease_ontology_name, disease, Disease]
+    inheritance: [inheritance, Inheritance]
 
 sfari:
   name: SFARI Gene, human genes
@@ -146,18 +154,30 @@ sfari:
   landing: https://gene.sfari.org/database/human-gene/
   note: Export CSV from the gene table (requires the site's download button).
   file: SFARI-Gene_genes.csv
+  # Provenance for a hand export, since the file name the build reads is not the name the site
+  # produced. These are copied into sources/manifest.json and so into release.json.
+  original_filename: SFARI-Gene_genes_07-12-2026release_09-16-2026export.csv
+  release_date: "2026-07-12"
+  exported: "2026-09-16"
+  version: "2026-07-12 release"
   domain: ndd
   format: csv
   columns:
     symbol: [gene-symbol, gene_symbol, Gene Symbol]
     score: [gene-score, gene_score, Score]
     syndromic: [syndromic, Syndromic]
+  # 94 of the 1,289 rows carry no score. They are on the list, so they count as presence, and
+  # MODERATE["sfari"] only matches 1 or 2, so a blank score lifts no tier. Score 3 behaves the
+  # same way, which is what the T3 line in the tier rule says.
+  unscored_note: present without a tier contribution
 
 g2p_dd:
   name: Gene2Phenotype, DD panel
-  manual: true
+  # The documented downloads page is a single-page app: the old DDG2P.csv.gz path answers 200
+  # with HTML, so a status-code check would have accepted a web page as a dataset. This API
+  # path serves text/csv.
+  url: https://www.ebi.ac.uk/gene2phenotype/api/panel/DD/download/
   landing: https://www.ebi.ac.uk/gene2phenotype/downloads/
-  note: Download the DD (developmental disorders) panel CSV.
   file: G2P_DD.csv
   domain: ndd
   format: csv

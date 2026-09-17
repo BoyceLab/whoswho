@@ -50,7 +50,11 @@ DISPUTED = re.compile(r"(refuted|disputed)", re.I)
 EPILEPSY_SOURCES = {"genes4epilepsy", "sagas", "panelapp_au_epilepsy", "panelapp_ge_epilepsy"}
 NDD_SOURCES = {"sysndd", "sfari", "g2p_dd", "panelapp_au_id", "panelapp_ge_id", "simons_searchlight", "simons_gene_list"}
 
-G4E_SYSTEMIC = re.compile(r"(malformation|metabolic|mitochondrial|storage|syndrom)", re.I)
+# MCD is how Genes4Epilepsy writes malformation of cortical development. The full words below
+# never match its abbreviated vocabulary, so without MCD the systemic branch could not fire at
+# all. G4E_NDD is tested first, so "DEE, MCD" still reads as ndd_with_epilepsy; only an
+# MCD-without-DEE phenotype reaches here. PME stays epilepsy by decision.
+G4E_SYSTEMIC = re.compile(r"(MCD|malformation|metabolic|mitochondrial|storage|syndrom)", re.I)
 G4E_NDD = re.compile(r"(DEE|encephalopath|developmental)", re.I)
 
 
