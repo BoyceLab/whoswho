@@ -34,27 +34,31 @@ def sha256(path: Path) -> str:
     return h.hexdigest()
 
 
-def snapshot_hash(path: Path, cfg: dict) -> tuple[str, str]:
-    """Hash of the payload that matters, with the scope it covers.
+def snapshot_hash(path: Path, cfg: dict) -> tuple[str, str, int]:
+    """Hash of the payload that matters, the scope it covers, and its size.
 
     Some services wrap the data in an envelope that changes between identical responses.
-    SysNDD reports its own `meta.executionTime`, so two fetches of the same 3,271 rows hash
-    differently and release.json stops being comparable between runs. Where `hash_canonical`
-    names a path, the hash covers that node serialised with sorted keys, so it tracks the data
-    rather than the wrapper.
+    SysNDD reports its own `meta.executionTime`, so two fetches of the same 3,271 rows differ
+    in bytes and release.json stops being comparable between runs. Where `hash_canonical` names
+    a path, the hash covers that node serialised with sorted keys.
+
+    The size travels with the hash for the same reason. Recording the file size next to a
+    canonical hash would leave one volatile field behind: "0.63 secs" and "0.6 secs" are a byte
+    apart, which is exactly what made release.json churn after the hash was already stable.
     """
     scope = cfg.get("hash_canonical")
     if not scope:
-        return sha256(path), "file bytes"
+        return sha256(path), "file bytes", path.stat().st_size
     payload = json.loads(path.read_text(encoding="utf-8"))
     for key in str(scope).split("."):
         payload = payload[key]
     blob = json.dumps(payload, sort_keys=True, separators=(",", ":")).encode("utf-8")
-    return hashlib.sha256(blob).hexdigest(), f"canonicalised JSON at '{scope}', keys sorted"
+    return (hashlib.sha256(blob).hexdigest(),
+            f"canonicalised JSON at '{scope}', keys sorted", len(blob))
 
 
 def record(manifest: dict, sid: str, path: Path, cfg: dict, how: str):
-    digest, scope = snapshot_hash(path, cfg)
+    digest, scope, size = snapshot_hash(path, cfg)
     entry = {
         # as_posix, not str: a manifest written on Windows would otherwise carry backslashes
         # and flip separators on every alternate local and CI build.
@@ -63,7 +67,7 @@ def record(manifest: dict, sid: str, path: Path, cfg: dict, how: str):
         "how": how,
         "url": cfg.get("url") or cfg.get("api") or cfg.get("landing"),
         "version": cfg.get("version"),
-        "bytes": path.stat().st_size,
+        "bytes": size,
         "sha256": digest,
         "sha256_scope": scope,
     }

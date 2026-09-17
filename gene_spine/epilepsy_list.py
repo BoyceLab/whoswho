@@ -89,7 +89,7 @@ def mondo_xrefs(path: Path) -> tuple[dict[str, set[str]], dict[str, set[str]], s
 
 
 def _host(url: object) -> str:
-    """Normalised website host, the identity of an organisation for deduplication."""
+    """Normalised website host, the strongest available signal of organisation identity."""
     if pd.isna(url) or not str(url).strip():
         return ""
     u = str(url).strip()
@@ -97,6 +97,17 @@ def _host(url: object) -> str:
         u = "https://" + u
     host = urllib.parse.urlparse(u).netloc.lower()
     return host[4:] if host.startswith("www.") else host
+
+
+_PUNCT = re.compile(r"[^a-z0-9]+")
+
+
+def _name_key(name: object) -> str:
+    """Lowercased, punctuation-stripped, whitespace-collapsed organisation name.
+
+    "2BCURED", "2bCured" and "2b-cured" are one organisation.
+    """
+    return _PUNCT.sub(" ", str("" if pd.isna(name) else name).lower()).strip()
 
 
 def _source_path(sid: str, cfg: dict) -> Path | None:
@@ -167,18 +178,34 @@ def build_org_list(spine: pd.DataFrame, cfg: dict) -> pd.DataFrame:
                                      "source_files", "status", "org_key"])
     orgs = pd.concat(frames, ignore_index=True)
     orgs["host"] = orgs["url"].map(_host)
-    # The host identifies an organisation where there is one, the name otherwise, so two
-    # spellings of one charity collapse into a single row per gene.
-    orgs["org_key"] = orgs["host"].where(
-        orgs["host"] != "", orgs["org_name"].astype(str).str.strip().str.lower())
+    orgs["name_key"] = orgs["org_name"].map(_name_key)
+    # The host is the identity where there is one, the normalised name otherwise.
+    orgs["org_key"] = orgs["host"].where(orgs["host"] != "", orgs["name_key"])
     before = len(orgs)
-    orgs = (orgs.sort_values(["org_key", "symbol", "source_files"])
-                .groupby(["org_key", "symbol"], as_index=False)
-                .agg({"org_name": "first", "url": "first", "country": "first",
-                      "org_type": "first", "registry_platform": "first",
-                      "coalitions": "first",
-                      "source_files": lambda s: ";".join(sorted(set(s)))}))
-    print(f"  deduplicated on normalised host: {before:,} -> {len(orgs):,} (org, gene) rows")
+
+    agg = {"org_name": "first", "url": "first", "country": "first", "org_type": "first",
+           "registry_platform": "first", "coalitions": "first", "host": "first",
+           "name_key": "first", "source_files": lambda s: ";".join(sorted(set(s)))}
+
+    # Pass one, on the host or normalised name. Rows carrying a URL sort first so the surviving
+    # row is the one with a website.
+    orgs = (orgs.sort_values(["org_key", "symbol", "host", "org_name", "source_files"],
+                             ascending=[True, True, False, True, True])
+                .groupby(["org_key", "symbol"], as_index=False).agg(agg))
+    after_host = len(orgs)
+
+    # Pass two, on the normalised name. One organisation can arrive with two URLs, an old site
+    # and a new one, which pass one keeps apart: that is what put four rows under CACNA1A for
+    # three organisations and made org_count disagree with this file. Collapsing on the name as
+    # well makes (org_name, symbol) unique by construction, which is the invariant the gene
+    # list's org_count depends on.
+    orgs = (orgs.sort_values(["name_key", "symbol", "host", "org_name", "source_files"],
+                             ascending=[True, True, False, True, True])
+                .groupby(["name_key", "symbol"], as_index=False).agg(agg))
+    orgs["org_key"] = orgs["host"].where(orgs["host"] != "", orgs["name_key"])
+
+    print(f"  deduplicated {before:,} -> {after_host:,} on host or name, "
+          f"-> {len(orgs):,} on name (one row per organisation and gene)")
     sym_to_hgnc = dict(zip(spine["symbol"].astype(str).str.upper(), spine["hgnc_id"]))
     orgs["hgnc_id"] = orgs["symbol"].map(sym_to_hgnc).fillna("")
     unresolved = orgs.loc[orgs["hgnc_id"] == "", "symbol"].nunique()
@@ -199,14 +226,19 @@ def main() -> int:
     orgs = build_org_list(spine, cfg)
     orgs_out = orgs[["org_name", "symbol", "hgnc_id", "url", "country", "org_type",
                      "registry_platform", "coalitions", "source_files", "status"]]
-    orgs_out = orgs_out.sort_values(["org_name", "symbol"])
+    # A total order, so two runs write the same bytes. Sorting on org_name alone leaves ties
+    # for pandas to break however the input happened to arrive.
+    orgs_out = orgs_out.sort_values(["symbol", "org_name", "hgnc_id"],
+                                    kind="mergesort").reset_index(drop=True)
     orgs_path = OUT / "epilepsy_orgs.csv"
     with orgs_path.open("w", encoding="utf-8", newline="") as fh:
-        fh.write("# One row per (organisation, gene) from the organisation sources, "
-                 "deduplicated on normalised website host.\n")
+        fh.write("# One row per (organisation, gene) from the organisation sources. An "
+                 "organisation is identified by its normalised website host where it has one,\n")
+        fh.write("# and by its normalised name otherwise; rows are then collapsed on the name, "
+                 "so (org_name, symbol) is unique.\n")
         fh.write("# status=candidate throughout: nothing here has been reviewed, and "
                  "curated/organizations.csv is untouched.\n")
-        orgs_out.to_csv(fh, index=False, quoting=csv.QUOTE_MINIMAL)
+        orgs_out.to_csv(fh, index=False, quoting=csv.QUOTE_MINIMAL, lineterminator="\n")
     print(f"wrote {orgs_path.relative_to(ROOT).as_posix()}: {len(orgs_out):,} rows, "
           f"{orgs_out['org_name'].nunique():,} organisations")
 
@@ -279,10 +311,14 @@ def main() -> int:
     print(f"mondo_ids: {int((sel['mondo_ids'] != '').sum()):,} of {len(sel):,} resolved "
           f"[{mondo_note}]")
 
-    counts = orgs.groupby("symbol")["org_key"].nunique() if len(orgs) else pd.Series(dtype=int)
-    names = (orgs.groupby("symbol")["org_name"]
+    # Counted from orgs_out, the frame just written, so the two files cannot disagree. Counting
+    # distinct org_key here while the file holds one row per name is what produced CACNA1A 4
+    # against 3.
+    counts = (orgs_out.groupby("symbol")["org_name"].nunique() if len(orgs_out)
+              else pd.Series(dtype=int))
+    names = (orgs_out.groupby("symbol")["org_name"]
              .apply(lambda s: "; ".join(sorted({str(v) for v in s.dropna()})))
-             if len(orgs) else pd.Series(dtype=str))
+             if len(orgs_out) else pd.Series(dtype=str))
     upper = sel["symbol"].astype(str).str.upper()
     sel["org_count"] = upper.map(counts).fillna(0).astype(int)
     sel["org_names"] = upper.map(names).fillna("")
@@ -290,7 +326,9 @@ def main() -> int:
     cols = ["hgnc_id", "symbol", "gene_name", "list_membership", "genes4epilepsy_phenotype",
             "tier", "domain", "n_sources", "sources", "orphacodes", "omim_id", "mondo_ids",
             "org_count", "org_names"]
-    out = sel[cols].sort_values(["list_membership", "symbol"])
+    # hgnc_id breaks any tie, so the row order is a function of the data and not of pandas.
+    out = sel[cols].sort_values(["list_membership", "symbol", "hgnc_id"],
+                                kind="mergesort").reset_index(drop=True)
 
     sfari = cfg.get("sfari") or {}
     header = [
@@ -313,7 +351,7 @@ def main() -> int:
     with path.open("w", encoding="utf-8", newline="") as fh:
         for line in header:
             fh.write(line + "\n")
-        out.to_csv(fh, index=False, quoting=csv.QUOTE_MINIMAL)
+        out.to_csv(fh, index=False, quoting=csv.QUOTE_MINIMAL, lineterminator="\n")
 
     print(f"wrote {path.relative_to(ROOT).as_posix()}: {len(out):,} rows")
     print("  membership: " + ", ".join(

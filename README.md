@@ -16,15 +16,22 @@ here rather than guessed.
 
 | path | bytes | sha256 |
 |---|---|---|
-| `<pages-base>/outputs/epilepsy_ndd_gene_list.csv` | 874,057 | `e8f8c8148d435d64e0bf1ef73d2158ed123658cd139cd65cebc9e2def669e456` |
-| `<pages-base>/outputs/epilepsy_orgs.csv` | 55,294 | `4349b56c524c67962ad9b94e6df569a450980d26068146f5dba8c9ba94e14edf` |
+| `<pages-base>/outputs/epilepsy_ndd_gene_list.csv` | 877,594 | `bf7807cdfc48edd6892211f557f4cfab469db40e082dd96d3188d01227ef71b7` |
+| `<pages-base>/outputs/epilepsy_orgs.csv` | 95,920 | `5711354b82623619f7b073d00c68c098f04c497fef57227106c40d9edca61823` |
 | `<pages-base>/outputs/gene_spine.json` | 9,550,535 | `99af53934d055d63ef978f4b05e6c69f72f798d9d519429404c71cdf7f3fb9f6` |
-| `<pages-base>/outputs/gene_spine.csv` | 2,799,406 | `416ac7a1e76b4a945bc943401c0b79dc81d46fe783822a445a97ea8a5073cb75` |
-| `<pages-base>/outputs/release.json` | 8,744 | see the file itself |
+| `<pages-base>/outputs/gene_spine.csv` | 2,794,563 | `c3b00968293567f2a851c14264fec492429acf5b55d54744bcedd793c81b69f6` |
+| `<pages-base>/outputs/release.json` | 9,447 | `22e0f5824c556d4c842779ed586134b5fb9a893adf19279664df3816faaaa8d1` |
 
-Those hashes are the 2026-09-16 build. **The build rewrites them, so treat the table as a
-snapshot and read `outputs/release.json` for the current values**; it carries a hash per output
-and per source. The paths are stable, the hashes are not.
+Those hashes are the 2026-09-16 build. **A build against fresher sources rewrites them, so read
+`outputs/release.json` for the current values**; it carries a hash per source. The paths are
+stable.
+
+The hashes do not depend on where the build ran. Every output is written with LF line endings
+whatever the platform, `.gitattributes` keeps the checkout consistent, and a source whose
+response carries its own timing is hashed over its canonicalised records rather than its bytes,
+with `sha256_scope` saying so. Two consecutive fetch-and-build cycles reproduce `release.json`
+and `sources/manifest.json` byte for byte, and `tests/test_spine_outputs.py` runs the list
+emitter twice and requires identical output.
 
 ## The two gene lists
 
@@ -42,10 +49,16 @@ one a gene came from:
 `tier` and `domain` travel with each row as description. They are not selection criteria for this
 file: a gene is on the list because a source names it, not because it reached a tier.
 
-`epilepsy_orgs.csv` is one row per organisation and gene, deduplicated on normalised website
-host, every row `status = candidate` until reviewed. 819 rows over 588 organisations, drawn from
-every source the config marks `role: org_candidates` that has a file, which is seven of ten. The
-curated layer in `curated/organizations.csv` is never written by the build.
+`epilepsy_orgs.csv` is one row per organisation and gene, every row `status = candidate` until
+reviewed. 770 rows over 586 organisations, drawn from every source the config marks
+`role: org_candidates` that has a file, which is seven of ten. The curated layer in
+`curated/organizations.csv` is never written by the build.
+
+An organisation is identified by its normalised website host where it has one, and by its
+normalised name otherwise, lowercased with punctuation stripped. Rows are then collapsed on the
+name as well, because one organisation can arrive with two URLs, so `(org_name, symbol)` is
+unique and the gene list's `org_count` cannot disagree with this file. Both counts are taken
+from the same frame.
 
 Both files are written by `gene_spine/epilepsy_list.py`, which runs after the spine build, so
 they cannot drift away from it.

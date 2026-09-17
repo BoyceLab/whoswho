@@ -185,12 +185,50 @@ def test_org_list_is_candidate_throughout():
 
 
 def test_org_counts_in_the_gene_list_match_the_org_list(gene_list):
+    """Every row, not a sample: the two files are written from one frame and must agree."""
     p = OUT / "epilepsy_orgs.csv"
     if not p.exists():
         pytest.skip("no org list; run `make lists`")
     orgs = pd.read_csv(p, comment="#", low_memory=False)
     counts = orgs.groupby(orgs["symbol"].str.upper())["org_name"].nunique()
-    for _, row in gene_list[gene_list["org_count"] > 0].head(50).iterrows():
+    wrong = []
+    for _, row in gene_list.iterrows():
         expected = int(counts.get(str(row["symbol"]).upper(), 0))
-        assert row["org_count"] == expected, (
-            f"{row['symbol']}: list says {row['org_count']}, org file has {expected}")
+        if int(row["org_count"]) != expected:
+            wrong.append(f"{row['symbol']}: list {row['org_count']}, org file {expected}")
+    assert not wrong, f"{len(wrong)} disagreements, e.g. {wrong[:5]}"
+
+
+def test_org_names_match_the_org_list(gene_list):
+    p = OUT / "epilepsy_orgs.csv"
+    if not p.exists():
+        pytest.skip("no org list; run `make lists`")
+    orgs = pd.read_csv(p, comment="#", low_memory=False)
+    joined = (orgs.groupby(orgs["symbol"].str.upper())["org_name"]
+              .apply(lambda s: "; ".join(sorted({str(v) for v in s.dropna()}))))
+    listed = gene_list[gene_list["org_count"] > 0]
+    for _, row in listed.iterrows():
+        assert row["org_names"] == joined.get(str(row["symbol"]).upper(), ""), (
+            f"{row['symbol']}: names differ between the two files")
+
+
+def test_the_emitter_is_deterministic(tmp_path):
+    """Run it twice and require identical bytes.
+
+    Two runs that differ mean something in the pipeline depends on dictionary or filesystem
+    order, which would show up as a spurious diff on every scheduled build and would make the
+    hashes published in the README wrong at random.
+    """
+    from gene_spine import epilepsy_list
+
+    if not (OUT / "gene_spine.csv").exists():
+        pytest.skip("no built spine")
+    targets = [OUT / "epilepsy_ndd_gene_list.csv", OUT / "epilepsy_orgs.csv"]
+
+    epilepsy_list.main()
+    first = {p.name: p.read_bytes() for p in targets}
+    epilepsy_list.main()
+    second = {p.name: p.read_bytes() for p in targets}
+
+    for name in first:
+        assert first[name] == second[name], f"{name} differs between two runs of the emitter"

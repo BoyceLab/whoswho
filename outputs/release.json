@@ -1,5 +1,5 @@
 {
- "built": "2026-09-16",
+ "built": "2026-09-17",
  "sources": {
   "hgnc": {
    "file": "sources/hgnc/hgnc_complete_set.txt",
@@ -157,7 +157,7 @@
    "how": "url",
    "url": "https://sysndd.dbmr.unibe.ch/api/panels/browse?sort=symbol&page_size=10000&filter=any(category,'Definitive','Moderate','Limited','Refuted')",
    "version": null,
-   "bytes": 872217,
+   "bytes": 870342,
    "sha256": "8de3dcf72e298aec5621ee8b1c25be3a2910e124e8714b1ddeefd8e41e96c38d",
    "sha256_scope": "canonicalised JSON at 'data', keys sorted"
   },

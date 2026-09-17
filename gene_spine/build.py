@@ -450,14 +450,14 @@ def main():
 
     write_shards(wide, org, OUT)
     write_search_index(wide, org, cnv, OUT)
-    wide.to_csv(OUT / "gene_spine.csv", index=False)
+    wide.to_csv(OUT / "gene_spine.csv", index=False, lineterminator="\n")
     wide.to_json(OUT / "gene_spine.json", orient="records", indent=1)
-    long.to_csv(OUT / "gene_source_long.csv", index=False)
-    gene_orpha[gene_orpha["orphacodes"] != ""].to_csv(OUT / "gene_orpha.csv", index=False)
-    cnv.to_csv(OUT / "cnv_regions.csv", index=False)
-    unresolved.to_csv(OUT / "unresolved_symbols.csv", index=False)
-    org.to_csv(OUT / "org_layer.csv", index=False)
-    gaps.to_csv(OUT / "org_gaps.csv", index=False)
+    long.to_csv(OUT / "gene_source_long.csv", index=False, lineterminator="\n")
+    gene_orpha[gene_orpha["orphacodes"] != ""].to_csv(OUT / "gene_orpha.csv", index=False, lineterminator="\n")
+    cnv.to_csv(OUT / "cnv_regions.csv", index=False, lineterminator="\n")
+    unresolved.to_csv(OUT / "unresolved_symbols.csv", index=False, lineterminator="\n")
+    org.to_csv(OUT / "org_layer.csv", index=False, lineterminator="\n")
+    gaps.to_csv(OUT / "org_gaps.csv", index=False, lineterminator="\n")
 
     manifest_path = SRC / "manifest.json"
     manifest = json.loads(manifest_path.read_text()) if manifest_path.exists() else {}
