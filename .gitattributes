@@ -1,0 +1,14 @@
+# Normalise line endings in the repository and in the working tree on every platform.
+#
+# This is not cosmetic. sources/manifest.json records a SHA-256 per snapshot, and several
+# snapshots are CSVs committed to this repository. Without this file a Windows checkout gets
+# CRLF while Linux CI gets LF, so the same data hashes differently depending on where the build
+# ran, and release.json stops being comparable between runs.
+* text=auto eol=lf
+
+# Binary, never touched.
+*.png binary
+*.pdf binary
+*.xlsx binary
+*.gz binary
+*.zip binary

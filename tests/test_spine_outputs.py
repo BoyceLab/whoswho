@@ -126,3 +126,71 @@ def test_gene_counts_agree_between_release_and_table(spine):
     rel = json.loads((OUT / "release.json").read_text(encoding="utf-8"))
     assert rel["genes_total"] == len(spine)
     assert rel["by_tier"] == spine["tier"].value_counts().to_dict()
+
+
+def test_every_source_states_what_its_hash_covers():
+    """A hash over a canonicalised node is not a hash of the file, so it has to say so.
+
+    SysNDD's response carries its own query timing, which would make the recorded hash change
+    between two fetches of identical data.
+    """
+    rel = json.loads((OUT / "release.json").read_text(encoding="utf-8"))
+    for sid, rec in rel["sources"].items():
+        assert rec.get("sha256_scope"), f"{sid} does not say what its hash covers"
+    sysndd = rel["sources"].get("sysndd")
+    if sysndd:
+        assert "canonicalised" in sysndd["sha256_scope"]
+
+
+# --------------------------------------------------------- the derived lists
+
+@pytest.fixture(scope="module")
+def gene_list() -> pd.DataFrame:
+    p = OUT / "epilepsy_ndd_gene_list.csv"
+    if not p.exists():
+        pytest.skip("no gene list; run `make lists` after `make build`")
+    return pd.read_csv(p, comment="#", low_memory=False)
+
+
+def test_gene_list_membership_values_are_the_four_branches(gene_list):
+    assert set(gene_list["list_membership"]) <= {"epilepsy", "both", "ndd_only",
+                                                 "epilepsy_other"}
+    assert set(gene_list["list_membership"]) >= {"both", "ndd_only"}
+
+
+def test_gene_list_is_a_subset_of_the_spine(gene_list, spine):
+    extra = set(gene_list["hgnc_id"]) - set(spine["hgnc_id"])
+    assert not extra, f"gene list holds ids absent from the spine: {sorted(extra)[:5]}"
+    assert len(gene_list) == gene_list["hgnc_id"].nunique(), "a gene is listed twice"
+
+
+def test_only_genes4epilepsy_members_carry_its_phenotype(gene_list):
+    """The column is that source's own text, so it is blank for a gene the source does not list."""
+    off_list = gene_list[~gene_list["list_membership"].isin(["epilepsy", "both"])]
+    assert off_list["genes4epilepsy_phenotype"].fillna("").eq("").all()
+    on_list = gene_list[gene_list["list_membership"].isin(["epilepsy", "both"])]
+    assert on_list["genes4epilepsy_phenotype"].fillna("").ne("").all()
+
+
+def test_org_list_is_candidate_throughout():
+    p = OUT / "epilepsy_orgs.csv"
+    if not p.exists():
+        pytest.skip("no org list; run `make lists`")
+    orgs = pd.read_csv(p, comment="#", low_memory=False)
+    assert (orgs["status"] == "candidate").all(), (
+        "every row is a candidate until a curator reviews it")
+    assert orgs["org_name"].notna().all(), "an organisation row with no name is not usable"
+    # One row per organisation and gene.
+    assert not orgs.duplicated(subset=["org_name", "symbol"]).any()
+
+
+def test_org_counts_in_the_gene_list_match_the_org_list(gene_list):
+    p = OUT / "epilepsy_orgs.csv"
+    if not p.exists():
+        pytest.skip("no org list; run `make lists`")
+    orgs = pd.read_csv(p, comment="#", low_memory=False)
+    counts = orgs.groupby(orgs["symbol"].str.upper())["org_name"].nunique()
+    for _, row in gene_list[gene_list["org_count"] > 0].head(50).iterrows():
+        expected = int(counts.get(str(row["symbol"]).upper(), 0))
+        assert row["org_count"] == expected, (
+            f"{row['symbol']}: list says {row['org_count']}, org file has {expected}")

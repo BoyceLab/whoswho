@@ -34,7 +34,27 @@ def sha256(path: Path) -> str:
     return h.hexdigest()
 
 
+def snapshot_hash(path: Path, cfg: dict) -> tuple[str, str]:
+    """Hash of the payload that matters, with the scope it covers.
+
+    Some services wrap the data in an envelope that changes between identical responses.
+    SysNDD reports its own `meta.executionTime`, so two fetches of the same 3,271 rows hash
+    differently and release.json stops being comparable between runs. Where `hash_canonical`
+    names a path, the hash covers that node serialised with sorted keys, so it tracks the data
+    rather than the wrapper.
+    """
+    scope = cfg.get("hash_canonical")
+    if not scope:
+        return sha256(path), "file bytes"
+    payload = json.loads(path.read_text(encoding="utf-8"))
+    for key in str(scope).split("."):
+        payload = payload[key]
+    blob = json.dumps(payload, sort_keys=True, separators=(",", ":")).encode("utf-8")
+    return hashlib.sha256(blob).hexdigest(), f"canonicalised JSON at '{scope}', keys sorted"
+
+
 def record(manifest: dict, sid: str, path: Path, cfg: dict, how: str):
+    digest, scope = snapshot_hash(path, cfg)
     entry = {
         # as_posix, not str: a manifest written on Windows would otherwise carry backslashes
         # and flip separators on every alternate local and CI build.
@@ -44,7 +64,8 @@ def record(manifest: dict, sid: str, path: Path, cfg: dict, how: str):
         "url": cfg.get("url") or cfg.get("api") or cfg.get("landing"),
         "version": cfg.get("version"),
         "bytes": path.stat().st_size,
-        "sha256": sha256(path),
+        "sha256": digest,
+        "sha256_scope": scope,
     }
     # Provenance a hand export carries that the file name cannot: what the site called it, when
     # the data was released, when it was pulled. Declared in config, so it travels into
@@ -87,9 +108,13 @@ def fetch_quarterly(sid: str, cfg: dict, manifest: dict):
 def fetch_url(sid: str, cfg: dict, manifest: dict):
     out = SRC / sid / cfg["file"]
     out.parent.mkdir(parents=True, exist_ok=True)
-    r = requests.get(cfg["url"], headers=HEADERS, timeout=120)
+    # Streamed, with a per-source timeout: mondo.obo is 53 MB and does not finish inside the
+    # 120 seconds that suits the small tables.
+    r = requests.get(cfg["url"], headers=HEADERS, timeout=cfg.get("timeout", 120), stream=True)
     r.raise_for_status()
-    out.write_bytes(r.content)
+    with out.open("wb") as fh:
+        for chunk in r.iter_content(1 << 20):
+            fh.write(chunk)
     record(manifest, sid, out, cfg, "url")
     print(f"  {sid}: {out.stat().st_size:,} bytes")
 
@@ -125,7 +150,8 @@ def fetch_panelapp(sid: str, cfg: dict, manifest: dict):
     out = SRC / sid / cfg["file"]
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(json.dumps({"id": panel["id"], "name": panel["name"],
-                               "version": panel.get("version"), "genes": genes}, indent=1))
+                               "version": panel.get("version"), "genes": genes}, indent=1),
+                   encoding="utf-8", newline="\n")
     cfg = dict(cfg, version=str(panel.get("version")))
     record(manifest, sid, out, cfg, f"panelapp:{panel['id']}")
     print(f"  {sid}: panel {panel['id']} '{panel['name']}' v{panel.get('version')}, {len(genes)} genes")
@@ -166,7 +192,7 @@ def main(argv: list[str]):
         except Exception as e:  # keep going; a release can still be built from what fetched
             print(f"  {sid}: FAILED {e}")
             failed.append(sid)
-    MANIFEST.write_text(json.dumps(manifest, indent=1))
+    MANIFEST.write_text(json.dumps(manifest, indent=1), encoding="utf-8", newline="\n")
     if failed:
         print("\nFailed to fetch (build will skip these):", ", ".join(failed))
     if manual:

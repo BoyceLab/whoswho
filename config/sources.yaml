@@ -141,6 +141,9 @@ sysndd:
   domain: ndd
   format: json
   records_path: data
+  # The response carries meta.executionTime, the server's own query timing, so two fetches of
+  # the identical 3,271 rows differ in bytes. Hash the records instead of the envelope.
+  hash_canonical: data
   columns:
     symbol: [symbol, hgnc_symbol, Symbol, gene]
     hgnc_id: [hgnc_id, HGNC_ID]
@@ -420,3 +423,20 @@ registries:
     runs on NORD IAMRARE whatever the text calls it. Where no URL exists the platform comes from the
     description. platform_basis records which applied, so a wrong assignment is traceable.
     registry_name is the registry's own name where it has one.
+
+mondo:
+  name: MONDO Disease Ontology
+  # The gene lists resolve ORPHA codes and OMIM ids to MONDO ids. OLS4's search index does not
+  # expose database cross-references: four query forms for Orphanet:33069 returned no hits, so
+  # one hashed snapshot of the ontology is both cheaper and reproducible, and the xref lines in
+  # mondo.obo are exactly what the resolution needs.
+  url: http://purl.obolibrary.org/obo/mondo.obo
+  landing: https://mondo.monarchinitiative.org/
+  file: mondo.obo
+  format: obo
+  role: crosswalk        # not gene evidence; the spine build skips it
+  licence: CC-BY-4.0
+  timeout: 600
+  note: |
+    Read only for its xref lines, Orphanet: and OMIM: to MONDO:. Around 63,000 terms, of which
+    roughly 10,500 carry an Orphanet xref and 10,200 an OMIM xref.

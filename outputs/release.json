@@ -8,7 +8,8 @@
    "url": "https://storage.googleapis.com/public-download-files/hgnc/tsv/tsv/hgnc_complete_set.txt",
    "version": null,
    "bytes": 16916967,
-   "sha256": "b3752a7668b90a24ef555495ee1acaee40999622859c2c452354307a73d7790c"
+   "sha256": "b3752a7668b90a24ef555495ee1acaee40999622859c2c452354307a73d7790c",
+   "sha256_scope": "file bytes"
   },
   "genes4epilepsy": {
    "file": "sources/genes4epilepsy/EpilepsyGenes_v2026-03.tsv",
@@ -17,7 +18,8 @@
    "url": "https://raw.githubusercontent.com/bahlolab/Genes4Epilepsy/main/EpilepsyGenes_v2026-03.tsv",
    "version": "v2026-03",
    "bytes": 57593,
-   "sha256": "fdd234ce78c1bd2f03f0bda79a31c362d96cce7e3e90076f964d044e4a7fa77f"
+   "sha256": "fdd234ce78c1bd2f03f0bda79a31c362d96cce7e3e90076f964d044e4a7fa77f",
+   "sha256_scope": "file bytes"
   },
   "clingen": {
    "file": "sources/clingen/clingen_gene_validity.csv",
@@ -26,7 +28,8 @@
    "url": "https://search.clinicalgenome.org/kb/gene-validity/download",
    "version": null,
    "bytes": 1121907,
-   "sha256": "5e0b23f36b17aa0ad83df8a34123b6e55a2e013e5d4434ce9ce9aba49a56f0fc"
+   "sha256": "5e0b23f36b17aa0ad83df8a34123b6e55a2e013e5d4434ce9ce9aba49a56f0fc",
+   "sha256_scope": "file bytes"
   },
   "panelapp_au_epilepsy": {
    "file": "sources/panelapp_au_epilepsy/panelapp_au_epilepsy.json",
@@ -34,8 +37,9 @@
    "how": "panelapp:202",
    "url": "https://panelapp-aus.org/api/v1/panels/",
    "version": "2.46",
-   "bytes": 3784505,
-   "sha256": "583a9f0921e1dadc70cfb1487d22b165a7c7463e7d406e99c2ad2151e44619d7"
+   "bytes": 3671280,
+   "sha256": "dad5b5559e2b42ed407a33394c502dc8b0c989c722246cd73c7445c8a519c452",
+   "sha256_scope": "file bytes"
   },
   "panelapp_au_id": {
    "file": "sources/panelapp_au_id/panelapp_au_id.json",
@@ -43,8 +47,9 @@
    "how": "panelapp:250",
    "url": "https://panelapp-aus.org/api/v1/panels/",
    "version": "2.157",
-   "bytes": 7862830,
-   "sha256": "25d53543c22ce88c37110166aa6b273155980475ada6afc4108fb89f0b31d070"
+   "bytes": 7606281,
+   "sha256": "e023fea3e1d21e042523d00be0bd39a3bcfcfae22c1e17c95d23b0cbc26babe7",
+   "sha256_scope": "file bytes"
   },
   "panelapp_ge_epilepsy": {
    "file": "sources/panelapp_ge_epilepsy/panelapp_ge_epilepsy.json",
@@ -52,8 +57,9 @@
    "how": "panelapp:402",
    "url": "https://panelapp.genomicsengland.co.uk/api/v1/panels/",
    "version": "9.84",
-   "bytes": 2776993,
-   "sha256": "dbe1bee6d83f676e00522ed8c4aa0bea336d01e104923909c6c5884eb514a239"
+   "bytes": 2680535,
+   "sha256": "f07e284ccdebc30d32adb82a3dc5b8366701c6b183a44c4664434b7f610d8e8f",
+   "sha256_scope": "file bytes"
   },
   "panelapp_ge_id": {
    "file": "sources/panelapp_ge_id/panelapp_ge_id.json",
@@ -61,8 +67,9 @@
    "how": "panelapp:285",
    "url": "https://panelapp.genomicsengland.co.uk/api/v1/panels/",
    "version": "11.31",
-   "bytes": 8377180,
-   "sha256": "190ad72c62c9df7356158694b7ae9c7e2546d353eede9c8ac4e3677b2511b0e9"
+   "bytes": 8090438,
+   "sha256": "083d7a6b5303200a49e4c1a86d7ac25f97c664ee79a9fda8e7236a7bbe62ed32",
+   "sha256_scope": "file bytes"
   },
   "orphadata_genes": {
    "file": "sources/orphadata_genes/en_product6.xml",
@@ -71,7 +78,8 @@
    "url": "https://www.orphadata.com/data/xml/en_product6.xml",
    "version": null,
    "bytes": 22612034,
-   "sha256": "f1c039f78683beea7ca5b34d1c01c4ec98f80e8ca488eee69770074db1020e39"
+   "sha256": "f1c039f78683beea7ca5b34d1c01c4ec98f80e8ca488eee69770074db1020e39",
+   "sha256_scope": "file bytes"
   },
   "citizen_registry": {
    "file": "citizen_registry.csv",
@@ -79,8 +87,9 @@
    "how": "manual",
    "url": "https://www.citizen.health",
    "version": null,
-   "bytes": 8841,
-   "sha256": "3b7a4bb38875331da9fce14544ddb6bacc9a42b637cc93f5914c0441dec2915c"
+   "bytes": 8753,
+   "sha256": "d8ac3296821505d9715ba56e13c87e0401da21ffc1ac1dd3405ddf4c286764b2",
+   "sha256_scope": "file bytes"
   },
   "everycure_rdnp": {
    "file": "everycure_rdnp.csv",
@@ -88,8 +97,9 @@
    "how": "manual",
    "url": null,
    "version": null,
-   "bytes": 20945,
-   "sha256": "6045e0c062c738781888fa6587eeabd9a2b38408fc1b1eab639c5f234af17b57"
+   "bytes": 20835,
+   "sha256": "1f0e9701ef878ad7304b0dee6c02b1a2e271d4f146ebfe87e2abd77e30ee7ee0",
+   "sha256_scope": "file bytes"
   },
   "fda_pfdd": {
    "file": "fda_pfdd.csv",
@@ -97,8 +107,9 @@
    "how": "manual",
    "url": "https://www.fda.gov/industry/prescription-drug-user-fee-amendments/condition-specific-meeting-reports-and-other-information-related-patients-experience",
    "version": null,
-   "bytes": 5333,
-   "sha256": "120f41e93462f5827566a5fa65541ae3e0db57e4f82c189f2ff76570494abc74"
+   "bytes": 5296,
+   "sha256": "bcc4db084437ec8d73d266684b7aaa686f5120a07411cc50839ad5fe0bbb4fe1",
+   "sha256_scope": "file bytes"
   },
   "opathy": {
    "file": "opathy.csv",
@@ -106,8 +117,9 @@
    "how": "manual",
    "url": null,
    "version": null,
-   "bytes": 9531,
-   "sha256": "8a22ed036c979337f92f512e3b9025dccc53808ccbe497c5017033b1e0f5ad72"
+   "bytes": 9295,
+   "sha256": "4890b288e049cf47c8689c656b623b28e040a69a9173cda3b45ee85b96156968",
+   "sha256_scope": "file bytes"
   },
   "simons_gene_list": {
    "file": "sources/simons_gene_list/simons_gene_list.csv",
@@ -115,8 +127,9 @@
    "how": "manual",
    "url": "https://www.simonssearchlight.org/research/what-we-study/",
    "version": "2024-11",
-   "bytes": 15218,
-   "sha256": "8450eae5fcb9c914f21a250359804ca9037e3cb2cac8773388df2e4b1f043acb"
+   "bytes": 15033,
+   "sha256": "ad7a5c48962f478ec8b85e2bfe894d3626d65770d354f1907b440220cb21585a",
+   "sha256_scope": "file bytes"
   },
   "ren_members": {
    "file": "sources/ren_members/ren_members.csv",
@@ -124,8 +137,9 @@
    "how": "manual",
    "url": "https://www.rareepilepsynetwork.org/",
    "version": null,
-   "bytes": 18380,
-   "sha256": "bcdb0675d564119076e0a250ecb2e3307274449d029fb7251725204cbad5d1cb"
+   "bytes": 18205,
+   "sha256": "53c633b27c9a43f792aebe9560d59346e2cba444a42decf73204dcbe9a929003",
+   "sha256_scope": "file bytes"
   },
   "pubmed_gene_counts": {
    "file": "sources/pubmed_gene_counts/pubmed_gene_counts.csv",
@@ -133,8 +147,9 @@
    "how": "manual",
    "url": "https://pubmed.ncbi.nlm.nih.gov/",
    "version": null,
-   "bytes": 90940,
-   "sha256": "12d8331d3f8ea1150ff62f323f4e27eda122f22a600bf58aa20429c138c17c13"
+   "bytes": 89861,
+   "sha256": "3e695aa5cd68f77cee47fd68cc788f594a733a64749bdfdb901c8df94fcc6782",
+   "sha256_scope": "file bytes"
   },
   "sysndd": {
    "file": "sources/sysndd/sysndd_export.json",
@@ -143,7 +158,8 @@
    "url": "https://sysndd.dbmr.unibe.ch/api/panels/browse?sort=symbol&page_size=10000&filter=any(category,'Definitive','Moderate','Limited','Refuted')",
    "version": null,
    "bytes": 872217,
-   "sha256": "2d25297d8840a647a1817338918d2cae7787fa48f96c4a237d00a95e23b62a83"
+   "sha256": "8de3dcf72e298aec5621ee8b1c25be3a2910e124e8714b1ddeefd8e41e96c38d",
+   "sha256_scope": "canonicalised JSON at 'data', keys sorted"
   },
   "sfari": {
    "file": "sources/sfari/SFARI-Gene_genes.csv",
@@ -153,6 +169,7 @@
    "version": "2026-07-12 release",
    "bytes": 145146,
    "sha256": "ec3b830ab3f4e185d4d912b6e46a9bca79db39fafd107b37d8b48421be4772d2",
+   "sha256_scope": "file bytes",
    "original_filename": "SFARI-Gene_genes_07-12-2026release_09-16-2026export.csv",
    "release_date": "2026-07-12",
    "exported": "2026-09-16",
@@ -165,7 +182,18 @@
    "url": "https://www.ebi.ac.uk/gene2phenotype/api/panel/DD/download/",
    "version": null,
    "bytes": 1920346,
-   "sha256": "047173af20d0bddb519fc9582994fb0c40ab9cb64021de6027088e44ceac6b62"
+   "sha256": "047173af20d0bddb519fc9582994fb0c40ab9cb64021de6027088e44ceac6b62",
+   "sha256_scope": "file bytes"
+  },
+  "mondo": {
+   "file": "sources/mondo/mondo.obo",
+   "fetched": "2026-09-16",
+   "how": "url",
+   "url": "http://purl.obolibrary.org/obo/mondo.obo",
+   "version": null,
+   "bytes": 53134854,
+   "sha256": "50c8367f9bd9978321eedf84d4e2e79cb757efbed514c81effb00b9ad2e49994",
+   "sha256_scope": "file bytes"
   }
  },
  "missing_sources": {

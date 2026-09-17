@@ -27,6 +27,12 @@ jobs:
         run: python -m gene_spine.fetch
       - name: Build
         run: python -m gene_spine.build
+      # After the spine, never instead of it: the lists read what the build wrote. Without this
+      # step the published CSVs would keep their old contents while the spine moved under them.
+      - name: Derived lists
+        run: python -m gene_spine.epilepsy_list
+      - name: Tests
+        run: python -m pytest -q tests
       - name: Commit outputs
         run: |
           git config user.name "spine-bot"

@@ -43,8 +43,12 @@ one a gene came from:
 file: a gene is on the list because a source names it, not because it reached a tier.
 
 `epilepsy_orgs.csv` is one row per organisation and gene, deduplicated on normalised website
-host, every row `status = candidate` until reviewed. 527 rows over 420 organisations. The curated
-layer in `curated/organizations.csv` is never written by the build.
+host, every row `status = candidate` until reviewed. 819 rows over 588 organisations, drawn from
+every source the config marks `role: org_candidates` that has a file, which is seven of ten. The
+curated layer in `curated/organizations.csv` is never written by the build.
+
+Both files are written by `gene_spine/epilepsy_list.py`, which runs after the spine build, so
+they cannot drift away from it.
 
 ## Tier and domain rules
 
@@ -84,9 +88,14 @@ Current distribution over 4,842 genes: `ndd_no_documented_epilepsy` 3,497,
 ```
 pip install -r requirements.txt
 make fetch     # python -m gene_spine.fetch, downloads the automatic sources
-make build     # python -m gene_spine.build, writes outputs/
+make build     # python -m gene_spine.build, writes the spine into outputs/
+make lists     # python -m gene_spine.epilepsy_list, the two derived CSVs; run after build
 make test      # python -m pytest -q tests
+make release   # fetch, build, lists
 ```
+
+`make lists` reads the spine the build wrote, so the order matters. The workflow runs them in
+that order too.
 
 `make fetch` prints any declared source whose file is absent, and the build continues without it.
 An absent source's evidence columns are **missing from the outputs rather than False**, so a
@@ -97,7 +106,17 @@ the absences under `missing_sources`.
 
 Automatic, downloaded by `make fetch`: HGNC, Genes4Epilepsy, ClinGen, PanelApp Australia
 (Genetic Epilepsy, Intellectual disability), PanelApp Genomics England (Early onset or syndromic
-epilepsy, Intellectual disability), SysNDD, Gene2Phenotype DD, Orphadata.
+epilepsy, Intellectual disability), SysNDD, Gene2Phenotype DD, Orphadata, and MONDO.
+
+MONDO is a crosswalk rather than evidence: the list builder reads its `xref` lines to turn ORPHA
+codes and OMIM ids into MONDO ids, and the spine build skips it. Its own API is no use here,
+because OLS4's search index does not expose cross-references, so one hashed snapshot of the
+ontology is both cheaper and reproducible.
+
+Two endpoints needed care. SysNDD's browse call applies a hidden `max_category='Definitive'`
+filter unless all four categories are named, which silently halves the table. Gene2Phenotype's
+documented `DDG2P.csv.gz` path now answers 200 with the single-page app's HTML, so a status-code
+check would take a web page for a dataset; the API download path serves the CSV.
 
 By hand, placed under `sources/<id>/`: SFARI Gene (the site requires its download button), the
 Wang 2023 supplement, SAGAS, and the organisation and registry files. Each hand export records

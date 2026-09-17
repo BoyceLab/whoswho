@@ -13,5 +13,8 @@ sources/orphadata_genes/
 # is not reproducible from a URL.
 sources/sysndd/
 sources/g2p_dd/
+# MONDO is a 53 MB ontology snapshot, read only for its xref lines. Its hash is in the
+# manifest, so a resolved MONDO id stays checkable without committing the file.
+sources/mondo/
 __pycache__/
 .pytest_cache/

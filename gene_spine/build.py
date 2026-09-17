@@ -42,7 +42,10 @@ def load_sources(cfg_all: dict, resolver: HgncResolver):
     long_frames, cnv_frames, missing = [], [], []
     known = set(resolver.by_symbol)
     for sid, cfg in cfg_all.items():
-        if sid == "hgnc" or cfg.get("role") in ("org_candidates", "gene_annotation", "gene_registries"):
+        # "crosswalk" is MONDO: an ontology read only for its xref lines by the list builder,
+        # never a source of gene-disease evidence, so it must not reach the table parsers.
+        if sid == "hgnc" or cfg.get("role") in ("org_candidates", "gene_annotation",
+                                                "gene_registries", "crosswalk"):
             continue
         path = source_path(sid, cfg)
         if not path.exists():
@@ -397,7 +400,8 @@ def write_shards(wide: pd.DataFrame, org: pd.DataFrame, out: Path):
         rec["organizations"] = org_by.get(rec["hgnc_id"], [])
         buckets[shard_of(rec["hgnc_id"])].append(rec)
     for i, recs in buckets.items():
-        (gdir / f"{i:02d}.json").write_text(json.dumps(recs, separators=(",", ":")))
+        (gdir / f"{i:02d}.json").write_text(
+            json.dumps(recs, separators=(",", ":")), encoding="utf-8", newline="\n")
     print(f"  wrote {SHARDS} gene shards")
 
 
@@ -415,7 +419,9 @@ def write_search_index(wide: pd.DataFrame, org: pd.DataFrame, cnv: pd.DataFrame,
             for r in org.itertuples(index=False)]
     cnvs = [{"r": r.region_text, "src": r.source_id,
              "u": getattr(r, "simons_page_url", "") or ""} for r in cnv.itertuples(index=False)] if len(cnv) else []
-    (out / "search_index.json").write_text(json.dumps({"genes": genes, "orgs": orgs, "cnvs": cnvs}, separators=(",", ":")))
+    (out / "search_index.json").write_text(
+        json.dumps({"genes": genes, "orgs": orgs, "cnvs": cnvs}, separators=(",", ":")),
+        encoding="utf-8", newline="\n")
     print(f"  search index: {len(genes)} genes, {len(orgs)} organization rows, {len(cnvs)} CNV regions")
 
 
@@ -487,7 +493,8 @@ def main():
         "org_rows": {"curated": int((org["status"] == "curated").sum()), "candidate": int((org["status"] == "candidate").sum())},
         "genes_without_org": int(len(gaps)),
     }
-    (OUT / "release.json").write_text(json.dumps(release, indent=1))
+    (OUT / "release.json").write_text(
+        json.dumps(release, indent=1), encoding="utf-8", newline="\n")
     print("\nGenes:", release["genes_total"], "| by tier:", release["by_tier"])
     print("By domain:", release["by_domain"])
     print("Unresolved symbols:", release["unresolved_symbols"], "| genes without an org row:", release["genes_without_org"])
