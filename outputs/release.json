@@ -3,7 +3,7 @@
  "sources": {
   "hgnc": {
    "file": "sources/hgnc/hgnc_complete_set.txt",
-   "fetched": "2026-09-16",
+   "fetched": "2026-09-17",
    "how": "url",
    "url": "https://storage.googleapis.com/public-download-files/hgnc/tsv/tsv/hgnc_complete_set.txt",
    "version": null,
@@ -13,7 +13,7 @@
   },
   "genes4epilepsy": {
    "file": "sources/genes4epilepsy/EpilepsyGenes_v2026-03.tsv",
-   "fetched": "2026-09-16",
+   "fetched": "2026-09-17",
    "how": "url",
    "url": "https://raw.githubusercontent.com/bahlolab/Genes4Epilepsy/main/EpilepsyGenes_v2026-03.tsv",
    "version": "v2026-03",
@@ -23,7 +23,7 @@
   },
   "clingen": {
    "file": "sources/clingen/clingen_gene_validity.csv",
-   "fetched": "2026-09-16",
+   "fetched": "2026-09-17",
    "how": "url",
    "url": "https://search.clinicalgenome.org/kb/gene-validity/download",
    "version": null,
@@ -33,7 +33,7 @@
   },
   "panelapp_au_epilepsy": {
    "file": "sources/panelapp_au_epilepsy/panelapp_au_epilepsy.json",
-   "fetched": "2026-09-16",
+   "fetched": "2026-09-17",
    "how": "panelapp:202",
    "url": "https://panelapp-aus.org/api/v1/panels/",
    "version": "2.46",
@@ -43,17 +43,17 @@
   },
   "panelapp_au_id": {
    "file": "sources/panelapp_au_id/panelapp_au_id.json",
-   "fetched": "2026-09-16",
+   "fetched": "2026-09-17",
    "how": "panelapp:250",
    "url": "https://panelapp-aus.org/api/v1/panels/",
-   "version": "2.157",
-   "bytes": 7606281,
-   "sha256": "e023fea3e1d21e042523d00be0bd39a3bcfcfae22c1e17c95d23b0cbc26babe7",
+   "version": "2.159",
+   "bytes": 7606253,
+   "sha256": "f0dc7c2041c6a327ecf1ee7d3c5ee8b2c04bcc0c886cc02462cb892e6a984715",
    "sha256_scope": "file bytes"
   },
   "panelapp_ge_epilepsy": {
    "file": "sources/panelapp_ge_epilepsy/panelapp_ge_epilepsy.json",
-   "fetched": "2026-09-16",
+   "fetched": "2026-09-17",
    "how": "panelapp:402",
    "url": "https://panelapp.genomicsengland.co.uk/api/v1/panels/",
    "version": "9.84",
@@ -63,7 +63,7 @@
   },
   "panelapp_ge_id": {
    "file": "sources/panelapp_ge_id/panelapp_ge_id.json",
-   "fetched": "2026-09-16",
+   "fetched": "2026-09-17",
    "how": "panelapp:285",
    "url": "https://panelapp.genomicsengland.co.uk/api/v1/panels/",
    "version": "11.31",
@@ -73,7 +73,7 @@
   },
   "orphadata_genes": {
    "file": "sources/orphadata_genes/en_product6.xml",
-   "fetched": "2026-09-16",
+   "fetched": "2026-09-17",
    "how": "url",
    "url": "https://www.orphadata.com/data/xml/en_product6.xml",
    "version": null,
@@ -83,7 +83,7 @@
   },
   "citizen_registry": {
    "file": "citizen_registry.csv",
-   "fetched": "2026-09-16",
+   "fetched": "2026-09-17",
    "how": "manual",
    "url": "https://www.citizen.health",
    "version": null,
@@ -93,7 +93,7 @@
   },
   "everycure_rdnp": {
    "file": "everycure_rdnp.csv",
-   "fetched": "2026-09-16",
+   "fetched": "2026-09-17",
    "how": "manual",
    "url": null,
    "version": null,
@@ -103,7 +103,7 @@
   },
   "fda_pfdd": {
    "file": "fda_pfdd.csv",
-   "fetched": "2026-09-16",
+   "fetched": "2026-09-17",
    "how": "manual",
    "url": "https://www.fda.gov/industry/prescription-drug-user-fee-amendments/condition-specific-meeting-reports-and-other-information-related-patients-experience",
    "version": null,
@@ -113,7 +113,7 @@
   },
   "opathy": {
    "file": "opathy.csv",
-   "fetched": "2026-09-16",
+   "fetched": "2026-09-17",
    "how": "manual",
    "url": null,
    "version": null,
@@ -123,7 +123,7 @@
   },
   "simons_gene_list": {
    "file": "sources/simons_gene_list/simons_gene_list.csv",
-   "fetched": "2026-09-16",
+   "fetched": "2026-09-17",
    "how": "manual",
    "url": "https://www.simonssearchlight.org/research/what-we-study/",
    "version": "2024-11",
@@ -133,7 +133,7 @@
   },
   "ren_members": {
    "file": "sources/ren_members/ren_members.csv",
-   "fetched": "2026-09-16",
+   "fetched": "2026-09-17",
    "how": "manual",
    "url": "https://www.rareepilepsynetwork.org/",
    "version": null,
@@ -143,7 +143,7 @@
   },
   "pubmed_gene_counts": {
    "file": "sources/pubmed_gene_counts/pubmed_gene_counts.csv",
-   "fetched": "2026-09-16",
+   "fetched": "2026-09-17",
    "how": "manual",
    "url": "https://pubmed.ncbi.nlm.nih.gov/",
    "version": null,
@@ -153,7 +153,7 @@
   },
   "sysndd": {
    "file": "sources/sysndd/sysndd_export.json",
-   "fetched": "2026-09-16",
+   "fetched": "2026-09-17",
    "how": "url",
    "url": "https://sysndd.dbmr.unibe.ch/api/panels/browse?sort=symbol&page_size=10000&filter=any(category,'Definitive','Moderate','Limited','Refuted')",
    "version": null,
@@ -163,7 +163,7 @@
   },
   "sfari": {
    "file": "sources/sfari/SFARI-Gene_genes.csv",
-   "fetched": "2026-09-16",
+   "fetched": "2026-09-17",
    "how": "manual",
    "url": "https://gene.sfari.org/database/human-gene/",
    "version": "2026-07-12 release",
@@ -177,17 +177,17 @@
   },
   "g2p_dd": {
    "file": "sources/g2p_dd/G2P_DD.csv",
-   "fetched": "2026-09-16",
+   "fetched": "2026-09-17",
    "how": "url",
    "url": "https://www.ebi.ac.uk/gene2phenotype/api/panel/DD/download/",
    "version": null,
-   "bytes": 1920346,
-   "sha256": "047173af20d0bddb519fc9582994fb0c40ab9cb64021de6027088e44ceac6b62",
+   "bytes": 1920358,
+   "sha256": "5891f50de872af9c8fca97d22da46410ddd39312ae43cf4ce0ad486169b93b77",
    "sha256_scope": "file bytes"
   },
   "mondo": {
    "file": "sources/mondo/mondo.obo",
-   "fetched": "2026-09-16",
+   "fetched": "2026-09-17",
    "how": "url",
    "url": "http://purl.obolibrary.org/obo/mondo.obo",
    "version": null,
